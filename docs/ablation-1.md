@@ -80,8 +80,8 @@ target before the scripted task.
 ### Mismatch with the Paper
 
 The paper's real-robot study initializes the robot end-effector randomly over a
-reachable plane. For this planned simulation ablation, that plane should be the
-`y = 0` plane in robot coordinates, with `x > 0` and `z > 0`. The current scripts
+reachable plane. For this planned simulation ablation, that plane should be a
+fixed-height `x-y` plane in robot coordinates, with `z` held constant. The current scripts
 instead move from a fixed home target:
 
 ```text
@@ -103,7 +103,7 @@ No code changes are made in this document.
 The AR spatial guidance can be treated as a curved funnel from left to right:
 
 ```text
-random EE start on y = 0 reachable x-z plane
+random EE start on fixed-z reachable x-y plane
       |
       v
 wide corridor entry / corridor_start
@@ -256,15 +256,15 @@ used as a second validation task if time allows.
 This is required to match the paper's setting.
 
 Instead of always moving from fixed `home = [0.45, 0.00, 0.45]`, each demo
-should begin with an end-effector pose sampled from the reachable part of the
-`y = 0` x-z plane.
+should begin with an end-effector pose sampled from the reachable part of a
+fixed-height `x-y` plane.
 
 Suggested initialization constraint:
 
 ```text
-y = 0
 x > 0
-z > 0
+y > 0
+z fixed
 point must pass IK / reachability checks
 ```
 
@@ -273,11 +273,11 @@ reasonable initial search box is:
 
 ```text
 x in [0.20, 0.60]
-y = 0
-z in [0.20, 0.60]
+y in [0.20, 0.60]
+z = 0.30
 ```
 
-but the final set should be the reachable subset of this x-z plane, not the
+but the final set should be the reachable subset of this x-y plane, not the
 entire rectangle.
 
 Important design detail:
@@ -287,7 +287,7 @@ The random initial EE position is not the same as corridor_start.
 ```
 
 The random initial EE position creates deployment-like start variation on the
-`y = 0` x-z plane. The `corridor_start` waypoint represents the first shared
+fixed-height `x-y` plane. The `corridor_start` waypoint represents the first shared
 spatial structure that the teacher is supposed to enter before moving along the
 funnel. These must be recorded separately in metadata.
 
@@ -359,17 +359,17 @@ pre_grasp = base_pre_grasp + delta_pre
 where:
 
 ```text
-delta_start_xz sampled inside radius corridor_start_radius, with y fixed
-delta_pre_xz sampled inside radius pre_grasp_radius, with y fixed
+delta_start_xy sampled inside radius corridor_start_radius, with z fixed
+delta_pre_xy sampled inside radius pre_grasp_radius, with z fixed
 ```
 
-Keep `y` fixed at the task plane for the first version. Because your corridor is
-drawn in the `y = 0` x-z plane, the first spatial ablation should vary `x` and
-`z`, not `y`.
+Keep `z` fixed for each waypoint in the first version. The `pre_grasp` radius
+must be a horizontal disk around the object-above point, centered at
+`(cube_x, cube_y)` with `pre_grasp_z` unchanged.
 
 ```text
-delta_start = [dx, 0, dz]
-delta_pre = [dx, 0, dz]
+delta_start = [dx, dy, 0]
+delta_pre = [dx, dy, 0]
 ```
 
 The interpretation is therefore in the same plane as the guidance: a wide
@@ -526,7 +526,8 @@ For the next implementation step, keep the first version narrow:
 1. Cube pick-and-lift only.
 2. Random EE initialization enabled.
 3. Four spatial conditions from the 2 x 2 design.
-4. X-z plane variation only for `corridor_start` and `pre_grasp`, with `y = 0`.
+4. X-y plane variation only for `corridor_start` and `pre_grasp`, with each
+   waypoint's `z` fixed.
 5. Fixed final descent/grasp/lift.
 6. Full metadata recording for sampled start, corridor entry, pre-grasp, and
    success/failure.
@@ -537,13 +538,12 @@ too many sources of variation.
 
 ## Open Decisions
 
-- Exact reachable EE initialization range on the `y = 0`, `x > 0`, `z > 0`
-  plane.
+- Exact reachable EE initialization range on the fixed-height `x-y` plane.
 - Whether random initial EE placement should be saved as a phase or treated as
   setup before recording.
 - Whether `corridor_start` should be object-relative or fixed in world space.
-- Exact x-z sampling distribution for `corridor_start` variation.
-- Exact x-z sampling distribution for `pre_grasp` variation.
+- Exact x-y sampling distribution for `corridor_start` variation.
+- Exact x-y sampling distribution for `pre_grasp` variation.
 - Whether insertion should use full pick-and-insert or insert-only with the peg
   already held.
 - Whether failed sampled trajectories should be saved separately for analysis or

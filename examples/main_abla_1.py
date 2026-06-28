@@ -722,6 +722,7 @@ class PandaSim(DatasetCollectorMixin):
         corridor_start_radius=0.10,
         pre_grasp_radius=0.02,
         entry_dx=0.20,
+        corridor_start_y=0.15,
         entry_dz=0.06,
         random_start_x_bounds=(0.20, 0.60),
         random_start_z_bounds=(0.20, 0.60),
@@ -740,10 +741,10 @@ class PandaSim(DatasetCollectorMixin):
 
         base_pre_grasp = np.array([cube[0], cube[1], 0.22])
         base_corridor_start = np.array(
-            [cube[0] - float(entry_dx), cube[1], base_pre_grasp[2] + float(entry_dz)]
+            [cube[0] - float(entry_dx), float(corridor_start_y), base_pre_grasp[2] + float(entry_dz)]
         )
         delta_start = sample_xz_disk(float(corridor_start_radius))
-        delta_pre = sample_xz_disk(float(pre_grasp_radius))
+        delta_pre = sample_xy_disk(float(pre_grasp_radius))
         corridor_start = base_corridor_start + delta_start
         pre_grasp = base_pre_grasp + delta_pre
         grasp = np.array([cube[0], cube[1], 0.04])
@@ -774,6 +775,7 @@ class PandaSim(DatasetCollectorMixin):
                 grasp,
                 lift,
                 entry_dx,
+                corridor_start_y,
                 entry_dz,
                 random_start_x_bounds,
                 random_start_z_bounds,
@@ -797,6 +799,7 @@ class PandaSim(DatasetCollectorMixin):
             grasp,
             lift,
             entry_dx,
+            corridor_start_y,
             entry_dz,
             random_start_x_bounds,
             random_start_z_bounds,
@@ -851,6 +854,7 @@ class PandaSim(DatasetCollectorMixin):
         grasp,
         lift,
         entry_dx,
+        corridor_start_y,
         entry_dz,
         random_start_x_bounds,
         random_start_z_bounds,
@@ -873,6 +877,7 @@ class PandaSim(DatasetCollectorMixin):
             "grasp": grasp.tolist(),
             "lift": lift.tolist(),
             "entry_dx": float(entry_dx),
+            "corridor_start_y": float(corridor_start_y),
             "entry_dz": float(entry_dz),
             "random_start_x_bounds": [float(v) for v in random_start_x_bounds],
             "random_start_z_bounds": [float(v) for v in random_start_z_bounds],
@@ -933,6 +938,15 @@ class PandaSim(DatasetCollectorMixin):
         if self.client is not None:
             pb.disconnect()
             self.client = None
+
+
+def sample_xy_disk(radius):
+    radius = float(radius)
+    if radius <= 0.0:
+        return np.zeros(3, dtype=float)
+    theta = np.random.uniform(0.0, 2.0 * math.pi)
+    r = radius * math.sqrt(np.random.uniform(0.0, 1.0))
+    return np.array([r * math.cos(theta), r * math.sin(theta), 0.0], dtype=float)
 
 
 def sample_xz_disk(radius):
@@ -1067,6 +1081,7 @@ if __name__ == "__main__":
         help="Override condition pre_grasp_radius in meters.",
     )
     parser.add_argument("--entry-dx", type=float, default=0.20, help="Object-relative corridor entry x offset in meters.")
+    parser.add_argument("--corridor-start-y", type=float, default=0.15, help="Fixed world y coordinate for corridor_start.")
     parser.add_argument("--entry-dz", type=float, default=0.06, help="Object-relative corridor entry z lift in meters.")
     parser.add_argument("--random-start-x-min", type=float, default=0.20)
     parser.add_argument("--random-start-x-max", type=float, default=0.60)
@@ -1170,6 +1185,7 @@ if __name__ == "__main__":
                     corridor_start_radius=corridor_start_radius,
                     pre_grasp_radius=pre_grasp_radius,
                     entry_dx=args.entry_dx,
+                    corridor_start_y=args.corridor_start_y,
                     entry_dz=args.entry_dz,
                     random_start_x_bounds=(args.random_start_x_min, args.random_start_x_max),
                     random_start_z_bounds=(args.random_start_z_min, args.random_start_z_max),
