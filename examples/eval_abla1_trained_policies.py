@@ -9,7 +9,7 @@ from pathlib import Path
 import numpy as np
 import pybullet as pb
 
-from main_abla_1 import PandaSim
+from main_abla_1 import DEFAULT_CORRIDOR_START_CENTER, PandaSim, sample_xz_disk
 
 
 ARCAP_ROOT = Path("/users/k23114984/code/arcap_policy/STEP2_train_policy")
@@ -45,15 +45,21 @@ def set_all_seeds(seed):
         torch.cuda.manual_seed_all(seed)
 
 
-def latest_checkpoint(model_root, condition, epoch):
-    exp_root = Path(model_root) / f"abla1_{condition}_d30_seed1_2gap"
+def latest_checkpoint(model_root, condition, epoch, experiment_template="abla1_{condition}_d30_seed1_2gap"):
+    exp_root = Path(model_root) / experiment_template.format(condition=condition)
     run_dirs = [p for p in exp_root.iterdir() if p.is_dir()]
     if not run_dirs:
         raise FileNotFoundError(f"No run directories found under {exp_root}")
     run_dir = sorted(run_dirs)[-1]
     ckpt = run_dir / "models" / f"model_epoch_{epoch}.pth"
     if not ckpt.exists():
-        candidates = sorted((run_dir / "models").glob("model_epoch_*.pth"))
+        def checkpoint_epoch(path):
+            try:
+                return int(path.stem.rsplit("_", 1)[1])
+            except (IndexError, ValueError):
+                return -1
+
+        candidates = sorted((run_dir / "models").glob("model_epoch_*.pth"), key=checkpoint_epoch)
         if not candidates:
             raise FileNotFoundError(f"No checkpoints found under {run_dir / 'models'}")
         ckpt = candidates[-1]
@@ -194,9 +200,7 @@ def run_one_rollout(
     horizon,
     action_dt,
     success_lift_height,
-    random_start_x_bounds,
-    random_start_z_bounds,
-    random_start_max_attempts,
+    corridor_start_center,
     num_points,
     terminate_on_success,
     video_recorder=None,
@@ -206,12 +210,27 @@ def run_one_rollout(
     sim.reset()
     reset_cube(sim)
 
-    random_start, random_start_q, random_start_info = sim.sample_reachable_random_start(
-        x_bounds=random_start_x_bounds,
-        z_bounds=random_start_z_bounds,
-        max_attempts=random_start_max_attempts,
-    )
-    sim.reset_to_ee_pose(random_start_q, gripper_width=0.04)
+    base_corridor_start = np.asarray(corridor_start_center, dtype=float)
+    delta_start = sample_xz_disk(CONDITIONS[condition]["corridor_start_radius"])
+    corridor_start = base_corridor_start + delta_start
+    corridor_start_q = sim.solve_ik(corridor_start, sim.default_orientation_quat)
+    current_q = [pb.getJointState(sim.panda, j)[0] for j in sim.arm_joint_indices]
+    sim.reset_arm_joints(corridor_start_q)
+    realised = sim.ee_pos()
+    sim.reset_arm_joints(current_q)
+    corridor_error = float(np.linalg.norm(realised - corridor_start))
+    if corridor_error > 0.025:
+        raise RuntimeError(
+            f"Sampled corridor_start is not reachable: target={corridor_start.tolist()}, "
+            f"realised={realised.tolist()}, error={corridor_error:.6f}"
+        )
+    sim.reset_to_ee_pose(corridor_start_q, gripper_width=0.04)
+    corridor_start_info = {
+        "base_corridor_start": base_corridor_start.tolist(),
+        "corridor_start_delta": delta_start.tolist(),
+        "ik_realised_error": corridor_error,
+        "realised_start": realised.tolist(),
+    }
 
     gripper_state = -1.0
     pcd_rng = np.random.default_rng(seed + rollout_index)
@@ -225,7 +244,7 @@ def run_one_rollout(
             render_rgb(sim),
             [
                 f"{condition} rollout {rollout_index:02d}",
-                "start",
+                "corridor_start",
             ],
         )
 
@@ -260,8 +279,8 @@ def run_one_rollout(
         "rollout_index": rollout_index,
         "success": bool(is_success),
         "steps": step + 1,
-        "random_start": random_start.tolist(),
-        "random_start_info": random_start_info,
+        "corridor_start": corridor_start.tolist(),
+        "corridor_start_info": corridor_start_info,
         "final_cube_z": details["final_cube_z"],
         "success_details": details,
     }
@@ -297,9 +316,7 @@ def evaluate_condition(args, condition, ckpt):
                 horizon=args.horizon,
                 action_dt=args.action_dt,
                 success_lift_height=args.success_lift_height,
-                random_start_x_bounds=(args.random_start_x_min, args.random_start_x_max),
-                random_start_z_bounds=(args.random_start_z_min, args.random_start_z_max),
-                random_start_max_attempts=args.random_start_max_attempts,
+                corridor_start_center=args.corridor_start_center,
                 num_points=args.num_points,
                 terminate_on_success=args.terminate_on_success,
                 video_recorder=video_recorder,
@@ -309,7 +326,7 @@ def evaluate_condition(args, condition, ckpt):
             print(
                 f"[{condition}] rollout {i:02d}: success={result['success']} "
                 f"final_cube_z={result['final_cube_z']:.4f} "
-                f"steps={result['steps']} random_start={np.round(result['random_start'], 4).tolist()}",
+                f"steps={result['steps']} corridor_start={np.round(result['corridor_start'], 4).tolist()}",
                 flush=True,
             )
     finally:
@@ -342,6 +359,11 @@ def parse_args():
     )
     parser.add_argument("--model-root", type=Path, default=DEFAULT_MODEL_ROOT)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT)
+    parser.add_argument(
+        "--experiment-template",
+        default="abla1_{condition}_d30_seed1_2gap",
+        help="Experiment directory template under --model-root. Must include {condition}.",
+    )
     parser.add_argument("--conditions", nargs="+", default=["P00", "P01", "P10", "P11"], choices=sorted(CONDITIONS))
     parser.add_argument("--epoch", type=int, default=40)
     parser.add_argument("--seed", type=int, default=628)
@@ -352,11 +374,13 @@ def parse_args():
     parser.add_argument("--action-dt", type=float, default=None)
     parser.add_argument("--num-points", type=int, default=10000)
     parser.add_argument("--success-lift-height", type=float, default=0.20)
-    parser.add_argument("--random-start-x-min", type=float, default=0.20)
-    parser.add_argument("--random-start-x-max", type=float, default=0.60)
-    parser.add_argument("--random-start-z-min", type=float, default=0.20)
-    parser.add_argument("--random-start-z-max", type=float, default=0.60)
-    parser.add_argument("--random-start-max-attempts", type=int, default=200)
+    parser.add_argument(
+        "--corridor-start-center",
+        type=float,
+        nargs=3,
+        default=DEFAULT_CORRIDOR_START_CENTER,
+        metavar=("X", "Y", "Z"),
+    )
     parser.add_argument("--playback-speed", type=float, default=10.0)
     parser.add_argument("--cuda", action="store_true", help="Use CUDA if available.")
     parser.add_argument("--gui", action="store_true")
@@ -378,7 +402,7 @@ def main():
     args.output_dir.mkdir(parents=True, exist_ok=True)
     summaries = []
     for condition in args.conditions:
-        ckpt = latest_checkpoint(args.model_root, condition, args.epoch)
+        ckpt = latest_checkpoint(args.model_root, condition, args.epoch, args.experiment_template)
         summary = evaluate_condition(args, condition, ckpt)
         summaries.append(summary)
         out_path = args.output_dir / f"abla1_{condition}_seed{args.seed}_n{args.num_rollouts}.json"

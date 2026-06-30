@@ -12,6 +12,9 @@ import pybullet_data
 from collection_io import DatasetCollectorMixin
 
 
+DEFAULT_CORRIDOR_START_CENTER = (0.30, 0.0, 0.50)
+
+
 class PandaSim(DatasetCollectorMixin):
     def __init__(self, gui=True, left_handed=False, gripper_orientation="default", output_dir=None, sample_hz=30.0):
         self.gui = gui
@@ -588,44 +591,6 @@ class PandaSim(DatasetCollectorMixin):
         self.reset_arm_joints(current_q)
         return float(np.linalg.norm(realised - np.asarray(pos, dtype=float))) <= max_error
 
-    def sample_reachable_random_start(
-        self,
-        x_bounds=(0.20, 0.60),
-        z_bounds=(0.20, 0.60),
-        max_attempts=200,
-        max_error=0.025,
-    ):
-        rejected = []
-        quat = self.default_orientation_quat
-        for attempt in range(1, int(max_attempts) + 1):
-            pos = np.array(
-                [
-                    np.random.uniform(float(x_bounds[0]), float(x_bounds[1])),
-                    0.0,
-                    np.random.uniform(float(z_bounds[0]), float(z_bounds[1])),
-                ],
-                dtype=float,
-            )
-            q = self.solve_ik(pos, quat)
-            current_q = [pb.getJointState(self.panda, j)[0] for j in self.arm_joint_indices]
-            self.reset_arm_joints(q)
-            realised = self.ee_pos()
-            self.reset_arm_joints(current_q)
-            error = float(np.linalg.norm(realised - pos))
-            if error <= max_error:
-                return pos, q, {
-                    "attempts": attempt,
-                    "max_error": float(max_error),
-                    "realised_error": error,
-                    "rejected_count": attempt - 1,
-                    "recent_rejections": rejected[-10:],
-                }
-            rejected.append({"pos": pos.tolist(), "error": error})
-        raise RuntimeError(
-            f"Could not sample reachable random start after {max_attempts} attempts "
-            f"within x={x_bounds}, z={z_bounds}, max_error={max_error}."
-        )
-
     def reset_to_ee_pose(self, q, gripper_width=0.04):
         self.reset_arm_joints(q)
         pb.resetJointState(self.panda, self.left_finger_joint, float(gripper_width))
@@ -721,28 +686,19 @@ class PandaSim(DatasetCollectorMixin):
         condition_label="P00",
         corridor_start_radius=0.10,
         pre_grasp_radius=0.02,
-        entry_dx=0.20,
-        corridor_start_y=0.15,
-        entry_dz=0.06,
-        random_start_x_bounds=(0.20, 0.60),
-        random_start_z_bounds=(0.20, 0.60),
-        random_start_max_attempts=200,
+        corridor_start_center=DEFAULT_CORRIDOR_START_CENTER,
+        entry_dx=None,
+        corridor_start_y=None,
+        entry_dz=None,
         success_lift_height=0.20,
     ):
         cube = self.cube_pos()
         print(f"Cube at: {cube}")
 
-        random_start, random_start_q, random_start_info = self.sample_reachable_random_start(
-            x_bounds=random_start_x_bounds,
-            z_bounds=random_start_z_bounds,
-            max_attempts=random_start_max_attempts,
-        )
-        self.reset_to_ee_pose(random_start_q, gripper_width=0.04)
-
+        base_corridor_start = np.asarray(corridor_start_center, dtype=float)
+        if base_corridor_start.shape != (3,):
+            raise ValueError(f"corridor_start_center must contain 3 values, got {corridor_start_center!r}")
         base_pre_grasp = np.array([cube[0], cube[1], 0.22])
-        base_corridor_start = np.array(
-            [cube[0] - float(entry_dx), float(corridor_start_y), base_pre_grasp[2] + float(entry_dz)]
-        )
         delta_start = sample_xz_disk(float(corridor_start_radius))
         delta_pre = sample_xy_disk(float(pre_grasp_radius))
         corridor_start = base_corridor_start + delta_start
@@ -750,7 +706,20 @@ class PandaSim(DatasetCollectorMixin):
         grasp = np.array([cube[0], cube[1], 0.04])
         lift = np.array([cube[0], cube[1], 0.30])
 
-        corridor_reachable = self.ik_reachable(corridor_start)
+        current_q = [pb.getJointState(self.panda, j)[0] for j in self.arm_joint_indices]
+        corridor_start_q = self.solve_ik(corridor_start, self.default_orientation_quat)
+        self.reset_arm_joints(corridor_start_q)
+        realised_corridor_start = self.ee_pos()
+        self.reset_arm_joints(current_q)
+        corridor_error = float(np.linalg.norm(realised_corridor_start - corridor_start))
+        corridor_max_error = 0.025
+        corridor_reachable = corridor_error <= corridor_max_error
+        corridor_start_info = {
+            "ik_max_error": corridor_max_error,
+            "ik_realised_error": corridor_error,
+            "realised_start": realised_corridor_start.tolist(),
+        }
+
         pre_grasp_reachable = self.ik_reachable(pre_grasp)
         if not corridor_reachable or not pre_grasp_reachable:
             details = {
@@ -762,10 +731,9 @@ class PandaSim(DatasetCollectorMixin):
             self.write_ablation_metadata(
                 condition_label,
                 cube,
-                random_start,
-                random_start_info,
                 base_corridor_start,
                 corridor_start,
+                corridor_start_info,
                 delta_start,
                 corridor_start_radius,
                 base_pre_grasp,
@@ -777,19 +745,17 @@ class PandaSim(DatasetCollectorMixin):
                 entry_dx,
                 corridor_start_y,
                 entry_dz,
-                random_start_x_bounds,
-                random_start_z_bounds,
                 success_details=details,
             )
             return False, details
 
+        self.reset_to_ee_pose(corridor_start_q, gripper_width=0.04)
         self.write_ablation_metadata(
             condition_label,
             cube,
-            random_start,
-            random_start_info,
             base_corridor_start,
             corridor_start,
+            corridor_start_info,
             delta_start,
             corridor_start_radius,
             base_pre_grasp,
@@ -801,29 +767,24 @@ class PandaSim(DatasetCollectorMixin):
             entry_dx,
             corridor_start_y,
             entry_dz,
-            random_start_x_bounds,
-            random_start_z_bounds,
         )
 
-        print("1) Save random start")
-        self.save_frame(gripper_state=-1.0, phase_name="random_start")
+        print("1) Save corridor start")
+        self.save_frame(gripper_state=-1.0, phase_name="corridor_start")
 
         print("2) Open gripper")
         self.open_gripper(duration=0.8, phase_name="open_gripper")
 
-        print("3) Corridor start")
-        self.move_ee(corridor_start, speed=self.motion_speed, gripper_state=-1.0, phase_name="corridor_start")
-
-        print("4) Pre-grasp")
+        print("3) Pre-grasp")
         self.move_ee(pre_grasp, speed=self.motion_speed, gripper_state=-1.0, phase_name="pre_grasp")
 
-        print("5) Descend")
+        print("4) Descend")
         self.move_ee(grasp, speed=self.motion_speed, gripper_state=-1.0, phase_name="pick_grasp")
 
-        print("6) Close gripper")
+        print("5) Close gripper")
         self.close_gripper(duration=1.2, phase_name="close_gripper")
 
-        print("7) Lift")
+        print("6) Lift")
         self.move_ee(lift, speed=self.motion_speed, gripper_state=1.0, phase_name="lift")
 
         is_success, success_details = self.success(min_cube_z=success_lift_height)
@@ -841,10 +802,9 @@ class PandaSim(DatasetCollectorMixin):
         self,
         condition_label,
         cube,
-        random_start,
-        random_start_info,
         base_corridor_start,
         corridor_start,
+        corridor_start_info,
         delta_start,
         corridor_start_radius,
         base_pre_grasp,
@@ -856,31 +816,28 @@ class PandaSim(DatasetCollectorMixin):
         entry_dx,
         corridor_start_y,
         entry_dz,
-        random_start_x_bounds,
-        random_start_z_bounds,
         success_details=None,
     ):
         metadata = {
             "task": "cube_grasp_lift_ablation_1",
             "condition_label": condition_label,
             "cube_position": cube.tolist(),
-            "random_start": random_start.tolist(),
-            "random_start_info": random_start_info,
             "base_corridor_start": base_corridor_start.tolist(),
             "corridor_start": corridor_start.tolist(),
+            "corridor_start_info": corridor_start_info,
             "corridor_start_delta": delta_start.tolist(),
             "corridor_start_radius": float(corridor_start_radius),
+            "corridor_start_center": base_corridor_start.tolist(),
+            "corridor_start_sampling_plane": "xz",
             "base_pre_grasp": base_pre_grasp.tolist(),
             "pre_grasp": pre_grasp.tolist(),
             "pre_grasp_delta": delta_pre.tolist(),
             "pre_grasp_radius": float(pre_grasp_radius),
             "grasp": grasp.tolist(),
             "lift": lift.tolist(),
-            "entry_dx": float(entry_dx),
-            "corridor_start_y": float(corridor_start_y),
-            "entry_dz": float(entry_dz),
-            "random_start_x_bounds": [float(v) for v in random_start_x_bounds],
-            "random_start_z_bounds": [float(v) for v in random_start_z_bounds],
+            "entry_dx": None if entry_dx is None else float(entry_dx),
+            "corridor_start_y": None if corridor_start_y is None else float(corridor_start_y),
+            "entry_dz": None if entry_dz is None else float(entry_dz),
         }
         if success_details is not None:
             metadata["success"] = success_details
@@ -1080,14 +1037,27 @@ if __name__ == "__main__":
         default=None,
         help="Override condition pre_grasp_radius in meters.",
     )
-    parser.add_argument("--entry-dx", type=float, default=0.20, help="Object-relative corridor entry x offset in meters.")
-    parser.add_argument("--corridor-start-y", type=float, default=0.15, help="Fixed world y coordinate for corridor_start.")
-    parser.add_argument("--entry-dz", type=float, default=0.06, help="Object-relative corridor entry z lift in meters.")
-    parser.add_argument("--random-start-x-min", type=float, default=0.20)
-    parser.add_argument("--random-start-x-max", type=float, default=0.60)
-    parser.add_argument("--random-start-z-min", type=float, default=0.20)
-    parser.add_argument("--random-start-z-max", type=float, default=0.60)
-    parser.add_argument("--random-start-max-attempts", type=int, default=200)
+    parser.add_argument(
+        "--corridor-start-center-x",
+        type=float,
+        default=DEFAULT_CORRIDOR_START_CENTER[0],
+        help="World x coordinate of the AR guidance corridor-start circle center.",
+    )
+    parser.add_argument(
+        "--corridor-start-center-y",
+        type=float,
+        default=DEFAULT_CORRIDOR_START_CENTER[1],
+        help="World y coordinate of the AR guidance corridor-start circle center.",
+    )
+    parser.add_argument(
+        "--corridor-start-center-z",
+        type=float,
+        default=DEFAULT_CORRIDOR_START_CENTER[2],
+        help="World z coordinate of the AR guidance corridor-start circle center.",
+    )
+    parser.add_argument("--entry-dx", type=float, default=None, help=argparse.SUPPRESS)
+    parser.add_argument("--corridor-start-y", type=float, default=None, help=argparse.SUPPRESS)
+    parser.add_argument("--entry-dz", type=float, default=None, help=argparse.SUPPRESS)
     parser.add_argument(
         "--success-lift-height",
         type=float,
@@ -1124,6 +1094,17 @@ if __name__ == "__main__":
         if args.pre_grasp_radius is None
         else float(args.pre_grasp_radius)
     )
+    corridor_start_center = (
+        float(args.corridor_start_center_x),
+        float(args.corridor_start_center_y),
+        float(args.corridor_start_center_z),
+    )
+    if args.entry_dx is not None or args.corridor_start_y is not None or args.entry_dz is not None:
+        print(
+            "[WARN] --entry-dx / --corridor-start-y / --entry-dz are deprecated "
+            "and ignored for ablation mode; using explicit --corridor-start-center-*.",
+            flush=True,
+        )
 
     max_attempts = args.max_collection_attempts
     if max_attempts <= 0:
@@ -1184,12 +1165,10 @@ if __name__ == "__main__":
                     condition_label=args.ablation_condition,
                     corridor_start_radius=corridor_start_radius,
                     pre_grasp_radius=pre_grasp_radius,
+                    corridor_start_center=corridor_start_center,
                     entry_dx=args.entry_dx,
                     corridor_start_y=args.corridor_start_y,
                     entry_dz=args.entry_dz,
-                    random_start_x_bounds=(args.random_start_x_min, args.random_start_x_max),
-                    random_start_z_bounds=(args.random_start_z_min, args.random_start_z_max),
-                    random_start_max_attempts=args.random_start_max_attempts,
                     success_lift_height=args.success_lift_height,
                 )
             elif args.mode == "fail":

@@ -13,6 +13,8 @@ CONDITION_RADII = {
     "P11": (0.25, 0.06),
 }
 
+EXPECTED_CORRIDOR_START_CENTER = (0.30, 0.0, 0.50)
+
 
 def load_json(path):
     with open(path, "r", encoding="utf-8") as f:
@@ -21,6 +23,18 @@ def load_json(path):
 
 def vector_norm(values):
     return math.sqrt(sum(float(v) * float(v) for v in values))
+
+
+def vector_errors(actual, expected, tolerance):
+    if actual is None:
+        return ["missing value"]
+    if len(actual) != len(expected):
+        return [f"length {len(actual)} != expected {len(expected)}"]
+    errors = []
+    for idx, (a, e) in enumerate(zip(actual, expected)):
+        if abs(float(a) - float(e)) > tolerance:
+            errors.append(f"index {idx}: {float(a):.9f} != {float(e):.9f}")
+    return errors
 
 
 def phase_counts(demo_dir):
@@ -37,7 +51,12 @@ def frame_sort_key(path):
         return path.parent.name
 
 
-def check_demo(demo_dir, expected_condition=None, tolerance=1e-9):
+def check_demo(
+    demo_dir,
+    expected_condition=None,
+    expected_corridor_start_center=EXPECTED_CORRIDOR_START_CENTER,
+    tolerance=1e-6,
+):
     metadata_path = demo_dir / "metadata.json"
     errors = []
     warnings = []
@@ -89,33 +108,44 @@ def check_demo(demo_dir, expected_condition=None, tolerance=1e-9):
                 f"{demo_dir.name}: {key}[{fixed_index}]={delta[fixed_index]} should be fixed at 0"
             )
 
-    random_start = metadata.get("random_start")
-    x_bounds = metadata.get("random_start_x_bounds")
-    z_bounds = metadata.get("random_start_z_bounds")
-    if random_start is None:
-        errors.append(f"{demo_dir.name}: missing random_start")
-    else:
-        if abs(float(random_start[1])) > tolerance:
-            errors.append(f"{demo_dir.name}: random_start y={random_start[1]} should be 0")
-        if x_bounds and not (float(x_bounds[0]) - tolerance <= float(random_start[0]) <= float(x_bounds[1]) + tolerance):
-            errors.append(f"{demo_dir.name}: random_start x={random_start[0]} outside {x_bounds}")
-        if z_bounds and not (float(z_bounds[0]) - tolerance <= float(random_start[2]) <= float(z_bounds[1]) + tolerance):
-            errors.append(f"{demo_dir.name}: random_start z={random_start[2]} outside {z_bounds}")
+    if "random_start" in metadata or "random_start_info" in metadata:
+        errors.append(f"{demo_dir.name}: random_start metadata should not be present for AR-center ablation")
 
     base_corridor_start = metadata.get("base_corridor_start")
-    corridor_start_y = float(metadata.get("corridor_start_y", 0.15))
     if base_corridor_start is None:
         errors.append(f"{demo_dir.name}: missing base_corridor_start")
-    elif abs(float(base_corridor_start[1]) - corridor_start_y) > tolerance:
-        errors.append(
-            f"{demo_dir.name}: base_corridor_start y={base_corridor_start[1]} should be {corridor_start_y}"
-        )
+    else:
+        center_errors = vector_errors(base_corridor_start, expected_corridor_start_center, tolerance)
+        if center_errors:
+            errors.append(
+                f"{demo_dir.name}: base_corridor_start={base_corridor_start} should be "
+                f"{list(expected_corridor_start_center)} ({'; '.join(center_errors)})"
+            )
+
+    corridor_start_center = metadata.get("corridor_start_center")
+    if corridor_start_center is not None:
+        center_errors = vector_errors(corridor_start_center, expected_corridor_start_center, tolerance)
+        if center_errors:
+            errors.append(
+                f"{demo_dir.name}: corridor_start_center={corridor_start_center} should be "
+                f"{list(expected_corridor_start_center)} ({'; '.join(center_errors)})"
+            )
+
+    corridor_start = metadata.get("corridor_start")
+    delta_start = metadata.get("corridor_start_delta")
+    if base_corridor_start is not None and corridor_start is not None and delta_start is not None:
+        reconstructed = [float(b) + float(d) for b, d in zip(base_corridor_start, delta_start)]
+        recon_errors = vector_errors(corridor_start, reconstructed, tolerance)
+        if recon_errors:
+            errors.append(
+                f"{demo_dir.name}: corridor_start must equal base_corridor_start + corridor_start_delta "
+                f"({'; '.join(recon_errors)})"
+            )
 
     counts = phase_counts(demo_dir)
     if not counts:
         errors.append(f"{demo_dir.name}: no frame phase files found")
     for required_phase in (
-        "random_start",
         "open_gripper",
         "corridor_start",
         "pre_grasp",
@@ -125,13 +155,14 @@ def check_demo(demo_dir, expected_condition=None, tolerance=1e-9):
     ):
         if counts.get(required_phase, 0) == 0:
             errors.append(f"{demo_dir.name}: missing phase {required_phase!r}")
+    if counts.get("random_start", 0) > 0:
+        errors.append(f"{demo_dir.name}: random_start phase should not be present")
 
     summary = {
         "demo": demo_dir.name,
         "condition": condition,
         "frames": sum(counts.values()),
         "phase_counts": dict(counts),
-        "random_start": random_start,
         "corridor_delta_norm": vector_norm(metadata.get("corridor_start_delta", [0, 0, 0])),
         "pre_grasp_delta_norm": vector_norm(metadata.get("pre_grasp_delta", [0, 0, 0])),
         "final_cube_z": success.get("final_cube_z"),
@@ -144,6 +175,14 @@ def main():
     parser.add_argument("dataset_dir", help="Directory containing demo_<idx> folders.")
     parser.add_argument("--expected-demos", type=int, default=None)
     parser.add_argument("--expected-condition", choices=sorted(CONDITION_RADII), default=None)
+    parser.add_argument(
+        "--expected-corridor-start-center",
+        type=float,
+        nargs=3,
+        default=EXPECTED_CORRIDOR_START_CENTER,
+        metavar=("X", "Y", "Z"),
+        help="Expected AR guidance corridor-start circle center in world coordinates.",
+    )
     parser.add_argument("--json", action="store_true", help="Print machine-readable JSON summary.")
     args = parser.parse_args()
 
@@ -168,6 +207,7 @@ def main():
         summary, errors, warnings = check_demo(
             demo_dir,
             expected_condition=args.expected_condition,
+            expected_corridor_start_center=tuple(args.expected_corridor_start_center),
         )
         if summary is not None:
             summaries.append(summary)
