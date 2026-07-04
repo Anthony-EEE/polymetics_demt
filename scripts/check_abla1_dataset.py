@@ -7,6 +7,11 @@ from pathlib import Path
 
 
 CONDITION_RADII = {
+    "S15": (0.15, 0.036),
+    "S20": (0.20, 0.048),
+    "S25": (0.25, 0.060),
+    "S30": (0.30, 0.072),
+    "S35": (0.35, 0.084),
     "P00": (0.10, 0.02),
     "P10": (0.25, 0.02),
     "P01": (0.10, 0.06),
@@ -65,10 +70,13 @@ def check_demo(
 
     metadata = load_json(metadata_path)
     condition = metadata.get("condition_label")
+    condition_alias = metadata.get("condition")
     if expected_condition and condition != expected_condition:
         errors.append(
             f"{demo_dir.name}: condition_label={condition!r}, expected {expected_condition!r}"
         )
+    if condition_alias is not None and condition_alias != condition:
+        errors.append(f"{demo_dir.name}: condition={condition_alias!r} differs from condition_label={condition!r}")
     if condition not in CONDITION_RADII:
         errors.append(f"{demo_dir.name}: unknown condition_label={condition!r}")
 

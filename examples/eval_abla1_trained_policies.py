@@ -13,17 +13,20 @@ from main_abla_1 import DEFAULT_CORRIDOR_START_CENTER, PandaSim, sample_xz_disk
 
 
 ARCAP_ROOT = Path("/users/k23114984/code/arcap_policy/STEP2_train_policy")
-DEFAULT_MODEL_ROOT = ARCAP_ROOT / "trained_models"
+DEFAULT_MODEL_ROOT = Path(
+    "/scratch/prj/eng_demt_robot_learning/trained_models/ar_guidance_spatial_S15_S35"
+)
 DEFAULT_OUTPUT = Path(
-    "/scratch/prj/eng_demt_robot_learning/polymetics_demt/dataset/abla1_full/policy_rollouts_seed628"
+    "/scratch/prj/eng_demt_robot_learning/polymetics_demt/dataset/ar_guidance_spatial_S15_S35/policy_rollouts_seed628_latest"
 )
 DEFAULT_VIDEO_DIR = DEFAULT_OUTPUT / "videos"
 
 CONDITIONS = {
-    "P00": {"corridor_start_radius": 0.10, "pre_grasp_radius": 0.02},
-    "P01": {"corridor_start_radius": 0.10, "pre_grasp_radius": 0.06},
-    "P10": {"corridor_start_radius": 0.25, "pre_grasp_radius": 0.02},
-    "P11": {"corridor_start_radius": 0.25, "pre_grasp_radius": 0.06},
+    "S15": {"corridor_start_radius": 0.15, "pre_grasp_radius": 0.036},
+    "S20": {"corridor_start_radius": 0.20, "pre_grasp_radius": 0.048},
+    "S25": {"corridor_start_radius": 0.25, "pre_grasp_radius": 0.060},
+    "S30": {"corridor_start_radius": 0.30, "pre_grasp_radius": 0.072},
+    "S35": {"corridor_start_radius": 0.35, "pre_grasp_radius": 0.084},
 }
 
 
@@ -45,7 +48,7 @@ def set_all_seeds(seed):
         torch.cuda.manual_seed_all(seed)
 
 
-def latest_checkpoint(model_root, condition, epoch, experiment_template="abla1_{condition}_d30_seed1_2gap"):
+def latest_checkpoint(model_root, condition, epoch, experiment_template="{condition}/spatial_{condition}_d30_seed1_2gap"):
     exp_root = Path(model_root) / experiment_template.format(condition=condition)
     run_dirs = [p for p in exp_root.iterdir() if p.is_dir()]
     if not run_dirs:
@@ -170,6 +173,161 @@ def stack_obs_history(obs_history):
     return {key: np.stack([obs[key] for obs in obs_history], axis=0) for key in keys}
 
 
+def solve_ik_with_error(sim, target_pos, quat=None):
+    if quat is None:
+        quat = sim.default_orientation_quat
+    target_pos = np.asarray(target_pos, dtype=float)
+    current_q = [pb.getJointState(sim.panda, j)[0] for j in sim.arm_joint_indices]
+    q = sim.solve_ik(target_pos, quat)
+    sim.reset_arm_joints(q)
+    realised = sim.ee_pos()
+    sim.reset_arm_joints(current_q)
+    error = float(np.linalg.norm(realised - target_pos))
+    return q, realised, error
+
+
+def generate_shared_corridor_starts(args):
+    set_all_seeds(args.seed)
+    base_corridor_start = np.asarray(args.corridor_start_center, dtype=float)
+    starts = []
+    records = []
+
+    sim = PandaSim(gui=args.gui, output_dir=None, sample_hz=args.sample_hz)
+    sim.playback_speed = args.playback_speed
+    sim.setup()
+    try:
+        for rollout_index in range(args.num_rollouts):
+            rejected = []
+            for attempt in range(1, int(args.max_start_sample_attempts) + 1):
+                normalized_delta = sample_xz_disk(1.0)
+                delta = normalized_delta * float(args.shared_start_radius)
+                target = base_corridor_start + delta
+                _, realised, error = solve_ik_with_error(sim, target)
+
+                if error <= float(args.corridor_start_max_error):
+                    starts.append(target)
+                    records.append(
+                        {
+                            "rollout_index": rollout_index,
+                            "attempts": attempt,
+                            "max_error": float(args.corridor_start_max_error),
+                            "shared_start_radius": float(args.shared_start_radius),
+                            "normalized_delta": normalized_delta.tolist(),
+                            "corridor_start_delta": delta.tolist(),
+                            "corridor_start": target.tolist(),
+                            "realised_start": realised.tolist(),
+                            "ik_error": error,
+                            "rejected_count": attempt - 1,
+                            "recent_rejections": rejected[-10:],
+                        }
+                    )
+                    break
+
+                rejected.append(
+                    {
+                        "normalized_delta": normalized_delta.tolist(),
+                        "corridor_start_delta": delta.tolist(),
+                        "corridor_start": target.tolist(),
+                        "ik_error": error,
+                    }
+                )
+            else:
+                raise RuntimeError(
+                    "Could not generate shared reachable corridor starts for "
+                    f"rollout {rollout_index} after {args.max_start_sample_attempts} attempts."
+                )
+    finally:
+        if sim.client is not None:
+            pb.disconnect(sim.client)
+
+    print(
+        f"Generated {len(starts)} shared reachable corridor starts with "
+        f"radius={args.shared_start_radius} for conditions={args.conditions}."
+    )
+    return starts, records
+
+
+def write_start_manifest(args, path, starts, records):
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    manifest = {
+        "seed": int(args.seed),
+        "num_rollouts": int(args.num_rollouts),
+        "sample_hz": float(args.sample_hz),
+        "corridor_start_center": [float(v) for v in args.corridor_start_center],
+        "shared_start_radius": float(args.shared_start_radius),
+        "corridor_start_max_error": float(args.corridor_start_max_error),
+        "max_start_sample_attempts": int(args.max_start_sample_attempts),
+        "evaluation_distribution": "paired_shared_absolute_corridor_starts_r35",
+        "shared_corridor_starts": [np.asarray(start, dtype=float).tolist() for start in starts],
+        "shared_start_records": records,
+    }
+    path.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+    print(f"Wrote shared start manifest={path}")
+
+
+def load_start_manifest(args, path):
+    path = Path(path)
+    manifest = json.loads(path.read_text(encoding="utf-8"))
+    starts = [np.asarray(start, dtype=float) for start in manifest["shared_corridor_starts"]]
+    records = manifest["shared_start_records"]
+    if len(starts) != int(args.num_rollouts):
+        raise ValueError(
+            f"Manifest {path} has {len(starts)} starts, expected {args.num_rollouts}."
+        )
+    if len(records) != int(args.num_rollouts):
+        raise ValueError(
+            f"Manifest {path} has {len(records)} start records, expected {args.num_rollouts}."
+        )
+    expected_radius = float(args.shared_start_radius)
+    actual_radius = float(manifest.get("shared_start_radius", expected_radius))
+    if not np.isclose(actual_radius, expected_radius):
+        raise ValueError(
+            f"Manifest {path} shared_start_radius={actual_radius}, expected {expected_radius}."
+        )
+    print(f"Loaded {len(starts)} shared corridor starts from manifest={path}")
+    return starts, records
+
+
+def build_aggregate(args, summaries, shared_corridor_starts, shared_start_records):
+    return {
+        "seed": args.seed,
+        "num_rollouts": args.num_rollouts,
+        "horizon": args.horizon,
+        "action_dt": args.action_dt,
+        "success_lift_height": args.success_lift_height,
+        "evaluation_distribution": "paired_shared_absolute_corridor_starts_r35",
+        "corridor_start_center": [float(v) for v in args.corridor_start_center],
+        "shared_start_radius": float(args.shared_start_radius),
+        "corridor_start_max_error": float(args.corridor_start_max_error),
+        "max_start_sample_attempts": int(args.max_start_sample_attempts),
+        "shared_corridor_starts": [start.tolist() for start in shared_corridor_starts],
+        "shared_start_records": shared_start_records,
+        "summaries": summaries,
+    }
+
+
+def load_condition_summaries(args):
+    summaries = []
+    for condition in args.conditions:
+        path = args.output_dir / f"spatial_{condition}_seed{args.seed}_n{args.num_rollouts}.json"
+        if not path.exists():
+            raise FileNotFoundError(f"Missing condition rollout summary: {path}")
+        summaries.append(json.loads(path.read_text(encoding="utf-8")))
+    return summaries
+
+
+def write_aggregate_summary(args, summaries, shared_corridor_starts, shared_start_records):
+    aggregate = build_aggregate(args, summaries, shared_corridor_starts, shared_start_records)
+    aggregate_path = args.output_dir / f"summary_seed{args.seed}_n{args.num_rollouts}.json"
+    aggregate_path.write_text(json.dumps(aggregate, indent=2), encoding="utf-8")
+
+    print("\nSuccess rates")
+    for s in summaries:
+        print(f"{s['condition']}: {s['success_count']}/{s['num_rollouts']} = {s['success_rate']:.3f}")
+    print(f"\nWrote {aggregate_path}")
+
+
 def reset_cube(sim):
     pb.resetBasePositionAndOrientation(sim.cube_id, [0.5, 0.5, 0.025], [0.0, 0.0, 0.0, 1.0])
     pb.resetBaseVelocity(sim.cube_id, [0.0, 0.0, 0.0], [0.0, 0.0, 0.0])
@@ -201,6 +359,9 @@ def run_one_rollout(
     action_dt,
     success_lift_height,
     corridor_start_center,
+    shared_corridor_start,
+    start_sample_record,
+    corridor_start_max_error,
     num_points,
     terminate_on_success,
     video_recorder=None,
@@ -211,15 +372,10 @@ def run_one_rollout(
     reset_cube(sim)
 
     base_corridor_start = np.asarray(corridor_start_center, dtype=float)
-    delta_start = sample_xz_disk(CONDITIONS[condition]["corridor_start_radius"])
-    corridor_start = base_corridor_start + delta_start
-    corridor_start_q = sim.solve_ik(corridor_start, sim.default_orientation_quat)
-    current_q = [pb.getJointState(sim.panda, j)[0] for j in sim.arm_joint_indices]
-    sim.reset_arm_joints(corridor_start_q)
-    realised = sim.ee_pos()
-    sim.reset_arm_joints(current_q)
-    corridor_error = float(np.linalg.norm(realised - corridor_start))
-    if corridor_error > 0.025:
+    corridor_start = np.asarray(shared_corridor_start, dtype=float)
+    delta_start = corridor_start - base_corridor_start
+    corridor_start_q, realised, corridor_error = solve_ik_with_error(sim, corridor_start)
+    if corridor_error > float(corridor_start_max_error):
         raise RuntimeError(
             f"Sampled corridor_start is not reachable: target={corridor_start.tolist()}, "
             f"realised={realised.tolist()}, error={corridor_error:.6f}"
@@ -228,7 +384,13 @@ def run_one_rollout(
     corridor_start_info = {
         "base_corridor_start": base_corridor_start.tolist(),
         "corridor_start_delta": delta_start.tolist(),
+        "normalized_start_offset": start_sample_record["normalized_delta"],
+        "shared_start_radius": float(start_sample_record["shared_start_radius"]),
+        "condition_corridor_start_radius": float(CONDITIONS[condition]["corridor_start_radius"]),
         "ik_realised_error": corridor_error,
+        "max_error": float(corridor_start_max_error),
+        "shared_start_attempts": int(start_sample_record["attempts"]),
+        "shared_start_rejected_count": int(start_sample_record["rejected_count"]),
         "realised_start": realised.tolist(),
     }
 
@@ -286,7 +448,7 @@ def run_one_rollout(
     }
 
 
-def evaluate_condition(args, condition, ckpt):
+def evaluate_condition(args, condition, ckpt, shared_corridor_starts, shared_start_records):
     policy, device = load_policy(ckpt, cuda=args.cuda)
     print(f"[{condition}] checkpoint={ckpt}")
     print(f"[{condition}] device={device}")
@@ -302,7 +464,7 @@ def evaluate_condition(args, condition, ckpt):
     results = []
     video_recorder = None
     if args.save_videos:
-        video_path = args.video_dir / f"abla1_{condition}_seed{args.seed}_n{args.num_rollouts}.mp4"
+        video_path = args.video_dir / f"spatial_{condition}_seed{args.seed}_n{args.num_rollouts}.mp4"
         video_recorder = RolloutVideoRecorder(video_path, fps=args.video_fps)
         print(f"[{condition}] writing video={video_path}")
     try:
@@ -317,6 +479,9 @@ def evaluate_condition(args, condition, ckpt):
                 action_dt=args.action_dt,
                 success_lift_height=args.success_lift_height,
                 corridor_start_center=args.corridor_start_center,
+                shared_corridor_start=shared_corridor_starts[i],
+                start_sample_record=shared_start_records[i],
+                corridor_start_max_error=args.corridor_start_max_error,
                 num_points=args.num_points,
                 terminate_on_success=args.terminate_on_success,
                 video_recorder=video_recorder,
@@ -344,8 +509,9 @@ def evaluate_condition(args, condition, ckpt):
         "success_count": success_count,
         "success_rate": success_count / max(1, len(results)),
         "condition_config": CONDITIONS[condition],
+        "evaluation_distribution": "paired_shared_absolute_corridor_starts_r35",
         "video_path": (
-            str(args.video_dir / f"abla1_{condition}_seed{args.seed}_n{args.num_rollouts}.mp4")
+            str(args.video_dir / f"spatial_{condition}_seed{args.seed}_n{args.num_rollouts}.mp4")
             if args.save_videos
             else None
         ),
@@ -361,10 +527,10 @@ def parse_args():
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT)
     parser.add_argument(
         "--experiment-template",
-        default="abla1_{condition}_d30_seed1_2gap",
+        default="{condition}/spatial_{condition}_d30_seed1_2gap",
         help="Experiment directory template under --model-root. Must include {condition}.",
     )
-    parser.add_argument("--conditions", nargs="+", default=["P00", "P01", "P10", "P11"], choices=sorted(CONDITIONS))
+    parser.add_argument("--conditions", nargs="+", default=["S15", "S20", "S25", "S30", "S35"], choices=sorted(CONDITIONS))
     parser.add_argument("--epoch", type=int, default=40)
     parser.add_argument("--seed", type=int, default=628)
     parser.add_argument("--num-rollouts", type=int, default=10)
@@ -374,6 +540,14 @@ def parse_args():
     parser.add_argument("--action-dt", type=float, default=None)
     parser.add_argument("--num-points", type=int, default=10000)
     parser.add_argument("--success-lift-height", type=float, default=0.20)
+    parser.add_argument("--shared-start-radius", type=float, default=0.35)
+    parser.add_argument("--corridor-start-max-error", type=float, default=0.025)
+    parser.add_argument("--max-start-sample-attempts", type=int, default=1000)
+    parser.add_argument("--start-manifest", type=Path, default=None)
+    parser.add_argument("--write-start-manifest", type=Path, default=None)
+    parser.add_argument("--generate-start-manifest-only", action="store_true")
+    parser.add_argument("--merge-only", action="store_true")
+    parser.add_argument("--skip-aggregate", action="store_true")
     parser.add_argument(
         "--corridor-start-center",
         type=float,
@@ -400,29 +574,35 @@ def main():
         args.action_dt = float(args.action_gap) / float(args.sample_hz)
 
     args.output_dir.mkdir(parents=True, exist_ok=True)
+    if args.save_videos:
+        args.video_dir.mkdir(parents=True, exist_ok=True)
+
+    if args.start_manifest is not None:
+        shared_corridor_starts, shared_start_records = load_start_manifest(args, args.start_manifest)
+    else:
+        shared_corridor_starts, shared_start_records = generate_shared_corridor_starts(args)
+
+    if args.write_start_manifest is not None:
+        write_start_manifest(args, args.write_start_manifest, shared_corridor_starts, shared_start_records)
+
+    if args.generate_start_manifest_only:
+        return
+
+    if args.merge_only:
+        summaries = load_condition_summaries(args)
+        write_aggregate_summary(args, summaries, shared_corridor_starts, shared_start_records)
+        return
+
     summaries = []
     for condition in args.conditions:
         ckpt = latest_checkpoint(args.model_root, condition, args.epoch, args.experiment_template)
-        summary = evaluate_condition(args, condition, ckpt)
+        summary = evaluate_condition(args, condition, ckpt, shared_corridor_starts, shared_start_records)
         summaries.append(summary)
-        out_path = args.output_dir / f"abla1_{condition}_seed{args.seed}_n{args.num_rollouts}.json"
+        out_path = args.output_dir / f"spatial_{condition}_seed{args.seed}_n{args.num_rollouts}.json"
         out_path.write_text(json.dumps(summary, indent=2), encoding="utf-8")
 
-    aggregate = {
-        "seed": args.seed,
-        "num_rollouts": args.num_rollouts,
-        "horizon": args.horizon,
-        "action_dt": args.action_dt,
-        "success_lift_height": args.success_lift_height,
-        "summaries": summaries,
-    }
-    aggregate_path = args.output_dir / f"summary_seed{args.seed}_n{args.num_rollouts}.json"
-    aggregate_path.write_text(json.dumps(aggregate, indent=2), encoding="utf-8")
-
-    print("\nSuccess rates")
-    for s in summaries:
-        print(f"{s['condition']}: {s['success_count']}/{s['num_rollouts']} = {s['success_rate']:.3f}")
-    print(f"\nWrote {aggregate_path}")
+    if not args.skip_aggregate:
+        write_aggregate_summary(args, summaries, shared_corridor_starts, shared_start_records)
 
 
 if __name__ == "__main__":

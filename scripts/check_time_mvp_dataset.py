@@ -7,10 +7,13 @@ from pathlib import Path
 
 
 TIME_CONDITIONS = {
-    "T00": (1.0, 1.0),
-    "T20": (0.8, 1.2),
-    "Twide": (0.5, 2.0),
+    "T00": (1.00, 1.00),
+    "T25": (0.75, 1.25),
+    "T50": (0.50, 1.50),
+    "T75": (0.25, 1.75),
+    "T100": (0.00, 2.00),
 }
+MIN_PHASE_DURATION_FRAMES = 1
 
 EXPECTED_PHASES = (
     "random_start",
@@ -72,8 +75,11 @@ def check_demo(
 
     metadata = load_json(metadata_path)
     condition = metadata.get("condition_label")
+    condition_alias = metadata.get("condition")
     if expected_condition and condition != expected_condition:
         errors.append(f"{demo_dir.name}: condition_label={condition!r}, expected {expected_condition!r}")
+    if condition_alias is not None and condition_alias != condition:
+        errors.append(f"{demo_dir.name}: condition={condition_alias!r} differs from condition_label={condition!r}")
     if condition not in TIME_CONDITIONS:
         errors.append(f"{demo_dir.name}: unknown condition_label={condition!r}")
 
@@ -136,12 +142,44 @@ def check_demo(
 
     multipliers = metadata.get("phase_duration_multipliers", {})
     low, high = TIME_CONDITIONS.get(condition, (None, None))
+    multiplier_range = metadata.get("condition_multiplier_range")
+    if low is not None and multiplier_range != [float(low), float(high)]:
+        errors.append(
+            f"{demo_dir.name}: condition_multiplier_range={multiplier_range}, expected {[float(low), float(high)]}"
+        )
     for phase in TIMED_PHASES:
         value = multipliers.get(phase)
         if value is None:
             errors.append(f"{demo_dir.name}: missing multiplier for {phase}")
         elif low is not None and not (low - 1e-8 <= float(value) <= high + 1e-8):
             errors.append(f"{demo_dir.name}: multiplier {phase}={value} outside [{low}, {high}]")
+
+    min_frames = metadata.get("min_phase_duration_frames")
+    min_seconds = metadata.get("min_phase_duration_seconds")
+    clamp_rule = metadata.get("phase_duration_clamp_rule")
+    target_frames = metadata.get("target_phase_duration_frames", {})
+    target_before = metadata.get("target_phase_duration_frames_before_clamp", {})
+    clamped = metadata.get("phase_duration_clamped", {})
+    if min_frames != MIN_PHASE_DURATION_FRAMES:
+        errors.append(f"{demo_dir.name}: min_phase_duration_frames={min_frames}, expected {MIN_PHASE_DURATION_FRAMES}")
+    if min_seconds is None or float(min_seconds) <= 0.0:
+        errors.append(f"{demo_dir.name}: missing positive min_phase_duration_seconds")
+    if not clamp_rule:
+        errors.append(f"{demo_dir.name}: missing phase_duration_clamp_rule")
+    for phase in TIMED_PHASES:
+        frames = target_frames.get(phase)
+        before_frames = target_before.get(phase)
+        was_clamped = clamped.get(phase)
+        if frames is None:
+            errors.append(f"{demo_dir.name}: missing target_phase_duration_frames for {phase}")
+        elif int(frames) < MIN_PHASE_DURATION_FRAMES:
+            errors.append(f"{demo_dir.name}: target_phase_duration_frames[{phase}]={frames} is not positive")
+        if before_frames is None:
+            errors.append(f"{demo_dir.name}: missing target_phase_duration_frames_before_clamp for {phase}")
+        elif int(before_frames) < MIN_PHASE_DURATION_FRAMES and was_clamped is not True:
+            errors.append(f"{demo_dir.name}: {phase} should be marked clamped when before_frames={before_frames}")
+    if condition == "T100" and abs(float(low)) > 1e-12:
+        errors.append(f"{demo_dir.name}: T100 lower multiplier should be 0.00, got {low}")
 
     counts = phase_counts(demo_dir)
     if not counts:

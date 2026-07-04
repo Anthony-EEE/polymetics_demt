@@ -11,9 +11,9 @@ import matplotlib.pyplot as plt
 
 
 DEFAULT_DATASET_ROOT = Path(
-    "/scratch/prj/eng_demt_robot_learning/polymetics_demt/dataset/abla1_full"
+    "/scratch/prj/eng_demt_robot_learning/polymetics_demt/dataset/ar_guidance_spatial_S15_S35"
 )
-CONDITIONS = ("P00", "P10", "P01", "P11")
+CONDITIONS = ("S15", "S20", "S25", "S30", "S35")
 
 
 def frame_index(frame_dir):
@@ -113,7 +113,7 @@ def parse_args():
     parser.add_argument("--conditions", nargs="+", default=list(CONDITIONS))
     parser.add_argument(
         "--dataset-template",
-        default="abla1_{condition}_d30_seed1",
+        default="spatial_{condition}_d30_seed1",
         help="Condition directory name template under --dataset-root.",
     )
     parser.add_argument("--stride", type=int, default=3, help="Plot every Nth frame.")
@@ -129,7 +129,7 @@ def main():
     for condition in args.conditions:
         condition_dir = args.dataset_root / args.dataset_template.format(condition=condition)
         trajectories = load_condition_trajectories(condition_dir, args.stride)
-        output_path = output_dir / f"abla1_{condition}_ee_xyz_trajectories.png"
+        output_path = output_dir / f"spatial_{condition}_ee_xyz_trajectories.png"
         plot_condition(condition, trajectories, output_path)
         print(f"{condition}: saved {output_path} ({len(trajectories)} demos)", flush=True)
 

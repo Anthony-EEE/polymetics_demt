@@ -5,14 +5,15 @@ set -euo pipefail
 PROJECT_DIR=${PROJECT_DIR:-"/scratch/prj/eng_demt_robot_learning/polymetics_demt"}
 ARCAP_TRAIN_DIR=${ARCAP_TRAIN_DIR:-"/users/k23114984/code/arcap_policy/STEP2_train_policy"}
 RUN_SCRIPT=${RUN_SCRIPT:-"${ARCAP_TRAIN_DIR}/run_pybullet_dp.sh"}
-CONFIG_DIR=${CONFIG_DIR:-"${PROJECT_DIR}/training_config/time_mvp"}
-OUTPUT_DIR=${OUTPUT_DIR:-"${ARCAP_TRAIN_DIR}/trained_models"}
+CONFIG_DIR=${CONFIG_DIR:-"${PROJECT_DIR}/training_config/ar_guidance_temporal_T00_T100"}
+OUTPUT_DIR=${OUTPUT_DIR:-"/scratch/prj/eng_demt_robot_learning/trained_models/ar_guidance_temporal_T00_T100"}
+SBATCH_DEPENDENCY=${SBATCH_DEPENDENCY:-}
 
-conditions=(T00 T20 Twide)
+conditions=(T00 T25 T50 T75 T100)
 
 for condition in "${conditions[@]}"; do
-  config="${CONFIG_DIR}/time_mvp_${condition}.json"
-  exp_name="time_mvp_${condition}_d30_seed1_2gap"
+  config="${CONFIG_DIR}/temporal_${condition}.json"
+  exp_name="temporal_${condition}_d30_seed1_2gap"
   slurm_name="time_${condition}_dp"
 
   if [[ ! -f "${config}" ]]; then
@@ -20,12 +21,16 @@ for condition in "${conditions[@]}"; do
     exit 1
   fi
 
-  job_id=$(sbatch --parsable \
-    --job-name="${slurm_name}" \
+  sbatch_args=(--parsable --job-name="${slurm_name}")
+  if [[ -n "${SBATCH_DEPENDENCY}" ]]; then
+    sbatch_args+=(--dependency="${SBATCH_DEPENDENCY}")
+  fi
+
+  job_id=$(sbatch "${sbatch_args[@]}" \
     "${RUN_SCRIPT}" \
     --config "${config}" \
     --name "${exp_name}" \
-    --output "${OUTPUT_DIR}")
+    --output "${OUTPUT_DIR}/${condition}")
 
   echo "${condition}: submitted job ${job_id} with config ${config}"
 done

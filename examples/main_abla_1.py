@@ -13,6 +13,23 @@ from collection_io import DatasetCollectorMixin
 
 
 DEFAULT_CORRIDOR_START_CENTER = (0.30, 0.0, 0.50)
+LEGACY_ABLATION_RADII = {
+    "P00": (0.10, 0.02),
+    "P10": (0.25, 0.02),
+    "P01": (0.10, 0.06),
+    "P11": (0.25, 0.06),
+}
+SPATIAL_CONDITION_RADII = {
+    "S15": (0.15, 0.036),
+    "S20": (0.20, 0.048),
+    "S25": (0.25, 0.060),
+    "S30": (0.30, 0.072),
+    "S35": (0.35, 0.084),
+}
+ABLATION_CONDITION_RADII = {
+    **LEGACY_ABLATION_RADII,
+    **SPATIAL_CONDITION_RADII,
+}
 
 
 class PandaSim(DatasetCollectorMixin):
@@ -545,7 +562,7 @@ class PandaSim(DatasetCollectorMixin):
 
     def open_gripper(self, duration=1.0, phase_name="open_gripper", save=True):
         step_dt = 1.0 / 30.0
-        steps = max(1, int(duration * 30))
+        steps = max(1, int(math.ceil(float(duration) * 30)))
         for _ in range(steps):
             self._apply_gripper(0.04, force=60, max_vel=0.08)
             self._step_simulation(step_dt)
@@ -554,7 +571,7 @@ class PandaSim(DatasetCollectorMixin):
 
     def close_gripper(self, duration=1.2, phase_name="close_gripper", save=True):
         step_dt = 1.0 / 30.0
-        steps = max(1, int(duration * 30))
+        steps = max(1, int(math.ceil(float(duration) * 30)))
         for _ in range(steps):
             self._apply_gripper(0.0, force=120, max_vel=0.03)
             self._step_simulation(step_dt)
@@ -590,6 +607,65 @@ class PandaSim(DatasetCollectorMixin):
         realised = self.ee_pos()
         self.reset_arm_joints(current_q)
         return float(np.linalg.norm(realised - np.asarray(pos, dtype=float))) <= max_error
+
+    def sample_reachable_random_start(
+        self,
+        x_bounds=(0.20, 0.60),
+        z_bounds=(0.20, 0.60),
+        max_attempts=200,
+        max_error=0.025,
+        quat=None,
+        orientation_used="default_demo_quat",
+    ):
+        if quat is None:
+            quat = self.default_orientation_quat
+        rejected = []
+        for attempt in range(1, int(max_attempts) + 1):
+            pos = np.array(
+                [
+                    np.random.uniform(float(x_bounds[0]), float(x_bounds[1])),
+                    0.0,
+                    np.random.uniform(float(z_bounds[0]), float(z_bounds[1])),
+                ],
+                dtype=float,
+            )
+            q = self.solve_ik(pos, quat)
+            current_q = [pb.getJointState(self.panda, j)[0] for j in self.arm_joint_indices]
+            self.reset_arm_joints(q)
+            realised = self.ee_pos()
+            self.reset_arm_joints(current_q)
+            error = float(np.linalg.norm(realised - pos))
+            if error <= max_error:
+                return pos, q, {
+                    "attempts": attempt,
+                    "max_error": float(max_error),
+                    "realised_error": error,
+                    "rejected_count": attempt - 1,
+                    "recent_rejections": rejected[-10:],
+                    "orientation_used": orientation_used,
+                }
+            rejected.append({"pos": pos.tolist(), "error": error})
+        raise RuntimeError(
+            f"Could not sample reachable random start after {max_attempts} attempts "
+            f"within x={x_bounds}, z={z_bounds}, max_error={max_error}."
+        )
+
+    def sample_reachable_random_start_with_quat(
+        self,
+        quat,
+        x_bounds=(0.20, 0.60),
+        z_bounds=(0.20, 0.60),
+        max_attempts=200,
+        max_error=0.025,
+    ):
+        return self.sample_reachable_random_start(
+            x_bounds=x_bounds,
+            z_bounds=z_bounds,
+            max_attempts=max_attempts,
+            max_error=max_error,
+            quat=quat,
+            orientation_used="sampled_demo_quat",
+        )
 
     def reset_to_ee_pose(self, q, gripper_width=0.04):
         self.reset_arm_joints(q)
@@ -683,9 +759,9 @@ class PandaSim(DatasetCollectorMixin):
 
     def run_pick_and_lift_ablation(
         self,
-        condition_label="P00",
-        corridor_start_radius=0.10,
-        pre_grasp_radius=0.02,
+        condition_label="S25",
+        corridor_start_radius=0.25,
+        pre_grasp_radius=0.060,
         corridor_start_center=DEFAULT_CORRIDOR_START_CENTER,
         entry_dx=None,
         corridor_start_y=None,
@@ -820,7 +896,12 @@ class PandaSim(DatasetCollectorMixin):
     ):
         metadata = {
             "task": "cube_grasp_lift_ablation_1",
+            "experiment_track": "spatial" if str(condition_label).startswith("S") else "ablation_1",
+            "condition": condition_label,
             "condition_label": condition_label,
+            "condition_radius_source": "spatial_S15_S35" if str(condition_label).startswith("S") else "legacy_P_2x2",
+            "sample_hz": float(self.sample_hz),
+            "sample_period": float(self.sample_period),
             "cube_position": cube.tolist(),
             "base_corridor_start": base_corridor_start.tolist(),
             "corridor_start": corridor_start.tolist(),
@@ -916,15 +997,12 @@ def sample_xz_disk(radius):
 
 
 def ablation_radii(condition):
-    table = {
-        "P00": (0.10, 0.02),
-        "P10": (0.25, 0.02),
-        "P01": (0.10, 0.06),
-        "P11": (0.25, 0.06),
-    }
-    if condition not in table:
-        raise ValueError(f"Unknown ablation condition {condition!r}; choose one of {sorted(table)}")
-    return table[condition]
+    if condition not in ABLATION_CONDITION_RADII:
+        raise ValueError(
+            f"Unknown ablation condition {condition!r}; "
+            f"choose one of {sorted(ABLATION_CONDITION_RADII)}"
+        )
+    return ABLATION_CONDITION_RADII[condition]
 
 
 def approach_key(offset):
@@ -1021,9 +1099,9 @@ if __name__ == "__main__":
     parser.add_argument("--approach-grid-size", type=int, default=3, help="Grid size for xz_grid approach offsets.")
     parser.add_argument(
         "--ablation-condition",
-        choices=("P00", "P10", "P01", "P11"),
-        default="P00",
-        help="2x2 corridor condition for --mode ablation.",
+        choices=tuple(ABLATION_CONDITION_RADII),
+        default="S25",
+        help="Spatial corridor condition for --mode ablation.",
     )
     parser.add_argument(
         "--corridor-start-radius",

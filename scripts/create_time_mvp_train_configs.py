@@ -8,17 +8,21 @@ DEFAULT_TEMPLATE = Path(
     "/users/k23114984/code/arcap_policy/STEP2_train_policy/robomimic/training_config/sim_test_00.json"
 )
 DEFAULT_DATASET_ROOT = Path(
-    "/scratch/prj/eng_demt_robot_learning/polymetics_demt/dataset/time_mvp_full"
+    "/scratch/prj/eng_demt_robot_learning/polymetics_demt/dataset/ar_guidance_temporal_T00_T100"
 )
-DEFAULT_OUTPUT_DIR = Path("training_config/time_mvp")
-CONDITIONS = ("T00", "T20", "Twide")
+DEFAULT_CONFIG_DIR = Path("training_config/ar_guidance_temporal_T00_T100")
+DEFAULT_MODEL_ROOT = Path(
+    "/scratch/prj/eng_demt_robot_learning/trained_models/ar_guidance_temporal_T00_T100"
+)
+CONDITIONS = ("T00", "T25", "T50", "T75", "T100")
 
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Create robomimic configs for temporal MVP training.")
     parser.add_argument("--template", type=Path, default=DEFAULT_TEMPLATE)
     parser.add_argument("--dataset-root", type=Path, default=DEFAULT_DATASET_ROOT)
-    parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
+    parser.add_argument("--output-dir", type=Path, default=DEFAULT_CONFIG_DIR)
+    parser.add_argument("--model-root", type=Path, default=DEFAULT_MODEL_ROOT)
     parser.add_argument("--action-gap", type=int, default=2)
     return parser.parse_args()
 
@@ -31,11 +35,12 @@ def main():
     args.output_dir.mkdir(parents=True, exist_ok=True)
     for condition in CONDITIONS:
         config = json.loads(json.dumps(template))
-        dataset_path = args.dataset_root / f"time_mvp_{condition}_d30_seed1_{args.action_gap}gap.hdf5"
+        dataset_path = args.dataset_root / f"temporal_{condition}_d30_seed1_{args.action_gap}gap.hdf5"
         config["train"]["data"][0]["path"] = str(dataset_path)
-        config["experiment"]["name"] = f"time_mvp_{condition}_d30_seed1_{args.action_gap}gap"
+        config["train"]["output_dir"] = str(args.model_root / condition)
+        config["experiment"]["name"] = f"temporal_{condition}_d30_seed1_{args.action_gap}gap"
 
-        output_path = args.output_dir / f"time_mvp_{condition}.json"
+        output_path = args.output_dir / f"temporal_{condition}.json"
         with open(output_path, "w", encoding="utf-8") as f:
             json.dump(config, f, indent=4)
             f.write("\n")

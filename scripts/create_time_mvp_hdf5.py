@@ -12,12 +12,14 @@ from dataset_utils import process_hdf5_arcap_multi
 
 
 DEFAULT_DATASET_ROOT = Path(
-    "/scratch/prj/eng_demt_robot_learning/polymetics_demt/dataset/time_mvp_full"
+    "/scratch/prj/eng_demt_robot_learning/polymetics_demt/dataset/ar_guidance_temporal_T00_T100"
 )
 DEFAULT_GROUPS = (
-    "time_mvp_T00_d30_seed1",
-    "time_mvp_T20_d30_seed1",
-    "time_mvp_Twide_d30_seed1",
+    "temporal_T00_d30_seed1",
+    "temporal_T25_d30_seed1",
+    "temporal_T50_d30_seed1",
+    "temporal_T75_d30_seed1",
+    "temporal_T100_d30_seed1",
 )
 
 

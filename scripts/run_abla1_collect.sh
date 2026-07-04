@@ -3,12 +3,12 @@
 # SLURM job script for Ablation 1 cube corridor data collection.
 #
 # Submit examples:
-#   CONDITION=P00 NUM_DEMOS=5 SEED=1 sbatch scripts/run_abla1_collect.sh
-#   CONDITION=P11 NUM_DEMOS=30 SEED=3 OUTPUT_ROOT=/scratch/prj/eng_demt_robot_learning/polymetics_demt/dataset/abla1_full sbatch scripts/run_abla1_collect.sh
+#   CONDITION=S15 NUM_DEMOS=5 SEED=1 sbatch scripts/run_abla1_collect.sh
+#   CONDITION=S35 NUM_DEMOS=30 SEED=3 sbatch scripts/run_abla1_collect.sh
 #
 # Extra Python args can be appended after "--":
-#   CONDITION=P00 sbatch scripts/run_abla1_collect.sh -- --corridor-start-radius 0.15
-#   CONDITION=P00 CORRIDOR_START_CENTER_X=0.30 CORRIDOR_START_CENTER_Y=0.0 CORRIDOR_START_CENTER_Z=0.50 sbatch scripts/run_abla1_collect.sh
+#   CONDITION=S15 sbatch scripts/run_abla1_collect.sh -- --corridor-start-radius 0.15
+#   CONDITION=S15 CORRIDOR_START_CENTER_X=0.30 CORRIDOR_START_CENTER_Y=0.0 CORRIDOR_START_CENTER_Z=0.50 sbatch scripts/run_abla1_collect.sh
 
 # ===== SLURM DIRECTIVES =====
 #SBATCH --job-name=abla1_collect
@@ -32,15 +32,15 @@ echo "[INFO] Working dir at submit: $(pwd)"
 # ===== USER CONFIGURABLE SECTION =====
 PROJECT_DIR=${PROJECT_DIR:-"/scratch/prj/eng_demt_robot_learning/polymetics_demt"}
 CONDA_ENV=${CONDA_ENV:-"/scratch/users/k23114984/conda/envs/polymetis38"}
-OUTPUT_ROOT=${OUTPUT_ROOT:-"${PROJECT_DIR}/dataset/abla1"}
+OUTPUT_ROOT=${OUTPUT_ROOT:-"${PROJECT_DIR}/dataset/ar_guidance_spatial_S15_S35"}
 LOG_DIR=${LOG_DIR:-"${PROJECT_DIR}/logs"}
 MODULES=${MODULES:-"anaconda3/2022.10-gcc-13.2.0"}
 
-CONDITION=${CONDITION:-"P00"}
+CONDITION=${CONDITION:-"S25"}
 NUM_DEMOS=${NUM_DEMOS:-5}
 SEED=${SEED:-1}
 SAMPLE_HZ=${SAMPLE_HZ:-30}
-RUN_NAME=${RUN_NAME:-"abla1_${CONDITION}_d${NUM_DEMOS}_seed${SEED}"}
+RUN_NAME=${RUN_NAME:-"spatial_${CONDITION}_d${NUM_DEMOS}_seed${SEED}"}
 MAX_COLLECTION_ATTEMPTS=${MAX_COLLECTION_ATTEMPTS:-0}
 SUCCESS_LIFT_HEIGHT=${SUCCESS_LIFT_HEIGHT:-0.20}
 
@@ -104,10 +104,10 @@ if [[ "${1-}" == "--" ]]; then
 fi
 
 case "${CONDITION}" in
-  P00|P10|P01|P11)
+  S15|S20|S25|S30|S35)
     ;;
   *)
-    echo "[ERROR] Unknown CONDITION='${CONDITION}'. Use one of: P00 P10 P01 P11."
+    echo "[ERROR] Unknown CONDITION='${CONDITION}'. Use one of: S15 S20 S25 S30 S35."
     exit 1
     ;;
 esac

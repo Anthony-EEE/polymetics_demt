@@ -11,17 +11,19 @@
 #SBATCH --constraint="a100|l40s|h200|h100"
 #SBATCH --exclude=erc-hpc-comp040,erc-hpc-comp035
 #SBATCH --hint=nomultithread
-#SBATCH --output=/scratch/prj/eng_demt_robot_learning/polymetics_demt/dataset/time_mvp_full/logs/eval-%j.out
-#SBATCH --error=/scratch/prj/eng_demt_robot_learning/polymetics_demt/dataset/time_mvp_full/logs/eval-%j.err
+#SBATCH --output=/scratch/prj/eng_demt_robot_learning/polymetics_demt/dataset/ar_guidance_temporal_T00_T100/logs/eval-%j.out
+#SBATCH --error=/scratch/prj/eng_demt_robot_learning/polymetics_demt/dataset/ar_guidance_temporal_T00_T100/logs/eval-%j.err
 
 set -euo pipefail
 
 PROJECT_DIR=${PROJECT_DIR:-"/scratch/prj/eng_demt_robot_learning/polymetics_demt"}
 PYTHON=${PYTHON:-"/scratch/users/k23114984/conda/arcap/bin/python"}
-OUTPUT_DIR=${OUTPUT_DIR:-"${PROJECT_DIR}/dataset/time_mvp_full/policy_rollouts_seed628"}
+MODEL_ROOT=${MODEL_ROOT:-"/scratch/prj/eng_demt_robot_learning/trained_models/ar_guidance_temporal_T00_T100"}
+OUTPUT_DIR=${OUTPUT_DIR:-"${PROJECT_DIR}/dataset/ar_guidance_temporal_T00_T100/policy_rollouts_seed628_latest"}
 VIDEO_DIR=${VIDEO_DIR:-"${OUTPUT_DIR}/videos"}
+EPOCH=${EPOCH:-999999}
 
-mkdir -p "${PROJECT_DIR}/dataset/time_mvp_full/logs" "${OUTPUT_DIR}" "${VIDEO_DIR}"
+mkdir -p "${PROJECT_DIR}/dataset/ar_guidance_temporal_T00_T100/logs" "${OUTPUT_DIR}" "${VIDEO_DIR}"
 cd "${PROJECT_DIR}"
 
 export PYTHONUNBUFFERED=1
@@ -36,7 +38,11 @@ echo "[INFO] Python: ${PYTHON}"
 which nvidia-smi >/dev/null 2>&1 && nvidia-smi || true
 
 "${PYTHON}" -u examples/eval_time_mvp_trained_policies.py \
-  --conditions T00 T20 Twide \
+  --model-root "${MODEL_ROOT}" \
+  --conditions T00 T25 T50 T75 T100 \
+  --experiment-template '{condition}/temporal_{condition}_d30_seed1_2gap' \
+  --epoch "${EPOCH}" \
+  --latest-checkpoint \
   --num-rollouts "${NUM_ROLLOUTS:-10}" \
   --seed "${SEED:-628}" \
   --horizon "${HORIZON:-80}" \

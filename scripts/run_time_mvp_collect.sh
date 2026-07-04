@@ -3,8 +3,8 @@
 # SLURM job script for temporal-threshold MVP cube data collection.
 #
 # Submit examples:
-#   CONDITION=T00 NUM_DEMOS=1 SEED=7 OUTPUT_ROOT=/scratch/prj/eng_demt_robot_learning/polymetics_demt/dataset/time_mvp_debug sbatch scripts/run_time_mvp_collect.sh
-#   CONDITION=Twide NUM_DEMOS=30 SEED=1 OUTPUT_ROOT=/scratch/prj/eng_demt_robot_learning/polymetics_demt/dataset/time_mvp_full sbatch scripts/run_time_mvp_collect.sh
+#   CONDITION=T00 NUM_DEMOS=1 SEED=7 sbatch scripts/run_time_mvp_collect.sh
+#   CONDITION=T100 NUM_DEMOS=30 SEED=1 sbatch scripts/run_time_mvp_collect.sh
 
 #SBATCH --job-name=time_mvp_collect
 #SBATCH --nodes=1
@@ -12,7 +12,7 @@
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=16G
 #SBATCH --time=08:00:00
-#SBATCH --partition=cpu
+#SBATCH --partition=interruptible_cpu
 #SBATCH --hint=nomultithread
 #SBATCH --output=/scratch/prj/eng_demt_robot_learning/polymetics_demt/logs/time-mvp-%j.out
 #SBATCH --error=/scratch/prj/eng_demt_robot_learning/polymetics_demt/logs/time-mvp-%j.err
@@ -21,7 +21,7 @@ set -euo pipefail
 
 PROJECT_DIR=${PROJECT_DIR:-"/scratch/prj/eng_demt_robot_learning/polymetics_demt"}
 CONDA_ENV=${CONDA_ENV:-"/scratch/users/k23114984/conda/envs/polymetis38"}
-OUTPUT_ROOT=${OUTPUT_ROOT:-"${PROJECT_DIR}/dataset/time_mvp"}
+OUTPUT_ROOT=${OUTPUT_ROOT:-"${PROJECT_DIR}/dataset/ar_guidance_temporal_T00_T100"}
 LOG_DIR=${LOG_DIR:-"${PROJECT_DIR}/logs"}
 MODULES=${MODULES:-"anaconda3/2022.10-gcc-13.2.0"}
 
@@ -29,7 +29,7 @@ CONDITION=${CONDITION:-"T00"}
 NUM_DEMOS=${NUM_DEMOS:-5}
 SEED=${SEED:-1}
 SAMPLE_HZ=${SAMPLE_HZ:-30}
-RUN_NAME=${RUN_NAME:-"time_mvp_${CONDITION}_d${NUM_DEMOS}_seed${SEED}"}
+RUN_NAME=${RUN_NAME:-"temporal_${CONDITION}_d${NUM_DEMOS}_seed${SEED}"}
 MAX_COLLECTION_ATTEMPTS=${MAX_COLLECTION_ATTEMPTS:-0}
 SUCCESS_LIFT_HEIGHT=${SUCCESS_LIFT_HEIGHT:-0.20}
 
@@ -71,9 +71,9 @@ export OPENBLAS_NUM_THREADS=${SLURM_CPUS_PER_TASK:-4}
 export MKL_NUM_THREADS=${SLURM_CPUS_PER_TASK:-4}
 
 case "${CONDITION}" in
-  T00|T20|Twide) ;;
+  T00|T25|T50|T75|T100) ;;
   *)
-    echo "[ERROR] Unknown CONDITION='${CONDITION}'. Use one of: T00 T20 Twide."
+    echo "[ERROR] Unknown CONDITION='${CONDITION}'. Use one of: T00 T25 T50 T75 T100."
     exit 1
     ;;
 esac

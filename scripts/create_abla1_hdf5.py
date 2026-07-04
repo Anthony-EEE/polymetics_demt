@@ -12,13 +12,14 @@ from dataset_utils import process_hdf5_arcap_multi
 
 
 DEFAULT_DATASET_ROOT = Path(
-    "/scratch/prj/eng_demt_robot_learning/polymetics_demt/dataset/abla1_full_arcenter"
+    "/scratch/prj/eng_demt_robot_learning/polymetics_demt/dataset/ar_guidance_spatial_S15_S35"
 )
 DEFAULT_GROUPS = (
-    "abla1_P00_d30_seed1",
-    "abla1_P01_d30_seed1",
-    "abla1_P10_d30_seed1",
-    "abla1_P11_d30_seed1",
+    "spatial_S15_d30_seed1",
+    "spatial_S20_d30_seed1",
+    "spatial_S25_d30_seed1",
+    "spatial_S30_d30_seed1",
+    "spatial_S35_d30_seed1",
 )
 
 

@@ -9,7 +9,6 @@ import numpy as np
 import pybullet as pb
 
 from eval_abla1_trained_policies import (
-    DEFAULT_MODEL_ROOT,
     RolloutVideoRecorder,
     apply_policy_action,
     current_obs,
@@ -22,18 +21,30 @@ from eval_abla1_trained_policies import (
 from main_time_mvp import TIME_CONDITIONS, TimeMvpSim
 
 
+DEFAULT_MODEL_ROOT = Path(
+    "/scratch/prj/eng_demt_robot_learning/trained_models/ar_guidance_temporal_T00_T100"
+)
 DEFAULT_OUTPUT = Path(
-    "/scratch/prj/eng_demt_robot_learning/polymetics_demt/dataset/time_mvp_full/policy_rollouts_seed628"
+    "/scratch/prj/eng_demt_robot_learning/polymetics_demt/dataset/ar_guidance_temporal_T00_T100/policy_rollouts_seed628_latest"
 )
 DEFAULT_VIDEO_DIR = DEFAULT_OUTPUT / "videos"
 
 
 def checkpoint_epoch(path):
-    return int(path.stem.rsplit("_", 1)[-1])
+    try:
+        return int(path.stem.rsplit("_", 1)[-1])
+    except (IndexError, ValueError):
+        return -1
 
 
-def latest_checkpoint(model_root, condition, epoch, use_latest=False):
-    exp_root = Path(model_root) / f"time_mvp_{condition}_d30_seed1_2gap"
+def latest_checkpoint(
+    model_root,
+    condition,
+    epoch,
+    use_latest=False,
+    experiment_template="{condition}/temporal_{condition}_d30_seed1_2gap",
+):
+    exp_root = Path(model_root) / experiment_template.format(condition=condition)
     run_dirs = [p for p in exp_root.iterdir() if p.is_dir()]
     if not run_dirs:
         raise FileNotFoundError(f"No run directories found under {exp_root}")
@@ -138,7 +149,7 @@ def evaluate_condition(args, condition, ckpt):
     sim.setup()
 
     results = []
-    video_path = args.video_dir / f"time_mvp_{condition}_seed{args.seed}_n{args.num_rollouts}.mp4"
+    video_path = args.video_dir / f"temporal_{condition}_seed{args.seed}_n{args.num_rollouts}.mp4"
     video_recorder = None
     if args.save_videos:
         video_recorder = RolloutVideoRecorder(video_path, fps=args.video_fps)
@@ -195,7 +206,17 @@ def parse_args():
     )
     parser.add_argument("--model-root", type=Path, default=DEFAULT_MODEL_ROOT)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT)
-    parser.add_argument("--conditions", nargs="+", default=["T00", "T20", "Twide"], choices=sorted(TIME_CONDITIONS))
+    parser.add_argument(
+        "--experiment-template",
+        default="{condition}/temporal_{condition}_d30_seed1_2gap",
+        help="Experiment directory template under --model-root. Must include {condition}.",
+    )
+    parser.add_argument(
+        "--conditions",
+        nargs="+",
+        default=["T00", "T25", "T50", "T75", "T100"],
+        choices=sorted(TIME_CONDITIONS),
+    )
     parser.add_argument("--epoch", type=int, default=40)
     parser.add_argument("--latest-checkpoint", action="store_true")
     parser.add_argument("--seed", type=int, default=628)
@@ -233,10 +254,16 @@ def main():
 
     summaries = []
     for condition in args.conditions:
-        ckpt = latest_checkpoint(args.model_root, condition, args.epoch, use_latest=args.latest_checkpoint)
+        ckpt = latest_checkpoint(
+            args.model_root,
+            condition,
+            args.epoch,
+            use_latest=args.latest_checkpoint,
+            experiment_template=args.experiment_template,
+        )
         summary = evaluate_condition(args, condition, ckpt)
         summaries.append(summary)
-        out_path = args.output_dir / f"time_mvp_{condition}_seed{args.seed}_n{args.num_rollouts}.json"
+        out_path = args.output_dir / f"temporal_{condition}_seed{args.seed}_n{args.num_rollouts}.json"
         out_path.write_text(json.dumps(summary, indent=2), encoding="utf-8")
 
     aggregate = {

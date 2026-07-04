@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import argparse
+import math
 import random
 import shutil
 
@@ -9,10 +10,13 @@ from main_abla_1 import PandaSim
 
 
 TIME_CONDITIONS = {
-    "T00": (1.0, 1.0),
-    "T20": (0.8, 1.2),
-    "Twide": (0.5, 2.0),
+    "T00": (1.00, 1.00),
+    "T25": (0.75, 1.25),
+    "T50": (0.50, 1.50),
+    "T75": (0.25, 1.75),
+    "T100": (0.00, 2.00),
 }
+MIN_PHASE_DURATION_FRAMES = 1
 
 PHASES = (
     "open_gripper",
@@ -38,6 +42,31 @@ def sample_phase_multipliers(condition):
     if abs(low - high) <= 1e-12:
         return {phase: 1.0 for phase in PHASES}
     return {phase: float(np.random.uniform(low, high)) for phase in PHASES}
+
+
+def phase_duration_plan(multipliers, sample_period):
+    min_duration = float(MIN_PHASE_DURATION_FRAMES) * float(sample_period)
+    before = {
+        phase: float(BASE_DURATIONS[phase] * multipliers[phase])
+        for phase in PHASES
+    }
+    after = {
+        phase: max(duration, min_duration)
+        for phase, duration in before.items()
+    }
+    before_frames = {
+        phase: 0 if duration <= 0.0 else int(math.ceil(duration / float(sample_period) - 1e-12))
+        for phase, duration in before.items()
+    }
+    after_frames = {
+        phase: max(MIN_PHASE_DURATION_FRAMES, int(math.ceil(duration / float(sample_period) - 1e-12)))
+        for phase, duration in after.items()
+    }
+    clamped = {
+        phase: after[phase] > before[phase] + 1e-12
+        for phase in PHASES
+    }
+    return before, after, before_frames, after_frames, clamped, min_duration
 
 
 class TimeMvpSim(PandaSim):
@@ -87,9 +116,14 @@ class TimeMvpSim(PandaSim):
             "lift": self.ik_reachable(lift),
         }
         multipliers = sample_phase_multipliers(condition_label)
-        target_durations = {
-            phase: float(BASE_DURATIONS[phase] * multipliers[phase]) for phase in PHASES
-        }
+        (
+            target_durations_before_clamp,
+            target_durations,
+            target_duration_frames_before_clamp,
+            target_duration_frames,
+            phase_duration_clamped,
+            min_phase_duration_seconds,
+        ) = phase_duration_plan(multipliers, self.sample_period)
 
         self.write_time_metadata(
             condition_label=condition_label,
@@ -111,7 +145,13 @@ class TimeMvpSim(PandaSim):
             entry_dz=entry_dz,
             phase_duration_multipliers=multipliers,
             base_phase_durations=BASE_DURATIONS,
+            target_phase_durations_before_clamp=target_durations_before_clamp,
             target_phase_durations=target_durations,
+            target_phase_duration_frames_before_clamp=target_duration_frames_before_clamp,
+            target_phase_duration_frames=target_duration_frames,
+            phase_duration_clamped=phase_duration_clamped,
+            min_phase_duration_frames=MIN_PHASE_DURATION_FRAMES,
+            min_phase_duration_seconds=min_phase_duration_seconds,
             condition_multiplier_range=TIME_CONDITIONS[condition_label],
             waypoint_reachability=waypoints_ok,
         )
@@ -196,17 +236,38 @@ class TimeMvpSim(PandaSim):
         entry_dz,
         phase_duration_multipliers,
         base_phase_durations,
+        target_phase_durations_before_clamp,
         target_phase_durations,
+        target_phase_duration_frames_before_clamp,
+        target_phase_duration_frames,
+        phase_duration_clamped,
+        min_phase_duration_frames,
+        min_phase_duration_seconds,
         condition_multiplier_range,
         waypoint_reachability,
     ):
         metadata = {
             "task": "cube_grasp_lift_time_mvp",
+            "experiment_track": "temporal",
+            "condition": condition_label,
             "condition_label": condition_label,
+            "sample_hz": float(self.sample_hz),
+            "sample_period": float(self.sample_period),
             "condition_multiplier_range": [float(v) for v in condition_multiplier_range],
             "phase_duration_multipliers": {k: float(v) for k, v in phase_duration_multipliers.items()},
             "base_phase_durations": {k: float(v) for k, v in base_phase_durations.items()},
+            "target_phase_durations_before_clamp": {
+                k: float(v) for k, v in target_phase_durations_before_clamp.items()
+            },
             "target_phase_durations": {k: float(v) for k, v in target_phase_durations.items()},
+            "target_phase_duration_frames_before_clamp": {
+                k: int(v) for k, v in target_phase_duration_frames_before_clamp.items()
+            },
+            "target_phase_duration_frames": {k: int(v) for k, v in target_phase_duration_frames.items()},
+            "phase_duration_clamped": {k: bool(v) for k, v in phase_duration_clamped.items()},
+            "min_phase_duration_frames": int(min_phase_duration_frames),
+            "min_phase_duration_seconds": float(min_phase_duration_seconds),
+            "phase_duration_clamp_rule": "target_phase_duration_seconds = max(raw_duration_seconds, min_phase_duration_frames / sample_hz)",
             "timing_applied_phases": list(PHASES),
             "orientation_mode": "default_full_trajectory",
             "default_quat_xyzw": list(self.default_orientation_quat),

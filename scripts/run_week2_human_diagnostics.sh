@@ -1,25 +1,24 @@
 #!/bin/bash -l
 
-#SBATCH --job-name=abla1_hdf5
+#SBATCH --job-name=week2_human_diag
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
-#SBATCH --mem=64G
-#SBATCH --time=12:00:00
+#SBATCH --mem=32G
+#SBATCH --time=01:00:00
 #SBATCH --partition=interruptible_cpu
 #SBATCH --hint=nomultithread
-#SBATCH --output=/scratch/prj/eng_demt_robot_learning/polymetics_demt/dataset/ar_guidance_spatial_S15_S35/logs/hdf5-%j.out
-#SBATCH --error=/scratch/prj/eng_demt_robot_learning/polymetics_demt/dataset/ar_guidance_spatial_S15_S35/logs/hdf5-%j.err
+#SBATCH --output=/scratch/prj/eng_demt_robot_learning/polymetics_demt/outputs/week2_human_diagnostics_keypoints_quick/logs/diag-%j.out
+#SBATCH --error=/scratch/prj/eng_demt_robot_learning/polymetics_demt/outputs/week2_human_diagnostics_keypoints_quick/logs/diag-%j.err
 
 set -euo pipefail
 
 PROJECT_DIR=${PROJECT_DIR:-"/scratch/prj/eng_demt_robot_learning/polymetics_demt"}
 CONDA_ENV=${CONDA_ENV:-"/scratch/users/k23114984/conda/arcap"}
-SCRIPT=${SCRIPT:-"scripts/create_abla1_hdf5.py"}
-DATASET_ROOT=${DATASET_ROOT:-"${PROJECT_DIR}/dataset/ar_guidance_spatial_S15_S35"}
-LOG_DIR="${DATASET_ROOT}/logs"
+OUTPUT_DIR=${OUTPUT_DIR:-"${PROJECT_DIR}/outputs/week2_human_diagnostics_keypoints_quick"}
+FRAME_STRIDE=${FRAME_STRIDE:-10}
 
-mkdir -p "${LOG_DIR}"
+mkdir -p "${OUTPUT_DIR}/logs"
 cd "${PROJECT_DIR}"
 
 if command -v module >/dev/null 2>&1; then
@@ -37,11 +36,16 @@ fi
 
 export PYTHONUNBUFFERED=1
 export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK:-8}
-export HDF5_USE_FILE_LOCKING=FALSE
+export MPLCONFIGDIR="${OUTPUT_DIR}/.matplotlib"
 
 echo "[INFO] SLURM Job ID: ${SLURM_JOB_ID:-N/A}"
 echo "[INFO] Node list: ${SLURM_NODELIST:-N/A}"
 echo "[INFO] Python: $(command -v python)"
 python --version
-python "${SCRIPT}" --dataset-root "${DATASET_ROOT}" "$@"
-echo "[INFO] Finished corrected Ablation-1 HDF5 conversion"
+
+python scripts/analyze_week2_human_data.py \
+  --frame-stride "${FRAME_STRIDE}" \
+  --output-dir "${OUTPUT_DIR}" \
+  "$@"
+
+echo "[INFO] Finished Week 2 human diagnostics"

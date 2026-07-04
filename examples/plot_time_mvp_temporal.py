@@ -13,9 +13,9 @@ import numpy as np
 
 
 DEFAULT_DATASET_ROOT = Path(
-    "/scratch/prj/eng_demt_robot_learning/polymetics_demt/dataset/time_mvp_full"
+    "/scratch/prj/eng_demt_robot_learning/polymetics_demt/dataset/ar_guidance_temporal_T00_T100"
 )
-CONDITIONS = ("T00", "T20", "Twide")
+CONDITIONS = ("T00", "T25", "T50", "T75", "T100")
 PHASE_ORDER = (
     "random_start",
     "open_gripper",
@@ -304,7 +304,7 @@ def parse_args():
     parser.add_argument("--dataset-root", type=Path, default=DEFAULT_DATASET_ROOT)
     parser.add_argument("--output-dir", type=Path, default=None)
     parser.add_argument("--conditions", nargs="+", default=list(CONDITIONS))
-    parser.add_argument("--dataset-template", default="time_mvp_{condition}_d30_seed1")
+    parser.add_argument("--dataset-template", default="temporal_{condition}_d30_seed1")
     parser.add_argument("--stride", type=int, default=1)
     return parser.parse_args()
 
@@ -320,11 +320,11 @@ def main():
         condition_dir = args.dataset_root / args.dataset_template.format(condition=condition)
         demos = load_condition(condition_dir, stride=args.stride)
         condition_to_demos[condition] = demos
-        output_path = output_dir / f"time_mvp_{condition}_temporal_xyz_phase.png"
+        output_path = output_dir / f"temporal_{condition}_temporal_xyz_phase.png"
         plot_condition(condition, demos, output_path)
         print(f"{condition}: saved {output_path} ({len(demos)} demos)", flush=True)
 
-    summary_path = output_dir / "time_mvp_temporal_summary.png"
+    summary_path = output_dir / "temporal_T00_T100_summary.png"
     plot_summary(condition_to_demos, summary_path)
     print(f"summary: saved {summary_path}", flush=True)
 
