@@ -6,7 +6,7 @@
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=64G
 #SBATCH --time=2:00:00
-#SBATCH --partition=gpu
+#SBATCH --partition=interruptible_gpu
 #SBATCH --gres=gpu:1
 #SBATCH --constraint="a100|l40s|h200|h100"
 #SBATCH --exclude=erc-hpc-comp040,erc-hpc-comp035
@@ -22,6 +22,8 @@ MODEL_ROOT=${MODEL_ROOT:-"/scratch/prj/eng_demt_robot_learning/trained_models/ar
 OUTPUT_DIR=${OUTPUT_DIR:-"${PROJECT_DIR}/dataset/ar_guidance_temporal_T00_T100/policy_rollouts_seed628_latest"}
 VIDEO_DIR=${VIDEO_DIR:-"${OUTPUT_DIR}/videos"}
 EPOCH=${EPOCH:-999999}
+CONDITIONS=${CONDITIONS:-"T00 T25 T50 T75 T100"}
+EXPERIMENT_TEMPLATE=${EXPERIMENT_TEMPLATE:-"{condition}/temporal_{condition}_d30_seed1_2gap"}
 
 mkdir -p "${PROJECT_DIR}/dataset/ar_guidance_temporal_T00_T100/logs" "${OUTPUT_DIR}" "${VIDEO_DIR}"
 cd "${PROJECT_DIR}"
@@ -39,8 +41,8 @@ which nvidia-smi >/dev/null 2>&1 && nvidia-smi || true
 
 "${PYTHON}" -u examples/eval_time_mvp_trained_policies.py \
   --model-root "${MODEL_ROOT}" \
-  --conditions T00 T25 T50 T75 T100 \
-  --experiment-template '{condition}/temporal_{condition}_d30_seed1_2gap' \
+  --conditions ${CONDITIONS} \
+  --experiment-template "${EXPERIMENT_TEMPLATE}" \
   --epoch "${EPOCH}" \
   --latest-checkpoint \
   --num-rollouts "${NUM_ROLLOUTS:-10}" \

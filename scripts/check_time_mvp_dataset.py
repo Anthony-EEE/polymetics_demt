@@ -12,10 +12,13 @@ TIME_CONDITIONS = {
     "T50": (0.50, 1.50),
     "T75": (0.25, 1.75),
     "T100": (0.00, 2.00),
+    "V075_150": (0.75, 1.50),
+    "V050_200": (0.50, 2.00),
+    "V025_250": (0.25, 2.50),
 }
 MIN_PHASE_DURATION_FRAMES = 1
 
-EXPECTED_PHASES = (
+LADDER_EXPECTED_PHASES = (
     "random_start",
     "open_gripper",
     "corridor_start",
@@ -25,7 +28,40 @@ EXPECTED_PHASES = (
     "lift",
 )
 
-TIMED_PHASES = tuple(p for p in EXPECTED_PHASES if p != "random_start")
+VREF_EXPECTED_PHASES = (
+    "random_start",
+    "corridor_start",
+    "pre_grasp",
+    "pick_grasp",
+    "close_gripper",
+    "lift",
+)
+
+LADDER_TIMED_PHASES = tuple(p for p in LADDER_EXPECTED_PHASES if p != "random_start")
+VREF_TIMED_PHASES = (
+    "start_to_corridor",
+    "corridor_to_pregrasp",
+    "pregrasp_to_first_close",
+    "first_close_to_end",
+)
+VREF_CONDITIONS = {"V075_150", "V050_200", "V025_250"}
+VREF_GROUP = "P6P7_post_valid_order"
+
+
+def is_vref_condition(condition):
+    return condition in VREF_CONDITIONS
+
+
+def expected_phases_for_condition(condition):
+    if is_vref_condition(condition):
+        return VREF_EXPECTED_PHASES
+    return LADDER_EXPECTED_PHASES
+
+
+def timed_phases_for_condition(condition):
+    if is_vref_condition(condition):
+        return VREF_TIMED_PHASES
+    return LADDER_TIMED_PHASES
 
 
 def load_json(path):
@@ -136,18 +172,38 @@ def check_demo(
     elif abs(vector_norm(default_quat) - 1.0) > 1e-6:
         errors.append(f"{demo_dir.name}: default_quat_xyzw norm={vector_norm(default_quat):.9f}, expected 1")
 
+    expected_timed_phases = timed_phases_for_condition(condition)
+    expected_saved_phases = expected_phases_for_condition(condition)
     applied = metadata.get("timing_applied_phases")
-    if applied != list(TIMED_PHASES):
-        errors.append(f"{demo_dir.name}: timing_applied_phases={applied}, expected {list(TIMED_PHASES)}")
+    if applied != list(expected_timed_phases):
+        errors.append(
+            f"{demo_dir.name}: timing_applied_phases={applied}, expected {list(expected_timed_phases)}"
+        )
+    if is_vref_condition(condition):
+        if metadata.get("experiment_track") != "temporal_v_ref":
+            errors.append(f"{demo_dir.name}: expected experiment_track='temporal_v_ref'")
+        if metadata.get("v_ref_group") != VREF_GROUP:
+            errors.append(f"{demo_dir.name}: v_ref_group={metadata.get('v_ref_group')!r}, expected {VREF_GROUP!r}")
+        if not metadata.get("v_ref_source_json"):
+            errors.append(f"{demo_dir.name}: missing v_ref_source_json")
+        for required_key in (
+            "v_ref_phase_durations_s",
+            "sampled_phase_multipliers",
+            "target_phase_durations_s",
+            "target_simulator_phase_durations_s",
+            "simulator_phase_mapping",
+        ):
+            if not metadata.get(required_key):
+                errors.append(f"{demo_dir.name}: missing {required_key}")
 
-    multipliers = metadata.get("phase_duration_multipliers", {})
+    multipliers = metadata.get("sampled_phase_multipliers") or metadata.get("phase_duration_multipliers", {})
     low, high = TIME_CONDITIONS.get(condition, (None, None))
     multiplier_range = metadata.get("condition_multiplier_range")
     if low is not None and multiplier_range != [float(low), float(high)]:
         errors.append(
             f"{demo_dir.name}: condition_multiplier_range={multiplier_range}, expected {[float(low), float(high)]}"
         )
-    for phase in TIMED_PHASES:
+    for phase in expected_timed_phases:
         value = multipliers.get(phase)
         if value is None:
             errors.append(f"{demo_dir.name}: missing multiplier for {phase}")
@@ -159,6 +215,8 @@ def check_demo(
     clamp_rule = metadata.get("phase_duration_clamp_rule")
     target_frames = metadata.get("target_phase_duration_frames", {})
     target_before = metadata.get("target_phase_duration_frames_before_clamp", {})
+    if is_vref_condition(condition):
+        target_before = target_frames
     clamped = metadata.get("phase_duration_clamped", {})
     if min_frames != MIN_PHASE_DURATION_FRAMES:
         errors.append(f"{demo_dir.name}: min_phase_duration_frames={min_frames}, expected {MIN_PHASE_DURATION_FRAMES}")
@@ -166,7 +224,7 @@ def check_demo(
         errors.append(f"{demo_dir.name}: missing positive min_phase_duration_seconds")
     if not clamp_rule:
         errors.append(f"{demo_dir.name}: missing phase_duration_clamp_rule")
-    for phase in TIMED_PHASES:
+    for phase in expected_timed_phases:
         frames = target_frames.get(phase)
         before_frames = target_before.get(phase)
         was_clamped = clamped.get(phase)
@@ -178,13 +236,23 @@ def check_demo(
             errors.append(f"{demo_dir.name}: missing target_phase_duration_frames_before_clamp for {phase}")
         elif int(before_frames) < MIN_PHASE_DURATION_FRAMES and was_clamped is not True:
             errors.append(f"{demo_dir.name}: {phase} should be marked clamped when before_frames={before_frames}")
+    if is_vref_condition(condition):
+        simulator_frames = metadata.get("target_simulator_phase_duration_frames", {})
+        for phase in expected_saved_phases:
+            if phase == "random_start":
+                continue
+            frames = simulator_frames.get(phase)
+            if frames is None:
+                errors.append(f"{demo_dir.name}: missing target_simulator_phase_duration_frames for {phase}")
+            elif int(frames) < MIN_PHASE_DURATION_FRAMES:
+                errors.append(f"{demo_dir.name}: simulator phase {phase} has non-positive target frames")
     if condition == "T100" and abs(float(low)) > 1e-12:
         errors.append(f"{demo_dir.name}: T100 lower multiplier should be 0.00, got {low}")
 
     counts = phase_counts(demo_dir)
     if not counts:
         errors.append(f"{demo_dir.name}: no frame phase files found")
-    for phase in EXPECTED_PHASES:
+    for phase in expected_saved_phases:
         if counts.get(phase, 0) == 0:
             errors.append(f"{demo_dir.name}: missing phase {phase!r}")
 

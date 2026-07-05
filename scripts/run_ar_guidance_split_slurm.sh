@@ -20,6 +20,8 @@ MODULES=${MODULES:-"anaconda3/2022.10-gcc-13.2.0"}
 TRACK=${TRACK:-"all"}
 RATIO=${RATIO:-"0.1"}
 ACTION_GAP=${ACTION_GAP:-"2"}
+DATASET_ROOT=${DATASET_ROOT:-}
+GROUPS=${GROUPS:-}
 
 mkdir -p "${PROJECT_DIR}/logs"
 cd "${PROJECT_DIR}"
@@ -40,10 +42,22 @@ export PYTHONUNBUFFERED=1
 export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK:-4}
 export HDF5_USE_FILE_LOCKING=FALSE
 
-"${PYTHON}" scripts/split_ar_guidance_hdf5.py \
-  --track "${TRACK}" \
-  --python "${PYTHON}" \
-  --ratio "${RATIO}" \
+args=(
+  scripts/split_ar_guidance_hdf5.py
+  --track "${TRACK}"
+  --python "${PYTHON}"
+  --ratio "${RATIO}"
   --action-gap "${ACTION_GAP}"
+)
+if [[ -n "${DATASET_ROOT}" || -n "${GROUPS}" ]]; then
+  if [[ -z "${DATASET_ROOT}" || -z "${GROUPS}" ]]; then
+    echo "[ERROR] DATASET_ROOT and GROUPS must be set together." >&2
+    exit 1
+  fi
+  read -r -a group_args <<< "${GROUPS}"
+  args+=(--dataset-root "${DATASET_ROOT}" --groups "${group_args[@]}")
+fi
+
+"${PYTHON}" "${args[@]}"
 
 echo "[INFO] AR guidance HDF5 split complete for TRACK=${TRACK}"

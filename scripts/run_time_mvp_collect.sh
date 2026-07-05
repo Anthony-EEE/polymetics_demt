@@ -4,7 +4,7 @@
 #
 # Submit examples:
 #   CONDITION=T00 NUM_DEMOS=1 SEED=7 sbatch scripts/run_time_mvp_collect.sh
-#   CONDITION=T100 NUM_DEMOS=30 SEED=1 sbatch scripts/run_time_mvp_collect.sh
+#   CONDITION=V050_200 NUM_DEMOS=30 SEED=1 OUTPUT_ROOT=... sbatch scripts/run_time_mvp_collect.sh
 
 #SBATCH --job-name=time_mvp_collect
 #SBATCH --nodes=1
@@ -41,6 +41,8 @@ ENTRY_DZ=${ENTRY_DZ:-0.06}
 RANDOM_START_X=${RANDOM_START_X:-0.40}
 RANDOM_START_Z=${RANDOM_START_Z:-0.40}
 RANDOM_START_MAX_ATTEMPTS=${RANDOM_START_MAX_ATTEMPTS:-200}
+V_REF_SOURCE_JSON=${V_REF_SOURCE_JSON:-"outputs/week2_human_phase_reference_p6p7_v2/v_ref_phase_reference.json"}
+V_REF_GROUP=${V_REF_GROUP:-"P6P7_post_valid_order"}
 
 mkdir -p "${LOG_DIR}" "${OUTPUT_ROOT}"
 
@@ -71,9 +73,9 @@ export OPENBLAS_NUM_THREADS=${SLURM_CPUS_PER_TASK:-4}
 export MKL_NUM_THREADS=${SLURM_CPUS_PER_TASK:-4}
 
 case "${CONDITION}" in
-  T00|T25|T50|T75|T100) ;;
+  T00|T25|T50|T75|T100|V075_150|V050_200|V025_250) ;;
   *)
-    echo "[ERROR] Unknown CONDITION='${CONDITION}'. Use one of: T00 T25 T50 T75 T100."
+    echo "[ERROR] Unknown CONDITION='${CONDITION}'. Use one of: T00 T25 T50 T75 T100 V075_150 V050_200 V025_250."
     exit 1
     ;;
 esac
@@ -96,6 +98,8 @@ args=(
   "--random-start-x" "${RANDOM_START_X}"
   "--random-start-z" "${RANDOM_START_Z}"
   "--random-start-max-attempts" "${RANDOM_START_MAX_ATTEMPTS}"
+  "--v-ref-source-json" "${V_REF_SOURCE_JSON}"
+  "--v-ref-group" "${V_REF_GROUP}"
   "--success-lift-height" "${SUCCESS_LIFT_HEIGHT}"
   "--max-collection-attempts" "${MAX_COLLECTION_ATTEMPTS}"
   "--no-gui"

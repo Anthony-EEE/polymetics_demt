@@ -16,7 +16,7 @@ DEFAULT_DATASET_ROOT = Path(
     "/scratch/prj/eng_demt_robot_learning/polymetics_demt/dataset/ar_guidance_temporal_T00_T100"
 )
 CONDITIONS = ("T00", "T25", "T50", "T75", "T100")
-PHASE_ORDER = (
+LADDER_PHASE_ORDER = (
     "random_start",
     "open_gripper",
     "corridor_start",
@@ -25,7 +25,21 @@ PHASE_ORDER = (
     "close_gripper",
     "lift",
 )
-TIMED_PHASES = tuple(p for p in PHASE_ORDER if p != "random_start")
+VREF_SAVED_PHASE_ORDER = (
+    "random_start",
+    "corridor_start",
+    "pre_grasp",
+    "pick_grasp",
+    "close_gripper",
+    "lift",
+)
+VREF_PHASE_ORDER = (
+    "start_to_corridor",
+    "corridor_to_pregrasp",
+    "pregrasp_to_first_close",
+    "first_close_to_end",
+)
+TIMED_PHASES = tuple(p for p in LADDER_PHASE_ORDER if p != "random_start")
 PHASE_COLORS = {
     "random_start": "#7f7f7f",
     "open_gripper": "#4c78a8",
@@ -34,6 +48,10 @@ PHASE_COLORS = {
     "pick_grasp": "#e15759",
     "close_gripper": "#b07aa1",
     "lift": "#edc948",
+    "start_to_corridor": "#59a14f",
+    "corridor_to_pregrasp": "#f28e2b",
+    "pregrasp_to_first_close": "#e15759",
+    "first_close_to_end": "#edc948",
 }
 
 
@@ -104,6 +122,54 @@ def phase_counts(demo):
     return Counter(demo["phase"])
 
 
+def is_vref_demo(demo):
+    return demo["metadata"].get("time_condition_family") == "v_ref_p6p7_event_phases"
+
+
+def saved_phase_order(demos):
+    base_order = VREF_SAVED_PHASE_ORDER if demos and is_vref_demo(demos[0]) else LADDER_PHASE_ORDER
+    observed = []
+    seen = set()
+    for phase in base_order:
+        observed.append(phase)
+        seen.add(phase)
+    for demo in demos:
+        for phase in demo["phase"]:
+            if phase and phase not in seen:
+                observed.append(phase)
+                seen.add(phase)
+    return tuple(observed)
+
+
+def timed_phase_order(demos):
+    if demos and is_vref_demo(demos[0]):
+        return tuple(demos[0]["metadata"].get("v_ref_phase_order", VREF_PHASE_ORDER))
+    return tuple(p for p in saved_phase_order(demos) if p != "random_start")
+
+
+def multiplier_map(metadata):
+    return metadata.get("sampled_phase_multipliers") or metadata.get("phase_duration_multipliers", {})
+
+
+def phase_duration_data(demos):
+    phases = timed_phase_order(demos)
+    if demos and is_vref_demo(demos[0]):
+        rows = []
+        refs = demos[0]["metadata"].get("v_ref_phase_durations_s", {})
+        for demo in demos:
+            target = demo["metadata"].get("target_phase_durations_s", {})
+            rows.append([float(target[p]) for p in phases])
+        return phases, [list(col) for col in zip(*rows)], refs, "target v_ref phase duration [s]"
+
+    by_phase = defaultdict(list)
+    for demo in demos:
+        counts = phase_counts(demo)
+        sample_period = float(demo["metadata"].get("sample_period", 1.0))
+        for phase in phases:
+            by_phase[phase].append(float(counts.get(phase, 0)) * sample_period)
+    return phases, [by_phase[p] for p in phases], {}, "observed phase duration [s]"
+
+
 def phase_segments(demo):
     phases = demo["phase"]
     time = demo["time"]
@@ -139,8 +205,8 @@ def plot_condition(condition, demos, output_path):
     coord_axes = ((ax_x, 0, "x [m]"), (ax_y, 1, "y [m]"), (ax_z, 2, "z [m]"))
     all_xyz = []
     total_frames = []
-    counts_by_phase = defaultdict(list)
     multipliers_by_phase = defaultdict(list)
+    total_seconds = []
 
     for demo_idx, demo in enumerate(demos):
         color = plt.cm.viridis(demo_idx / max(1, len(demos) - 1))
@@ -148,10 +214,8 @@ def plot_condition(condition, demos, output_path):
         xyz = demo["xyz"]
         all_xyz.append(xyz)
         total_frames.append(len(time))
-        counts = phase_counts(demo)
-        for phase in PHASE_ORDER:
-            counts_by_phase[phase].append(counts.get(phase, 0))
-        for phase, value in demo["metadata"].get("phase_duration_multipliers", {}).items():
+        total_seconds.append(float(time[-1]) if len(time) else 0.0)
+        for phase, value in multiplier_map(demo["metadata"]).items():
             multipliers_by_phase[phase].append(float(value))
 
         for ax, col, ylabel in coord_axes:
@@ -174,36 +238,50 @@ def plot_condition(condition, demos, output_path):
     ax_y.set_title("EE y vs time")
     ax_z.set_title("EE z vs time")
 
-    positions = np.arange(len(PHASE_ORDER))
-    data = [counts_by_phase[p] for p in PHASE_ORDER]
+    duration_phases, data, reference_durations, duration_ylabel = phase_duration_data(demos)
+    positions = np.arange(len(duration_phases))
     box = ax_phase.boxplot(data, positions=positions, patch_artist=True, showfliers=True)
-    for patch, phase in zip(box["boxes"], PHASE_ORDER):
+    for patch, phase in zip(box["boxes"], duration_phases):
         patch.set_facecolor(PHASE_COLORS.get(phase, "0.8"))
         patch.set_alpha(0.55)
+    for pos, phase in zip(positions, duration_phases):
+        if phase in reference_durations:
+            ax_phase.plot(
+                [pos - 0.32, pos + 0.32],
+                [float(reference_durations[phase]), float(reference_durations[phase])],
+                color="black",
+                linewidth=1.4,
+                alpha=0.75,
+            )
     ax_phase.set_xticks(positions)
-    ax_phase.set_xticklabels(PHASE_ORDER, rotation=35, ha="right")
-    ax_phase.set_ylabel("saved frames")
-    ax_phase.set_title("phase frame-count distribution")
+    ax_phase.set_xticklabels(duration_phases, rotation=35, ha="right")
+    ax_phase.set_ylabel(duration_ylabel)
+    ax_phase.set_title("phase duration distribution")
     ax_phase.grid(True, axis="y", alpha=0.25)
 
-    mult_data = [multipliers_by_phase[p] for p in TIMED_PHASES]
-    mult_pos = np.arange(len(TIMED_PHASES))
+    multiplier_phases = tuple(multipliers_by_phase.keys()) or timed_phase_order(demos)
+    mult_data = [multipliers_by_phase[p] for p in multiplier_phases]
+    mult_pos = np.arange(len(multiplier_phases))
     box = ax_mult.boxplot(mult_data, positions=mult_pos, patch_artist=True, showfliers=True)
-    for patch, phase in zip(box["boxes"], TIMED_PHASES):
+    for patch, phase in zip(box["boxes"], multiplier_phases):
         patch.set_facecolor(PHASE_COLORS.get(phase, "0.8"))
         patch.set_alpha(0.55)
     ax_mult.axhline(1.0, color="black", linewidth=1.0, alpha=0.45)
     ax_mult.set_xticks(mult_pos)
-    ax_mult.set_xticklabels(TIMED_PHASES, rotation=35, ha="right")
+    ax_mult.set_xticklabels(multiplier_phases, rotation=35, ha="right")
     ax_mult.set_ylabel("duration multiplier")
     ax_mult.set_title("metadata duration multipliers")
     ax_mult.grid(True, axis="y", alpha=0.25)
 
-    ax_total.hist(total_frames, bins=min(12, max(3, int(np.sqrt(len(total_frames))))), color="0.35", alpha=0.85)
-    ax_total.set_xlabel("total saved frames")
+    ax_total.hist(total_seconds, bins=min(12, max(3, int(np.sqrt(len(total_seconds))))), color="0.35", alpha=0.85)
+    if demos and is_vref_demo(demos[0]):
+        v_ref_total = sum(float(v) for v in demos[0]["metadata"].get("v_ref_phase_durations_s", {}).values())
+        ax_total.axvline(v_ref_total, color="black", linewidth=1.4, alpha=0.75, label="v_ref mean total")
+        ax_total.legend()
+    ax_total.set_xlabel("total duration [s]")
     ax_total.set_ylabel("demo count")
     ax_total.set_title(
-        f"total frames: min={min(total_frames)}, mean={np.mean(total_frames):.1f}, max={max(total_frames)}"
+        f"total duration: min={min(total_seconds):.2f}, mean={np.mean(total_seconds):.2f}, max={max(total_seconds):.2f} s"
     )
     ax_total.grid(True, axis="y", alpha=0.25)
 
@@ -235,9 +313,9 @@ def plot_condition(condition, demos, output_path):
 
     handles = [
         plt.Line2D([0], [0], color=PHASE_COLORS[p], linewidth=6, alpha=0.45, label=p)
-        for p in PHASE_ORDER
+        for p in saved_phase_order(demos)
     ]
-    fig.legend(handles=handles, loc="outside lower center", ncol=7, fontsize=8)
+    fig.legend(handles=handles, loc="outside lower center", ncol=max(1, len(handles)), fontsize=8)
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(output_path, dpi=220)
@@ -253,24 +331,26 @@ def plot_summary(condition_to_demos, output_path):
     labels = []
     for condition, demos in condition_to_demos.items():
         labels.append(condition)
-        totals = [len(d["time"]) for d in demos]
+        totals = [float(d["time"][-1]) if len(d["time"]) else 0.0 for d in demos]
         total_data.append(totals)
-        phase_mean_rows.append([np.mean([phase_counts(d).get(p, 0) for d in demos]) for p in PHASE_ORDER])
+        phases, durations, _, _ = phase_duration_data(demos)
+        phase_mean_rows.append([float(np.mean(values)) for values in durations])
 
     axes[0].boxplot(total_data, labels=labels, patch_artist=True, showfliers=True)
-    axes[0].set_ylabel("total saved frames")
-    axes[0].set_title("total sequence length")
+    axes[0].set_ylabel("total duration [s]")
+    axes[0].set_title("total sequence duration")
     axes[0].grid(True, axis="y", alpha=0.25)
 
-    x = np.arange(len(PHASE_ORDER))
+    summary_phases = timed_phase_order(next(iter(condition_to_demos.values())))
+    x = np.arange(len(summary_phases))
     width = 0.24
     offsets = np.linspace(-width, width, len(labels))
     for offset, label, row in zip(offsets, labels, phase_mean_rows):
         axes[1].bar(x + offset, row, width=width, label=label, alpha=0.85)
     axes[1].set_xticks(x)
-    axes[1].set_xticklabels(PHASE_ORDER, rotation=35, ha="right")
-    axes[1].set_ylabel("mean saved frames")
-    axes[1].set_title("mean phase frame counts")
+    axes[1].set_xticklabels(summary_phases, rotation=35, ha="right")
+    axes[1].set_ylabel("mean duration [s]")
+    axes[1].set_title("mean phase durations")
     axes[1].legend()
     axes[1].grid(True, axis="y", alpha=0.25)
 
@@ -324,7 +404,7 @@ def main():
         plot_condition(condition, demos, output_path)
         print(f"{condition}: saved {output_path} ({len(demos)} demos)", flush=True)
 
-    summary_path = output_dir / "temporal_T00_T100_summary.png"
+    summary_path = output_dir / f"temporal_{args.conditions[0]}_{args.conditions[-1]}_summary.png"
     plot_summary(condition_to_demos, summary_path)
     print(f"summary: saved {summary_path}", flush=True)
 

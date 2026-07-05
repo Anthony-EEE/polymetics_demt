@@ -39,6 +39,8 @@ TRACKS = {
 def parse_args():
     parser = argparse.ArgumentParser(description="Split AR-guidance HDF5 files into train/valid masks.")
     parser.add_argument("--track", choices=("spatial", "temporal", "all"), default="all")
+    parser.add_argument("--dataset-root", type=Path, default=None)
+    parser.add_argument("--groups", nargs="+", default=None)
     parser.add_argument("--splitter", type=Path, default=DEFAULT_SPLITTER)
     parser.add_argument("--python", default=sys.executable)
     parser.add_argument("--ratio", type=float, default=0.1)
@@ -58,8 +60,14 @@ def main():
     if not args.splitter.exists():
         raise FileNotFoundError(f"Missing splitter script: {args.splitter}")
 
-    for track in selected_tracks(args.track):
-        spec = TRACKS[track]
+    if args.dataset_root is not None or args.groups is not None:
+        if args.dataset_root is None or args.groups is None:
+            raise ValueError("--dataset-root and --groups must be provided together")
+        track_specs = [("custom", {"root": args.dataset_root, "groups": tuple(args.groups)})]
+    else:
+        track_specs = [(track, TRACKS[track]) for track in selected_tracks(args.track)]
+
+    for track, spec in track_specs:
         for group in spec["groups"]:
             hdf5_path = spec["root"] / f"{group}_{args.action_gap}gap.hdf5"
             if not hdf5_path.exists():

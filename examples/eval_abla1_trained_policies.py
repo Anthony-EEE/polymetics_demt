@@ -30,6 +30,63 @@ CONDITIONS = {
 }
 
 
+def radius_tag(radius):
+    cm = float(radius) * 100.0
+    if np.isclose(cm, round(cm)):
+        return f"r{int(round(cm))}"
+    return "r" + f"{float(radius):.3f}".rstrip("0").rstrip(".").replace(".", "p")
+
+
+def start_sampling_mode(args):
+    if float(args.shared_start_radius_min) > 0.0:
+        return "xz_annulus"
+    return "xz_disk"
+
+
+def evaluation_distribution(args):
+    outer = radius_tag(args.shared_start_radius)
+    if start_sampling_mode(args) == "xz_annulus":
+        inner = radius_tag(args.shared_start_radius_min)
+        return f"paired_shared_absolute_corridor_starts_annulus_{inner}_{outer}"
+    return f"paired_shared_absolute_corridor_starts_{outer}"
+
+
+def sample_xz_annulus(inner_radius, outer_radius):
+    inner_radius = float(inner_radius)
+    outer_radius = float(outer_radius)
+    theta = np.random.uniform(0.0, 2.0 * np.pi)
+    radius = np.sqrt(np.random.uniform(inner_radius * inner_radius, outer_radius * outer_radius))
+    return np.array([radius * np.cos(theta), 0.0, radius * np.sin(theta)], dtype=float)
+
+
+def sample_shared_start_delta(args):
+    outer_radius = float(args.shared_start_radius)
+    if start_sampling_mode(args) == "xz_annulus":
+        return sample_xz_annulus(args.shared_start_radius_min, outer_radius)
+    return sample_xz_disk(1.0) * outer_radius
+
+
+def xz_radius(delta):
+    delta = np.asarray(delta, dtype=float)
+    return float(np.linalg.norm(delta[[0, 2]]))
+
+
+def xz_angle(delta):
+    delta = np.asarray(delta, dtype=float)
+    return float(np.arctan2(delta[2], delta[0]))
+
+
+def validate_start_sampling_args(args):
+    inner_radius = float(args.shared_start_radius_min)
+    outer_radius = float(args.shared_start_radius)
+    if inner_radius < 0.0:
+        raise ValueError("--shared-start-radius-min must be >= 0.")
+    if outer_radius <= 0.0:
+        raise ValueError("--shared-start-radius must be > 0.")
+    if inner_radius >= outer_radius:
+        raise ValueError("--shared-start-radius-min must be smaller than --shared-start-radius.")
+
+
 def add_robomimic_to_path():
     root = str(ARCAP_ROOT)
     if root not in sys.path:
@@ -191,6 +248,8 @@ def generate_shared_corridor_starts(args):
     base_corridor_start = np.asarray(args.corridor_start_center, dtype=float)
     starts = []
     records = []
+    distribution = evaluation_distribution(args)
+    sampling_mode = start_sampling_mode(args)
 
     sim = PandaSim(gui=args.gui, output_dir=None, sample_hz=args.sample_hz)
     sim.playback_speed = args.playback_speed
@@ -199,21 +258,28 @@ def generate_shared_corridor_starts(args):
         for rollout_index in range(args.num_rollouts):
             rejected = []
             for attempt in range(1, int(args.max_start_sample_attempts) + 1):
-                normalized_delta = sample_xz_disk(1.0)
-                delta = normalized_delta * float(args.shared_start_radius)
+                delta = sample_shared_start_delta(args)
+                normalized_delta = delta / float(args.shared_start_radius)
                 target = base_corridor_start + delta
                 _, realised, error = solve_ik_with_error(sim, target)
 
                 if error <= float(args.corridor_start_max_error):
+                    radial_distance = xz_radius(delta)
                     starts.append(target)
                     records.append(
                         {
                             "rollout_index": rollout_index,
                             "attempts": attempt,
                             "max_error": float(args.corridor_start_max_error),
+                            "start_sampling_mode": sampling_mode,
+                            "evaluation_distribution": distribution,
+                            "shared_start_radius_min": float(args.shared_start_radius_min),
+                            "shared_start_radius_max": float(args.shared_start_radius),
                             "shared_start_radius": float(args.shared_start_radius),
                             "normalized_delta": normalized_delta.tolist(),
                             "corridor_start_delta": delta.tolist(),
+                            "radial_distance_from_center": radial_distance,
+                            "start_angle_rad": xz_angle(delta),
                             "corridor_start": target.tolist(),
                             "realised_start": realised.tolist(),
                             "ik_error": error,
@@ -225,8 +291,13 @@ def generate_shared_corridor_starts(args):
 
                 rejected.append(
                     {
+                        "start_sampling_mode": sampling_mode,
+                        "shared_start_radius_min": float(args.shared_start_radius_min),
+                        "shared_start_radius_max": float(args.shared_start_radius),
                         "normalized_delta": normalized_delta.tolist(),
                         "corridor_start_delta": delta.tolist(),
+                        "radial_distance_from_center": xz_radius(delta),
+                        "start_angle_rad": xz_angle(delta),
                         "corridor_start": target.tolist(),
                         "ik_error": error,
                     }
@@ -242,7 +313,7 @@ def generate_shared_corridor_starts(args):
 
     print(
         f"Generated {len(starts)} shared reachable corridor starts with "
-        f"radius={args.shared_start_radius} for conditions={args.conditions}."
+        f"distribution={distribution} for conditions={args.conditions}."
     )
     return starts, records
 
@@ -255,10 +326,13 @@ def write_start_manifest(args, path, starts, records):
         "num_rollouts": int(args.num_rollouts),
         "sample_hz": float(args.sample_hz),
         "corridor_start_center": [float(v) for v in args.corridor_start_center],
+        "start_sampling_mode": start_sampling_mode(args),
+        "shared_start_radius_min": float(args.shared_start_radius_min),
+        "shared_start_radius_max": float(args.shared_start_radius),
         "shared_start_radius": float(args.shared_start_radius),
         "corridor_start_max_error": float(args.corridor_start_max_error),
         "max_start_sample_attempts": int(args.max_start_sample_attempts),
-        "evaluation_distribution": "paired_shared_absolute_corridor_starts_r35",
+        "evaluation_distribution": evaluation_distribution(args),
         "shared_corridor_starts": [np.asarray(start, dtype=float).tolist() for start in starts],
         "shared_start_records": records,
     }
@@ -280,10 +354,25 @@ def load_start_manifest(args, path):
             f"Manifest {path} has {len(records)} start records, expected {args.num_rollouts}."
         )
     expected_radius = float(args.shared_start_radius)
-    actual_radius = float(manifest.get("shared_start_radius", expected_radius))
+    actual_radius = float(
+        manifest.get("shared_start_radius_max", manifest.get("shared_start_radius", expected_radius))
+    )
     if not np.isclose(actual_radius, expected_radius):
         raise ValueError(
             f"Manifest {path} shared_start_radius={actual_radius}, expected {expected_radius}."
+        )
+    expected_min_radius = float(args.shared_start_radius_min)
+    actual_min_radius = float(manifest.get("shared_start_radius_min", 0.0))
+    if not np.isclose(actual_min_radius, expected_min_radius):
+        raise ValueError(
+            f"Manifest {path} shared_start_radius_min={actual_min_radius}, expected {expected_min_radius}."
+        )
+    expected_distribution = evaluation_distribution(args)
+    actual_distribution = manifest.get("evaluation_distribution", expected_distribution)
+    if actual_distribution != expected_distribution:
+        raise ValueError(
+            f"Manifest {path} evaluation_distribution={actual_distribution!r}, "
+            f"expected {expected_distribution!r}."
         )
     print(f"Loaded {len(starts)} shared corridor starts from manifest={path}")
     return starts, records
@@ -296,8 +385,11 @@ def build_aggregate(args, summaries, shared_corridor_starts, shared_start_record
         "horizon": args.horizon,
         "action_dt": args.action_dt,
         "success_lift_height": args.success_lift_height,
-        "evaluation_distribution": "paired_shared_absolute_corridor_starts_r35",
+        "evaluation_distribution": evaluation_distribution(args),
         "corridor_start_center": [float(v) for v in args.corridor_start_center],
+        "start_sampling_mode": start_sampling_mode(args),
+        "shared_start_radius_min": float(args.shared_start_radius_min),
+        "shared_start_radius_max": float(args.shared_start_radius),
         "shared_start_radius": float(args.shared_start_radius),
         "corridor_start_max_error": float(args.corridor_start_max_error),
         "max_start_sample_attempts": int(args.max_start_sample_attempts),
@@ -385,7 +477,14 @@ def run_one_rollout(
         "base_corridor_start": base_corridor_start.tolist(),
         "corridor_start_delta": delta_start.tolist(),
         "normalized_start_offset": start_sample_record["normalized_delta"],
+        "start_sampling_mode": start_sample_record.get("start_sampling_mode", "xz_disk"),
+        "shared_start_radius_min": float(start_sample_record.get("shared_start_radius_min", 0.0)),
+        "shared_start_radius_max": float(
+            start_sample_record.get("shared_start_radius_max", start_sample_record["shared_start_radius"])
+        ),
         "shared_start_radius": float(start_sample_record["shared_start_radius"]),
+        "radial_distance_from_center": xz_radius(delta_start),
+        "start_angle_rad": xz_angle(delta_start),
         "condition_corridor_start_radius": float(CONDITIONS[condition]["corridor_start_radius"]),
         "ik_realised_error": corridor_error,
         "max_error": float(corridor_start_max_error),
@@ -509,7 +608,11 @@ def evaluate_condition(args, condition, ckpt, shared_corridor_starts, shared_sta
         "success_count": success_count,
         "success_rate": success_count / max(1, len(results)),
         "condition_config": CONDITIONS[condition],
-        "evaluation_distribution": "paired_shared_absolute_corridor_starts_r35",
+        "evaluation_distribution": evaluation_distribution(args),
+        "start_sampling_mode": start_sampling_mode(args),
+        "shared_start_radius_min": float(args.shared_start_radius_min),
+        "shared_start_radius_max": float(args.shared_start_radius),
+        "shared_start_radius": float(args.shared_start_radius),
         "video_path": (
             str(args.video_dir / f"spatial_{condition}_seed{args.seed}_n{args.num_rollouts}.mp4")
             if args.save_videos
@@ -540,6 +643,7 @@ def parse_args():
     parser.add_argument("--action-dt", type=float, default=None)
     parser.add_argument("--num-points", type=int, default=10000)
     parser.add_argument("--success-lift-height", type=float, default=0.20)
+    parser.add_argument("--shared-start-radius-min", type=float, default=0.0)
     parser.add_argument("--shared-start-radius", type=float, default=0.35)
     parser.add_argument("--corridor-start-max-error", type=float, default=0.025)
     parser.add_argument("--max-start-sample-attempts", type=int, default=1000)
@@ -570,6 +674,7 @@ def parse_args():
 
 def main():
     args = parse_args()
+    validate_start_sampling_args(args)
     if args.action_dt is None:
         args.action_dt = float(args.action_gap) / float(args.sample_hz)
 

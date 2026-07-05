@@ -23,6 +23,11 @@ OUTPUT_DIR=${OUTPUT_DIR:-"${PROJECT_DIR}/dataset/ar_guidance_spatial_S15_S35/pol
 VIDEO_DIR=${VIDEO_DIR:-"${OUTPUT_DIR}/videos"}
 EPOCH=${EPOCH:-999999}
 CONDITIONS=${CONDITIONS:-"S15 S20 S25 S30 S35"}
+SAMPLE_HZ=${SAMPLE_HZ:-8}
+SHARED_START_RADIUS_MIN=${SHARED_START_RADIUS_MIN:-0.0}
+SHARED_START_RADIUS=${SHARED_START_RADIUS:-0.35}
+CORRIDOR_START_MAX_ERROR=${CORRIDOR_START_MAX_ERROR:-0.025}
+MAX_START_SAMPLE_ATTEMPTS=${MAX_START_SAMPLE_ATTEMPTS:-1000}
 
 if [[ -n "${CONDITION:-}" ]]; then
   CONDITIONS="${CONDITION}"
@@ -63,6 +68,7 @@ echo "[INFO] Python: ${PYTHON}"
 echo "[INFO] Conditions: ${CONDITIONS}"
 echo "[INFO] Output dir: ${OUTPUT_DIR}"
 echo "[INFO] Start manifest: ${START_MANIFEST:-N/A}"
+echo "[INFO] Shared start radius min/max: ${SHARED_START_RADIUS_MIN}/${SHARED_START_RADIUS}"
 "${PYTHON}" --version
 which nvidia-smi >/dev/null 2>&1 && nvidia-smi || true
 
@@ -74,6 +80,11 @@ which nvidia-smi >/dev/null 2>&1 && nvidia-smi || true
   --num-rollouts "${NUM_ROLLOUTS:-10}" \
   --seed "${SEED:-628}" \
   --horizon "${HORIZON:-80}" \
+  --sample-hz "${SAMPLE_HZ}" \
+  --shared-start-radius-min "${SHARED_START_RADIUS_MIN}" \
+  --shared-start-radius "${SHARED_START_RADIUS}" \
+  --corridor-start-max-error "${CORRIDOR_START_MAX_ERROR}" \
+  --max-start-sample-attempts "${MAX_START_SAMPLE_ATTEMPTS}" \
   --playback-speed "${PLAYBACK_SPEED:-100}" \
   --cuda \
   --save-videos \

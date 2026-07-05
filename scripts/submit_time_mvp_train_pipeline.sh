@@ -8,12 +8,14 @@ RUN_SCRIPT=${RUN_SCRIPT:-"${ARCAP_TRAIN_DIR}/run_pybullet_dp.sh"}
 CONFIG_DIR=${CONFIG_DIR:-"${PROJECT_DIR}/training_config/ar_guidance_temporal_T00_T100"}
 OUTPUT_DIR=${OUTPUT_DIR:-"/scratch/prj/eng_demt_robot_learning/trained_models/ar_guidance_temporal_T00_T100"}
 SBATCH_DEPENDENCY=${SBATCH_DEPENDENCY:-}
+CONDITIONS=${CONDITIONS:-"T00 T25 T50 T75 T100"}
+RUN_TEMPLATE=${RUN_TEMPLATE:-"temporal_{condition}_d30_seed1_2gap"}
 
-conditions=(T00 T25 T50 T75 T100)
+read -r -a conditions <<< "${CONDITIONS}"
 
 for condition in "${conditions[@]}"; do
   config="${CONFIG_DIR}/temporal_${condition}.json"
-  exp_name="temporal_${condition}_d30_seed1_2gap"
+  exp_name="${RUN_TEMPLATE//\{condition\}/${condition}}"
   slurm_name="time_${condition}_dp"
 
   if [[ ! -f "${config}" ]]; then

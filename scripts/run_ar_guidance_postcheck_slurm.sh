@@ -19,6 +19,8 @@ MODULES=${MODULES:-"anaconda3/2022.10-gcc-13.2.0"}
 TRACK=${TRACK:-"all"}
 SPATIAL_ROOT=${SPATIAL_ROOT:-"${PROJECT_DIR}/dataset/ar_guidance_spatial_S15_S35"}
 TEMPORAL_ROOT=${TEMPORAL_ROOT:-"${PROJECT_DIR}/dataset/ar_guidance_temporal_T00_T100"}
+TEMPORAL_CONDITIONS=${TEMPORAL_CONDITIONS:-"T00 T25 T50 T75 T100"}
+TEMPORAL_DATASET_TEMPLATE=${TEMPORAL_DATASET_TEMPLATE:-"temporal_{condition}_d30_seed1"}
 
 mkdir -p "${PROJECT_DIR}/logs" "${SPATIAL_ROOT}/logs" "${TEMPORAL_ROOT}/logs"
 cd "${PROJECT_DIR}"
@@ -54,16 +56,18 @@ run_spatial() {
 }
 
 run_temporal() {
-  for cond in T00 T25 T50 T75 T100; do
+  read -r -a temporal_conditions <<< "${TEMPORAL_CONDITIONS}"
+  for cond in "${temporal_conditions[@]}"; do
+    dataset_name="${TEMPORAL_DATASET_TEMPLATE//\{condition\}/${cond}}"
     python scripts/check_time_mvp_dataset.py \
-      "${TEMPORAL_ROOT}/temporal_${cond}_d30_seed1" \
+      "${TEMPORAL_ROOT}/${dataset_name}" \
       --expected-demos 30 \
       --expected-condition "${cond}"
   done
   python examples/plot_time_mvp_temporal.py \
     --dataset-root "${TEMPORAL_ROOT}" \
-    --conditions T00 T25 T50 T75 T100 \
-    --dataset-template 'temporal_{condition}_d30_seed1' \
+    --conditions "${temporal_conditions[@]}" \
+    --dataset-template "${TEMPORAL_DATASET_TEMPLATE}" \
     --output-dir "${TEMPORAL_ROOT}/temporal_plots"
 }
 

@@ -18,6 +18,10 @@ PYTHON=${PYTHON:-"/scratch/users/k23114984/conda/arcap/bin/python"}
 OUTPUT_DIR=${OUTPUT_DIR:-"${PROJECT_DIR}/dataset/ar_guidance_spatial_S15_S35/policy_rollouts_seed628_shared_r35"}
 START_MANIFEST=${START_MANIFEST:-"${OUTPUT_DIR}/shared_start_manifest_seed${SEED:-628}_n${NUM_ROLLOUTS:-10}_r35.json"}
 CONDITIONS=${CONDITIONS:-"S15 S20 S25 S30 S35"}
+SHARED_START_RADIUS_MIN=${SHARED_START_RADIUS_MIN:-0.0}
+SHARED_START_RADIUS=${SHARED_START_RADIUS:-0.35}
+CORRIDOR_START_MAX_ERROR=${CORRIDOR_START_MAX_ERROR:-0.025}
+MAX_START_SAMPLE_ATTEMPTS=${MAX_START_SAMPLE_ATTEMPTS:-1000}
 
 read -r -a CONDITION_ARGS <<< "${CONDITIONS}"
 
@@ -34,6 +38,7 @@ echo "[INFO] Node list: ${SLURM_NODELIST:-N/A}"
 echo "[INFO] Python: ${PYTHON}"
 echo "[INFO] Output dir: ${OUTPUT_DIR}"
 echo "[INFO] Start manifest: ${START_MANIFEST}"
+echo "[INFO] Shared start radius min/max: ${SHARED_START_RADIUS_MIN}/${SHARED_START_RADIUS}"
 "${PYTHON}" --version
 
 "${PYTHON}" -u examples/eval_abla1_trained_policies.py \
@@ -42,9 +47,10 @@ echo "[INFO] Start manifest: ${START_MANIFEST}"
   --seed "${SEED:-628}" \
   --sample-hz "${SAMPLE_HZ:-8}" \
   --playback-speed "${PLAYBACK_SPEED:-100}" \
-  --shared-start-radius "${SHARED_START_RADIUS:-0.35}" \
-  --corridor-start-max-error "${CORRIDOR_START_MAX_ERROR:-0.025}" \
-  --max-start-sample-attempts "${MAX_START_SAMPLE_ATTEMPTS:-1000}" \
+  --shared-start-radius-min "${SHARED_START_RADIUS_MIN}" \
+  --shared-start-radius "${SHARED_START_RADIUS}" \
+  --corridor-start-max-error "${CORRIDOR_START_MAX_ERROR}" \
+  --max-start-sample-attempts "${MAX_START_SAMPLE_ATTEMPTS}" \
   --output-dir "${OUTPUT_DIR}" \
   --write-start-manifest "${START_MANIFEST}" \
   --generate-start-manifest-only \
