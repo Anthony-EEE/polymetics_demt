@@ -1,6 +1,6 @@
 # Handoff: T-RO MVP-0 Position Event Experiment
 
-_Last updated: 2026-07-23 · Branch: hpc-headless-tro @ 72ca390_
+_Last updated: 2026-07-23 · Branch: hpc-headless-tro @ 7c043cc_
 
 ## Goal
 
@@ -24,9 +24,9 @@ AR guidance、human study、Rotation/Velocity 或跨任务 generalisation。
 - 当前尚未修改 generator、创建 evaluation bank、采集新 demonstrations、训练新
   policy 或提交任何 TRO Slurm job。
 - 当前实验阶段为 **Gate 0: Repository audit 尚未开始**。
-- 前一阶段 CoRL/DEMT AR-settings anti-cherry-picking 实验已经关闭；其 closure
-  在 `handoffs/corl-demt-ar-settings-experiment-closure.md`，不得把该阶段结果包装为
-  T-RO 新贡献。
+- 前一阶段 CoRL/DEMT AR-settings anti-cherry-picking 实验已经关闭并压缩封存于
+  `handoffs/legacy-corl-demt-experiments-archive.md`；不得把该阶段结果包装为 T-RO
+  新贡献，也不得在本分支重启旧实验。
 - 工作树中还存在四个与本任务无关的 0-byte 未跟踪文件：
   `[`, `count=0`, `done`, `fi`。保留且不要加入提交。
 
@@ -59,8 +59,8 @@ AR guidance、human study、Rotation/Velocity 或跨任务 generalisation。
 
 - 唯一 source of truth：
   `docs/tro_plan.md`
-- 前阶段 closure：
-  `handoffs/corl-demt-ar-settings-experiment-closure.md`
+- 前阶段只读总档案：
+  `handoffs/legacy-corl-demt-experiments-archive.md`
 - 现有 Position generator/evaluator：
   `examples/main_abla_1.py`
   `examples/eval_abla1_trained_policies.py`
@@ -73,9 +73,8 @@ AR guidance、human study、Rotation/Velocity 或跨任务 generalisation。
   `scripts/run_abla1_eval_merge.sh`
 - 现有 paired rollout contract：
   `examples/rollout_contract.py`
-- 已完成的 S15–S35 execution context：
-  `handoffs/ar-guidance-spatial-temporal-experiments.md`
-  `handoffs/position-contact-n50-rollouts.md`
+- 已完成的 S15–S35 与 Position/Contact/Temporal execution context：
+  `handoffs/legacy-corl-demt-experiments-archive.md`
 - Gate 0 开始前的只读检查：
   ```bash
   git status -sb
@@ -117,3 +116,5 @@ AR guidance、human study、Rotation/Velocity 或跨任务 generalisation。
 
 - 2026-07-23: 创建新 TRO MVP-0 Position-event handoff，记录 execution-ready plan、
   当前 Gate 0 状态、已有可复用基础、禁止复用的旧结果和下一步审计顺序。
+- 2026-07-23: 将旧 CoRL/DEMT handoff 引用统一替换为只读总档案，并记录当前
+  `hpc-headless-tro @ 7c043cc` 基线。
