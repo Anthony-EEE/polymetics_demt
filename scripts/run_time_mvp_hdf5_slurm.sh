@@ -8,15 +8,15 @@
 #SBATCH --time=12:00:00
 #SBATCH --partition=interruptible_cpu
 #SBATCH --hint=nomultithread
-#SBATCH --output=/scratch/prj/eng_demt_robot_learning/polymetics_demt/dataset/ar_guidance_temporal_T00_T100/logs/hdf5-%j.out
-#SBATCH --error=/scratch/prj/eng_demt_robot_learning/polymetics_demt/dataset/ar_guidance_temporal_T00_T100/logs/hdf5-%j.err
+#SBATCH --output=/scratch/prj/eng_demt_robot_learning/polymetics_demt/dataset/temporal_vref_reciprocal_spatial_v2/logs/hdf5-%j.out
+#SBATCH --error=/scratch/prj/eng_demt_robot_learning/polymetics_demt/dataset/temporal_vref_reciprocal_spatial_v2/logs/hdf5-%j.err
 
 set -euo pipefail
 
 PROJECT_DIR=${PROJECT_DIR:-"/scratch/prj/eng_demt_robot_learning/polymetics_demt"}
 CONDA_ENV=${CONDA_ENV:-"/scratch/users/k23114984/conda/arcap"}
 SCRIPT=${SCRIPT:-"scripts/create_time_mvp_hdf5.py"}
-DATASET_ROOT=${DATASET_ROOT:-"${PROJECT_DIR}/dataset/ar_guidance_temporal_T00_T100"}
+DATASET_ROOT=${DATASET_ROOT:-"${PROJECT_DIR}/dataset/temporal_vref_reciprocal_spatial_v2"}
 LOG_DIR="${DATASET_ROOT}/logs"
 
 mkdir -p "${LOG_DIR}"

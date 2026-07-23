@@ -13,9 +13,9 @@ import numpy as np
 
 
 DEFAULT_DATASET_ROOT = Path(
-    "/scratch/prj/eng_demt_robot_learning/polymetics_demt/dataset/ar_guidance_temporal_T00_T100"
+    "/scratch/prj/eng_demt_robot_learning/polymetics_demt/dataset/temporal_vref_reciprocal_spatial_v2"
 )
-CONDITIONS = ("T00", "T25", "T50", "T75", "T100")
+CONDITIONS = ("VR1P5", "V050_200", "VR3", "VR4")
 LADDER_PHASE_ORDER = (
     "random_start",
     "open_gripper",
@@ -379,6 +379,77 @@ def plot_summary(condition_to_demos, output_path):
     plt.close(fig)
 
 
+def plot_spatial_manifest_summary(condition_to_demos, output_path):
+    fig, axes = plt.subplots(2, 2, figsize=(11, 10), constrained_layout=True)
+    fig.suptitle("Shared reciprocal spatial candidate audit", fontsize=14)
+    reference_condition = next(iter(condition_to_demos))
+    reference = condition_to_demos[reference_condition]
+    starts = np.asarray([demo["metadata"]["random_start"] for demo in reference])
+    deltas = np.asarray([demo["metadata"]["corridor_start_delta"] for demo in reference])
+    pre = np.asarray([demo["metadata"]["pre_grasp_delta"] for demo in reference])
+
+    axes[0, 0].scatter(starts[:, 0], starts[:, 2], c=np.arange(len(starts)), cmap="viridis")
+    axes[0, 0].set(xlabel="random start x [m]", ylabel="random start z [m]", title="reachable random starts")
+    axes[0, 0].set_xlim(0.19, 0.61)
+    axes[0, 0].set_ylim(0.19, 0.61)
+    axes[0, 0].set_aspect("equal")
+
+    axes[0, 1].scatter(deltas[:, 0], deltas[:, 2], c=np.arange(len(deltas)), cmap="viridis")
+    boundary = plt.Circle((0.0, 0.0), 0.05, fill=False, color="black", linewidth=1.5)
+    axes[0, 1].add_patch(boundary)
+    axes[0, 1].set(xlabel="corridor delta x [m]", ylabel="corridor delta z [m]", title="uniform-area XZ disk offsets")
+    axes[0, 1].set_xlim(-0.055, 0.055)
+    axes[0, 1].set_ylim(-0.055, 0.055)
+    axes[0, 1].set_aspect("equal")
+
+    axes[1, 0].scatter(pre[:, 0], pre[:, 2], color="#e15759")
+    axes[1, 0].set(xlabel="pre-grasp delta x [m]", ylabel="pre-grasp delta z [m]", title="fixed pre-grasp point mass")
+    axes[1, 0].set_xlim(-0.005, 0.005)
+    axes[1, 0].set_ylim(-0.005, 0.005)
+
+    fields = ("random_start", "corridor_start_delta", "pre_grasp_delta")
+    for condition, demos in condition_to_demos.items():
+        errors = []
+        for demo_index, demo in enumerate(demos):
+            ref = reference[demo_index]["metadata"]
+            error = max(
+                float(np.max(np.abs(np.asarray(demo["metadata"][field]) - np.asarray(ref[field]))))
+                for field in fields
+            )
+            errors.append(error)
+        axes[1, 1].plot(range(len(errors)), errors, marker=".", label=condition)
+    axes[1, 1].set_yscale("symlog", linthresh=1e-16)
+    axes[1, 1].set(xlabel="candidate index", ylabel="max absolute spatial difference [m]", title=f"candidate-wise equality vs {reference_condition}")
+    axes[1, 1].legend()
+    for ax in axes.flat:
+        ax.grid(True, alpha=0.25)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(output_path, dpi=220)
+    plt.close(fig)
+
+
+def plot_group_multiplier_histograms(condition_to_demos, output_path):
+    fig, axes = plt.subplots(2, 2, figsize=(12, 9), constrained_layout=True)
+    fig.suptitle("Independent P6/P7 reciprocal multiplier distributions", fontsize=14)
+    for ax, (condition, demos) in zip(axes.flat, condition_to_demos.items()):
+        metadata = [demo["metadata"] for demo in demos]
+        for group, color in (("P6", "#4c78a8"), ("P7", "#e15759")):
+            values = [float(row["sampled_group_multipliers"][group]) for row in metadata]
+            ax.hist(values, bins=min(12, max(3, int(np.sqrt(len(values))))), alpha=0.55, label=group, color=color)
+        low, high = metadata[0]["condition_multiplier_range"]
+        ax.axvline(float(low), color="black", linestyle="--", linewidth=1)
+        ax.axvline(float(high), color="black", linestyle="--", linewidth=1)
+        exact = metadata[0].get("condition_multiplier_range_exact", [str(low), str(high)])
+        ax.set_title(f"{condition}: [{exact[0]}, {exact[1]}]")
+        ax.set_xlabel("duration multiplier")
+        ax.set_ylabel("candidate count")
+        ax.grid(True, axis="y", alpha=0.25)
+        ax.legend()
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(output_path, dpi=220)
+    plt.close(fig)
+
+
 def parse_args():
     parser = argparse.ArgumentParser(description="Plot temporal MVP EE position and phase timing.")
     parser.add_argument("--dataset-root", type=Path, default=DEFAULT_DATASET_ROOT)
@@ -407,6 +478,12 @@ def main():
     summary_path = output_dir / f"temporal_{args.conditions[0]}_{args.conditions[-1]}_summary.png"
     plot_summary(condition_to_demos, summary_path)
     print(f"summary: saved {summary_path}", flush=True)
+    spatial_path = output_dir / "reciprocal_shared_spatial_candidates.png"
+    plot_spatial_manifest_summary(condition_to_demos, spatial_path)
+    print(f"spatial audit: saved {spatial_path}", flush=True)
+    multiplier_path = output_dir / "reciprocal_p6_p7_multiplier_histograms.png"
+    plot_group_multiplier_histograms(condition_to_demos, multiplier_path)
+    print(f"P6/P7 multiplier histograms: saved {multiplier_path}", flush=True)
 
 
 if __name__ == "__main__":

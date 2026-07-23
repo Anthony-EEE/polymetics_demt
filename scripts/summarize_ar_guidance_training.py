@@ -32,6 +32,16 @@ TRACKS = {
         "conditions": ("T00", "T25", "T50", "T75", "T100"),
         "experiment_template": "temporal_{condition}_d30_seed1_2gap",
     },
+    "temporal_reciprocal": {
+        "model_root": Path(
+            "/scratch/prj/eng_demt_robot_learning/trained_models/temporal_vref_reciprocal_spatial_v2"
+        ),
+        "output_dir": Path(
+            "/scratch/prj/eng_demt_robot_learning/polymetics_demt/dataset/temporal_vref_reciprocal_spatial_v2"
+        ),
+        "conditions": ("VR1P5", "V050_200", "VR3", "VR4"),
+        "experiment_template": "temporal_{condition}_d30_seed1_2gap",
+    },
 }
 
 
@@ -42,7 +52,9 @@ CKPT_RE = re.compile(r"model_epoch_(\d+)\.pth$")
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Summarize AR-guidance training logs and checkpoints.")
-    parser.add_argument("--track", choices=("spatial", "temporal", "all"), default="all")
+    parser.add_argument(
+        "--track", choices=("spatial", "temporal", "temporal_reciprocal", "all"), default="all"
+    )
     return parser.parse_args()
 
 

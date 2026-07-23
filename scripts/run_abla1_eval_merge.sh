@@ -15,8 +15,9 @@ set -euo pipefail
 
 PROJECT_DIR=${PROJECT_DIR:-"/scratch/prj/eng_demt_robot_learning/polymetics_demt"}
 PYTHON=${PYTHON:-"/scratch/users/k23114984/conda/arcap/bin/python"}
-OUTPUT_DIR=${OUTPUT_DIR:-"${PROJECT_DIR}/dataset/ar_guidance_spatial_S15_S35/policy_rollouts_seed628_shared_r35"}
-START_MANIFEST=${START_MANIFEST:-"${OUTPUT_DIR}/shared_start_manifest_seed${SEED:-628}_n${NUM_ROLLOUTS:-10}_r35.json"}
+OUTPUT_DIR=${OUTPUT_DIR:-"${PROJECT_DIR}/dataset/ar_guidance_spatial_S15_S35/policy_rollouts_seed628_shared_r35_paired_n50_h200"}
+START_MANIFEST=${START_MANIFEST:-"${OUTPUT_DIR}/shared_start_manifest_seed${SEED:-628}_n${NUM_ROLLOUTS:-50}_r35.json"}
+CHECKPOINT_MANIFEST=${CHECKPOINT_MANIFEST:-"${OUTPUT_DIR}/checkpoint_manifest.json"}
 CONDITIONS=${CONDITIONS:-"S15 S20 S25 S30 S35"}
 SHARED_START_RADIUS_MIN=${SHARED_START_RADIUS_MIN:-0.0}
 SHARED_START_RADIUS=${SHARED_START_RADIUS:-0.35}
@@ -43,10 +44,14 @@ echo "[INFO] Shared start radius min/max: ${SHARED_START_RADIUS_MIN}/${SHARED_ST
 
 "${PYTHON}" -u examples/eval_abla1_trained_policies.py \
   --conditions "${CONDITION_ARGS[@]}" \
-  --num-rollouts "${NUM_ROLLOUTS:-10}" \
+  --checkpoint-manifest "${CHECKPOINT_MANIFEST}" \
+  --num-rollouts "${NUM_ROLLOUTS:-50}" \
   --seed "${SEED:-628}" \
-  --horizon "${HORIZON:-80}" \
+  --horizon "${HORIZON:-200}" \
   --sample-hz "${SAMPLE_HZ:-8}" \
+  --action-gap "${ACTION_GAP:-2}" \
+  --action-dt "${ACTION_DT:-0.25}" \
+  --num-points "${NUM_POINTS:-10000}" \
   --playback-speed "${PLAYBACK_SPEED:-100}" \
   --shared-start-radius-min "${SHARED_START_RADIUS_MIN}" \
   --shared-start-radius "${SHARED_START_RADIUS}" \
@@ -55,5 +60,6 @@ echo "[INFO] Shared start radius min/max: ${SHARED_START_RADIUS_MIN}/${SHARED_ST
   --success-lift-height "${SUCCESS_LIFT_HEIGHT:-0.20}" \
   --output-dir "${OUTPUT_DIR}" \
   --start-manifest "${START_MANIFEST}" \
+  --terminate-on-success \
   --merge-only \
   "$@"

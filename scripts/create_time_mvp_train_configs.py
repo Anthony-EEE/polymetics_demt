@@ -8,13 +8,13 @@ DEFAULT_TEMPLATE = Path(
     "/users/k23114984/code/arcap_policy/STEP2_train_policy/robomimic/training_config/sim_test_00.json"
 )
 DEFAULT_DATASET_ROOT = Path(
-    "/scratch/prj/eng_demt_robot_learning/polymetics_demt/dataset/ar_guidance_temporal_T00_T100"
+    "/scratch/prj/eng_demt_robot_learning/polymetics_demt/dataset/temporal_vref_reciprocal_spatial_v2"
 )
-DEFAULT_CONFIG_DIR = Path("training_config/ar_guidance_temporal_T00_T100")
+DEFAULT_CONFIG_DIR = Path("training_config/temporal_vref_reciprocal_spatial_v2")
 DEFAULT_MODEL_ROOT = Path(
-    "/scratch/prj/eng_demt_robot_learning/trained_models/ar_guidance_temporal_T00_T100"
+    "/scratch/prj/eng_demt_robot_learning/trained_models/temporal_vref_reciprocal_spatial_v2"
 )
-CONDITIONS = ("T00", "T25", "T50", "T75", "T100")
+CONDITIONS = ("VR1P5", "V050_200", "VR3", "VR4")
 
 
 def parse_args():

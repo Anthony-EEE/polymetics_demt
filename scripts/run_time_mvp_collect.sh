@@ -21,7 +21,7 @@ set -euo pipefail
 
 PROJECT_DIR=${PROJECT_DIR:-"/scratch/prj/eng_demt_robot_learning/polymetics_demt"}
 CONDA_ENV=${CONDA_ENV:-"/scratch/users/k23114984/conda/envs/polymetis38"}
-OUTPUT_ROOT=${OUTPUT_ROOT:-"${PROJECT_DIR}/dataset/ar_guidance_temporal_T00_T100"}
+OUTPUT_ROOT=${OUTPUT_ROOT:-"${PROJECT_DIR}/dataset/temporal_vref_reciprocal_spatial_v2"}
 LOG_DIR=${LOG_DIR:-"${PROJECT_DIR}/logs"}
 MODULES=${MODULES:-"anaconda3/2022.10-gcc-13.2.0"}
 
@@ -43,6 +43,9 @@ RANDOM_START_Z=${RANDOM_START_Z:-0.40}
 RANDOM_START_MAX_ATTEMPTS=${RANDOM_START_MAX_ATTEMPTS:-200}
 V_REF_SOURCE_JSON=${V_REF_SOURCE_JSON:-"outputs/week2_human_phase_reference_p6p7_v2/v_ref_phase_reference.json"}
 V_REF_GROUP=${V_REF_GROUP:-"P6P7_post_valid_order"}
+COLLECTION_MANIFEST=${COLLECTION_MANIFEST:-}
+CANDIDATE_OFFSET=${CANDIDATE_OFFSET:-0}
+ALLOW_CANDIDATE_FAILURES=${ALLOW_CANDIDATE_FAILURES:-0}
 
 mkdir -p "${LOG_DIR}" "${OUTPUT_ROOT}"
 
@@ -73,9 +76,9 @@ export OPENBLAS_NUM_THREADS=${SLURM_CPUS_PER_TASK:-4}
 export MKL_NUM_THREADS=${SLURM_CPUS_PER_TASK:-4}
 
 case "${CONDITION}" in
-  T00|T25|T50|T75|T100|V075_150|V050_200|V025_250) ;;
+  T00|T25|T50|T75|T100|V075_150|V050_200|V025_250|VR1P5|VR3|VR4) ;;
   *)
-    echo "[ERROR] Unknown CONDITION='${CONDITION}'. Use one of: T00 T25 T50 T75 T100 V075_150 V050_200 V025_250."
+    echo "[ERROR] Unknown CONDITION='${CONDITION}'. Use one of: T00 T25 T50 T75 T100 V075_150 V050_200 V025_250 VR1P5 VR3 VR4."
     exit 1
     ;;
 esac
@@ -104,6 +107,12 @@ args=(
   "--max-collection-attempts" "${MAX_COLLECTION_ATTEMPTS}"
   "--no-gui"
 )
+if [[ -n "${COLLECTION_MANIFEST}" ]]; then
+  args+=(--collection-manifest "${COLLECTION_MANIFEST}" --candidate-offset "${CANDIDATE_OFFSET}")
+fi
+if [[ "${ALLOW_CANDIDATE_FAILURES}" == "1" ]]; then
+  args+=(--allow-candidate-failures)
+fi
 args+=("$@")
 
 echo "[INFO] Starting temporal MVP data collection"

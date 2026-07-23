@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 import argparse
+import hashlib
 import json
 import math
 import random
 import shutil
+from fractions import Fraction
 from pathlib import Path
 
 import numpy as np
@@ -18,16 +20,50 @@ LADDER_TIME_CONDITIONS = {
     "T75": (0.25, 1.75),
     "T100": (0.00, 2.00),
 }
-VREF_TIME_CONDITIONS = {
+HISTORICAL_VREF_TIME_CONDITIONS = {
     "V075_150": (0.75, 1.50),
     "V050_200": (0.50, 2.00),
     "V025_250": (0.25, 2.50),
+}
+RECIPROCAL_VREF_N = {
+    "VR1P5": Fraction(3, 2),
+    "V050_200": Fraction(2, 1),
+    "VR3": Fraction(3, 1),
+    "VR4": Fraction(4, 1),
+}
+RECIPROCAL_VREF_TIME_CONDITIONS = {
+    condition: (float(1 / reciprocal_n), float(reciprocal_n))
+    for condition, reciprocal_n in RECIPROCAL_VREF_N.items()
+}
+VREF_TIME_CONDITIONS = {
+    **HISTORICAL_VREF_TIME_CONDITIONS,
+    **RECIPROCAL_VREF_TIME_CONDITIONS,
 }
 TIME_CONDITIONS = {
     **LADDER_TIME_CONDITIONS,
     **VREF_TIME_CONDITIONS,
 }
 MIN_PHASE_DURATION_FRAMES = 1
+
+
+def reciprocal_condition_metadata(condition):
+    reciprocal_n = RECIPROCAL_VREF_N.get(condition)
+    if reciprocal_n is None:
+        return {}
+    low = 1 / reciprocal_n
+    return {
+        "reciprocal_n": float(reciprocal_n),
+        "reciprocal_n_exact": str(reciprocal_n),
+        "condition_multiplier_range_exact": [str(low), str(reciprocal_n)],
+        "condition_multiplier_range_rational": [
+            {"numerator": low.numerator, "denominator": low.denominator},
+            {
+                "numerator": reciprocal_n.numerator,
+                "denominator": reciprocal_n.denominator,
+            },
+        ],
+        "reciprocal_range_product": float(low * reciprocal_n),
+    }
 
 PHASES = (
     "open_gripper",
@@ -63,6 +99,8 @@ DEFAULT_V_REF_SOURCE_JSON = Path(
     "outputs/week2_human_phase_reference_p6p7_v2/v_ref_phase_reference.json"
 )
 DEFAULT_V_REF_GROUP = "P6P7_post_valid_order"
+P6_V_REF_GROUP = "P6_target_post_skill1_valid_order"
+P7_V_REF_GROUP = "P7_target_post_skill2_valid_order"
 _CLOSE_LIFT_TOTAL = BASE_DURATIONS["close_gripper"] + BASE_DURATIONS["lift"]
 VREF_CLOSE_FRACTION = BASE_DURATIONS["close_gripper"] / _CLOSE_LIFT_TOTAL
 SIMULATOR_PHASE_MAPPING = {
@@ -92,6 +130,91 @@ def sample_phase_multipliers(condition, phases=PHASES):
     if abs(low - high) <= 1e-12:
         return {phase: 1.0 for phase in phases}
     return {phase: float(np.random.uniform(low, high)) for phase in phases}
+
+
+def map_common_uniform(condition, common_u):
+    reciprocal_n = RECIPROCAL_VREF_N[condition]
+    low = 1 / reciprocal_n
+    return float(low) + float(common_u) * (float(reciprocal_n) - float(low))
+
+
+def file_sha256(path):
+    digest = hashlib.sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def load_collection_manifest(path):
+    path = Path(path)
+    with open(path, "r", encoding="utf-8") as f:
+        manifest = json.load(f)
+    expected_order = list(RECIPROCAL_VREF_N)
+    if manifest.get("schema_version") != 2:
+        raise ValueError(f"{path}: expected collection manifest schema_version=2")
+    if manifest.get("condition_order") != expected_order:
+        raise ValueError(f"{path}: condition_order must be {expected_order}")
+    candidates = manifest.get("candidates", [])
+    if len(candidates) != int(manifest.get("num_candidates", -1)):
+        raise ValueError(f"{path}: candidate count disagrees with num_candidates")
+    ids = [candidate.get("candidate_id") for candidate in candidates]
+    if len(ids) != len(set(ids)):
+        raise ValueError(f"{path}: duplicate candidate IDs")
+    return manifest, file_sha256(path)
+
+
+def load_v_ref_group_record(v_ref_source_json, group):
+    source_path = Path(v_ref_source_json)
+    with open(source_path, "r", encoding="utf-8") as f:
+        reference = json.load(f)
+    record = reference.get("groups", {}).get(group)
+    if record is None:
+        raise KeyError(f"{group!r} not found in {source_path}")
+    durations = record.get("phase_mean_durations_s", {})
+    missing = [phase for phase in VREF_PHASES if phase not in durations]
+    if missing:
+        raise KeyError(f"{source_path} group {group!r} missing phases: {missing}")
+    return {
+        "group": group,
+        "n": int(record["n"]),
+        "phase_mean_durations_s": {phase: float(durations[phase]) for phase in VREF_PHASES},
+    }
+
+
+def paired_p6_p7_duration_inputs(v_ref_source_json, condition, candidate_spec):
+    uniforms = candidate_spec["common_uniforms"]
+    stored = candidate_spec["condition_group_multipliers"][condition]
+    group_multipliers = {
+        "P6": map_common_uniform(condition, uniforms["P6"]),
+        "P7": map_common_uniform(condition, uniforms["P7"]),
+    }
+    for group in ("P6", "P7"):
+        if not math.isclose(group_multipliers[group], float(stored[group]), abs_tol=1e-15):
+            raise ValueError(
+                f"{candidate_spec['candidate_id']}: stored {group} multiplier does not map from common U"
+            )
+    p6 = load_v_ref_group_record(v_ref_source_json, P6_V_REF_GROUP)
+    p7 = load_v_ref_group_record(v_ref_source_json, P7_V_REF_GROUP)
+    total_n = p6["n"] + p7["n"]
+    pooled = {
+        phase: (
+            p6["n"] * p6["phase_mean_durations_s"][phase]
+            + p7["n"] * p7["phase_mean_durations_s"][phase]
+        )
+        / total_n
+        for phase in VREF_PHASES
+    }
+    scaled = {
+        phase: (
+            p6["n"] * p6["phase_mean_durations_s"][phase] * group_multipliers["P6"]
+            + p7["n"] * p7["phase_mean_durations_s"][phase] * group_multipliers["P7"]
+        )
+        / total_n
+        for phase in VREF_PHASES
+    }
+    effective = {phase: scaled[phase] / pooled[phase] for phase in VREF_PHASES}
+    return pooled, effective, group_multipliers, {"P6": p6, "P7": p7}
 
 
 def phase_duration_plan(multipliers, sample_period):
@@ -211,6 +334,8 @@ class TimeMvpSim(PandaSim):
         success_lift_height=0.20,
         v_ref_source_json=DEFAULT_V_REF_SOURCE_JSON,
         v_ref_group=DEFAULT_V_REF_GROUP,
+        candidate_spec=None,
+        collection_manifest_metadata=None,
     ):
         if condition_label not in TIME_CONDITIONS:
             raise ValueError(f"Unknown temporal condition {condition_label!r}")
@@ -229,6 +354,8 @@ class TimeMvpSim(PandaSim):
                 success_lift_height=success_lift_height,
                 v_ref_source_json=v_ref_source_json,
                 v_ref_group=v_ref_group,
+                candidate_spec=candidate_spec,
+                collection_manifest_metadata=collection_manifest_metadata,
             )
 
         cube = self.cube_pos()
@@ -372,11 +499,20 @@ class TimeMvpSim(PandaSim):
         success_lift_height,
         v_ref_source_json,
         v_ref_group,
+        candidate_spec=None,
+        collection_manifest_metadata=None,
     ):
         cube = self.cube_pos()
         print(f"Cube at: {cube}")
 
-        random_start = np.asarray(random_start, dtype=float)
+        if condition_label in RECIPROCAL_VREF_N and candidate_spec is None:
+            raise ValueError(
+                f"Corrected reciprocal condition {condition_label} requires --collection-manifest"
+            )
+        random_start = np.asarray(
+            candidate_spec["random_start"] if candidate_spec is not None else random_start,
+            dtype=float,
+        )
         random_start, random_start_q, random_start_info = self.sample_reachable_random_start(
             x_bounds=(random_start[0], random_start[0]),
             z_bounds=(random_start[2], random_start[2]),
@@ -384,11 +520,24 @@ class TimeMvpSim(PandaSim):
         )
         self.reset_to_ee_pose(random_start_q, gripper_width=0.04)
 
-        base_pre_grasp = np.array([cube[0], cube[1], 0.22])
-        base_corridor_start = np.array(
-            [cube[0] - float(entry_dx), float(corridor_start_y), base_pre_grasp[2] + float(entry_dz)]
+        base_pre_grasp = np.array(
+            candidate_spec["base_pre_grasp"]
+            if candidate_spec is not None
+            else [cube[0], cube[1], 0.22],
+            dtype=float,
         )
-        delta_start = np.zeros(3, dtype=float)
+        base_corridor_start = np.array(
+            candidate_spec["base_corridor_start"]
+            if candidate_spec is not None
+            else [cube[0] - float(entry_dx), float(corridor_start_y), base_pre_grasp[2] + float(entry_dz)],
+            dtype=float,
+        )
+        delta_start = np.array(
+            candidate_spec["corridor_start_delta"]
+            if candidate_spec is not None
+            else [0.0, 0.0, 0.0],
+            dtype=float,
+        )
         delta_pre = np.zeros(3, dtype=float)
         corridor_start = base_corridor_start + delta_start
         pre_grasp = base_pre_grasp + delta_pre
@@ -401,8 +550,18 @@ class TimeMvpSim(PandaSim):
             "grasp": self.ik_reachable(grasp),
             "lift": self.ik_reachable(lift),
         }
-        v_ref_phase_durations = load_v_ref_phase_durations(v_ref_source_json, v_ref_group)
-        multipliers = sample_phase_multipliers(condition_label, phases=VREF_PHASES)
+        group_multipliers = None
+        group_references = None
+        if candidate_spec is not None:
+            (
+                v_ref_phase_durations,
+                multipliers,
+                group_multipliers,
+                group_references,
+            ) = paired_p6_p7_duration_inputs(v_ref_source_json, condition_label, candidate_spec)
+        else:
+            v_ref_phase_durations = load_v_ref_phase_durations(v_ref_source_json, v_ref_group)
+            multipliers = sample_phase_multipliers(condition_label, phases=VREF_PHASES)
         duration_plan = vref_duration_plan(v_ref_phase_durations, multipliers, self.sample_period)
 
         self.write_vref_time_metadata(
@@ -430,6 +589,10 @@ class TimeMvpSim(PandaSim):
             duration_plan=duration_plan,
             condition_multiplier_range=TIME_CONDITIONS[condition_label],
             waypoint_reachability=waypoints_ok,
+            candidate_spec=candidate_spec,
+            collection_manifest_metadata=collection_manifest_metadata,
+            sampled_group_multipliers=group_multipliers,
+            group_references=group_references,
         )
         if not all(waypoints_ok.values()):
             details = {
@@ -592,6 +755,10 @@ class TimeMvpSim(PandaSim):
         duration_plan,
         condition_multiplier_range,
         waypoint_reachability,
+        candidate_spec=None,
+        collection_manifest_metadata=None,
+        sampled_group_multipliers=None,
+        group_references=None,
     ):
         metadata = {
             "task": "cube_grasp_lift_time_mvp",
@@ -668,6 +835,33 @@ class TimeMvpSim(PandaSim):
             "entry_dz": float(entry_dz),
             "waypoint_reachability": waypoint_reachability,
         }
+        metadata.update(reciprocal_condition_metadata(condition_label))
+        if candidate_spec is not None:
+            metadata.update(
+                {
+                    "collection_manifest": collection_manifest_metadata,
+                    "candidate_id": candidate_spec["candidate_id"],
+                    "candidate_index": int(candidate_spec["candidate_index"]),
+                    "source_draw_index": int(candidate_spec["source_draw_index"]),
+                    "random_start_bounds": candidate_spec["random_start_bounds"],
+                    "corridor_disk_latents": candidate_spec["corridor_disk_latents"],
+                    "common_uniforms": candidate_spec["common_uniforms"],
+                    "sampled_group_multipliers": {
+                        group: float(value)
+                        for group, value in sampled_group_multipliers.items()
+                    },
+                    "group_reference_records": group_references,
+                    "timing_sampling_protocol": (
+                        "P6 and P7 use independent common uniforms; each reciprocal condition "
+                        "maps the same uniforms through m=1/n+U*(n-1/n), scales the two "
+                        "human group references independently, then pools them by group n"
+                    ),
+                    "spatial_sampling_protocol": (
+                        "shared manifest: reachable y=0 random start; uniform-area XZ corridor "
+                        "disk r=0.05*sqrt(U); fixed pre-grasp"
+                    ),
+                }
+            )
         self.write_demo_metadata(metadata)
 
 
@@ -689,6 +883,9 @@ def parse_args():
     parser.add_argument("--success-lift-height", type=float, default=0.20)
     parser.add_argument("--v-ref-source-json", type=Path, default=DEFAULT_V_REF_SOURCE_JSON)
     parser.add_argument("--v-ref-group", default=DEFAULT_V_REF_GROUP)
+    parser.add_argument("--collection-manifest", type=Path, default=None)
+    parser.add_argument("--candidate-offset", type=int, default=0)
+    parser.add_argument("--allow-candidate-failures", action="store_true")
     parser.add_argument("--max-collection-attempts", type=int, default=0)
     parser.add_argument("--no-gui", action="store_true")
     parser.add_argument("--preview", action="store_true")
@@ -703,20 +900,48 @@ def main():
     random.seed(args.seed)
     np.random.seed(args.seed)
 
+    collection_manifest_metadata = None
+    candidate_specs = None
+    if args.collection_manifest is not None:
+        collection_manifest, manifest_sha256 = load_collection_manifest(args.collection_manifest)
+        start = int(args.candidate_offset)
+        stop = start + int(args.num_demos)
+        candidate_specs = collection_manifest["candidates"][start:stop]
+        if len(candidate_specs) != int(args.num_demos):
+            raise ValueError(
+                f"Requested candidates [{start}:{stop}], but manifest contains "
+                f"{len(collection_manifest['candidates'])}"
+            )
+        collection_manifest_metadata = {
+            "path": str(args.collection_manifest.resolve()),
+            "sha256": manifest_sha256,
+            "schema_version": int(collection_manifest["schema_version"]),
+            "seed": int(collection_manifest["seed"]),
+        }
+    elif args.time_condition in RECIPROCAL_VREF_N:
+        raise ValueError(
+            f"Corrected reciprocal condition {args.time_condition} requires --collection-manifest"
+        )
+
     max_attempts = args.max_collection_attempts
     if max_attempts <= 0:
         max_attempts = max(args.num_demos * 10, args.num_demos + 10)
 
     success_count = 0
     attempt_count = 0
-    while success_count < args.num_demos:
+    while (
+        attempt_count < len(candidate_specs)
+        if candidate_specs is not None
+        else success_count < args.num_demos
+    ):
         if attempt_count >= max_attempts:
             raise RuntimeError(
                 f"Collected {success_count}/{args.num_demos} successful demos after "
                 f"{attempt_count} attempts."
             )
 
-        demo_idx = success_count
+        candidate_spec = candidate_specs[attempt_count] if candidate_specs is not None else None
+        demo_idx = int(candidate_spec["candidate_index"]) if candidate_spec else success_count
         attempt_count += 1
         print(
             f"Collecting demo_{demo_idx}: attempt {attempt_count}/{max_attempts}, "
@@ -750,6 +975,8 @@ def main():
                 success_lift_height=args.success_lift_height,
                 v_ref_source_json=args.v_ref_source_json,
                 v_ref_group=args.v_ref_group,
+                candidate_spec=candidate_spec,
+                collection_manifest_metadata=collection_manifest_metadata,
             )
             if is_success:
                 if args.output_dir is not None:
@@ -762,6 +989,12 @@ def main():
                     print(f"Deleted failed demo directory: {failed_dir}", flush=True)
         finally:
             sim.close()
+
+    if candidate_specs is not None and success_count != len(candidate_specs):
+        message = f"Manifest batch produced {success_count}/{len(candidate_specs)} successes"
+        if not args.allow_candidate_failures:
+            raise RuntimeError(message)
+        print(f"[WARN] {message}", flush=True)
 
     print(
         f"Collection complete: {success_count}/{args.num_demos} successful demos "

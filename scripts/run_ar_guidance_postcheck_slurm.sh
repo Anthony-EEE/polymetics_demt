@@ -21,6 +21,9 @@ SPATIAL_ROOT=${SPATIAL_ROOT:-"${PROJECT_DIR}/dataset/ar_guidance_spatial_S15_S35
 TEMPORAL_ROOT=${TEMPORAL_ROOT:-"${PROJECT_DIR}/dataset/ar_guidance_temporal_T00_T100"}
 TEMPORAL_CONDITIONS=${TEMPORAL_CONDITIONS:-"T00 T25 T50 T75 T100"}
 TEMPORAL_DATASET_TEMPLATE=${TEMPORAL_DATASET_TEMPLATE:-"temporal_{condition}_d30_seed1"}
+TEMPORAL_PLOT_STRIDE=${TEMPORAL_PLOT_STRIDE:-1}
+RECIPROCAL_ROOT=${RECIPROCAL_ROOT:-"${PROJECT_DIR}/dataset/temporal_vref_reciprocal_spatial_v2"}
+RECIPROCAL_MANIFEST=${RECIPROCAL_MANIFEST:-"${RECIPROCAL_ROOT}/shared_collection_manifest_seed1.json"}
 
 mkdir -p "${PROJECT_DIR}/logs" "${SPATIAL_ROOT}/logs" "${TEMPORAL_ROOT}/logs"
 cd "${PROJECT_DIR}"
@@ -68,7 +71,22 @@ run_temporal() {
     --dataset-root "${TEMPORAL_ROOT}" \
     --conditions "${temporal_conditions[@]}" \
     --dataset-template "${TEMPORAL_DATASET_TEMPLATE}" \
-    --output-dir "${TEMPORAL_ROOT}/temporal_plots"
+    --output-dir "${TEMPORAL_ROOT}/temporal_plots" \
+    --stride "${TEMPORAL_PLOT_STRIDE}"
+}
+
+run_temporal_reciprocal() {
+  python scripts/check_time_mvp_dataset.py \
+    --root "${RECIPROCAL_ROOT}" \
+    --conditions VR1P5 V050_200 VR3 VR4 \
+    --expected-demos 30 \
+    --manifest "${RECIPROCAL_MANIFEST}"
+  python examples/plot_time_mvp_temporal.py \
+    --dataset-root "${RECIPROCAL_ROOT}" \
+    --conditions VR1P5 V050_200 VR3 VR4 \
+    --dataset-template 'temporal_{condition}_d30_seed1' \
+    --output-dir "${RECIPROCAL_ROOT}/temporal_plots" \
+    --stride "${TEMPORAL_PLOT_STRIDE}"
 }
 
 case "${TRACK}" in
@@ -78,12 +96,15 @@ case "${TRACK}" in
   temporal)
     run_temporal
     ;;
+  temporal_reciprocal)
+    run_temporal_reciprocal
+    ;;
   all)
     run_spatial
     run_temporal
     ;;
   *)
-    echo "[ERROR] Unknown TRACK='${TRACK}'. Use spatial, temporal, or all." >&2
+    echo "[ERROR] Unknown TRACK='${TRACK}'. Use spatial, temporal, temporal_reciprocal, or all." >&2
     exit 1
     ;;
 esac

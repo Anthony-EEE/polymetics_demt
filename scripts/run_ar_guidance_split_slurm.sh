@@ -17,11 +17,13 @@ PROJECT_DIR=${PROJECT_DIR:-"/scratch/prj/eng_demt_robot_learning/polymetics_demt
 CONDA_ENV=${CONDA_ENV:-"/scratch/users/k23114984/conda/arcap"}
 PYTHON=${PYTHON:-"/scratch/users/k23114984/conda/arcap/bin/python"}
 MODULES=${MODULES:-"anaconda3/2022.10-gcc-13.2.0"}
-TRACK=${TRACK:-"all"}
+TRACK=${TRACK:-"temporal_reciprocal"}
 RATIO=${RATIO:-"0.1"}
 ACTION_GAP=${ACTION_GAP:-"2"}
 DATASET_ROOT=${DATASET_ROOT:-}
-GROUPS=${GROUPS:-}
+DATASET_GROUPS=${DATASET_GROUPS:-}
+RECIPROCAL_ROOT=${RECIPROCAL_ROOT:-"${PROJECT_DIR}/dataset/temporal_vref_reciprocal_spatial_v2"}
+RECIPROCAL_SELECTION=${RECIPROCAL_SELECTION:-"${RECIPROCAL_ROOT}/selected_candidates.json"}
 
 mkdir -p "${PROJECT_DIR}/logs"
 cd "${PROJECT_DIR}"
@@ -42,6 +44,17 @@ export PYTHONUNBUFFERED=1
 export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK:-4}
 export HDF5_USE_FILE_LOCKING=FALSE
 
+if [[ "${TRACK}" == "temporal_reciprocal" && -z "${DATASET_ROOT}" && -z "${DATASET_GROUPS}" ]]; then
+  "${PYTHON}" scripts/apply_time_mvp_shared_split.py \
+    --dataset-root "${RECIPROCAL_ROOT}" \
+    --selection "${RECIPROCAL_SELECTION}" \
+    --seed 1 \
+    --valid-candidates 3 \
+    --action-gap "${ACTION_GAP}"
+  echo "[INFO] Applied reciprocal candidate-level shared split"
+  exit 0
+fi
+
 args=(
   scripts/split_ar_guidance_hdf5.py
   --track "${TRACK}"
@@ -49,12 +62,12 @@ args=(
   --ratio "${RATIO}"
   --action-gap "${ACTION_GAP}"
 )
-if [[ -n "${DATASET_ROOT}" || -n "${GROUPS}" ]]; then
-  if [[ -z "${DATASET_ROOT}" || -z "${GROUPS}" ]]; then
-    echo "[ERROR] DATASET_ROOT and GROUPS must be set together." >&2
+if [[ -n "${DATASET_ROOT}" || -n "${DATASET_GROUPS}" ]]; then
+  if [[ -z "${DATASET_ROOT}" || -z "${DATASET_GROUPS}" ]]; then
+    echo "[ERROR] DATASET_ROOT and DATASET_GROUPS must be set together." >&2
     exit 1
   fi
-  read -r -a group_args <<< "${GROUPS}"
+  read -r -a group_args <<< "${DATASET_GROUPS}"
   args+=(--dataset-root "${DATASET_ROOT}" --groups "${group_args[@]}")
 fi
 

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import argparse
 import json
+import os
 import random
 import sys
 from collections import deque
@@ -10,6 +11,16 @@ import numpy as np
 import pybullet as pb
 
 from main_abla_1 import DEFAULT_CORRIDOR_START_CENTER, PandaSim, sample_xz_disk
+from rollout_contract import (
+    checkpoints_from_manifest,
+    condition_rollout_statistics,
+    file_sha256,
+    load_json,
+    paired_discordances,
+    stream_seed,
+    validate_rollout_files,
+    write_json,
+)
 
 
 ARCAP_ROOT = Path("/users/k23114984/code/arcap_policy/STEP2_train_policy")
@@ -28,6 +39,27 @@ CONDITIONS = {
     "S30": {"corridor_start_radius": 0.30, "pre_grasp_radius": 0.072},
     "S35": {"corridor_start_radius": 0.35, "pre_grasp_radius": 0.084},
 }
+CONDITION_ORDER = tuple(CONDITIONS)
+
+
+def evaluation_protocol(args):
+    return {
+        "seed": int(args.seed),
+        "num_rollouts": int(args.num_rollouts),
+        "horizon": int(args.horizon),
+        "sample_hz": float(args.sample_hz),
+        "action_gap": int(args.action_gap),
+        "action_dt": float(args.action_dt),
+        "terminate_on_success": bool(args.terminate_on_success),
+        "success_lift_height": float(args.success_lift_height),
+        "num_points": int(args.num_points),
+        "corridor_start_center": [float(v) for v in args.corridor_start_center],
+        "shared_start_radius_min": float(args.shared_start_radius_min),
+        "shared_start_radius_max": float(args.shared_start_radius),
+        "corridor_start_max_error": float(args.corridor_start_max_error),
+        "evaluation_distribution": evaluation_distribution(args),
+        "rng_protocol": "independent spatial/runtime/point-cloud streams; Python, NumPy, Torch and CUDA reset per rollout",
+    }
 
 
 def radius_tag(radius):
@@ -51,19 +83,23 @@ def evaluation_distribution(args):
     return f"paired_shared_absolute_corridor_starts_{outer}"
 
 
-def sample_xz_annulus(inner_radius, outer_radius):
+def sample_xz_annulus(inner_radius, outer_radius, rng=None):
+    rng = np.random if rng is None else rng
     inner_radius = float(inner_radius)
     outer_radius = float(outer_radius)
-    theta = np.random.uniform(0.0, 2.0 * np.pi)
-    radius = np.sqrt(np.random.uniform(inner_radius * inner_radius, outer_radius * outer_radius))
+    theta = rng.uniform(0.0, 2.0 * np.pi)
+    radius = np.sqrt(rng.uniform(inner_radius * inner_radius, outer_radius * outer_radius))
     return np.array([radius * np.cos(theta), 0.0, radius * np.sin(theta)], dtype=float)
 
 
-def sample_shared_start_delta(args):
+def sample_shared_start_delta(args, rng=None):
+    rng = np.random if rng is None else rng
     outer_radius = float(args.shared_start_radius)
     if start_sampling_mode(args) == "xz_annulus":
-        return sample_xz_annulus(args.shared_start_radius_min, outer_radius)
-    return sample_xz_disk(1.0) * outer_radius
+        return sample_xz_annulus(args.shared_start_radius_min, outer_radius, rng=rng)
+    theta = rng.uniform(0.0, 2.0 * np.pi)
+    radius = outer_radius * np.sqrt(rng.uniform(0.0, 1.0))
+    return np.array([radius * np.cos(theta), 0.0, radius * np.sin(theta)], dtype=float)
 
 
 def xz_radius(delta):
@@ -244,8 +280,8 @@ def solve_ik_with_error(sim, target_pos, quat=None):
 
 
 def generate_shared_corridor_starts(args):
-    set_all_seeds(args.seed)
     base_corridor_start = np.asarray(args.corridor_start_center, dtype=float)
+    spatial_rng = np.random.default_rng(stream_seed(args.seed, 0, 0x53504154))
     starts = []
     records = []
     distribution = evaluation_distribution(args)
@@ -258,7 +294,7 @@ def generate_shared_corridor_starts(args):
         for rollout_index in range(args.num_rollouts):
             rejected = []
             for attempt in range(1, int(args.max_start_sample_attempts) + 1):
-                delta = sample_shared_start_delta(args)
+                delta = sample_shared_start_delta(args, rng=spatial_rng)
                 normalized_delta = delta / float(args.shared_start_radius)
                 target = base_corridor_start + delta
                 _, realised, error = solve_ik_with_error(sim, target)
@@ -285,6 +321,8 @@ def generate_shared_corridor_starts(args):
                             "ik_error": error,
                             "rejected_count": attempt - 1,
                             "recent_rejections": rejected[-10:],
+                            "rng_seed": stream_seed(args.seed, rollout_index, 0x52554E),
+                            "point_cloud_rng_seed": stream_seed(args.seed, rollout_index, 0x504344),
                         }
                     )
                     break
@@ -315,6 +353,8 @@ def generate_shared_corridor_starts(args):
         f"Generated {len(starts)} shared reachable corridor starts with "
         f"distribution={distribution} for conditions={args.conditions}."
     )
+    if len({tuple(start.tolist()) for start in starts}) != int(args.num_rollouts):
+        raise RuntimeError("Generated Position manifest contains repeated corridor starts")
     return starts, records
 
 
@@ -322,6 +362,9 @@ def write_start_manifest(args, path, starts, records):
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     manifest = {
+        "schema_version": 2,
+        "condition_order": list(CONDITION_ORDER),
+        "protocol": evaluation_protocol(args),
         "seed": int(args.seed),
         "num_rollouts": int(args.num_rollouts),
         "sample_hz": float(args.sample_hz),
@@ -336,13 +379,17 @@ def write_start_manifest(args, path, starts, records):
         "shared_corridor_starts": [np.asarray(start, dtype=float).tolist() for start in starts],
         "shared_start_records": records,
     }
-    path.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+    write_json(path, manifest)
     print(f"Wrote shared start manifest={path}")
 
 
 def load_start_manifest(args, path):
     path = Path(path)
-    manifest = json.loads(path.read_text(encoding="utf-8"))
+    manifest = load_json(path)
+    if manifest.get("condition_order") != list(CONDITION_ORDER):
+        raise ValueError("Position start manifest has an invalid condition_order")
+    if manifest.get("protocol") != evaluation_protocol(args):
+        raise ValueError("Position start manifest protocol does not exactly match evaluation arguments")
     starts = [np.asarray(start, dtype=float) for start in manifest["shared_corridor_starts"]]
     records = manifest["shared_start_records"]
     if len(starts) != int(args.num_rollouts):
@@ -374,17 +421,30 @@ def load_start_manifest(args, path):
             f"Manifest {path} evaluation_distribution={actual_distribution!r}, "
             f"expected {expected_distribution!r}."
         )
+    if len({tuple(start.tolist()) for start in starts}) != int(args.num_rollouts):
+        raise ValueError(f"Manifest {path} does not contain {args.num_rollouts} distinct starts")
+    for index, (start, record) in enumerate(zip(starts, records)):
+        if record.get("rollout_index") != index or not np.allclose(start, record.get("corridor_start")):
+            raise ValueError(f"Manifest {path} rollout ordering/content mismatch at {index}")
+        if record.get("rng_seed") != stream_seed(args.seed, index, 0x52554E):
+            raise ValueError(f"Manifest {path} runtime RNG seed mismatch at {index}")
+        if record.get("point_cloud_rng_seed") != stream_seed(args.seed, index, 0x504344):
+            raise ValueError(f"Manifest {path} point-cloud RNG seed mismatch at {index}")
+        if float(record.get("ik_error", float("inf"))) > float(args.corridor_start_max_error):
+            raise ValueError(f"Manifest {path} rollout {index} was not IK validated")
     print(f"Loaded {len(starts)} shared corridor starts from manifest={path}")
     return starts, records
 
 
 def build_aggregate(args, summaries, shared_corridor_starts, shared_start_records):
+    summary_by_condition = {summary["condition"]: summary for summary in summaries}
     return {
-        "seed": args.seed,
-        "num_rollouts": args.num_rollouts,
-        "horizon": args.horizon,
-        "action_dt": args.action_dt,
-        "success_lift_height": args.success_lift_height,
+        **evaluation_protocol(args),
+        "condition_order": list(CONDITION_ORDER),
+        "checkpoint_manifest": str(args.checkpoint_manifest),
+        "checkpoint_manifest_sha256": file_sha256(args.checkpoint_manifest),
+        "start_manifest": str(args.start_manifest),
+        "start_manifest_sha256": file_sha256(args.start_manifest),
         "evaluation_distribution": evaluation_distribution(args),
         "corridor_start_center": [float(v) for v in args.corridor_start_center],
         "start_sampling_mode": start_sampling_mode(args),
@@ -395,24 +455,54 @@ def build_aggregate(args, summaries, shared_corridor_starts, shared_start_record
         "max_start_sample_attempts": int(args.max_start_sample_attempts),
         "shared_corridor_starts": [start.tolist() for start in shared_corridor_starts],
         "shared_start_records": shared_start_records,
-        "summaries": summaries,
+        "condition_statistics": {
+            condition: condition_rollout_statistics(summary_by_condition[condition])
+            for condition in CONDITION_ORDER
+        },
+        "paired_success_discordances": paired_discordances(CONDITION_ORDER, summary_by_condition),
+        "summaries": [summary_by_condition[condition] for condition in CONDITION_ORDER],
     }
 
 
-def load_condition_summaries(args):
+def load_condition_summaries(args, checkpoint_manifest):
+    if tuple(args.conditions) != CONDITION_ORDER:
+        raise ValueError(f"Position merge requires exact condition order {CONDITION_ORDER}")
     summaries = []
-    for condition in args.conditions:
+    start_manifest_sha256 = file_sha256(args.start_manifest)
+    for condition in CONDITION_ORDER:
         path = args.output_dir / f"spatial_{condition}_seed{args.seed}_n{args.num_rollouts}.json"
         if not path.exists():
             raise FileNotFoundError(f"Missing condition rollout summary: {path}")
-        summaries.append(json.loads(path.read_text(encoding="utf-8")))
+        summary = load_json(path)
+        if summary.get("condition") != condition:
+            raise ValueError(f"{path} has condition={summary.get('condition')!r}")
+        if summary.get("protocol") != evaluation_protocol(args):
+            raise ValueError(f"{condition} protocol differs from the start manifest")
+        if summary.get("start_manifest_sha256") != start_manifest_sha256:
+            raise ValueError(f"{condition} start manifest hash mismatch")
+        expected_checkpoint = checkpoint_manifest["checkpoints"][condition]
+        if summary.get("checkpoint") != expected_checkpoint["path"]:
+            raise ValueError(f"{condition} checkpoint path differs from explicit manifest")
+        if summary.get("checkpoint_sha256") != expected_checkpoint["sha256"]:
+            raise ValueError(f"{condition} checkpoint hash differs from explicit manifest")
+        rows = summary.get("rollouts", [])
+        if len(rows) != args.num_rollouts:
+            raise ValueError(f"{condition} has {len(rows)} rollouts, expected {args.num_rollouts}")
+        validate_rollout_files(args.output_dir, condition, args.num_rollouts, rows)
+        summaries.append(summary)
+    paired_specs = [[row.get("paired_spec") for row in summary["rollouts"]] for summary in summaries]
+    if any(specs != paired_specs[0] for specs in paired_specs[1:]):
+        raise ValueError("Position paired start/RNG specs differ across conditions")
+    realised = [[row.get("corridor_start") for row in summary["rollouts"]] for summary in summaries]
+    if any(starts != realised[0] for starts in realised[1:]):
+        raise ValueError("Position realised corridor starts differ across conditions")
     return summaries
 
 
 def write_aggregate_summary(args, summaries, shared_corridor_starts, shared_start_records):
     aggregate = build_aggregate(args, summaries, shared_corridor_starts, shared_start_records)
     aggregate_path = args.output_dir / f"summary_seed{args.seed}_n{args.num_rollouts}.json"
-    aggregate_path.write_text(json.dumps(aggregate, indent=2), encoding="utf-8")
+    write_json(aggregate_path, aggregate)
 
     print("\nSuccess rates")
     for s in summaries:
@@ -459,6 +549,9 @@ def run_one_rollout(
     video_recorder=None,
     video_every_n_actions=2,
 ):
+    rollout_seed = int(start_sample_record["rng_seed"])
+    point_cloud_rng_seed = int(start_sample_record["point_cloud_rng_seed"])
+    set_all_seeds(rollout_seed)
     reset_cube(sim)
     sim.reset()
     reset_cube(sim)
@@ -494,7 +587,7 @@ def run_one_rollout(
     }
 
     gripper_state = -1.0
-    pcd_rng = np.random.default_rng(seed + rollout_index)
+    pcd_rng = np.random.default_rng(point_cloud_rng_seed)
     policy.start_episode()
     obs_horizon = int(policy.policy.global_config.algo.horizon.observation_horizon)
     first_obs = current_obs(sim, gripper_state, num_points=num_points, pcd_rng=pcd_rng)
@@ -538,8 +631,12 @@ def run_one_rollout(
     return {
         "condition": condition,
         "rollout_index": rollout_index,
+        "paired_spec": start_sample_record,
+        "rng_seed": rollout_seed,
+        "point_cloud_rng_seed": point_cloud_rng_seed,
         "success": bool(is_success),
         "steps": step + 1,
+        "time_to_success_s": float((step + 1) * action_dt) if is_success else None,
         "corridor_start": corridor_start.tolist(),
         "corridor_start_info": corridor_start_info,
         "final_cube_z": details["final_cube_z"],
@@ -587,6 +684,7 @@ def evaluate_condition(args, condition, ckpt, shared_corridor_starts, shared_sta
                 video_every_n_actions=args.video_every_n_actions,
             )
             results.append(result)
+            write_json(args.output_dir / "rollouts" / condition / f"rollout_{i:03d}.json", result)
             print(
                 f"[{condition}] rollout {i:02d}: success={result['success']} "
                 f"final_cube_z={result['final_cube_z']:.4f} "
@@ -603,11 +701,22 @@ def evaluate_condition(args, condition, ckpt, shared_corridor_starts, shared_sta
     return {
         "condition": condition,
         "checkpoint": str(ckpt),
+        "checkpoint_sha256": file_sha256(ckpt),
         "device": device,
         "num_rollouts": len(results),
         "success_count": success_count,
         "success_rate": success_count / max(1, len(results)),
         "condition_config": CONDITIONS[condition],
+        "protocol": evaluation_protocol(args),
+        "checkpoint_manifest": str(args.checkpoint_manifest),
+        "start_manifest": str(args.start_manifest),
+        "start_manifest_sha256": file_sha256(args.start_manifest),
+        "execution": {
+            "slurm_job_id": os.environ.get("SLURM_JOB_ID"),
+            "slurm_array_job_id": os.environ.get("SLURM_ARRAY_JOB_ID"),
+            "slurm_array_task_id": os.environ.get("SLURM_ARRAY_TASK_ID"),
+            "slurm_node_list": os.environ.get("SLURM_NODELIST"),
+        },
         "evaluation_distribution": evaluation_distribution(args),
         "start_sampling_mode": start_sampling_mode(args),
         "shared_start_radius_min": float(args.shared_start_radius_min),
@@ -635,6 +744,7 @@ def parse_args():
     )
     parser.add_argument("--conditions", nargs="+", default=["S15", "S20", "S25", "S30", "S35"], choices=sorted(CONDITIONS))
     parser.add_argument("--epoch", type=int, default=40)
+    parser.add_argument("--checkpoint-manifest", type=Path, default=None)
     parser.add_argument("--seed", type=int, default=628)
     parser.add_argument("--num-rollouts", type=int, default=10)
     parser.add_argument("--horizon", type=int, default=80)
@@ -693,20 +803,28 @@ def main():
     if args.generate_start_manifest_only:
         return
 
+    if args.start_manifest is None or args.checkpoint_manifest is None:
+        raise ValueError("--start-manifest and --checkpoint-manifest are required for evaluation/merge")
+    checkpoint_manifest, checkpoint_paths = checkpoints_from_manifest(
+        args.checkpoint_manifest, CONDITION_ORDER, args.conditions
+    )
+
     if args.merge_only:
-        summaries = load_condition_summaries(args)
+        summaries = load_condition_summaries(args, checkpoint_manifest)
         write_aggregate_summary(args, summaries, shared_corridor_starts, shared_start_records)
         return
 
     summaries = []
     for condition in args.conditions:
-        ckpt = latest_checkpoint(args.model_root, condition, args.epoch, args.experiment_template)
+        ckpt = checkpoint_paths[condition]
         summary = evaluate_condition(args, condition, ckpt, shared_corridor_starts, shared_start_records)
         summaries.append(summary)
         out_path = args.output_dir / f"spatial_{condition}_seed{args.seed}_n{args.num_rollouts}.json"
-        out_path.write_text(json.dumps(summary, indent=2), encoding="utf-8")
+        write_json(out_path, summary)
 
     if not args.skip_aggregate:
+        if tuple(args.conditions) != CONDITION_ORDER:
+            raise ValueError("Position aggregate requires all conditions; use --skip-aggregate for array tasks")
         write_aggregate_summary(args, summaries, shared_corridor_starts, shared_start_records)
 
 

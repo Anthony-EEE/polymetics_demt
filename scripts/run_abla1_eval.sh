@@ -9,7 +9,7 @@
 #SBATCH --partition=interruptible_gpu
 #SBATCH --gres=gpu:1
 #SBATCH --constraint="a100|l40s|h200|h100"
-#SBATCH --exclude=erc-hpc-comp040,erc-hpc-comp035
+#SBATCH --exclude=erc-hpc-comp040,erc-hpc-comp035,erc-hpc-comp223
 #SBATCH --hint=nomultithread
 #SBATCH --output=/scratch/prj/eng_demt_robot_learning/polymetics_demt/dataset/ar_guidance_spatial_S15_S35/logs/eval-%A_%a.out
 #SBATCH --error=/scratch/prj/eng_demt_robot_learning/polymetics_demt/dataset/ar_guidance_spatial_S15_S35/logs/eval-%A_%a.err
@@ -19,9 +19,10 @@ set -euo pipefail
 PROJECT_DIR=${PROJECT_DIR:-"/scratch/prj/eng_demt_robot_learning/polymetics_demt"}
 PYTHON=${PYTHON:-"/scratch/users/k23114984/conda/arcap/bin/python"}
 MODEL_ROOT=${MODEL_ROOT:-"/scratch/prj/eng_demt_robot_learning/trained_models/ar_guidance_spatial_S15_S35"}
-OUTPUT_DIR=${OUTPUT_DIR:-"${PROJECT_DIR}/dataset/ar_guidance_spatial_S15_S35/policy_rollouts_seed628_latest"}
+OUTPUT_DIR=${OUTPUT_DIR:-"${PROJECT_DIR}/dataset/ar_guidance_spatial_S15_S35/policy_rollouts_seed628_shared_r35_paired_n50_h200"}
 VIDEO_DIR=${VIDEO_DIR:-"${OUTPUT_DIR}/videos"}
 EPOCH=${EPOCH:-999999}
+CHECKPOINT_MANIFEST=${CHECKPOINT_MANIFEST:-"${OUTPUT_DIR}/checkpoint_manifest.json"}
 CONDITIONS=${CONDITIONS:-"S15 S20 S25 S30 S35"}
 SAMPLE_HZ=${SAMPLE_HZ:-8}
 SHARED_START_RADIUS_MIN=${SHARED_START_RADIUS_MIN:-0.0}
@@ -40,6 +41,7 @@ if [[ -n "${SLURM_ARRAY_TASK_ID:-}" ]]; then
     exit 2
   fi
   CONDITIONS="${CONDITION_LIST[$SLURM_ARRAY_TASK_ID]}"
+  SKIP_AGGREGATE=1
 fi
 
 read -r -a CONDITION_ARGS <<< "${CONDITIONS}"
@@ -76,17 +78,23 @@ which nvidia-smi >/dev/null 2>&1 && nvidia-smi || true
   --model-root "${MODEL_ROOT}" \
   --conditions "${CONDITION_ARGS[@]}" \
   --experiment-template '{condition}/spatial_{condition}_d30_seed1_2gap' \
+  --checkpoint-manifest "${CHECKPOINT_MANIFEST}" \
   --epoch "${EPOCH}" \
-  --num-rollouts "${NUM_ROLLOUTS:-10}" \
+  --num-rollouts "${NUM_ROLLOUTS:-50}" \
   --seed "${SEED:-628}" \
-  --horizon "${HORIZON:-80}" \
+  --horizon "${HORIZON:-200}" \
   --sample-hz "${SAMPLE_HZ}" \
+  --action-gap "${ACTION_GAP:-2}" \
+  --action-dt "${ACTION_DT:-0.25}" \
+  --num-points "${NUM_POINTS:-10000}" \
+  --success-lift-height "${SUCCESS_LIFT_HEIGHT:-0.20}" \
   --shared-start-radius-min "${SHARED_START_RADIUS_MIN}" \
   --shared-start-radius "${SHARED_START_RADIUS}" \
   --corridor-start-max-error "${CORRIDOR_START_MAX_ERROR}" \
   --max-start-sample-attempts "${MAX_START_SAMPLE_ATTEMPTS}" \
   --playback-speed "${PLAYBACK_SPEED:-100}" \
   --cuda \
+  --terminate-on-success \
   --save-videos \
   --video-fps "${VIDEO_FPS:-20}" \
   --video-every-n-actions "${VIDEO_EVERY_N_ACTIONS:-2}" \

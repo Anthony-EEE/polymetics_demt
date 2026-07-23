@@ -33,12 +33,25 @@ TRACKS = {
             "temporal_T100_d30_seed1",
         ),
     },
+    "temporal_reciprocal": {
+        "root": Path(
+            "/scratch/prj/eng_demt_robot_learning/polymetics_demt/dataset/temporal_vref_reciprocal_spatial_v2"
+        ),
+        "groups": (
+            "temporal_VR1P5_d30_seed1",
+            "temporal_V050_200_d30_seed1",
+            "temporal_VR3_d30_seed1",
+            "temporal_VR4_d30_seed1",
+        ),
+    },
 }
 
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Split AR-guidance HDF5 files into train/valid masks.")
-    parser.add_argument("--track", choices=("spatial", "temporal", "all"), default="all")
+    parser.add_argument(
+        "--track", choices=("spatial", "temporal", "temporal_reciprocal", "all"), default="all"
+    )
     parser.add_argument("--dataset-root", type=Path, default=None)
     parser.add_argument("--groups", nargs="+", default=None)
     parser.add_argument("--splitter", type=Path, default=DEFAULT_SPLITTER)
