@@ -16,6 +16,15 @@ CONDITION_RADII = {
     "P10": (0.25, 0.02),
     "P01": (0.10, 0.06),
     "P11": (0.25, 0.06),
+    "START15_APP6": (0.15, 0.060),
+    "START35_APP6": (0.35, 0.060),
+    "START25_APP3P6": (0.25, 0.036),
+    "START25_APP6": (0.25, 0.060),
+    "START25_APP8P4": (0.25, 0.084),
+    "START15_APP3P6": (0.15, 0.036),
+    "START15_APP8P4": (0.15, 0.084),
+    "START35_APP3P6": (0.35, 0.036),
+    "START35_APP8P4": (0.35, 0.084),
 }
 
 EXPECTED_CORRIDOR_START_CENTER = (0.30, 0.0, 0.50)
@@ -83,6 +92,34 @@ def check_demo(
     success = metadata.get("success", {})
     if success.get("success") is not True:
         errors.append(f"{demo_dir.name}: success is not true: {success}")
+
+    if condition in {
+        "START15_APP6",
+        "START35_APP6",
+        "START25_APP3P6",
+        "START25_APP6",
+        "START25_APP8P4",
+        "START15_APP3P6",
+        "START15_APP8P4",
+        "START35_APP3P6",
+        "START35_APP8P4",
+    }:
+        paired_latent = metadata.get("paired_latent")
+        if not isinstance(paired_latent, dict):
+            errors.append(f"{demo_dir.name}: missing paired_latent metadata")
+        else:
+            required = {
+                "candidate_index",
+                "start_angle",
+                "start_radial_quantile",
+                "approach_angle",
+                "approach_radial_quantile",
+                "collection_seed",
+                "runtime_seed",
+            }
+            missing = sorted(required - set(paired_latent))
+            if missing:
+                errors.append(f"{demo_dir.name}: paired_latent missing keys {missing}")
 
     corridor_radius = metadata.get("corridor_start_radius")
     pre_radius = metadata.get("pre_grasp_radius")

@@ -1,0 +1,17 @@
+{
+  "condition_order": [
+    "START15_APP6",
+    "START35_APP6",
+    "START25_APP3P6",
+    "START25_APP8P4"
+  ],
+  "conditions": {
+    "START15_APP6": {"start_radius_m": 0.15, "approach_radius_m": 0.060},
+    "START35_APP6": {"start_radius_m": 0.35, "approach_radius_m": 0.060},
+    "START25_APP3P6": {"start_radius_m": 0.25, "approach_radius_m": 0.036},
+    "START25_APP8P4": {"start_radius_m": 0.25, "approach_radius_m": 0.084}
+  },
+  "trajectory": ["Start", "Approach", "Descent", "Grasp", "Lift"],
+  "demonstration_sample_hz": 8.0,
+  "success_lift_height_m": 0.20
+}

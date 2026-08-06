@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "status": "protocol_blocker",
+  "protocol_id": "tro_stage2_position_composition_missing_cells_v1",
+  "detected_at_gate": 3,
+  "decision": "stop_without_retry_or_scope_change",
+  "reason": "Two frozen active paired latents failed scientifically in START35_APP8P4 during formal collection.",
+  "failures": [
+    {
+      "canonical_seed": 4,
+      "source_collection_seed": 1702,
+      "source_training_seed": 2702,
+      "demo_index": 2,
+      "candidate_index": 4,
+      "accepted_candidate_id": "source_seed1702_candidate_004",
+      "condition": "START35_APP8P4",
+      "final_cube_z_m": 0.03498996287124328,
+      "success_threshold_m": 0.2,
+      "collection_progress_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_stage2_composition/formal/seed4/collection_progress.json",
+      "collection_progress_sha256": "a85e4fdb0f0825907d32563e8c8ca1f6fb769f32de524b6c203752989ac50951",
+      "evidence_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_stage2_composition/formal/seed4/scientific_failures/demo_002_candidate_0004",
+      "evidence_tree_sha256": "d74f873b3abd58a9d3f3843124f138a16290ecfb90c5887bb01dd5bf5f895284"
+    },
+    {
+      "canonical_seed": 5,
+      "source_collection_seed": 1701,
+      "source_training_seed": 2701,
+      "demo_index": 1,
+      "candidate_index": 1,
+      "accepted_candidate_id": "seed5_candidate_001",
+      "condition": "START35_APP8P4",
+      "final_cube_z_m": 0.03498985718810666,
+      "success_threshold_m": 0.2,
+      "collection_progress_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_stage2_composition/formal/seed5/collection_progress.json",
+      "collection_progress_sha256": "5726c09d4c78b48c6fc29a8046cd48f0b80fe90ccc178d74e102ef3324e4f712",
+      "evidence_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_stage2_composition/formal/seed5/scientific_failures/demo_001_candidate_0001",
+      "evidence_tree_sha256": "22a01a41200d61845dcc9da2b5625e9c02508c2ae01901a37e437d9591877147"
+    }
+  ],
+  "slurm": {
+    "smoke_array_job_id": "36053326",
+    "smoke_terminal_tasks": "5/5 COMPLETED",
+    "formal_collection_array_job_id": "36053381",
+    "formal_terminal_states": "seed4/seed5 FAILED; seed1/seed2/seed3 CANCELLED immediately after blocker",
+    "infrastructure_retries": 0,
+    "scientific_retries": 0
+  },
+  "partial_formal_collection": {
+    "seed1_accepted": 5,
+    "seed2_accepted": 5,
+    "seed3_accepted": 4,
+    "seed4_accepted": 2,
+    "seed5_accepted": 1,
+    "usable_as_complete_dataset": false,
+    "excluded_from_training_and_analysis": true
+  },
+  "prohibited_rescues_not_performed": {
+    "condition_specific_latent_replacement": false,
+    "sample_reduction": false,
+    "old_anchor_rebuild": false,
+    "pairing_relaxation": false,
+    "collection_retry_for_scientific_result": false
+  },
+  "downstream_not_started": {
+    "hdf5": true,
+    "training": true,
+    "formal_rollouts": true,
+    "stage3_or_other_task": true
+  }
+}

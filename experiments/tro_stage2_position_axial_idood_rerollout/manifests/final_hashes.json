@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "active_protocol_id": "tro_stage2_position_axial_condition_relative_idood_rerollout_rmax40_v2",
+  "source_stage2_immutable": {
+    "checkpoint_manifest_sha256": "240a936999281f429dd1b043b19df5bd9291ed478933305a7c051c5183227580",
+    "comparison_json_sha256": "c70020fe70ab5aae9959ea990e66a2e2f3c4af4c05f24557a79d64c973ef9113",
+    "summary_md_sha256": "825a13e358b01e8707c99e1f19673b01d46df62edbacecce12bff6bbc6684370"
+  },
+  "rejected_rmax45_pilot": {
+    "protocol_json_sha256": "65f211dd98c353f52b71354b5c7fb9cdb96c75f69fe22b7adeb58bff4f5f0338",
+    "checkpoint_reuse_json_sha256": "ac4413a0205bd3f8b0ceaf0e0174fe79d96ed8bc81fcfc3b2c2a2fd992c62aec",
+    "feasibility_audit_json_sha256": "00cd6fea3dc5fece58e2dd1f2c1dd84b74b1736f6082b03f12b47b034992b845"
+  },
+  "active_rmax40_v2": {
+    "plan_md_sha256": "2da1253f2f5300cf5b5281093e6af3d53e5a3447fd24bcac292ba30537970cc8",
+    "commands_md_sha256": "987704151aad4c8c9f0860fb29d697adabb843c3bb1537edf75b075ec83c1598",
+    "implementation_notes_md_sha256": "0bd0ed2d7d742c64d1d8b73f6bd541187a3e14cc7dcfaf14dd8dfa5941065d6d",
+    "protocol_json_sha256": "cccaf8a345a009d1efa622ff87620d6a2f16d25026a53dcf30ff016c5a7e5803",
+    "checkpoint_reuse_json_sha256": "ac4413a0205bd3f8b0ceaf0e0174fe79d96ed8bc81fcfc3b2c2a2fd992c62aec",
+    "feasibility_audit_json_sha256": "b50fb1502c16d28cebd2e8a9c92c11b8fc80a9aa171fefdb90ec91d684f4ed23",
+    "rollout_manifest_count": 30,
+    "sorted_rollout_manifest_sha256_list_sha256": "d5de69778f91afad8cf49580b69aca2aa6bd19e3252c5635783cb9d1268a5953",
+    "merge_validation_json_sha256": "7a3e7176ba8be7322d7db5814bad90bd4e455054994bf8938596c60716adfd1a",
+    "jobs_json_sha256": "a4b3f5c78bbe4caeb18f4d1b2e90690ed826d8637fb31f3e1eee0ee9f1da1fa7",
+    "storage_inventory_json_sha256": "73172cd83b259dc4fe9abe243a49c27efafcbd65daa037a1d9e7f364e319deb4",
+    "comparison_json_sha256": "ae30a6133436654d6adee85dae14b8db490718df65a5e526638a68f75e3a2353",
+    "summary_md_sha256": "5d495bc11fc7a0ee1f4f912b816d3d143578f2bd38ce3caa50718d144ee73528",
+    "figures": {
+      "condition_id_ood_tradeoff.png": "d53be5feb3ab6048918cd5ae83d72ad1bbba43e71155dc533bfc0a38f1c69faa",
+      "id_ood_pareto.png": "7221171b9ed27b81edbb33975013ebcf1efdcfa314135a8ce66bce0f0e094f2a",
+      "realised_radial_distributions.png": "f13ee960dd9c3df2ed3ca52ca50a1eadd7db1effa66c8a016283deb5d09ca4e2"
+    }
+  },
+  "shared_rollout_manifest_registry_sha256": "a37db4a00486682d02f250c23515e7833d14556af79d5bea38c602da06bdd423",
+  "handoff_md_sha256": "2d495400fd7f4f7f428acfeda43d00fc95e06e2f1dc221e8d172a697c395a518",
+  "code": {
+    "scripts/tro_position_stage2_idood.py": "dc258818dd4cf8f6337c1ef26a69cca99c570ce2bf54538e4154783b11000637",
+    "scripts/analyze_tro_position_stage2_idood.py": "8fad13f60716c01eeb8198e3f3a17628b3c10ab9a4c8a099fe0ea72f863f3c9d",
+    "tests/test_tro_position_stage2_idood.py": "59aa7c6d3650c25ba5a4bc4b3e67078e0699f3efac5634aefca50be1fa14874d"
+  }
+}

@@ -40,10 +40,75 @@ CONDITIONS = {
     "S35": {"corridor_start_radius": 0.35, "pre_grasp_radius": 0.084},
 }
 CONDITION_ORDER = tuple(CONDITIONS)
+TRO_POSITION_MVP0_CONDITIONS = {
+    "START15_APP6": {"corridor_start_radius": 0.15, "pre_grasp_radius": 0.060},
+    "START35_APP6": {"corridor_start_radius": 0.35, "pre_grasp_radius": 0.060},
+    "START25_APP3P6": {"corridor_start_radius": 0.25, "pre_grasp_radius": 0.036},
+    "START25_APP8P4": {"corridor_start_radius": 0.25, "pre_grasp_radius": 0.084},
+}
+TRO_POSITION_MVP0_ORDER = tuple(TRO_POSITION_MVP0_CONDITIONS)
+TRO_POSITION_CONFIRMATION_CONDITIONS = {
+    "START15_APP6": {"corridor_start_radius": 0.15, "pre_grasp_radius": 0.060},
+    "START35_APP6": {"corridor_start_radius": 0.35, "pre_grasp_radius": 0.060},
+    "START25_APP3P6": {"corridor_start_radius": 0.25, "pre_grasp_radius": 0.036},
+    "START25_APP6": {"corridor_start_radius": 0.25, "pre_grasp_radius": 0.060},
+    "START25_APP8P4": {"corridor_start_radius": 0.25, "pre_grasp_radius": 0.084},
+}
+TRO_POSITION_CONFIRMATION_ORDER = tuple(TRO_POSITION_CONFIRMATION_CONDITIONS)
+TRO_POSITION_STAGE2_CONDITIONS = {
+    "START15_APP6": {"corridor_start_radius": 0.15, "pre_grasp_radius": 0.060},
+    "START35_APP6": {"corridor_start_radius": 0.35, "pre_grasp_radius": 0.060},
+    "START25_APP3P6": {"corridor_start_radius": 0.25, "pre_grasp_radius": 0.036},
+    "START25_APP6": {"corridor_start_radius": 0.25, "pre_grasp_radius": 0.060},
+    "START25_APP8P4": {"corridor_start_radius": 0.25, "pre_grasp_radius": 0.084},
+}
+TRO_POSITION_STAGE2_ORDER = tuple(TRO_POSITION_STAGE2_CONDITIONS)
+TRO_POSITION_COMPOSITION_CONDITIONS = {
+    "START15_APP3P6": {"corridor_start_radius": 0.15, "pre_grasp_radius": 0.036},
+    "START15_APP6": {"corridor_start_radius": 0.15, "pre_grasp_radius": 0.060},
+    "START15_APP8P4": {"corridor_start_radius": 0.15, "pre_grasp_radius": 0.084},
+    "START25_APP3P6": {"corridor_start_radius": 0.25, "pre_grasp_radius": 0.036},
+    "START25_APP6": {"corridor_start_radius": 0.25, "pre_grasp_radius": 0.060},
+    "START25_APP8P4": {"corridor_start_radius": 0.25, "pre_grasp_radius": 0.084},
+    "START35_APP3P6": {"corridor_start_radius": 0.35, "pre_grasp_radius": 0.036},
+    "START35_APP6": {"corridor_start_radius": 0.35, "pre_grasp_radius": 0.060},
+    "START35_APP8P4": {"corridor_start_radius": 0.35, "pre_grasp_radius": 0.084},
+}
+TRO_POSITION_COMPOSITION_ORDER = tuple(TRO_POSITION_COMPOSITION_CONDITIONS)
+
+
+def active_conditions(args):
+    if args.experiment_profile == "tro_position_mvp0":
+        return TRO_POSITION_MVP0_CONDITIONS
+    if args.experiment_profile == "tro_position_confirmation":
+        return TRO_POSITION_CONFIRMATION_CONDITIONS
+    if args.experiment_profile in (
+        "tro_position_stage2",
+        "tro_position_stage2_idood",
+    ):
+        return TRO_POSITION_STAGE2_CONDITIONS
+    if args.experiment_profile == "tro_position_composition":
+        return TRO_POSITION_COMPOSITION_CONDITIONS
+    return CONDITIONS
+
+
+def active_condition_order(args):
+    return tuple(active_conditions(args))
+
+
+def accepted_start_manifest_condition_orders(args):
+    orders = {active_condition_order(args)}
+    if args.experiment_profile == "tro_position_composition":
+        # Composition deliberately reuses the immutable Stage 2 and RMAX40
+        # state manifests. Their state/RNG contract was frozen before the
+        # four missing conditions existed, so their metadata retains the
+        # five-condition Stage 2 order.
+        orders.add(TRO_POSITION_STAGE2_ORDER)
+    return orders
 
 
 def evaluation_protocol(args):
-    return {
+    protocol = {
         "seed": int(args.seed),
         "num_rollouts": int(args.num_rollouts),
         "horizon": int(args.horizon),
@@ -60,6 +125,9 @@ def evaluation_protocol(args):
         "evaluation_distribution": evaluation_distribution(args),
         "rng_protocol": "independent spatial/runtime/point-cloud streams; Python, NumPy, Torch and CUDA reset per rollout",
     }
+    if args.bank_id is not None:
+        protocol["bank_id"] = str(args.bank_id)
+    return protocol
 
 
 def radius_tag(radius):
@@ -76,6 +144,8 @@ def start_sampling_mode(args):
 
 
 def evaluation_distribution(args):
+    if args.bank_id is not None:
+        return str(args.bank_id)
     outer = radius_tag(args.shared_start_radius)
     if start_sampling_mode(args) == "xz_annulus":
         inner = radius_tag(args.shared_start_radius_min)
@@ -305,6 +375,11 @@ def generate_shared_corridor_starts(args):
                     records.append(
                         {
                             "rollout_index": rollout_index,
+                            "state_id": (
+                                f"{args.bank_id}_state_{rollout_index:03d}"
+                                if args.bank_id is not None
+                                else f"seed{args.seed}_state_{rollout_index:03d}"
+                            ),
                             "attempts": attempt,
                             "max_error": float(args.corridor_start_max_error),
                             "start_sampling_mode": sampling_mode,
@@ -363,7 +438,7 @@ def write_start_manifest(args, path, starts, records):
     path.parent.mkdir(parents=True, exist_ok=True)
     manifest = {
         "schema_version": 2,
-        "condition_order": list(CONDITION_ORDER),
+        "condition_order": list(active_condition_order(args)),
         "protocol": evaluation_protocol(args),
         "seed": int(args.seed),
         "num_rollouts": int(args.num_rollouts),
@@ -386,7 +461,8 @@ def write_start_manifest(args, path, starts, records):
 def load_start_manifest(args, path):
     path = Path(path)
     manifest = load_json(path)
-    if manifest.get("condition_order") != list(CONDITION_ORDER):
+    manifest_order = tuple(manifest.get("condition_order", ()))
+    if manifest_order not in accepted_start_manifest_condition_orders(args):
         raise ValueError("Position start manifest has an invalid condition_order")
     if manifest.get("protocol") != evaluation_protocol(args):
         raise ValueError("Position start manifest protocol does not exactly match evaluation arguments")
@@ -423,12 +499,17 @@ def load_start_manifest(args, path):
         )
     if len({tuple(start.tolist()) for start in starts}) != int(args.num_rollouts):
         raise ValueError(f"Manifest {path} does not contain {args.num_rollouts} distinct starts")
-    for index, (start, record) in enumerate(zip(starts, records)):
-        if record.get("rollout_index") != index or not np.allclose(start, record.get("corridor_start")):
+    legacy_indices = manifest.get("legacy_rollout_indices")
+    if legacy_indices is None:
+        legacy_indices = list(range(int(args.num_rollouts)))
+    if len(legacy_indices) != int(args.num_rollouts):
+        raise ValueError(f"Manifest {path} legacy_rollout_indices length mismatch")
+    for index, (start, record, legacy_index) in enumerate(zip(starts, records, legacy_indices)):
+        if record.get("rollout_index") != legacy_index or not np.allclose(start, record.get("corridor_start")):
             raise ValueError(f"Manifest {path} rollout ordering/content mismatch at {index}")
-        if record.get("rng_seed") != stream_seed(args.seed, index, 0x52554E):
+        if record.get("rng_seed") != stream_seed(args.seed, legacy_index, 0x52554E):
             raise ValueError(f"Manifest {path} runtime RNG seed mismatch at {index}")
-        if record.get("point_cloud_rng_seed") != stream_seed(args.seed, index, 0x504344):
+        if record.get("point_cloud_rng_seed") != stream_seed(args.seed, legacy_index, 0x504344):
             raise ValueError(f"Manifest {path} point-cloud RNG seed mismatch at {index}")
         if float(record.get("ik_error", float("inf"))) > float(args.corridor_start_max_error):
             raise ValueError(f"Manifest {path} rollout {index} was not IK validated")
@@ -438,9 +519,10 @@ def load_start_manifest(args, path):
 
 def build_aggregate(args, summaries, shared_corridor_starts, shared_start_records):
     summary_by_condition = {summary["condition"]: summary for summary in summaries}
+    condition_order = active_condition_order(args)
     return {
         **evaluation_protocol(args),
-        "condition_order": list(CONDITION_ORDER),
+        "condition_order": list(condition_order),
         "checkpoint_manifest": str(args.checkpoint_manifest),
         "checkpoint_manifest_sha256": file_sha256(args.checkpoint_manifest),
         "start_manifest": str(args.start_manifest),
@@ -457,19 +539,20 @@ def build_aggregate(args, summaries, shared_corridor_starts, shared_start_record
         "shared_start_records": shared_start_records,
         "condition_statistics": {
             condition: condition_rollout_statistics(summary_by_condition[condition])
-            for condition in CONDITION_ORDER
+            for condition in condition_order
         },
-        "paired_success_discordances": paired_discordances(CONDITION_ORDER, summary_by_condition),
-        "summaries": [summary_by_condition[condition] for condition in CONDITION_ORDER],
+        "paired_success_discordances": paired_discordances(condition_order, summary_by_condition),
+        "summaries": [summary_by_condition[condition] for condition in condition_order],
     }
 
 
 def load_condition_summaries(args, checkpoint_manifest):
-    if tuple(args.conditions) != CONDITION_ORDER:
-        raise ValueError(f"Position merge requires exact condition order {CONDITION_ORDER}")
+    condition_order = active_condition_order(args)
+    if tuple(args.conditions) != condition_order:
+        raise ValueError(f"Position merge requires exact condition order {condition_order}")
     summaries = []
     start_manifest_sha256 = file_sha256(args.start_manifest)
-    for condition in CONDITION_ORDER:
+    for condition in condition_order:
         path = args.output_dir / f"spatial_{condition}_seed{args.seed}_n{args.num_rollouts}.json"
         if not path.exists():
             raise FileNotFoundError(f"Missing condition rollout summary: {path}")
@@ -537,6 +620,7 @@ def run_one_rollout(
     rollout_index,
     seed,
     condition,
+    condition_config,
     horizon,
     action_dt,
     success_lift_height,
@@ -578,7 +662,9 @@ def run_one_rollout(
         "shared_start_radius": float(start_sample_record["shared_start_radius"]),
         "radial_distance_from_center": xz_radius(delta_start),
         "start_angle_rad": xz_angle(delta_start),
-        "condition_corridor_start_radius": float(CONDITIONS[condition]["corridor_start_radius"]),
+        "condition_corridor_start_radius": float(
+            condition_config["corridor_start_radius"]
+        ),
         "ik_realised_error": corridor_error,
         "max_error": float(corridor_start_max_error),
         "shared_start_attempts": int(start_sample_record["attempts"]),
@@ -631,6 +717,11 @@ def run_one_rollout(
     return {
         "condition": condition,
         "rollout_index": rollout_index,
+        "legacy_rollout_index": int(start_sample_record["rollout_index"]),
+        "state_id": start_sample_record.get(
+            "state_id",
+            f"legacy_seed{seed}_state_{int(start_sample_record['rollout_index']):03d}",
+        ),
         "paired_spec": start_sample_record,
         "rng_seed": rollout_seed,
         "point_cloud_rng_seed": point_cloud_rng_seed,
@@ -646,6 +737,7 @@ def run_one_rollout(
 
 def evaluate_condition(args, condition, ckpt, shared_corridor_starts, shared_start_records):
     policy, device = load_policy(ckpt, cuda=args.cuda)
+    checkpoint_sha256 = file_sha256(ckpt)
     print(f"[{condition}] checkpoint={ckpt}")
     print(f"[{condition}] device={device}")
 
@@ -671,6 +763,7 @@ def evaluate_condition(args, condition, ckpt, shared_corridor_starts, shared_sta
                 rollout_index=i,
                 seed=args.seed,
                 condition=condition,
+                condition_config=active_conditions(args)[condition],
                 horizon=args.horizon,
                 action_dt=args.action_dt,
                 success_lift_height=args.success_lift_height,
@@ -683,6 +776,9 @@ def evaluate_condition(args, condition, ckpt, shared_corridor_starts, shared_sta
                 video_recorder=video_recorder,
                 video_every_n_actions=args.video_every_n_actions,
             )
+            result["block"] = int(args.block)
+            result["bank_id"] = args.bank_id
+            result["checkpoint_sha256"] = checkpoint_sha256
             results.append(result)
             write_json(args.output_dir / "rollouts" / condition / f"rollout_{i:03d}.json", result)
             print(
@@ -701,12 +797,14 @@ def evaluate_condition(args, condition, ckpt, shared_corridor_starts, shared_sta
     return {
         "condition": condition,
         "checkpoint": str(ckpt),
-        "checkpoint_sha256": file_sha256(ckpt),
+        "checkpoint_sha256": checkpoint_sha256,
+        "block": int(args.block),
+        "bank_id": args.bank_id,
         "device": device,
         "num_rollouts": len(results),
         "success_count": success_count,
         "success_rate": success_count / max(1, len(results)),
-        "condition_config": CONDITIONS[condition],
+        "condition_config": active_conditions(args)[condition],
         "protocol": evaluation_protocol(args),
         "checkpoint_manifest": str(args.checkpoint_manifest),
         "start_manifest": str(args.start_manifest),
@@ -742,7 +840,32 @@ def parse_args():
         default="{condition}/spatial_{condition}_d30_seed1_2gap",
         help="Experiment directory template under --model-root. Must include {condition}.",
     )
-    parser.add_argument("--conditions", nargs="+", default=["S15", "S20", "S25", "S30", "S35"], choices=sorted(CONDITIONS))
+    parser.add_argument(
+        "--experiment-profile",
+        choices=(
+            "legacy_spatial",
+            "tro_position_mvp0",
+            "tro_position_confirmation",
+            "tro_position_stage2",
+            "tro_position_stage2_idood",
+            "tro_position_composition",
+        ),
+        default="legacy_spatial",
+    )
+    parser.add_argument("--bank-id", default=None)
+    parser.add_argument("--block", type=int, default=0)
+    parser.add_argument(
+        "--conditions",
+        nargs="+",
+        default=list(CONDITION_ORDER),
+        choices=sorted(
+            set(CONDITIONS)
+            | set(TRO_POSITION_MVP0_CONDITIONS)
+            | set(TRO_POSITION_CONFIRMATION_CONDITIONS)
+            | set(TRO_POSITION_STAGE2_CONDITIONS)
+            | set(TRO_POSITION_COMPOSITION_CONDITIONS)
+        ),
+    )
     parser.add_argument("--epoch", type=int, default=40)
     parser.add_argument("--checkpoint-manifest", type=Path, default=None)
     parser.add_argument("--seed", type=int, default=628)
@@ -784,6 +907,24 @@ def parse_args():
 
 def main():
     args = parse_args()
+    if args.experiment_profile == "tro_position_mvp0" and args.conditions == list(CONDITION_ORDER):
+        args.conditions = list(TRO_POSITION_MVP0_ORDER)
+    if (
+        args.experiment_profile == "tro_position_confirmation"
+        and args.conditions == list(CONDITION_ORDER)
+    ):
+        args.conditions = list(TRO_POSITION_CONFIRMATION_ORDER)
+    if (
+        args.experiment_profile
+        in ("tro_position_stage2", "tro_position_stage2_idood")
+        and args.conditions == list(CONDITION_ORDER)
+    ):
+        args.conditions = list(TRO_POSITION_STAGE2_ORDER)
+    if (
+        args.experiment_profile == "tro_position_composition"
+        and args.conditions == list(CONDITION_ORDER)
+    ):
+        args.conditions = list(TRO_POSITION_COMPOSITION_ORDER)
     validate_start_sampling_args(args)
     if args.action_dt is None:
         args.action_dt = float(args.action_gap) / float(args.sample_hz)
@@ -806,7 +947,7 @@ def main():
     if args.start_manifest is None or args.checkpoint_manifest is None:
         raise ValueError("--start-manifest and --checkpoint-manifest are required for evaluation/merge")
     checkpoint_manifest, checkpoint_paths = checkpoints_from_manifest(
-        args.checkpoint_manifest, CONDITION_ORDER, args.conditions
+        args.checkpoint_manifest, active_condition_order(args), args.conditions
     )
 
     if args.merge_only:
@@ -823,7 +964,7 @@ def main():
         write_json(out_path, summary)
 
     if not args.skip_aggregate:
-        if tuple(args.conditions) != CONDITION_ORDER:
+        if tuple(args.conditions) != active_condition_order(args):
             raise ValueError("Position aggregate requires all conditions; use --skip-aggregate for array tasks")
         write_aggregate_summary(args, summaries, shared_corridor_starts, shared_start_records)
 

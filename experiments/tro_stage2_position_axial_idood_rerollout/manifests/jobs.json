@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "experiment": "tro_stage2_position_axial_idood_rerollout",
+  "active_protocol_id": "tro_stage2_position_axial_condition_relative_idood_rerollout_rmax40_v2",
+  "status": "complete",
+  "jobs": [
+    {
+      "job_id": "36042451",
+      "protocol": "rejected_rmax45_pilot",
+      "gate": 2,
+      "role": "six_path_smoke",
+      "array": "0-5%6",
+      "status": "failed_before_policy_rollout",
+      "terminal_summary": {
+        "failed_tasks": 6,
+        "rollout_rows_produced": 0,
+        "cause": "The submitted pilot smoke used horizon=1 while its frozen manifests required horizon=200."
+      },
+      "resolution": "Corrected the script; preserved the failed pilot logs and did not retry under RMAX45."
+    },
+    {
+      "job_id": "36043096",
+      "protocol": "rmax40_v2",
+      "gate": 2,
+      "role": "six_path_smoke",
+      "array": "0-5%6",
+      "submission_command": "sbatch --parsable --array=0-5%6 scripts/run_tro_position_stage2_idood_smoke.sh",
+      "status": "completed",
+      "terminal_summary": {
+        "state": "COMPLETED",
+        "exit_code": "0:0 for all six tasks",
+        "paths": 6,
+        "rows_per_path": 25,
+        "validated_rows": 150,
+        "checkpoint_and_manifest_hashes": "valid"
+      },
+      "retries": []
+    },
+    {
+      "job_id": "36043712",
+      "protocol": "rmax40_v2",
+      "gate": 3,
+      "role": "formal_rollout",
+      "array": "0-249%40",
+      "submission_command": "sbatch --parsable --array=0-249%40 scripts/run_tro_position_stage2_idood_rollout.sh",
+      "status": "completed_with_one_clean_infrastructure_retry",
+      "terminal_summary": {
+        "original_array_completed": 249,
+        "original_array_preempted": 1,
+        "retry_tasks_completed": 1,
+        "final_valid_tasks": 250,
+        "final_valid_rows": 6250,
+        "scientific_performance_retries": 0
+      },
+      "retries": [
+        {
+          "retry_job_id": "36049746",
+          "array_task_id": 245,
+          "submission_command": "sbatch --parsable --array=245 scripts/run_tro_position_stage2_idood_rollout.sh",
+          "reason": "PREEMPTED after 00:00:33 on erc-hpc-comp049",
+          "task": {
+            "canonical_seed": 5,
+            "condition": "START25_APP8P4",
+            "rollout_seed": 3,
+            "bank": "ood"
+          },
+          "partial_rows_archived": 1,
+          "artifact_archive": "dataset/tro_position_stage2_axial_idood_rerollout/rmax40/infrastructure_retries/rollout_job36043712/task245_attempt1",
+          "scientific_settings_changed": false,
+          "status": "completed",
+          "terminal_state": "COMPLETED 0:0",
+          "elapsed": "00:05:54",
+          "node": "erc-hpc-comp057"
+        }
+      ]
+    },
+    {
+      "job_id": "36050142",
+      "protocol": "rmax40_v2",
+      "gate": 4,
+      "role": "strict_merge_validation",
+      "status": "failed_implementation_validation",
+      "terminal_summary": {
+        "state": "FAILED",
+        "exit_code": "1:0",
+        "cause": "Validator expected aggregate-only checkpoint_manifest_sha256 in a single-condition summary."
+      },
+      "resolution": "Updated the validator to compare the recorded checkpoint manifest path and retained independent checkpoint-file hash validation. No rollout artifact was changed."
+    },
+    {
+      "job_id": "36050269",
+      "protocol": "rmax40_v2",
+      "gate": 4,
+      "role": "strict_merge_validation",
+      "submission_command": "sbatch --parsable scripts/run_tro_position_stage2_idood_merge.sh",
+      "status": "completed",
+      "terminal_summary": {
+        "state": "COMPLETED",
+        "exit_code": "0:0",
+        "validated_tasks": 250,
+        "validated_rows": 6250,
+        "id_rows_per_policy": 125,
+        "ood_rows_per_policy": 125,
+        "checkpoint_hashes": "revalidated",
+        "same_start_absolute_pairing": true,
+        "cross_start_normalized_pairing": true
+      },
+      "retries": []
+    },
+    {
+      "job_id": "36050433",
+      "protocol": "rmax40_v2",
+      "gate": 5,
+      "role": "analysis_and_figures",
+      "submission_command": "sbatch --parsable scripts/run_tro_position_stage2_idood_analyze.sh",
+      "status": "completed",
+      "terminal_summary": {
+        "state": "COMPLETED",
+        "exit_code": "0:0",
+        "strict_status": "valid",
+        "validated_tasks": 250,
+        "validated_rows": 6250,
+        "pareto_front": [
+          "START15_APP6",
+          "START25_APP6"
+        ],
+        "figure_count": 3
+      },
+      "retries": []
+    }
+  ]
+}

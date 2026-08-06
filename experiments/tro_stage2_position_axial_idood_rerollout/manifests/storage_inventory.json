@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "experiment": "tro_stage2_position_axial_idood_rerollout",
+  "rejected_rmax45_pilot": {
+    "formal_manifest_count": 30,
+    "formal_rollout_files": 0,
+    "models_trained": 0,
+    "models_copied": 0,
+    "contents": "Immutable pilot manifests, feasibility audit and six failed pre-rollout smoke log pairs."
+  },
+  "active_rmax40_v2": {
+    "small_artifacts": {
+      "manifest_directory": "experiments/tro_stage2_position_axial_idood_rerollout/manifests/rollout_5seed_rmax40",
+      "formal_manifest_count": 30,
+      "formal_manifest_bytes": 2631194,
+      "analysis_figure_count": 3
+    },
+    "large_output_root": {
+      "path": "dataset/tro_position_stage2_axial_idood_rerollout/rmax40",
+      "approximate_disk_usage": "65 MiB",
+      "formal_rollout_root_bytes": 63291805,
+      "formal_task_summaries": 250,
+      "formal_per_rollout_json_files": 6250,
+      "smoke_root_bytes": 1481535,
+      "smoke_task_summaries": 6,
+      "smoke_per_rollout_json_files": 150
+    },
+    "infrastructure_retries": {
+      "count": 1,
+      "root": "dataset/tro_position_stage2_axial_idood_rerollout/rmax40/infrastructure_retries",
+      "bytes": 7681,
+      "archived_partial_rows": 1
+    },
+    "models": {
+      "trained": 0,
+      "copied": 0,
+      "reused_by_path_and_sha256": 25
+    }
+  }
+}

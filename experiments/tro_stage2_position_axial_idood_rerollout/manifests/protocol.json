@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "protocol_id": "tro_stage2_position_axial_condition_relative_idood_rerollout_v1",
+  "experiment": "tro_stage2_position_axial_idood_rerollout",
+  "authority": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_idood_rerollout/PLAN.md",
+  "git_commit_at_freeze": "2f61da7d0cf4f80609c6a7ee0409c765d1759bb4",
+  "source_experiment": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication",
+  "source_checkpoint_manifest": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/manifests/checkpoints.json",
+  "source_checkpoint_manifest_sha256": "240a936999281f429dd1b043b19df5bd9291ed478933305a7c051c5183227580",
+  "source_analysis_sha256": {
+    "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/analysis/comparison.json": "c70020fe70ab5aae9959ea990e66a2e2f3c4af4c05f24557a79d64c973ef9113",
+    "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/analysis/summary.md": "825a13e358b01e8707c99e1f19673b01d46df62edbacecce12bff6bbc6684370"
+  },
+  "condition_order": [
+    "START15_APP6",
+    "START35_APP6",
+    "START25_APP3P6",
+    "START25_APP6",
+    "START25_APP8P4"
+  ],
+  "conditions": {
+    "START15_APP6": {
+      "start_support_radius_m": 0.15,
+      "id_range_m": "[0.00, 0.15]",
+      "ood_range_m": "(0.15, 0.45]"
+    },
+    "START35_APP6": {
+      "start_support_radius_m": 0.35,
+      "id_range_m": "[0.00, 0.35]",
+      "ood_range_m": "(0.35, 0.45]"
+    },
+    "START25_APP3P6": {
+      "start_support_radius_m": 0.25,
+      "id_range_m": "[0.00, 0.25]",
+      "ood_range_m": "(0.25, 0.45]"
+    },
+    "START25_APP6": {
+      "start_support_radius_m": 0.25,
+      "id_range_m": "[0.00, 0.25]",
+      "ood_range_m": "(0.25, 0.45]"
+    },
+    "START25_APP8P4": {
+      "start_support_radius_m": 0.25,
+      "id_range_m": "[0.00, 0.25]",
+      "ood_range_m": "(0.25, 0.45]"
+    }
+  },
+  "global_deployment_boundary_m": 0.45,
+  "formal_rollout": {
+    "rollout_seeds": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "banks": [
+      "id",
+      "ood"
+    ],
+    "states_per_manifest": 25,
+    "manifest_count": 30,
+    "task_count": 250,
+    "row_count": 6250,
+    "horizon": 200,
+    "sample_hz": 8,
+    "action_gap": 2,
+    "action_dt": 0.25,
+    "num_points": 10000,
+    "terminate_on_success": true,
+    "success": "final cube z >= 0.20 m",
+    "videos": false
+  },
+  "pairing": {
+    "same_start_family": "identical absolute manifest, state order, runtime RNG and point-cloud RNG",
+    "cross_start_family": "identical area quantile, XZ direction, normalized state index, runtime RNG and point-cloud RNG",
+    "joint_replacement": "one failed IK realization rejects the normalized candidate for all three Start families"
+  },
+  "analysis": {
+    "independent_unit": "dataset-policy slot",
+    "primary_presentation": "two-dimensional ID/OOD table and Pareto interpretation",
+    "balanced_score": "descriptive condition-relative summary only"
+  }
+}

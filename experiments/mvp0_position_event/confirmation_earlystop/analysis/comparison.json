@@ -1,0 +1,1256 @@
+{
+  "schema_version": 1,
+  "status": "valid",
+  "evaluation": {
+    "seeds": [
+      628,
+      629,
+      630,
+      631,
+      632
+    ],
+    "conditions": [
+      "START15_APP6",
+      "START35_APP6",
+      "START25_APP3P6",
+      "START25_APP6",
+      "START25_APP8P4"
+    ],
+    "rollouts_per_seed_per_policy": 50,
+    "rollouts_per_policy": 250,
+    "validated_rollout_rows": 1250,
+    "shared_state_and_rng_pairing_across_all_policies": true,
+    "baseline_training_note": "START25_APP6 reuses the accepted legacy S25 epoch-80 policy; deployment states/RNG are paired, but its demonstration dataset and training seed differ from the four new policies"
+  },
+  "combined_ranking": [
+    "START25_APP3P6",
+    "START25_APP8P4",
+    "START25_APP6",
+    "START15_APP6",
+    "START35_APP6"
+  ],
+  "inner_ranking": [
+    "START25_APP3P6",
+    "START25_APP8P4",
+    "START15_APP6",
+    "START25_APP6",
+    "START35_APP6"
+  ],
+  "outer_ranking": [
+    "START25_APP3P6",
+    "START25_APP8P4",
+    "START25_APP6",
+    "START15_APP6",
+    "START35_APP6"
+  ],
+  "policies": {
+    "START15_APP6": {
+      "checkpoint": {
+        "epoch": 60,
+        "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_confirmation/START15_APP6/tro_pos_confirm_START15_APP6_d30_seed2701_2gap/20260724142401/models/model_epoch_60.pth",
+        "sha256": "0c62c6927e432b4e58a60fe4e52ace907c7cdd13b7873c68514d74aeb651c607",
+        "selection_rule": "highest numeric emitted model_epoch_*.pth",
+        "source": "new_from_scratch_early_stopping_training"
+      },
+      "combined": {
+        "successes": 112,
+        "total": 250,
+        "rate": 0.448,
+        "wilson_95": [
+          0.38760667582628155,
+          0.5099671873212446
+        ]
+      },
+      "inner": {
+        "successes": 69,
+        "total": 125,
+        "rate": 0.552,
+        "wilson_95": [
+          0.46456810359166034,
+          0.6363310954626739
+        ]
+      },
+      "outer": {
+        "successes": 43,
+        "total": 125,
+        "rate": 0.344,
+        "wilson_95": [
+          0.26649345874970826,
+          0.4308089440872896
+        ]
+      },
+      "per_seed": {
+        "628": {
+          "inner": {
+            "successes": 14,
+            "total": 25,
+            "rate": 0.56,
+            "wilson_95": [
+              0.3706733186979878,
+              0.7333436111893266
+            ]
+          },
+          "outer": {
+            "successes": 8,
+            "total": 25,
+            "rate": 0.32,
+            "wilson_95": [
+              0.17205190306907978,
+              0.5158973072689775
+            ]
+          },
+          "combined": {
+            "successes": 22,
+            "total": 50,
+            "rate": 0.44,
+            "wilson_95": [
+              0.3116219921125717,
+              0.5769397197834315
+            ]
+          }
+        },
+        "629": {
+          "inner": {
+            "successes": 12,
+            "total": 25,
+            "rate": 0.48,
+            "wilson_95": [
+              0.30031285954112974,
+              0.6650148304964322
+            ]
+          },
+          "outer": {
+            "successes": 10,
+            "total": 25,
+            "rate": 0.4,
+            "wilson_95": [
+              0.23403302377747973,
+              0.5926054264103301
+            ]
+          },
+          "combined": {
+            "successes": 22,
+            "total": 50,
+            "rate": 0.44,
+            "wilson_95": [
+              0.3116219921125717,
+              0.5769397197834315
+            ]
+          }
+        },
+        "630": {
+          "inner": {
+            "successes": 15,
+            "total": 25,
+            "rate": 0.6,
+            "wilson_95": [
+              0.40739457358967,
+              0.7659669762225203
+            ]
+          },
+          "outer": {
+            "successes": 10,
+            "total": 25,
+            "rate": 0.4,
+            "wilson_95": [
+              0.23403302377747973,
+              0.5926054264103301
+            ]
+          },
+          "combined": {
+            "successes": 25,
+            "total": 50,
+            "rate": 0.5,
+            "wilson_95": [
+              0.3664451431682858,
+              0.6335548568317142
+            ]
+          }
+        },
+        "631": {
+          "inner": {
+            "successes": 9,
+            "total": 25,
+            "rate": 0.36,
+            "wilson_95": [
+              0.20247880774458224,
+              0.5548150225183514
+            ]
+          },
+          "outer": {
+            "successes": 6,
+            "total": 25,
+            "rate": 0.24,
+            "wilson_95": [
+              0.11496313693401444,
+              0.4342968335542908
+            ]
+          },
+          "combined": {
+            "successes": 15,
+            "total": 50,
+            "rate": 0.3,
+            "wilson_95": [
+              0.19103553500880954,
+              0.437503504644534
+            ]
+          }
+        },
+        "632": {
+          "inner": {
+            "successes": 19,
+            "total": 25,
+            "rate": 0.76,
+            "wilson_95": [
+              0.5657031664457093,
+              0.8850368630659855
+            ]
+          },
+          "outer": {
+            "successes": 9,
+            "total": 25,
+            "rate": 0.36,
+            "wilson_95": [
+              0.20247880774458224,
+              0.5548150225183514
+            ]
+          },
+          "combined": {
+            "successes": 28,
+            "total": 50,
+            "rate": 0.56,
+            "wilson_95": [
+              0.4230602802165686,
+              0.6883780078874284
+            ]
+          }
+        }
+      },
+      "rollout_seed_mean_and_sample_std": {
+        "combined": {
+          "seed_rates": [
+            0.44,
+            0.44,
+            0.5,
+            0.3,
+            0.56
+          ],
+          "mean_rate": 0.448,
+          "sample_std_rate_ddof1": 0.09654014708917738
+        },
+        "inner": {
+          "seed_rates": [
+            0.56,
+            0.48,
+            0.6,
+            0.36,
+            0.76
+          ],
+          "mean_rate": 0.552,
+          "sample_std_rate_ddof1": 0.14805404418657397
+        },
+        "outer": {
+          "seed_rates": [
+            0.32,
+            0.4,
+            0.4,
+            0.24,
+            0.36
+          ],
+          "mean_rate": 0.34400000000000003,
+          "sample_std_rate_ddof1": 0.06693280212272605
+        }
+      }
+    },
+    "START35_APP6": {
+      "checkpoint": {
+        "epoch": 40,
+        "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_confirmation/START35_APP6/tro_pos_confirm_START35_APP6_d30_seed2701_2gap/20260724142441/models/model_epoch_40.pth",
+        "sha256": "1ff1cd0ce2e2bea147dc2a476a551a9502491977ab02644a1362cb5ee2ac8e0a",
+        "selection_rule": "highest numeric emitted model_epoch_*.pth",
+        "source": "new_from_scratch_early_stopping_training"
+      },
+      "combined": {
+        "successes": 69,
+        "total": 250,
+        "rate": 0.276,
+        "wilson_95": [
+          0.2242945999169993,
+          0.3344851182569598
+        ]
+      },
+      "inner": {
+        "successes": 41,
+        "total": 125,
+        "rate": 0.328,
+        "wilson_95": [
+          0.25189962748906103,
+          0.4143568679466034
+        ]
+      },
+      "outer": {
+        "successes": 28,
+        "total": 125,
+        "rate": 0.224,
+        "wilson_95": [
+          0.15976976190284642,
+          0.3046883354241498
+        ]
+      },
+      "per_seed": {
+        "628": {
+          "inner": {
+            "successes": 7,
+            "total": 25,
+            "rate": 0.28,
+            "wilson_95": [
+              0.14283853850956563,
+              0.47576605190361576
+            ]
+          },
+          "outer": {
+            "successes": 5,
+            "total": 25,
+            "rate": 0.2,
+            "wilson_95": [
+              0.08860584686802572,
+              0.3913095036954033
+            ]
+          },
+          "combined": {
+            "successes": 12,
+            "total": 50,
+            "rate": 0.24,
+            "wilson_95": [
+              0.1429739139699173,
+              0.3741268375794292
+            ]
+          }
+        },
+        "629": {
+          "inner": {
+            "successes": 8,
+            "total": 25,
+            "rate": 0.32,
+            "wilson_95": [
+              0.17205190306907978,
+              0.5158973072689775
+            ]
+          },
+          "outer": {
+            "successes": 9,
+            "total": 25,
+            "rate": 0.36,
+            "wilson_95": [
+              0.20247880774458224,
+              0.5548150225183514
+            ]
+          },
+          "combined": {
+            "successes": 17,
+            "total": 50,
+            "rate": 0.34,
+            "wilson_95": [
+              0.2243694922250009,
+              0.478461739497674
+            ]
+          }
+        },
+        "630": {
+          "inner": {
+            "successes": 11,
+            "total": 25,
+            "rate": 0.44,
+            "wilson_95": [
+              0.26665638881067344,
+              0.6293266813020123
+            ]
+          },
+          "outer": {
+            "successes": 5,
+            "total": 25,
+            "rate": 0.2,
+            "wilson_95": [
+              0.08860584686802572,
+              0.3913095036954033
+            ]
+          },
+          "combined": {
+            "successes": 16,
+            "total": 50,
+            "rate": 0.32,
+            "wilson_95": [
+              0.20758216260656845,
+              0.45810297308144077
+            ]
+          }
+        },
+        "631": {
+          "inner": {
+            "successes": 7,
+            "total": 25,
+            "rate": 0.28,
+            "wilson_95": [
+              0.14283853850956563,
+              0.47576605190361576
+            ]
+          },
+          "outer": {
+            "successes": 4,
+            "total": 25,
+            "rate": 0.16,
+            "wilson_95": [
+              0.0640345145667644,
+              0.3465362160717886
+            ]
+          },
+          "combined": {
+            "successes": 11,
+            "total": 50,
+            "rate": 0.22,
+            "wilson_95": [
+              0.1275391597021442,
+              0.3524154958125367
+            ]
+          }
+        },
+        "632": {
+          "inner": {
+            "successes": 8,
+            "total": 25,
+            "rate": 0.32,
+            "wilson_95": [
+              0.17205190306907978,
+              0.5158973072689775
+            ]
+          },
+          "outer": {
+            "successes": 5,
+            "total": 25,
+            "rate": 0.2,
+            "wilson_95": [
+              0.08860584686802572,
+              0.3913095036954033
+            ]
+          },
+          "combined": {
+            "successes": 13,
+            "total": 50,
+            "rate": 0.26,
+            "wilson_95": [
+              0.15871527493552393,
+              0.39553157264848837
+            ]
+          }
+        }
+      },
+      "rollout_seed_mean_and_sample_std": {
+        "combined": {
+          "seed_rates": [
+            0.24,
+            0.34,
+            0.32,
+            0.22,
+            0.26
+          ],
+          "mean_rate": 0.276,
+          "sample_std_rate_ddof1": 0.051768716422179145
+        },
+        "inner": {
+          "seed_rates": [
+            0.28,
+            0.32,
+            0.44,
+            0.28,
+            0.32
+          ],
+          "mean_rate": 0.328,
+          "sample_std_rate_ddof1": 0.06572670690061992
+        },
+        "outer": {
+          "seed_rates": [
+            0.2,
+            0.36,
+            0.2,
+            0.16,
+            0.2
+          ],
+          "mean_rate": 0.224,
+          "sample_std_rate_ddof1": 0.0779743547584717
+        }
+      }
+    },
+    "START25_APP3P6": {
+      "checkpoint": {
+        "epoch": 60,
+        "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_confirmation/START25_APP3P6/tro_pos_confirm_START25_APP3P6_d30_seed2701_2gap/20260724142901/models/model_epoch_60.pth",
+        "sha256": "d5fa40b5943f153b9ba85b098f7054e2c34c75473b02179a0a7d948794577ac5",
+        "selection_rule": "highest numeric emitted model_epoch_*.pth",
+        "source": "new_from_scratch_early_stopping_training"
+      },
+      "combined": {
+        "successes": 144,
+        "total": 250,
+        "rate": 0.576,
+        "wilson_95": [
+          0.5140449538388132,
+          0.6356547846378791
+        ]
+      },
+      "inner": {
+        "successes": 78,
+        "total": 125,
+        "rate": 0.624,
+        "wilson_95": [
+          0.5365826693275705,
+          0.7040231130327647
+        ]
+      },
+      "outer": {
+        "successes": 66,
+        "total": 125,
+        "rate": 0.528,
+        "wilson_95": [
+          0.4409609341541313,
+          0.6133694037982024
+        ]
+      },
+      "per_seed": {
+        "628": {
+          "inner": {
+            "successes": 16,
+            "total": 25,
+            "rate": 0.64,
+            "wilson_95": [
+              0.44518497748164865,
+              0.7975211922554178
+            ]
+          },
+          "outer": {
+            "successes": 12,
+            "total": 25,
+            "rate": 0.48,
+            "wilson_95": [
+              0.30031285954112974,
+              0.6650148304964322
+            ]
+          },
+          "combined": {
+            "successes": 28,
+            "total": 50,
+            "rate": 0.56,
+            "wilson_95": [
+              0.4230602802165686,
+              0.6883780078874284
+            ]
+          }
+        },
+        "629": {
+          "inner": {
+            "successes": 19,
+            "total": 25,
+            "rate": 0.76,
+            "wilson_95": [
+              0.5657031664457093,
+              0.8850368630659855
+            ]
+          },
+          "outer": {
+            "successes": 13,
+            "total": 25,
+            "rate": 0.52,
+            "wilson_95": [
+              0.3349851695035678,
+              0.6996871404588704
+            ]
+          },
+          "combined": {
+            "successes": 32,
+            "total": 50,
+            "rate": 0.64,
+            "wilson_95": [
+              0.501410168761127,
+              0.7586125034815325
+            ]
+          }
+        },
+        "630": {
+          "inner": {
+            "successes": 15,
+            "total": 25,
+            "rate": 0.6,
+            "wilson_95": [
+              0.40739457358967,
+              0.7659669762225203
+            ]
+          },
+          "outer": {
+            "successes": 12,
+            "total": 25,
+            "rate": 0.48,
+            "wilson_95": [
+              0.30031285954112974,
+              0.6650148304964322
+            ]
+          },
+          "combined": {
+            "successes": 27,
+            "total": 50,
+            "rate": 0.54,
+            "wilson_95": [
+              0.40398871399157477,
+              0.6703034780777566
+            ]
+          }
+        },
+        "631": {
+          "inner": {
+            "successes": 14,
+            "total": 25,
+            "rate": 0.56,
+            "wilson_95": [
+              0.3706733186979878,
+              0.7333436111893266
+            ]
+          },
+          "outer": {
+            "successes": 14,
+            "total": 25,
+            "rate": 0.56,
+            "wilson_95": [
+              0.3706733186979878,
+              0.7333436111893266
+            ]
+          },
+          "combined": {
+            "successes": 28,
+            "total": 50,
+            "rate": 0.56,
+            "wilson_95": [
+              0.4230602802165686,
+              0.6883780078874284
+            ]
+          }
+        },
+        "632": {
+          "inner": {
+            "successes": 14,
+            "total": 25,
+            "rate": 0.56,
+            "wilson_95": [
+              0.3706733186979878,
+              0.7333436111893266
+            ]
+          },
+          "outer": {
+            "successes": 15,
+            "total": 25,
+            "rate": 0.6,
+            "wilson_95": [
+              0.40739457358967,
+              0.7659669762225203
+            ]
+          },
+          "combined": {
+            "successes": 29,
+            "total": 50,
+            "rate": 0.58,
+            "wilson_95": [
+              0.4423344176857823,
+              0.7062499664528802
+            ]
+          }
+        }
+      },
+      "rollout_seed_mean_and_sample_std": {
+        "combined": {
+          "seed_rates": [
+            0.56,
+            0.64,
+            0.54,
+            0.56,
+            0.58
+          ],
+          "mean_rate": 0.5760000000000001,
+          "sample_std_rate_ddof1": 0.03847076812334267
+        },
+        "inner": {
+          "seed_rates": [
+            0.64,
+            0.76,
+            0.6,
+            0.56,
+            0.56
+          ],
+          "mean_rate": 0.624,
+          "sample_std_rate_ddof1": 0.08294576541331086
+        },
+        "outer": {
+          "seed_rates": [
+            0.48,
+            0.52,
+            0.48,
+            0.56,
+            0.6
+          ],
+          "mean_rate": 0.528,
+          "sample_std_rate_ddof1": 0.052153619241621194
+        }
+      }
+    },
+    "START25_APP6": {
+      "checkpoint": {
+        "epoch": 80,
+        "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/ar_guidance_spatial_S15_S35/S25/spatial_S25_d30_seed1_2gap/20260704004132/models/model_epoch_80.pth",
+        "sha256": "e666ab6a53f87f8d0f2e0a5ba29bd34b28cc39930d57cc848abfa5745465d60f",
+        "selection_rule": "highest numeric checkpoint already emitted by the accepted legacy S25 early-stopping run",
+        "source": "reused_legacy_S25_early_stopped_baseline"
+      },
+      "combined": {
+        "successes": 116,
+        "total": 250,
+        "rate": 0.464,
+        "wilson_95": [
+          0.40319327945730954,
+          0.5258963181063624
+        ]
+      },
+      "inner": {
+        "successes": 62,
+        "total": 125,
+        "rate": 0.496,
+        "wilson_95": [
+          0.40978626901633625,
+          0.5824522541333303
+        ]
+      },
+      "outer": {
+        "successes": 54,
+        "total": 125,
+        "rate": 0.432,
+        "wilson_95": [
+          0.34846990714538484,
+          0.5195849863989477
+        ]
+      },
+      "per_seed": {
+        "628": {
+          "inner": {
+            "successes": 11,
+            "total": 25,
+            "rate": 0.44,
+            "wilson_95": [
+              0.26665638881067344,
+              0.6293266813020123
+            ]
+          },
+          "outer": {
+            "successes": 7,
+            "total": 25,
+            "rate": 0.28,
+            "wilson_95": [
+              0.14283853850956563,
+              0.47576605190361576
+            ]
+          },
+          "combined": {
+            "successes": 18,
+            "total": 50,
+            "rate": 0.36,
+            "wilson_95": [
+              0.24138749651846741,
+              0.49858983123887307
+            ]
+          }
+        },
+        "629": {
+          "inner": {
+            "successes": 12,
+            "total": 25,
+            "rate": 0.48,
+            "wilson_95": [
+              0.30031285954112974,
+              0.6650148304964322
+            ]
+          },
+          "outer": {
+            "successes": 8,
+            "total": 25,
+            "rate": 0.32,
+            "wilson_95": [
+              0.17205190306907978,
+              0.5158973072689775
+            ]
+          },
+          "combined": {
+            "successes": 20,
+            "total": 50,
+            "rate": 0.4,
+            "wilson_95": [
+              0.27608389730256544,
+              0.5381856225241064
+            ]
+          }
+        },
+        "630": {
+          "inner": {
+            "successes": 17,
+            "total": 25,
+            "rate": 0.68,
+            "wilson_95": [
+              0.48410269273102247,
+              0.8279480969309202
+            ]
+          },
+          "outer": {
+            "successes": 11,
+            "total": 25,
+            "rate": 0.44,
+            "wilson_95": [
+              0.26665638881067344,
+              0.6293266813020123
+            ]
+          },
+          "combined": {
+            "successes": 28,
+            "total": 50,
+            "rate": 0.56,
+            "wilson_95": [
+              0.4230602802165686,
+              0.6883780078874284
+            ]
+          }
+        },
+        "631": {
+          "inner": {
+            "successes": 10,
+            "total": 25,
+            "rate": 0.4,
+            "wilson_95": [
+              0.23403302377747973,
+              0.5926054264103301
+            ]
+          },
+          "outer": {
+            "successes": 13,
+            "total": 25,
+            "rate": 0.52,
+            "wilson_95": [
+              0.3349851695035678,
+              0.6996871404588704
+            ]
+          },
+          "combined": {
+            "successes": 23,
+            "total": 50,
+            "rate": 0.46,
+            "wilson_95": [
+              0.3296965219222435,
+              0.5960112860084253
+            ]
+          }
+        },
+        "632": {
+          "inner": {
+            "successes": 12,
+            "total": 25,
+            "rate": 0.48,
+            "wilson_95": [
+              0.30031285954112974,
+              0.6650148304964322
+            ]
+          },
+          "outer": {
+            "successes": 15,
+            "total": 25,
+            "rate": 0.6,
+            "wilson_95": [
+              0.40739457358967,
+              0.7659669762225203
+            ]
+          },
+          "combined": {
+            "successes": 27,
+            "total": 50,
+            "rate": 0.54,
+            "wilson_95": [
+              0.40398871399157477,
+              0.6703034780777566
+            ]
+          }
+        }
+      },
+      "rollout_seed_mean_and_sample_std": {
+        "combined": {
+          "seed_rates": [
+            0.36,
+            0.4,
+            0.56,
+            0.46,
+            0.54
+          ],
+          "mean_rate": 0.464,
+          "sample_std_rate_ddof1": 0.08648699324175864
+        },
+        "inner": {
+          "seed_rates": [
+            0.44,
+            0.48,
+            0.68,
+            0.4,
+            0.48
+          ],
+          "mean_rate": 0.496,
+          "sample_std_rate_ddof1": 0.10807404868885039
+        },
+        "outer": {
+          "seed_rates": [
+            0.28,
+            0.32,
+            0.44,
+            0.52,
+            0.6
+          ],
+          "mean_rate": 0.432,
+          "sample_std_rate_ddof1": 0.13386560424545207
+        }
+      }
+    },
+    "START25_APP8P4": {
+      "checkpoint": {
+        "epoch": 80,
+        "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_confirmation/START25_APP8P4/tro_pos_confirm_START25_APP8P4_d30_seed2701_2gap/20260724143734/models/model_epoch_80.pth",
+        "sha256": "773f904ceba38f63f502390447fb2c0ae3e8b2727f215ac7e69575d689298b45",
+        "selection_rule": "highest numeric emitted model_epoch_*.pth",
+        "source": "new_from_scratch_early_stopping_training"
+      },
+      "combined": {
+        "successes": 126,
+        "total": 250,
+        "rate": 0.504,
+        "wilson_95": [
+          0.4424326671345239,
+          0.5654462664695125
+        ]
+      },
+      "inner": {
+        "successes": 71,
+        "total": 125,
+        "rate": 0.568,
+        "wilson_95": [
+          0.4804150136010523,
+          0.6515300928546153
+        ]
+      },
+      "outer": {
+        "successes": 55,
+        "total": 125,
+        "rate": 0.44,
+        "wilson_95": [
+          0.3560584549578599,
+          0.5275193922871394
+        ]
+      },
+      "per_seed": {
+        "628": {
+          "inner": {
+            "successes": 13,
+            "total": 25,
+            "rate": 0.52,
+            "wilson_95": [
+              0.3349851695035678,
+              0.6996871404588704
+            ]
+          },
+          "outer": {
+            "successes": 12,
+            "total": 25,
+            "rate": 0.48,
+            "wilson_95": [
+              0.30031285954112974,
+              0.6650148304964322
+            ]
+          },
+          "combined": {
+            "successes": 25,
+            "total": 50,
+            "rate": 0.5,
+            "wilson_95": [
+              0.3664451431682858,
+              0.6335548568317142
+            ]
+          }
+        },
+        "629": {
+          "inner": {
+            "successes": 14,
+            "total": 25,
+            "rate": 0.56,
+            "wilson_95": [
+              0.3706733186979878,
+              0.7333436111893266
+            ]
+          },
+          "outer": {
+            "successes": 8,
+            "total": 25,
+            "rate": 0.32,
+            "wilson_95": [
+              0.17205190306907978,
+              0.5158973072689775
+            ]
+          },
+          "combined": {
+            "successes": 22,
+            "total": 50,
+            "rate": 0.44,
+            "wilson_95": [
+              0.3116219921125717,
+              0.5769397197834315
+            ]
+          }
+        },
+        "630": {
+          "inner": {
+            "successes": 18,
+            "total": 25,
+            "rate": 0.72,
+            "wilson_95": [
+              0.5242339480963842,
+              0.8571614614904344
+            ]
+          },
+          "outer": {
+            "successes": 12,
+            "total": 25,
+            "rate": 0.48,
+            "wilson_95": [
+              0.30031285954112974,
+              0.6650148304964322
+            ]
+          },
+          "combined": {
+            "successes": 30,
+            "total": 50,
+            "rate": 0.6,
+            "wilson_95": [
+              0.4618143774758936,
+              0.7239161026974346
+            ]
+          }
+        },
+        "631": {
+          "inner": {
+            "successes": 13,
+            "total": 25,
+            "rate": 0.52,
+            "wilson_95": [
+              0.3349851695035678,
+              0.6996871404588704
+            ]
+          },
+          "outer": {
+            "successes": 10,
+            "total": 25,
+            "rate": 0.4,
+            "wilson_95": [
+              0.23403302377747973,
+              0.5926054264103301
+            ]
+          },
+          "combined": {
+            "successes": 23,
+            "total": 50,
+            "rate": 0.46,
+            "wilson_95": [
+              0.3296965219222435,
+              0.5960112860084253
+            ]
+          }
+        },
+        "632": {
+          "inner": {
+            "successes": 13,
+            "total": 25,
+            "rate": 0.52,
+            "wilson_95": [
+              0.3349851695035678,
+              0.6996871404588704
+            ]
+          },
+          "outer": {
+            "successes": 13,
+            "total": 25,
+            "rate": 0.52,
+            "wilson_95": [
+              0.3349851695035678,
+              0.6996871404588704
+            ]
+          },
+          "combined": {
+            "successes": 26,
+            "total": 50,
+            "rate": 0.52,
+            "wilson_95": [
+              0.38511744890044614,
+              0.6520286471342196
+            ]
+          }
+        }
+      },
+      "rollout_seed_mean_and_sample_std": {
+        "combined": {
+          "seed_rates": [
+            0.5,
+            0.44,
+            0.6,
+            0.46,
+            0.52
+          ],
+          "mean_rate": 0.504,
+          "sample_std_rate_ddof1": 0.062289646009589736
+        },
+        "inner": {
+          "seed_rates": [
+            0.52,
+            0.56,
+            0.72,
+            0.52,
+            0.52
+          ],
+          "mean_rate": 0.5680000000000001,
+          "sample_std_rate_ddof1": 0.08671793355471519
+        },
+        "outer": {
+          "seed_rates": [
+            0.48,
+            0.32,
+            0.48,
+            0.4,
+            0.52
+          ],
+          "mean_rate": 0.44,
+          "sample_std_rate_ddof1": 0.08
+        }
+      }
+    }
+  },
+  "pre_registered_and_baseline_contrasts": {
+    "start_outer_wide_minus_tight": {
+      "left": "START15_APP6",
+      "right": "START35_APP6",
+      "scope": "outer",
+      "success_difference_right_minus_left": -15,
+      "rate_difference_right_minus_left": -0.11999999999999997
+    },
+    "approach_inner_tight_minus_wide": {
+      "left": "START25_APP8P4",
+      "right": "START25_APP3P6",
+      "scope": "inner",
+      "success_difference_right_minus_left": 7,
+      "rate_difference_right_minus_left": 0.05600000000000005
+    },
+    "approach_combined_tight_minus_baseline": {
+      "left": "START25_APP6",
+      "right": "START25_APP3P6",
+      "scope": "combined",
+      "success_difference_right_minus_left": 28,
+      "rate_difference_right_minus_left": 0.11199999999999993
+    },
+    "approach_inner_tight_minus_baseline": {
+      "left": "START25_APP6",
+      "right": "START25_APP3P6",
+      "scope": "inner",
+      "success_difference_right_minus_left": 16,
+      "rate_difference_right_minus_left": 0.128
+    },
+    "approach_outer_tight_minus_baseline": {
+      "left": "START25_APP6",
+      "right": "START25_APP3P6",
+      "scope": "outer",
+      "success_difference_right_minus_left": 12,
+      "rate_difference_right_minus_left": 0.09600000000000003
+    },
+    "approach_combined_wide_minus_baseline": {
+      "left": "START25_APP6",
+      "right": "START25_APP8P4",
+      "scope": "combined",
+      "success_difference_right_minus_left": 10,
+      "rate_difference_right_minus_left": 0.03999999999999998
+    }
+  },
+  "all_policy_paired_discordances": {
+    "START15_APP6__vs__START35_APP6": {
+      "both_success": 30,
+      "START15_APP6_only": 82,
+      "START35_APP6_only": 39,
+      "both_failure": 99
+    },
+    "START15_APP6__vs__START25_APP3P6": {
+      "both_success": 73,
+      "START15_APP6_only": 39,
+      "START25_APP3P6_only": 71,
+      "both_failure": 67
+    },
+    "START15_APP6__vs__START25_APP6": {
+      "both_success": 56,
+      "START15_APP6_only": 56,
+      "START25_APP6_only": 60,
+      "both_failure": 78
+    },
+    "START15_APP6__vs__START25_APP8P4": {
+      "both_success": 70,
+      "START15_APP6_only": 42,
+      "START25_APP8P4_only": 56,
+      "both_failure": 82
+    },
+    "START35_APP6__vs__START25_APP3P6": {
+      "both_success": 40,
+      "START35_APP6_only": 29,
+      "START25_APP3P6_only": 104,
+      "both_failure": 77
+    },
+    "START35_APP6__vs__START25_APP6": {
+      "both_success": 36,
+      "START35_APP6_only": 33,
+      "START25_APP6_only": 80,
+      "both_failure": 101
+    },
+    "START35_APP6__vs__START25_APP8P4": {
+      "both_success": 40,
+      "START35_APP6_only": 29,
+      "START25_APP8P4_only": 86,
+      "both_failure": 95
+    },
+    "START25_APP3P6__vs__START25_APP6": {
+      "both_success": 72,
+      "START25_APP3P6_only": 72,
+      "START25_APP6_only": 44,
+      "both_failure": 62
+    },
+    "START25_APP3P6__vs__START25_APP8P4": {
+      "both_success": 81,
+      "START25_APP3P6_only": 63,
+      "START25_APP8P4_only": 45,
+      "both_failure": 61
+    },
+    "START25_APP6__vs__START25_APP8P4": {
+      "both_success": 64,
+      "START25_APP6_only": 52,
+      "START25_APP8P4_only": 62,
+      "both_failure": 72
+    }
+  },
+  "source_aggregate_summaries": [
+    "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_confirmation/rollouts_5seed_n50/seed628/inner/summary_seed628_n25.json",
+    "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_confirmation/rollouts_5seed_n50/seed628/outer/summary_seed628_n25.json",
+    "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_confirmation/rollouts_5seed_n50/seed629/inner/summary_seed629_n25.json",
+    "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_confirmation/rollouts_5seed_n50/seed629/outer/summary_seed629_n25.json",
+    "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_confirmation/rollouts_5seed_n50/seed630/inner/summary_seed630_n25.json",
+    "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_confirmation/rollouts_5seed_n50/seed630/outer/summary_seed630_n25.json",
+    "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_confirmation/rollouts_5seed_n50/seed631/inner/summary_seed631_n25.json",
+    "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_confirmation/rollouts_5seed_n50/seed631/outer/summary_seed631_n25.json",
+    "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_confirmation/rollouts_5seed_n50/seed632/inner/summary_seed632_n25.json",
+    "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_confirmation/rollouts_5seed_n50/seed632/outer/summary_seed632_n25.json"
+  ]
+}

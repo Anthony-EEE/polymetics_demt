@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "registry_type": "shared_dataset_policy_artifacts",
+  "artifacts": [
+    {
+      "artifact_id": "tro_stage2_position_axial_datasets_v1",
+      "experiment": "tro_stage2_position_axial_replication",
+      "task": "position",
+      "protocol": "stage2_axial",
+      "condition_order": [
+        "START15_APP6",
+        "START35_APP6",
+        "START25_APP3P6",
+        "START25_APP6",
+        "START25_APP8P4"
+      ],
+      "canonical_seeds": [1, 2, 3, 4, 5],
+      "manifest_path": "experiments/tro_stage2_position_axial_replication/manifests/datasets.json",
+      "manifest_sha256": "3d509097466abfceb65f94521705d7f209eca490aefca44717bf3cd90e7e79bb",
+      "slot_count": 25,
+      "new_slots": 21,
+      "reused_slots": 4,
+      "exact_five_condition_pairing": true,
+      "fallback_slots": [1, 5],
+      "status": "validated"
+    },
+    {
+      "artifact_id": "tro_stage2_position_axial_policies_v1",
+      "experiment": "tro_stage2_position_axial_replication",
+      "task": "position",
+      "protocol": "stage2_axial_earlystop_patience41",
+      "condition_order": [
+        "START15_APP6",
+        "START35_APP6",
+        "START25_APP3P6",
+        "START25_APP6",
+        "START25_APP8P4"
+      ],
+      "canonical_seeds": [1, 2, 3, 4, 5],
+      "manifest_path": "experiments/tro_stage2_position_axial_replication/manifests/checkpoints.json",
+      "manifest_sha256": "240a936999281f429dd1b043b19df5bd9291ed478933305a7c051c5183227580",
+      "slot_count": 25,
+      "new_slots": 25,
+      "reused_slots": 0,
+      "selection_rule": "highest numeric emitted model_epoch_*.pth",
+      "frozen_before_rollout": true,
+      "status": "validated"
+    },
+    {
+      "artifact_id": "tro_stage2_position_composition_datasets_v3",
+      "experiment": "tro_stage2_position_composition",
+      "task": "position",
+      "protocol": "stage2c_composition_candidate_stream_v3",
+      "condition_order": [
+        "START15_APP3P6",
+        "START15_APP6",
+        "START15_APP8P4",
+        "START25_APP3P6",
+        "START25_APP6",
+        "START25_APP8P4",
+        "START35_APP3P6",
+        "START35_APP6",
+        "START35_APP8P4"
+      ],
+      "canonical_seeds": [1, 2, 3, 4, 5],
+      "manifest_path": "experiments/tro_stage2_position_composition/manifests/datasets.json",
+      "manifest_sha256": "d5310aeef9b5459e91c360c5ba51d94f14d4b992f6eb42d394e6b7a9235491ad",
+      "slot_count": 45,
+      "new_slots": 20,
+      "reused_slots": 25,
+      "accepted_demonstrations_per_new_slot": 30,
+      "atomic_four_corner_candidate_pairing": true,
+      "old_anchor_pairing_only_for_original_stream_candidates": true,
+      "large_artifacts_copied": false,
+      "status": "validated"
+    },
+    {
+      "artifact_id": "tro_stage2_position_composition_policies_v3",
+      "experiment": "tro_stage2_position_composition",
+      "task": "position",
+      "protocol": "stage2c_composition_earlystop_patience41",
+      "condition_order": [
+        "START15_APP3P6",
+        "START15_APP6",
+        "START15_APP8P4",
+        "START25_APP3P6",
+        "START25_APP6",
+        "START25_APP8P4",
+        "START35_APP3P6",
+        "START35_APP6",
+        "START35_APP8P4"
+      ],
+      "canonical_seeds": [1, 2, 3, 4, 5],
+      "manifest_path": "experiments/tro_stage2_position_composition/manifests/checkpoints.json",
+      "manifest_sha256": "91e47d35b5f621f49dc4aba3b3a1d316131b6a080645e5089f62575bfa5fb326",
+      "slot_count": 45,
+      "new_slots": 20,
+      "reused_slots": 25,
+      "selection_rule": "highest numeric emitted model_epoch_*.pth",
+      "frozen_before_rollout": true,
+      "large_artifacts_copied": false,
+      "status": "validated"
+    }
+  ]
+}

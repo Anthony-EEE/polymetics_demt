@@ -1,0 +1,844 @@
+{
+  "schema_version": 1,
+  "manifest_type": "tro_stage2_five_condition_paired_latents",
+  "canonical_seed": 1,
+  "source_collection_seed": 1,
+  "source_training_seed": 1,
+  "condition_order": [
+    "START15_APP6",
+    "START35_APP6",
+    "START25_APP3P6",
+    "START25_APP6",
+    "START25_APP8P4"
+  ],
+  "formal_new_collection_conditions": [
+    "START15_APP6",
+    "START35_APP6",
+    "START25_APP3P6",
+    "START25_APP8P4"
+  ],
+  "target_successful_demonstrations_per_condition": 30,
+  "sampling": {
+    "start_plane": "xz",
+    "approach_plane": "xy",
+    "radial_mapping": "realised_fraction = sqrt(radial_quantile)",
+    "whole_slot_rejection_rule": "if any condition fails, reject candidate for the whole five-condition slot"
+  },
+  "locked_to_existing_accepted_records": true,
+  "locked_accepted_candidate_ids": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29
+  ],
+  "source_artifact_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/ar_guidance_spatial_S15_S35/spatial_S25_d30_seed1",
+  "source_artifact_sha256": "c5156dc77add40839de2ae5d989b8578135b64f6736802e74635b2e962c92dd5",
+  "candidates": [
+    {
+      "candidate_index": 0,
+      "accepted_candidate_id": "legacy_seed1_demo_000",
+      "start_angle": 2.620226532717789,
+      "start_radial_quantile": 0.7203244934421581,
+      "approach_angle": 0.0007186381718527407,
+      "approach_radial_quantile": 0.3023325726318397,
+      "collection_seed": 1,
+      "runtime_seed": 3123113185,
+      "source_demo_index": 0,
+      "source_metadata_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/ar_guidance_spatial_S15_S35/spatial_S25_d30_seed1/demo_0/metadata.json",
+      "source_metadata_sha256": "afa45d86ddd291becb04b4f04cb9fafea28f1f23fab62ca2a7a8787cb9a8ab15",
+      "source_exact_offsets": {
+        "start_xz": [
+          -0.1839895281106268,
+          0.0,
+          0.10567939432909217
+        ],
+        "approach_xy": [
+          0.03299085781518788,
+          2.370849382950514e-05,
+          0.0
+        ]
+      },
+      "runtime_seed_provenance": "deterministic Stage 2 runtime alias; legacy raw metadata did not record the original simulator runtime RNG"
+    },
+    {
+      "candidate_index": 1,
+      "accepted_candidate_id": "legacy_seed1_demo_001",
+      "start_angle": 2.4929635644529005,
+      "start_radial_quantile": 0.538816734003357,
+      "approach_angle": 2.6338768137490636,
+      "approach_radial_quantile": 0.6852195003967595,
+      "collection_seed": 1,
+      "runtime_seed": 203636074,
+      "source_demo_index": 1,
+      "source_metadata_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/ar_guidance_spatial_S15_S35/spatial_S25_d30_seed1/demo_1/metadata.json",
+      "source_metadata_sha256": "bf3a26ddd552f970ffca6adde48586476d788d44ca63d0a242b85d6c06709068",
+      "source_exact_offsets": {
+        "start_xz": [
+          -0.14624172392631002,
+          0.0,
+          0.11085758457710837
+        ],
+        "approach_xy": [
+          -0.04340168877373553,
+          0.02414712432187596,
+          0.0
+        ]
+      },
+      "runtime_seed_provenance": "deterministic Stage 2 runtime alias; legacy raw metadata did not record the original simulator runtime RNG"
+    },
+    {
+      "candidate_index": 2,
+      "accepted_candidate_id": "legacy_seed1_demo_002",
+      "start_angle": 1.2846113715328817,
+      "start_radial_quantile": 0.8781174363909454,
+      "approach_angle": 0.17208132318022124,
+      "approach_radial_quantile": 0.6704675101784022,
+      "collection_seed": 1,
+      "runtime_seed": 1432120946,
+      "source_demo_index": 2,
+      "source_metadata_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/ar_guidance_spatial_S15_S35/spatial_S25_d30_seed1/demo_2/metadata.json",
+      "source_metadata_sha256": "4a72cc8a81dd8e0a3149a524cf495feb7db43155a42381a7858be6afcf2ee173",
+      "source_exact_offsets": {
+        "start_xz": [
+          0.06613305526765956,
+          0.0,
+          0.22474153771699343
+        ],
+        "approach_xy": [
+          0.048403634304755194,
+          0.008412563386612566,
+          0.0
+        ]
+      },
+      "runtime_seed_provenance": "deterministic Stage 2 runtime alias; legacy raw metadata did not record the original simulator runtime RNG"
+    },
+    {
+      "candidate_index": 3,
+      "accepted_candidate_id": "legacy_seed1_demo_003",
+      "start_angle": 2.622003402848613,
+      "start_radial_quantile": 0.5586898284457517,
+      "approach_angle": 0.8820771499014955,
+      "approach_radial_quantile": 0.19810148908487876,
+      "collection_seed": 1,
+      "runtime_seed": 2379474140,
+      "source_demo_index": 3,
+      "source_metadata_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/ar_guidance_spatial_S15_S35/spatial_S25_d30_seed1/demo_3/metadata.json",
+      "source_metadata_sha256": "01b6b3548ef47da099e5c056da8cb5a9860824a235373a8021acfa2053f31c0f",
+      "source_exact_offsets": {
+        "start_xz": [
+          -0.16220219376157008,
+          0.0,
+          0.09278234000494681
+        ],
+        "approach_xy": [
+          0.01697243071248975,
+          0.020618000786092192,
+          0.0
+        ]
+      },
+      "runtime_seed_provenance": "deterministic Stage 2 runtime alias; legacy raw metadata did not record the original simulator runtime RNG"
+    },
+    {
+      "candidate_index": 4,
+      "accepted_candidate_id": "legacy_seed1_demo_004",
+      "start_angle": 5.5065154450780405,
+      "start_radial_quantile": 0.8946066635038471,
+      "approach_angle": 0.5343485393392637,
+      "approach_radial_quantile": 0.03905478323288236,
+      "collection_seed": 1,
+      "runtime_seed": 1249166820,
+      "source_demo_index": 4,
+      "source_metadata_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/ar_guidance_spatial_S15_S35/spatial_S25_d30_seed1/demo_4/metadata.json",
+      "source_metadata_sha256": "951702439f3540e15982c6944dc0110ee218b17b5c053c0124af2037983682e9",
+      "source_exact_offsets": {
+        "start_xz": [
+          0.1686548494112745,
+          0.0,
+          -0.16573611024472237
+        ],
+        "approach_xy": [
+          0.010204459461616409,
+          0.006038727244594166,
+          0.0
+        ]
+      },
+      "runtime_seed_provenance": "deterministic Stage 2 runtime alias; legacy raw metadata did not record the original simulator runtime RNG"
+    },
+    {
+      "candidate_index": 5,
+      "accepted_candidate_id": "legacy_seed1_demo_005",
+      "start_angle": 1.067075996920244,
+      "start_radial_quantile": 0.878142503429413,
+      "approach_angle": 0.6179313813474525,
+      "approach_radial_quantile": 0.4211076250050522,
+      "collection_seed": 1,
+      "runtime_seed": 2450953850,
+      "source_demo_index": 5,
+      "source_metadata_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/ar_guidance_spatial_S15_S35/spatial_S25_d30_seed1/demo_5/metadata.json",
+      "source_metadata_sha256": "24bd8524f702afcc1deafd32535a29fbc2641e29f531371021c341d4b0ee7a27",
+      "source_exact_offsets": {
+        "start_xz": [
+          0.11308062727611577,
+          0.0,
+          0.2051747503938496
+        ],
+        "approach_xy": [
+          0.031735644527724344,
+          0.02255740048028822,
+          0.0
+        ]
+      },
+      "runtime_seed_provenance": "deterministic Stage 2 runtime alias; legacy raw metadata did not record the original simulator runtime RNG"
+    },
+    {
+      "candidate_index": 6,
+      "accepted_candidate_id": "legacy_seed1_demo_006",
+      "start_angle": 6.018597421742791,
+      "start_radial_quantile": 0.533165284973017,
+      "approach_angle": 4.34719211674743,
+      "approach_radial_quantile": 0.3155156310060629,
+      "collection_seed": 1,
+      "runtime_seed": 2798268292,
+      "source_demo_index": 6,
+      "source_metadata_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/ar_guidance_spatial_S15_S35/spatial_S25_d30_seed1/demo_6/metadata.json",
+      "source_metadata_sha256": "4c3090b55c84b0824ec2a91814dc4d6f9ea88c3b184b8c93aadeacaeb83631eb",
+      "source_exact_offsets": {
+        "start_xz": [
+          0.1761929041495775,
+          0.0,
+          -0.047737729712999104
+        ],
+        "approach_xy": [
+          -0.012036269245455387,
+          -0.031479906198601214,
+          0.0
+        ]
+      },
+      "runtime_seed_provenance": "deterministic Stage 2 runtime alias; legacy raw metadata did not record the original simulator runtime RNG"
+    },
+    {
+      "candidate_index": 7,
+      "accepted_candidate_id": "legacy_seed1_demo_007",
+      "start_angle": 4.313412542174082,
+      "start_radial_quantile": 0.834625671897373,
+      "approach_angle": 0.11490863550265126,
+      "approach_radial_quantile": 0.7501443149449674,
+      "collection_seed": 1,
+      "runtime_seed": 3336359679,
+      "source_demo_index": 7,
+      "source_metadata_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/ar_guidance_spatial_S15_S35/spatial_S25_d30_seed1/demo_7/metadata.json",
+      "source_metadata_sha256": "0df03ef5c38504a05c7bd24dd6e51c40352bab8348ea3300b96f7ae68a001677",
+      "source_exact_offsets": {
+        "start_xz": [
+          -0.08872568754125268,
+          0.0,
+          -0.21045630630588813
+        ],
+        "approach_xy": [
+          0.05162381769854258,
+          0.005958269885589612,
+          0.0
+        ]
+      },
+      "runtime_seed_provenance": "deterministic Stage 2 runtime alias; legacy raw metadata did not record the original simulator runtime RNG"
+    },
+    {
+      "candidate_index": 8,
+      "accepted_candidate_id": "legacy_seed1_demo_008",
+      "start_angle": 0.6485881278474637,
+      "start_radial_quantile": 0.4478935261759051,
+      "approach_angle": 5.7088739152039825,
+      "approach_radial_quantile": 0.29361414837367955,
+      "collection_seed": 1,
+      "runtime_seed": 205624059,
+      "source_demo_index": 8,
+      "source_metadata_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/ar_guidance_spatial_S15_S35/spatial_S25_d30_seed1/demo_8/metadata.json",
+      "source_metadata_sha256": "179af0f5604a353b67ca80bfabc25cd1302b9c4e4420ec89b175858b1ab88393",
+      "source_exact_offsets": {
+        "start_xz": [
+          0.1333372941065508,
+          0.0,
+          0.10106686591725919
+        ],
+        "approach_xy": [
+          0.02729574102110864,
+          -0.017662204173143656,
+          0.0
+        ]
+      },
+      "runtime_seed_provenance": "deterministic Stage 2 runtime alias; legacy raw metadata did not record the original simulator runtime RNG"
+    },
+    {
+      "candidate_index": 9,
+      "accepted_candidate_id": "legacy_seed1_demo_009",
+      "start_angle": 1.8081457791743771,
+      "start_radial_quantile": 0.13002857211827765,
+      "approach_angle": 0.12168618513541661,
+      "approach_radial_quantile": 0.678835532939891,
+      "collection_seed": 1,
+      "runtime_seed": 92423127,
+      "source_demo_index": 9,
+      "source_metadata_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/ar_guidance_spatial_S15_S35/spatial_S25_d30_seed1/demo_9/metadata.json",
+      "source_metadata_sha256": "af05304a8335ce96d1d568e42705c317c28cf568fe31551cb2863a9272f7bc00",
+      "source_exact_offsets": {
+        "start_xz": [
+          -0.021196409868426844,
+          0.0,
+          0.08762133282530009
+        ],
+        "approach_xy": [
+          0.0490693328373244,
+          0.00600070774854806,
+          0.0
+        ]
+      },
+      "runtime_seed_provenance": "deterministic Stage 2 runtime alias; legacy raw metadata did not record the original simulator runtime RNG"
+    },
+    {
+      "candidate_index": 10,
+      "accepted_candidate_id": "legacy_seed1_demo_010",
+      "start_angle": 1.329698669037668,
+      "start_radial_quantile": 0.2655466593722262,
+      "approach_angle": 3.088645251794072,
+      "approach_radial_quantile": 0.05336254511708036,
+      "collection_seed": 1,
+      "runtime_seed": 774485627,
+      "source_demo_index": 10,
+      "source_metadata_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/ar_guidance_spatial_S15_S35/spatial_S25_d30_seed1/demo_10/metadata.json",
+      "source_metadata_sha256": "47c2b6e1cfc7ca2893098ab830fdd241d043a88049b45f962927538dd808e178",
+      "source_exact_offsets": {
+        "start_xz": [
+          0.030760103166686592,
+          0.0,
+          0.12510188753147947
+        ],
+        "approach_xy": [
+          -0.013840777168580102,
+          0.0007335187735846166,
+          0.0
+        ]
+      },
+      "runtime_seed_provenance": "deterministic Stage 2 runtime alias; legacy raw metadata did not record the original simulator runtime RNG"
+    },
+    {
+      "candidate_index": 11,
+      "accepted_candidate_id": "legacy_seed1_demo_011",
+      "start_angle": 3.6072873034205424,
+      "start_radial_quantile": 0.14672857490581015,
+      "approach_angle": 3.702715890910293,
+      "approach_radial_quantile": 0.6997583600209311,
+      "collection_seed": 1,
+      "runtime_seed": 2551706303,
+      "source_demo_index": 11,
+      "source_metadata_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/ar_guidance_spatial_S15_S35/spatial_S25_d30_seed1/demo_11/metadata.json",
+      "source_metadata_sha256": "f385fd859227f2a676d0f89176706c770a0ade812ece4270d42c1176847fbea7",
+      "source_exact_offsets": {
+        "start_xz": [
+          -0.08556510831695344,
+          0.0,
+          -0.04300172287619601
+        ],
+        "approach_xy": [
+          -0.04249455423668023,
+          -0.026708480980789498,
+          0.0
+        ]
+      },
+      "runtime_seed_provenance": "deterministic Stage 2 runtime alias; legacy raw metadata did not record the original simulator runtime RNG"
+    },
+    {
+      "candidate_index": 12,
+      "accepted_candidate_id": "legacy_seed1_demo_012",
+      "start_angle": 0.6429861796296104,
+      "start_radial_quantile": 0.41405598781956826,
+      "approach_angle": 4.3630448683381555,
+      "approach_radial_quantile": 0.4141792695269027,
+      "collection_seed": 1,
+      "runtime_seed": 3478907614,
+      "source_demo_index": 12,
+      "source_metadata_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/ar_guidance_spatial_S15_S35/spatial_S25_d30_seed1/demo_12/metadata.json",
+      "source_metadata_sha256": "ff6f5b71060e3afbb2a2362b96572fd8b0609358a963a477aef59611feeb242c",
+      "source_exact_offsets": {
+        "start_xz": [
+          0.1287440490253688,
+          0.0,
+          0.09645449227110395
+        ],
+        "approach_xy": [
+          -0.013216881495043098,
+          -0.036281667737892605,
+          0.0
+        ]
+      },
+      "runtime_seed_provenance": "deterministic Stage 2 runtime alias; legacy raw metadata did not record the original simulator runtime RNG"
+    },
+    {
+      "candidate_index": 13,
+      "accepted_candidate_id": "legacy_seed1_demo_013",
+      "start_angle": 0.31386683929285353,
+      "start_radial_quantile": 0.5358964059155116,
+      "approach_angle": 4.170744761829463,
+      "approach_radial_quantile": 0.5148891120583086,
+      "collection_seed": 1,
+      "runtime_seed": 1107282612,
+      "source_demo_index": 13,
+      "source_metadata_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/ar_guidance_spatial_S15_S35/spatial_S25_d30_seed1/demo_13/metadata.json",
+      "source_metadata_sha256": "4f17dfb299c6cd060c1393a46f31b84e9554b4dfadc0340a9839aa46709a798f",
+      "source_exact_offsets": {
+        "start_xz": [
+          0.17407163172744616,
+          0.0,
+          0.056503029984805477
+        ],
+        "approach_xy": [
+          -0.022196022305905436,
+          -0.03689088501521289,
+          0.0
+        ]
+      },
+      "runtime_seed_provenance": "deterministic Stage 2 runtime alias; legacy raw metadata did not record the original simulator runtime RNG"
+    },
+    {
+      "candidate_index": 14,
+      "accepted_candidate_id": "legacy_seed1_demo_014",
+      "start_angle": 5.935063892080365,
+      "start_radial_quantile": 0.5865550405019931,
+      "approach_angle": 5.676241640614727,
+      "approach_radial_quantile": 0.13747470414623753,
+      "collection_seed": 1,
+      "runtime_seed": 703130291,
+      "source_demo_index": 14,
+      "source_metadata_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/ar_guidance_spatial_S15_S35/spatial_S25_d30_seed1/demo_14/metadata.json",
+      "source_metadata_sha256": "76dd5eb722a1b8ec05a63c67ef29be488b9e8dce9b4e32428c71539cca781465",
+      "source_exact_offsets": {
+        "start_xz": [
+          0.17998208498945656,
+          0.0,
+          -0.06531568811719429
+        ],
+        "approach_xy": [
+          0.018273205331578033,
+          -0.012688534266669388,
+          0.0
+        ]
+      },
+      "runtime_seed_provenance": "deterministic Stage 2 runtime alias; legacy raw metadata did not record the original simulator runtime RNG"
+    },
+    {
+      "candidate_index": 15,
+      "accepted_candidate_id": "legacy_seed1_demo_015",
+      "start_angle": 0.8750990986836081,
+      "start_radial_quantile": 0.8073912887095238,
+      "approach_angle": 2.498677259153156,
+      "approach_radial_quantile": 0.16535419711693275,
+      "collection_seed": 1,
+      "runtime_seed": 4240204777,
+      "source_demo_index": 15,
+      "source_metadata_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/ar_guidance_spatial_S15_S35/spatial_S25_d30_seed1/demo_15/metadata.json",
+      "source_metadata_sha256": "524a6bc4fb5da70b1f96398a00656e81e959efd83651392c5d326436b4dcc88c",
+      "source_exact_offsets": {
+        "start_xz": [
+          0.14397477195950056,
+          0.0,
+          0.1724332351478538
+        ],
+        "approach_xy": [
+          -0.01952717920313052,
+          0.014627521389141253,
+          0.0
+        ]
+      },
+      "runtime_seed_provenance": "deterministic Stage 2 runtime alias; legacy raw metadata did not record the original simulator runtime RNG"
+    },
+    {
+      "candidate_index": 16,
+      "accepted_candidate_id": "legacy_seed1_demo_016",
+      "start_angle": 5.827708284627356,
+      "start_radial_quantile": 0.3477658597455066,
+      "approach_angle": 4.717491574877696,
+      "approach_radial_quantile": 0.7259979853504515,
+      "collection_seed": 1,
+      "runtime_seed": 2089137413,
+      "source_demo_index": 16,
+      "source_metadata_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/ar_guidance_spatial_S15_S35/spatial_S25_d30_seed1/demo_16/metadata.json",
+      "source_metadata_sha256": "73a4df9ef724c9d2b7940c9b3609e034fbba008bb69f182e04df22b679011f1a",
+      "source_exact_offsets": {
+        "start_xz": [
+          0.13239897515729362,
+          0.0,
+          -0.06485273788663443
+        ],
+        "approach_xy": [
+          0.0002608603841889236,
+          -0.051122643702390676,
+          0.0
+        ]
+      },
+      "runtime_seed_provenance": "deterministic Stage 2 runtime alias; legacy raw metadata did not record the original simulator runtime RNG"
+    },
+    {
+      "candidate_index": 17,
+      "accepted_candidate_id": "legacy_seed1_demo_017",
+      "start_angle": 5.549975854006576,
+      "start_radial_quantile": 0.6236722070556089,
+      "approach_angle": 4.718310468018241,
+      "approach_radial_quantile": 0.34889834197784253,
+      "collection_seed": 1,
+      "runtime_seed": 58416469,
+      "source_demo_index": 17,
+      "source_metadata_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/ar_guidance_spatial_S15_S35/spatial_S25_d30_seed1/demo_17/metadata.json",
+      "source_metadata_sha256": "6424613bc180fc325af2cc78c045f9aa3075f8dedacf98a23e0f66aa670d84fc",
+      "source_exact_offsets": {
+        "start_xz": [
+          0.14669817713665917,
+          0.0,
+          -0.13213310624426008
+        ],
+        "approach_xy": [
+          0.00020985967299450914,
+          -0.03543994906934664,
+          0.0
+        ]
+      },
+      "runtime_seed_provenance": "deterministic Stage 2 runtime alias; legacy raw metadata did not record the original simulator runtime RNG"
+    },
+    {
+      "candidate_index": 18,
+      "accepted_candidate_id": "legacy_seed1_demo_018",
+      "start_angle": 1.6960069635359734,
+      "start_radial_quantile": 0.8958862181960668,
+      "approach_angle": 2.689776274332347,
+      "approach_radial_quantile": 0.9648400471483857,
+      "collection_seed": 1,
+      "runtime_seed": 1071654450,
+      "source_demo_index": 18,
+      "source_metadata_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/ar_guidance_spatial_S15_S35/spatial_S25_d30_seed1/demo_18/metadata.json",
+      "source_metadata_sha256": "1c36de16a47bb1e558048ee77d205cbf0521dd293ea268d2ea44c672105e7a65",
+      "source_exact_offsets": {
+        "start_xz": [
+          -0.029551006468870027,
+          0.0,
+          0.23477569434234666
+        ],
+        "approach_xy": [
+          -0.05302188664365323,
+          0.025731375915053097,
+          0.0
+        ]
+      },
+      "runtime_seed_provenance": "deterministic Stage 2 runtime alias; legacy raw metadata did not record the original simulator runtime RNG"
+    },
+    {
+      "candidate_index": 19,
+      "accepted_candidate_id": "legacy_seed1_demo_019",
+      "start_angle": 4.168525871266089,
+      "start_radial_quantile": 0.6216957202091218,
+      "approach_angle": 0.7209702113186731,
+      "approach_radial_quantile": 0.9494892587070713,
+      "collection_seed": 1,
+      "runtime_seed": 1423849567,
+      "source_demo_index": 19,
+      "source_metadata_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/ar_guidance_spatial_S15_S35/spatial_S25_d30_seed1/demo_19/metadata.json",
+      "source_metadata_sha256": "4699bfa950c7be104b8cf9d43509638cb4b55e098557e49860483a054be44b72",
+      "source_exact_offsets": {
+        "start_xz": [
+          -0.10199846125601479,
+          0.0,
+          -0.1686780851636494
+        ],
+        "approach_xy": [
+          0.04391693153260911,
+          0.038593580503829654,
+          0.0
+        ]
+      },
+      "runtime_seed_provenance": "deterministic Stage 2 runtime alias; legacy raw metadata did not record the original simulator runtime RNG"
+    },
+    {
+      "candidate_index": 20,
+      "accepted_candidate_id": "legacy_seed1_demo_020",
+      "start_angle": 2.826881306602983,
+      "start_radial_quantile": 0.5783896143871315,
+      "approach_angle": 2.5643991624289346,
+      "approach_radial_quantile": 0.2370269802430277,
+      "collection_seed": 1,
+      "runtime_seed": 1892071972,
+      "source_demo_index": 20,
+      "source_metadata_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/ar_guidance_spatial_S15_S35/spatial_S25_d30_seed1/demo_20/metadata.json",
+      "source_metadata_sha256": "7fa203296457197f75850db140ef5ad71923b5a7d562b14bcc904754dcd90594",
+      "source_exact_offsets": {
+        "start_xz": [
+          -0.1807917461713924,
+          0.0,
+          0.05885316827065941
+        ],
+        "approach_xy": [
+          -0.02447895122536022,
+          0.015939826717418705,
+          0.0
+        ]
+      },
+      "runtime_seed_provenance": "deterministic Stage 2 runtime alias; legacy raw metadata did not record the original simulator runtime RNG"
+    },
+    {
+      "candidate_index": 21,
+      "accepted_candidate_id": "legacy_seed1_demo_021",
+      "start_angle": 5.676100930403692,
+      "start_radial_quantile": 0.573679486672286,
+      "approach_angle": 0.018034796628978444,
+      "approach_radial_quantile": 0.6171449136207239,
+      "collection_seed": 1,
+      "runtime_seed": 2411103732,
+      "source_demo_index": 21,
+      "source_metadata_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/ar_guidance_spatial_S15_S35/spatial_S25_d30_seed1/demo_21/metadata.json",
+      "source_metadata_sha256": "91abd8ccbd0424d325261a890eaf407a4ff49a7e31dacb5159117ac1c65a388f",
+      "source_exact_offsets": {
+        "start_xz": [
+          0.15551930849255954,
+          0.0,
+          -0.10802181540325068
+        ],
+        "approach_xy": [
+          0.04712747758745378,
+          0.0008500266340811404,
+          0.0
+        ]
+      },
+      "runtime_seed_provenance": "deterministic Stage 2 runtime alias; legacy raw metadata did not record the original simulator runtime RNG"
+    },
+    {
+      "candidate_index": 22,
+      "accepted_candidate_id": "legacy_seed1_demo_022",
+      "start_angle": 2.0523704474795537,
+      "start_radial_quantile": 0.5270581022576094,
+      "approach_angle": 5.566538381401296,
+      "approach_radial_quantile": 0.35726976000249977,
+      "collection_seed": 1,
+      "runtime_seed": 2859648733,
+      "source_demo_index": 22,
+      "source_metadata_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/ar_guidance_spatial_S15_S35/spatial_S25_d30_seed1/demo_22/metadata.json",
+      "source_metadata_sha256": "8a8ffda18e59b0c3eb2d7317b229c6a089f3860605c7dcd65135a5d6681471cf",
+      "source_exact_offsets": {
+        "start_xz": [
+          -0.08406480612696239,
+          0.0,
+          0.16085471631859855
+        ],
+        "approach_xy": [
+          0.02704132106792213,
+          -0.02355712399488846,
+          0.0
+        ]
+      },
+      "runtime_seed_provenance": "deterministic Stage 2 runtime alias; legacy raw metadata did not record the original simulator runtime RNG"
+    },
+    {
+      "candidate_index": 23,
+      "accepted_candidate_id": "legacy_seed1_demo_023",
+      "start_angle": 5.7084947113154705,
+      "start_radial_quantile": 0.6233601157918026,
+      "approach_angle": 0.09940780059480259,
+      "approach_radial_quantile": 0.9294372337437614,
+      "collection_seed": 1,
+      "runtime_seed": 1277296889,
+      "source_demo_index": 23,
+      "source_metadata_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/ar_guidance_spatial_S15_S35/spatial_S25_d30_seed1/demo_23/metadata.json",
+      "source_metadata_sha256": "d3a5d715c457bfc6ae295625d0984ce1d368c057add7b166968acfb10249971e",
+      "source_exact_offsets": {
+        "start_xz": [
+          0.16567541076126593,
+          0.0,
+          -0.10729242986377686
+        ],
+        "approach_xy": [
+          0.057558823779330616,
+          0.005740718301528522,
+          0.0
+        ]
+      },
+      "runtime_seed_provenance": "deterministic Stage 2 runtime alias; legacy raw metadata did not record the original simulator runtime RNG"
+    },
+    {
+      "candidate_index": 24,
+      "accepted_candidate_id": "legacy_seed1_demo_024",
+      "start_angle": 4.341033360918003,
+      "start_radial_quantile": 0.9973228504514803,
+      "approach_angle": 1.082847349867229,
+      "approach_radial_quantile": 0.13713574962887778,
+      "collection_seed": 1,
+      "runtime_seed": 222886816,
+      "source_demo_index": 24,
+      "source_metadata_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/ar_guidance_spatial_S15_S35/spatial_S25_d30_seed1/demo_24/metadata.json",
+      "source_metadata_sha256": "6cfe6d75b4019b7fedf22d0d9ffa46ae3870a91e120965bb24f0c6ef9b1552c8",
+      "source_exact_offsets": {
+        "start_xz": [
+          -0.09059822855514385,
+          0.0,
+          -0.23264702692251935
+        ],
+        "approach_xy": [
+          0.010416655232601569,
+          0.019626053918938326,
+          0.0
+        ]
+      },
+      "runtime_seed_provenance": "deterministic Stage 2 runtime alias; legacy raw metadata did not record the original simulator runtime RNG"
+    },
+    {
+      "candidate_index": 25,
+      "accepted_candidate_id": "legacy_seed1_demo_025",
+      "start_angle": 5.859670110897449,
+      "start_radial_quantile": 0.6968181614899003,
+      "approach_angle": 0.41469131551857796,
+      "approach_radial_quantile": 0.7554630526024665,
+      "collection_seed": 1,
+      "runtime_seed": 778518077,
+      "source_demo_index": 25,
+      "source_metadata_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/ar_guidance_spatial_S15_S35/spatial_S25_d30_seed1/demo_25/metadata.json",
+      "source_metadata_sha256": "3247a66569d219c586947b71db09820232bba729dbf7d093e4e49a3ff3cb8929",
+      "source_exact_offsets": {
+        "start_xz": [
+          0.19025139458801069,
+          0.0,
+          -0.08576445621838819
+        ],
+        "approach_xy": [
+          0.047730194745584695,
+          0.021011794281246846,
+          0.0
+        ]
+      },
+      "runtime_seed_provenance": "deterministic Stage 2 runtime alias; legacy raw metadata did not record the original simulator runtime RNG"
+    },
+    {
+      "candidate_index": 26,
+      "accepted_candidate_id": "legacy_seed1_demo_026",
+      "start_angle": 4.736743790772252,
+      "start_radial_quantile": 0.9230245355464833,
+      "approach_angle": 4.470641909108915,
+      "approach_radial_quantile": 0.12427096197216468,
+      "collection_seed": 1,
+      "runtime_seed": 2441948240,
+      "source_demo_index": 26,
+      "source_metadata_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/ar_guidance_spatial_S15_S35/spatial_S25_d30_seed1/demo_26/metadata.json",
+      "source_metadata_sha256": "4e9cd4523b111f22bb69dae65f5c77fbab6df93124523f0f89bf2042232609e8",
+      "source_exact_offsets": {
+        "start_xz": [
+          0.0058490919566364565,
+          0.0,
+          -0.2401141844934156
+        ],
+        "approach_xy": [
+          -0.005063594076683321,
+          -0.02053619921325196,
+          0.0
+        ]
+      },
+      "runtime_seed_provenance": "deterministic Stage 2 runtime alias; legacy raw metadata did not record the original simulator runtime RNG"
+    },
+    {
+      "candidate_index": 27,
+      "accepted_candidate_id": "legacy_seed1_demo_027",
+      "start_angle": 0.12491056484696733,
+      "start_radial_quantile": 0.02621098687771928,
+      "approach_angle": 0.17785490963011164,
+      "approach_radial_quantile": 0.24621106760304587,
+      "collection_seed": 1,
+      "runtime_seed": 951249740,
+      "source_demo_index": 27,
+      "source_metadata_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/ar_guidance_spatial_S15_S35/spatial_S25_d30_seed1/demo_27/metadata.json",
+      "source_metadata_sha256": "27751e30fe19da1ad47db07021bbf660451a570971d113040b374fe20ad1a7c5",
+      "source_exact_offsets": {
+        "start_xz": [
+          0.04015917437335273,
+          0.0,
+          0.005042558230512004
+        ],
+        "approach_xy": [
+          0.029302159823722772,
+          0.005267188342557366,
+          0.0
+        ]
+      },
+      "runtime_seed_provenance": "deterministic Stage 2 runtime alias; legacy raw metadata did not record the original simulator runtime RNG"
+    },
+    {
+      "candidate_index": 28,
+      "accepted_candidate_id": "legacy_seed1_demo_028",
+      "start_angle": 5.403714970928121,
+      "start_radial_quantile": 0.5388310643416528,
+      "approach_angle": 3.47348293396435,
+      "approach_radial_quantile": 0.8420308923596057,
+      "collection_seed": 1,
+      "runtime_seed": 2853173191,
+      "source_demo_index": 28,
+      "source_metadata_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/ar_guidance_spatial_S15_S35/spatial_S25_d30_seed1/demo_28/metadata.json",
+      "source_metadata_sha256": "06bc099b877cc021cf184e03b127690fc2bc632ab5689c1e5cae56b5bc8b0fc8",
+      "source_exact_offsets": {
+        "start_xz": [
+          0.1170002791252349,
+          0.0,
+          -0.14137848565453806
+        ],
+        "approach_xy": [
+          -0.05205276203728518,
+          -0.017939375038845226,
+          0.0
+        ]
+      },
+      "runtime_seed_provenance": "deterministic Stage 2 runtime alias; legacy raw metadata did not record the original simulator runtime RNG"
+    },
+    {
+      "candidate_index": 29,
+      "accepted_candidate_id": "legacy_seed1_demo_029",
+      "start_angle": 0.7802039491052064,
+      "start_radial_quantile": 0.27918367901113955,
+      "approach_angle": 3.6804340479709325,
+      "approach_radial_quantile": 0.9695957483196748,
+      "collection_seed": 1,
+      "runtime_seed": 3566946254,
+      "source_demo_index": 29,
+      "source_metadata_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/ar_guidance_spatial_S15_S35/spatial_S25_d30_seed1/demo_29/metadata.json",
+      "source_metadata_sha256": "40a35a5adbece3b06e2438357ae8c427c8607760655b3ef17d407d0943b8e256",
+      "source_exact_offsets": {
+        "start_xz": [
+          0.09388888155631833,
+          0.0,
+          0.09291855497315835
+        ],
+        "approach_xy": [
+          -0.05070930169401857,
+          -0.030316850358436547,
+          0.0
+        ]
+      },
+      "runtime_seed_provenance": "deterministic Stage 2 runtime alias; legacy raw metadata did not record the original simulator runtime RNG"
+    }
+  ]
+}

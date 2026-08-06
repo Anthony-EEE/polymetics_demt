@@ -1,0 +1,4668 @@
+{
+  "schema_version": 3,
+  "protocol_id": "tro_stage2_position_axial_condition_relative_idood_rerollout_rmax40_v2",
+  "condition_order": [
+    "START15_APP6",
+    "START35_APP6",
+    "START25_APP3P6",
+    "START25_APP6",
+    "START25_APP8P4"
+  ],
+  "start_family": "START15",
+  "start_support_radius_m": 0.15,
+  "bank": "ood",
+  "protocol": {
+    "seed": 3,
+    "num_rollouts": 25,
+    "horizon": 200,
+    "sample_hz": 8.0,
+    "action_gap": 2,
+    "action_dt": 0.25,
+    "terminate_on_success": true,
+    "success_lift_height": 0.2,
+    "num_points": 10000,
+    "corridor_start_center": [
+      0.3,
+      0.0,
+      0.5
+    ],
+    "shared_start_radius_min": 0.15,
+    "shared_start_radius_max": 0.4,
+    "corridor_start_max_error": 0.025,
+    "evaluation_distribution": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1",
+    "rng_protocol": "independent spatial/runtime/point-cloud streams; Python, NumPy, Torch and CUDA reset per rollout",
+    "bank_id": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1"
+  },
+  "seed": 3,
+  "num_rollouts": 25,
+  "sample_hz": 8.0,
+  "corridor_start_center": [
+    0.3,
+    0.0,
+    0.5
+  ],
+  "start_sampling_mode": "xz_annulus",
+  "shared_start_radius_min": 0.15,
+  "shared_start_radius_max": 0.4,
+  "shared_start_radius": 0.4,
+  "corridor_start_max_error": 0.025,
+  "max_start_sample_attempts": 1000,
+  "evaluation_distribution": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1",
+  "joint_triplet_candidate_count": 51,
+  "joint_triplet_rejection_count": 26,
+  "joint_triplet_rejections": [
+    {
+      "candidate_index": 0,
+      "area_quantile": 0.27210428974397327,
+      "theta_rad": 0.8961878729862571,
+      "failed_start_radii_m": [
+        0.35
+      ],
+      "ik_error_by_start_radius_m": {
+        "0.15": 0.004692160693953618,
+        "0.25": 0.018810642050770817,
+        "0.35": 0.07421820820965969
+      }
+    },
+    {
+      "candidate_index": 1,
+      "area_quantile": 0.44503174495353803,
+      "theta_rad": 1.673712366794745,
+      "failed_start_radii_m": [
+        0.35
+      ],
+      "ik_error_by_start_radius_m": {
+        "0.15": 0.006150522888786093,
+        "0.25": 0.01603601992371864,
+        "0.35": 0.050832930959817536
+      }
+    },
+    {
+      "candidate_index": 2,
+      "area_quantile": 0.6967229511360987,
+      "theta_rad": 1.0625526988689666,
+      "failed_start_radii_m": [
+        0.15,
+        0.25,
+        0.35
+      ],
+      "ik_error_by_start_radius_m": {
+        "0.15": 0.05779512172450915,
+        "0.25": 0.07405633083275634,
+        "0.35": 0.09741316957503372
+      }
+    },
+    {
+      "candidate_index": 3,
+      "area_quantile": 0.5949276991319343,
+      "theta_rad": 1.689684689349381,
+      "failed_start_radii_m": [
+        0.25,
+        0.35
+      ],
+      "ik_error_by_start_radius_m": {
+        "0.15": 0.01407168967934981,
+        "0.25": 0.028003088050702906,
+        "0.35": 0.055621817052997014
+      }
+    },
+    {
+      "candidate_index": 5,
+      "area_quantile": 0.14665778036506794,
+      "theta_rad": 1.0626967559190563,
+      "failed_start_radii_m": [
+        0.35
+      ],
+      "ik_error_by_start_radius_m": {
+        "0.15": 0.002780588582130568,
+        "0.25": 0.010499769171131572,
+        "0.35": 0.07083769204519531
+      }
+    },
+    {
+      "candidate_index": 6,
+      "area_quantile": 0.9351536252562049,
+      "theta_rad": 4.425203753832616,
+      "failed_start_radii_m": [
+        0.15,
+        0.25,
+        0.35
+      ],
+      "ik_error_by_start_radius_m": {
+        "0.15": 0.06708102023034593,
+        "0.25": 0.06819989288375741,
+        "0.35": 0.06969575258184675
+      }
+    },
+    {
+      "candidate_index": 14,
+      "area_quantile": 0.043044340326485186,
+      "theta_rad": 0.6754739315927312,
+      "failed_start_radii_m": [
+        0.35
+      ],
+      "ik_error_by_start_radius_m": {
+        "0.15": 0.0016178322344549598,
+        "0.25": 0.005028697289005721,
+        "0.35": 0.05180170785251087
+      }
+    },
+    {
+      "candidate_index": 17,
+      "area_quantile": 0.22745679838795307,
+      "theta_rad": 1.5408336448062996,
+      "failed_start_radii_m": [
+        0.35
+      ],
+      "ik_error_by_start_radius_m": {
+        "0.15": 0.0030659266880551446,
+        "0.25": 0.008767966882967437,
+        "0.35": 0.05408704835348408
+      }
+    },
+    {
+      "candidate_index": 18,
+      "area_quantile": 0.9498513578773139,
+      "theta_rad": 0.22018682374838883,
+      "failed_start_radii_m": [
+        0.15,
+        0.25,
+        0.35
+      ],
+      "ik_error_by_start_radius_m": {
+        "0.15": 0.03555441852911038,
+        "0.25": 0.03747016788593202,
+        "0.35": 0.04038271732471574
+      }
+    },
+    {
+      "candidate_index": 20,
+      "area_quantile": 0.7321866906012345,
+      "theta_rad": 4.453674123946743,
+      "failed_start_radii_m": [
+        0.15,
+        0.25,
+        0.35
+      ],
+      "ik_error_by_start_radius_m": {
+        "0.15": 0.0433354573402683,
+        "0.25": 0.050713643903284235,
+        "0.35": 0.05707118522259515
+      }
+    },
+    {
+      "candidate_index": 24,
+      "area_quantile": 0.57968085341221,
+      "theta_rad": 0.6533252906970913,
+      "failed_start_radii_m": [
+        0.25,
+        0.35
+      ],
+      "ik_error_by_start_radius_m": {
+        "0.15": 0.024139815952096456,
+        "0.25": 0.043862114817425406,
+        "0.35": 0.07519693874876102
+      }
+    },
+    {
+      "candidate_index": 25,
+      "area_quantile": 0.536929499787055,
+      "theta_rad": 3.9240745188735375,
+      "failed_start_radii_m": [
+        0.15,
+        0.25,
+        0.35
+      ],
+      "ik_error_by_start_radius_m": {
+        "0.15": 0.03357912430114002,
+        "0.25": 0.05824220788301306,
+        "0.35": 0.09856598037778161
+      }
+    },
+    {
+      "candidate_index": 26,
+      "area_quantile": 0.5821479224875598,
+      "theta_rad": 3.57398014680784,
+      "failed_start_radii_m": [
+        0.15,
+        0.25,
+        0.35
+      ],
+      "ik_error_by_start_radius_m": {
+        "0.15": 0.03933978885022045,
+        "0.25": 0.060643379995939065,
+        "0.35": 0.08944945242344213
+      }
+    },
+    {
+      "candidate_index": 28,
+      "area_quantile": 0.10337559113291717,
+      "theta_rad": 1.6527776368149334,
+      "failed_start_radii_m": [
+        0.35
+      ],
+      "ik_error_by_start_radius_m": {
+        "0.15": 0.0018066326399930966,
+        "0.25": 0.004473503481630226,
+        "0.35": 0.037988234840264874
+      }
+    },
+    {
+      "candidate_index": 29,
+      "area_quantile": 0.6006097090105927,
+      "theta_rad": 1.5867377268839244,
+      "failed_start_radii_m": [
+        0.25,
+        0.35
+      ],
+      "ik_error_by_start_radius_m": {
+        "0.15": 0.020516228530542854,
+        "0.25": 0.037830096977487564,
+        "0.35": 0.06705592541017516
+      }
+    },
+    {
+      "candidate_index": 30,
+      "area_quantile": 0.9415657477905055,
+      "theta_rad": 4.22637792134068,
+      "failed_start_radii_m": [
+        0.15,
+        0.25,
+        0.35
+      ],
+      "ik_error_by_start_radius_m": {
+        "0.15": 0.11594005962200829,
+        "0.25": 0.1184681747380807,
+        "0.35": 0.12275972669460386
+      }
+    },
+    {
+      "candidate_index": 35,
+      "area_quantile": 0.378299126011281,
+      "theta_rad": 1.7753539965200433,
+      "failed_start_radii_m": [
+        0.35
+      ],
+      "ik_error_by_start_radius_m": {
+        "0.15": 0.0038239463954372038,
+        "0.25": 0.008305809370603266,
+        "0.35": 0.03616962599950976
+      }
+    },
+    {
+      "candidate_index": 36,
+      "area_quantile": 0.7319968413691472,
+      "theta_rad": 0.65124714299635,
+      "failed_start_radii_m": [
+        0.15,
+        0.25,
+        0.35
+      ],
+      "ik_error_by_start_radius_m": {
+        "0.15": 0.04887931467032453,
+        "0.25": 0.06228768388232192,
+        "0.35": 0.08191412818738249
+      }
+    },
+    {
+      "candidate_index": 40,
+      "area_quantile": 0.49202066247633336,
+      "theta_rad": 4.184418846598787,
+      "failed_start_radii_m": [
+        0.15,
+        0.25,
+        0.35
+      ],
+      "ik_error_by_start_radius_m": {
+        "0.15": 0.0360972027540062,
+        "0.25": 0.07505139637798716,
+        "0.35": 0.10607249772877428
+      }
+    },
+    {
+      "candidate_index": 41,
+      "area_quantile": 0.7595960514588258,
+      "theta_rad": 0.3779373929735491,
+      "failed_start_radii_m": [
+        0.15,
+        0.25,
+        0.35
+      ],
+      "ik_error_by_start_radius_m": {
+        "0.15": 0.028869093847656686,
+        "0.25": 0.0388101084546625,
+        "0.35": 0.054564374054194696
+      }
+    },
+    {
+      "candidate_index": 43,
+      "area_quantile": 0.6903247037188713,
+      "theta_rad": 3.6489223764056073,
+      "failed_start_radii_m": [
+        0.15,
+        0.25,
+        0.35
+      ],
+      "ik_error_by_start_radius_m": {
+        "0.15": 0.06559108092248385,
+        "0.25": 0.08123039276763809,
+        "0.35": 0.10321170094425165
+      }
+    },
+    {
+      "candidate_index": 45,
+      "area_quantile": 0.6733139210674419,
+      "theta_rad": 3.3634114183385497,
+      "failed_start_radii_m": [
+        0.25,
+        0.35
+      ],
+      "ik_error_by_start_radius_m": {
+        "0.15": 0.020590292601767844,
+        "0.25": 0.032650871709243176,
+        "0.35": 0.048819985438662485
+      }
+    },
+    {
+      "candidate_index": 46,
+      "area_quantile": 0.8521143047769322,
+      "theta_rad": 0.4230860573035166,
+      "failed_start_radii_m": [
+        0.15,
+        0.25,
+        0.35
+      ],
+      "ik_error_by_start_radius_m": {
+        "0.15": 0.047369619240300774,
+        "0.25": 0.05403935853735689,
+        "0.35": 0.06401397481350382
+      }
+    },
+    {
+      "candidate_index": 47,
+      "area_quantile": 0.22464630490671367,
+      "theta_rad": 4.331198206928547,
+      "failed_start_radii_m": [
+        0.35
+      ],
+      "ik_error_by_start_radius_m": {
+        "0.15": 0.0022656885649719777,
+        "0.25": 0.022304311428687027,
+        "0.35": 0.0782619865700222
+      }
+    },
+    {
+      "candidate_index": 48,
+      "area_quantile": 0.07663157225885686,
+      "theta_rad": 3.8183645299958493,
+      "failed_start_radii_m": [
+        0.35
+      ],
+      "ik_error_by_start_radius_m": {
+        "0.15": 0.0023759258742950683,
+        "0.25": 0.004160692411729649,
+        "0.35": 0.07941520229186497
+      }
+    },
+    {
+      "candidate_index": 49,
+      "area_quantile": 0.46638096121943695,
+      "theta_rad": 1.5450029831881777,
+      "failed_start_radii_m": [
+        0.25,
+        0.35
+      ],
+      "ik_error_by_start_radius_m": {
+        "0.15": 0.009507944482633084,
+        "0.25": 0.026040108363307005,
+        "0.35": 0.06486539289194954
+      }
+    }
+  ],
+  "shared_corridor_starts": [
+    [
+      0.45714668207611464,
+      0.0,
+      0.3046595035334451
+    ],
+    [
+      -0.08118082262017629,
+      0.0,
+      0.4563714561972946
+    ],
+    [
+      0.5642490716722713,
+      0.0,
+      0.5510578914760611
+    ],
+    [
+      0.47842969775550537,
+      0.0,
+      0.22150598768425095
+    ],
+    [
+      0.3805664123922813,
+      0.0,
+      0.32856234415492125
+    ],
+    [
+      0.39056816154109564,
+      0.0,
+      0.27308519824010286
+    ],
+    [
+      0.00020609634608287353,
+      0.0,
+      0.6751156090619204
+    ],
+    [
+      0.08006447392210092,
+      0.0,
+      0.792316567027546
+    ],
+    [
+      0.18002279570889324,
+      0.0,
+      0.6200008280276236
+    ],
+    [
+      0.4743389630283985,
+      0.0,
+      0.3082194833590124
+    ],
+    [
+      -0.07424519646223487,
+      0.0,
+      0.5829577357407748
+    ],
+    [
+      -0.04409695496172006,
+      0.0,
+      0.6844695919967763
+    ],
+    [
+      0.47120351186034315,
+      0.0,
+      0.3115585448059571
+    ],
+    [
+      0.20614051267378444,
+      0.0,
+      0.6814198096384548
+    ],
+    [
+      0.5137743072268248,
+      0.0,
+      0.4258013592772255
+    ],
+    [
+      0.5351282693741403,
+      0.0,
+      0.3508443537081696
+    ],
+    [
+      0.005028054303859275,
+      0.0,
+      0.6336574924287164
+    ],
+    [
+      0.26472389979152877,
+      0.0,
+      0.1934865065325001
+    ],
+    [
+      0.45006184729021526,
+      0.0,
+      0.4200545073856685
+    ],
+    [
+      0.07750467782906645,
+      0.0,
+      0.7767394027036443
+    ],
+    [
+      0.35874825080982364,
+      0.0,
+      0.16749539488381143
+    ],
+    [
+      0.08757658537167931,
+      0.0,
+      0.599226511488571
+    ],
+    [
+      0.05043518377237324,
+      0.0,
+      0.46296235918228174
+    ],
+    [
+      0.011308403945871182,
+      0.0,
+      0.6695416111027215
+    ],
+    [
+      0.6182156407308521,
+      0.0,
+      0.37967251853329925
+    ]
+  ],
+  "shared_start_records": [
+    {
+      "rollout_index": 0,
+      "normalized_state_index": 0,
+      "normalized_state_id": "tro_s2_idood_rmax40_seed3_ood_normalized_000",
+      "state_id": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1_state_000",
+      "candidate_index": 4,
+      "area_quantile": 0.2934762854351388,
+      "theta_rad": 5.389853054166113,
+      "attempts": 5,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1",
+      "bank": "ood",
+      "start_support_radius_m": 0.15,
+      "global_max_radius_m": 0.4,
+      "shared_start_radius_min": 0.15,
+      "shared_start_radius_max": 0.4,
+      "shared_start_radius": 0.4,
+      "normalized_delta": [
+        0.39286670519028666,
+        0.0,
+        -0.4883512411663872
+      ],
+      "corridor_start_delta": [
+        0.15714668207611468,
+        0.0,
+        -0.19534049646655488
+      ],
+      "radial_distance_from_center": 0.2507049844884054,
+      "start_angle_rad": 5.389853054166113,
+      "corridor_start": [
+        0.45714668207611464,
+        0.0,
+        0.3046595035334451
+      ],
+      "realised_start": [
+        0.4570900583360143,
+        9.905368828672857e-06,
+        0.3050291638517167
+      ],
+      "ik_error": 0.000374103080953929,
+      "rejected_count": 4,
+      "recent_rejections": [
+        {
+          "candidate_index": 0,
+          "area_quantile": 0.27210428974397327,
+          "theta_rad": 0.8961878729862571,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.004692160693953618,
+            "0.25": 0.018810642050770817,
+            "0.35": 0.07421820820965969
+          }
+        },
+        {
+          "candidate_index": 1,
+          "area_quantile": 0.44503174495353803,
+          "theta_rad": 1.673712366794745,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.006150522888786093,
+            "0.25": 0.01603601992371864,
+            "0.35": 0.050832930959817536
+          }
+        },
+        {
+          "candidate_index": 2,
+          "area_quantile": 0.6967229511360987,
+          "theta_rad": 1.0625526988689666,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.05779512172450915,
+            "0.25": 0.07405633083275634,
+            "0.35": 0.09741316957503372
+          }
+        },
+        {
+          "candidate_index": 3,
+          "area_quantile": 0.5949276991319343,
+          "theta_rad": 1.689684689349381,
+          "failed_start_radii_m": [
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.01407168967934981,
+            "0.25": 0.028003088050702906,
+            "0.35": 0.055621817052997014
+          }
+        }
+      ],
+      "rng_seed": 781125098,
+      "point_cloud_rng_seed": 1589705317
+    },
+    {
+      "rollout_index": 1,
+      "normalized_state_index": 1,
+      "normalized_state_id": "tro_s2_idood_rmax40_seed3_ood_normalized_001",
+      "state_id": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1_state_001",
+      "candidate_index": 7,
+      "area_quantile": 0.906925595401737,
+      "theta_rad": 3.255553036660778,
+      "attempts": 8,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1",
+      "bank": "ood",
+      "start_support_radius_m": 0.15,
+      "global_max_radius_m": 0.4,
+      "shared_start_radius_min": 0.15,
+      "shared_start_radius_max": 0.4,
+      "shared_start_radius": 0.4,
+      "normalized_delta": [
+        -0.9529520565504407,
+        0.0,
+        -0.1090713595067636
+      ],
+      "corridor_start_delta": [
+        -0.3811808226201763,
+        0.0,
+        -0.04362854380270544
+      ],
+      "radial_distance_from_center": 0.3836694793278961,
+      "start_angle_rad": 3.255553036660778,
+      "corridor_start": [
+        -0.08118082262017629,
+        0.0,
+        0.4563714561972946
+      ],
+      "realised_start": [
+        -0.07244436488208239,
+        8.062136925136378e-05,
+        0.47270677007912465
+      ],
+      "ik_error": 0.018524974311253196,
+      "rejected_count": 6,
+      "recent_rejections": [
+        {
+          "candidate_index": 0,
+          "area_quantile": 0.27210428974397327,
+          "theta_rad": 0.8961878729862571,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.004692160693953618,
+            "0.25": 0.018810642050770817,
+            "0.35": 0.07421820820965969
+          }
+        },
+        {
+          "candidate_index": 1,
+          "area_quantile": 0.44503174495353803,
+          "theta_rad": 1.673712366794745,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.006150522888786093,
+            "0.25": 0.01603601992371864,
+            "0.35": 0.050832930959817536
+          }
+        },
+        {
+          "candidate_index": 2,
+          "area_quantile": 0.6967229511360987,
+          "theta_rad": 1.0625526988689666,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.05779512172450915,
+            "0.25": 0.07405633083275634,
+            "0.35": 0.09741316957503372
+          }
+        },
+        {
+          "candidate_index": 3,
+          "area_quantile": 0.5949276991319343,
+          "theta_rad": 1.689684689349381,
+          "failed_start_radii_m": [
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.01407168967934981,
+            "0.25": 0.028003088050702906,
+            "0.35": 0.055621817052997014
+          }
+        },
+        {
+          "candidate_index": 5,
+          "area_quantile": 0.14665778036506794,
+          "theta_rad": 1.0626967559190563,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.002780588582130568,
+            "0.25": 0.010499769171131572,
+            "0.35": 0.07083769204519531
+          }
+        },
+        {
+          "candidate_index": 6,
+          "area_quantile": 0.9351536252562049,
+          "theta_rad": 4.425203753832616,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.06708102023034593,
+            "0.25": 0.06819989288375741,
+            "0.35": 0.06969575258184675
+          }
+        }
+      ],
+      "rng_seed": 3014391243,
+      "point_cloud_rng_seed": 2762227717
+    },
+    {
+      "rollout_index": 2,
+      "normalized_state_index": 2,
+      "normalized_state_id": "tro_s2_idood_rmax40_seed3_ood_normalized_002",
+      "state_id": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1_state_002",
+      "candidate_index": 8,
+      "area_quantile": 0.3631598557210066,
+      "theta_rad": 0.19086676456284948,
+      "attempts": 9,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1",
+      "bank": "ood",
+      "start_support_radius_m": 0.15,
+      "global_max_radius_m": 0.4,
+      "shared_start_radius_min": 0.15,
+      "shared_start_radius_max": 0.4,
+      "shared_start_radius": 0.4,
+      "normalized_delta": [
+        0.6606226791806783,
+        0.0,
+        0.12764472869015275
+      ],
+      "corridor_start_delta": [
+        0.26424907167227135,
+        0.0,
+        0.0510578914760611
+      ],
+      "radial_distance_from_center": 0.26913654557053085,
+      "start_angle_rad": 0.19086676456284948,
+      "corridor_start": [
+        0.5642490716722713,
+        0.0,
+        0.5510578914760611
+      ],
+      "realised_start": [
+        0.5621074916740231,
+        9.475412024035202e-06,
+        0.5491492024164387
+      ],
+      "ik_error": 0.0028687189821682154,
+      "rejected_count": 6,
+      "recent_rejections": [
+        {
+          "candidate_index": 0,
+          "area_quantile": 0.27210428974397327,
+          "theta_rad": 0.8961878729862571,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.004692160693953618,
+            "0.25": 0.018810642050770817,
+            "0.35": 0.07421820820965969
+          }
+        },
+        {
+          "candidate_index": 1,
+          "area_quantile": 0.44503174495353803,
+          "theta_rad": 1.673712366794745,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.006150522888786093,
+            "0.25": 0.01603601992371864,
+            "0.35": 0.050832930959817536
+          }
+        },
+        {
+          "candidate_index": 2,
+          "area_quantile": 0.6967229511360987,
+          "theta_rad": 1.0625526988689666,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.05779512172450915,
+            "0.25": 0.07405633083275634,
+            "0.35": 0.09741316957503372
+          }
+        },
+        {
+          "candidate_index": 3,
+          "area_quantile": 0.5949276991319343,
+          "theta_rad": 1.689684689349381,
+          "failed_start_radii_m": [
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.01407168967934981,
+            "0.25": 0.028003088050702906,
+            "0.35": 0.055621817052997014
+          }
+        },
+        {
+          "candidate_index": 5,
+          "area_quantile": 0.14665778036506794,
+          "theta_rad": 1.0626967559190563,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.002780588582130568,
+            "0.25": 0.010499769171131572,
+            "0.35": 0.07083769204519531
+          }
+        },
+        {
+          "candidate_index": 6,
+          "area_quantile": 0.9351536252562049,
+          "theta_rad": 4.425203753832616,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.06708102023034593,
+            "0.25": 0.06819989288375741,
+            "0.35": 0.06969575258184675
+          }
+        }
+      ],
+      "rng_seed": 3322620224,
+      "point_cloud_rng_seed": 1363582807
+    },
+    {
+      "rollout_index": 3,
+      "normalized_state_index": 3,
+      "normalized_state_id": "tro_s2_idood_rmax40_seed3_ood_normalized_003",
+      "state_id": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1_state_003",
+      "candidate_index": 9,
+      "area_quantile": 0.6319714322679675,
+      "theta_rad": 5.28219500385003,
+      "attempts": 10,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1",
+      "bank": "ood",
+      "start_support_radius_m": 0.15,
+      "global_max_radius_m": 0.4,
+      "shared_start_radius_min": 0.15,
+      "shared_start_radius_max": 0.4,
+      "shared_start_radius": 0.4,
+      "normalized_delta": [
+        0.44607424438876336,
+        0.0,
+        -0.6962350307893725
+      ],
+      "corridor_start_delta": [
+        0.17842969775550535,
+        0.0,
+        -0.27849401231574905
+      ],
+      "radial_distance_from_center": 0.33075077012283066,
+      "start_angle_rad": 5.28219500385003,
+      "corridor_start": [
+        0.47842969775550537,
+        0.0,
+        0.22150598768425095
+      ],
+      "realised_start": [
+        0.47833786780540133,
+        1.0585670595769435e-05,
+        0.22223504610808964
+      ],
+      "ik_error": 0.0007348952180605265,
+      "rejected_count": 6,
+      "recent_rejections": [
+        {
+          "candidate_index": 0,
+          "area_quantile": 0.27210428974397327,
+          "theta_rad": 0.8961878729862571,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.004692160693953618,
+            "0.25": 0.018810642050770817,
+            "0.35": 0.07421820820965969
+          }
+        },
+        {
+          "candidate_index": 1,
+          "area_quantile": 0.44503174495353803,
+          "theta_rad": 1.673712366794745,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.006150522888786093,
+            "0.25": 0.01603601992371864,
+            "0.35": 0.050832930959817536
+          }
+        },
+        {
+          "candidate_index": 2,
+          "area_quantile": 0.6967229511360987,
+          "theta_rad": 1.0625526988689666,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.05779512172450915,
+            "0.25": 0.07405633083275634,
+            "0.35": 0.09741316957503372
+          }
+        },
+        {
+          "candidate_index": 3,
+          "area_quantile": 0.5949276991319343,
+          "theta_rad": 1.689684689349381,
+          "failed_start_radii_m": [
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.01407168967934981,
+            "0.25": 0.028003088050702906,
+            "0.35": 0.055621817052997014
+          }
+        },
+        {
+          "candidate_index": 5,
+          "area_quantile": 0.14665778036506794,
+          "theta_rad": 1.0626967559190563,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.002780588582130568,
+            "0.25": 0.010499769171131572,
+            "0.35": 0.07083769204519531
+          }
+        },
+        {
+          "candidate_index": 6,
+          "area_quantile": 0.9351536252562049,
+          "theta_rad": 4.425203753832616,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.06708102023034593,
+            "0.25": 0.06819989288375741,
+            "0.35": 0.06969575258184675
+          }
+        }
+      ],
+      "rng_seed": 2187338981,
+      "point_cloud_rng_seed": 2379681403
+    },
+    {
+      "rollout_index": 4,
+      "normalized_state_index": 4,
+      "normalized_state_id": "tro_s2_idood_rmax40_seed3_ood_normalized_004",
+      "state_id": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1_state_004",
+      "candidate_index": 10,
+      "area_quantile": 0.09732230289031851,
+      "theta_rad": 5.151705502245392,
+      "attempts": 11,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1",
+      "bank": "ood",
+      "start_support_radius_m": 0.15,
+      "global_max_radius_m": 0.4,
+      "shared_start_radius_min": 0.15,
+      "shared_start_radius_max": 0.4,
+      "shared_start_radius": 0.4,
+      "normalized_delta": [
+        0.20141603098070324,
+        0.0,
+        -0.42859413961269677
+      ],
+      "corridor_start_delta": [
+        0.0805664123922813,
+        0.0,
+        -0.17143765584507872
+      ],
+      "radial_distance_from_center": 0.18942496310523274,
+      "start_angle_rad": 5.151705502245392,
+      "corridor_start": [
+        0.3805664123922813,
+        0.0,
+        0.32856234415492125
+      ],
+      "realised_start": [
+        0.38093422810479577,
+        9.989963294965419e-06,
+        0.3288743753900339
+      ],
+      "ik_error": 0.0004824434572310979,
+      "rejected_count": 6,
+      "recent_rejections": [
+        {
+          "candidate_index": 0,
+          "area_quantile": 0.27210428974397327,
+          "theta_rad": 0.8961878729862571,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.004692160693953618,
+            "0.25": 0.018810642050770817,
+            "0.35": 0.07421820820965969
+          }
+        },
+        {
+          "candidate_index": 1,
+          "area_quantile": 0.44503174495353803,
+          "theta_rad": 1.673712366794745,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.006150522888786093,
+            "0.25": 0.01603601992371864,
+            "0.35": 0.050832930959817536
+          }
+        },
+        {
+          "candidate_index": 2,
+          "area_quantile": 0.6967229511360987,
+          "theta_rad": 1.0625526988689666,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.05779512172450915,
+            "0.25": 0.07405633083275634,
+            "0.35": 0.09741316957503372
+          }
+        },
+        {
+          "candidate_index": 3,
+          "area_quantile": 0.5949276991319343,
+          "theta_rad": 1.689684689349381,
+          "failed_start_radii_m": [
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.01407168967934981,
+            "0.25": 0.028003088050702906,
+            "0.35": 0.055621817052997014
+          }
+        },
+        {
+          "candidate_index": 5,
+          "area_quantile": 0.14665778036506794,
+          "theta_rad": 1.0626967559190563,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.002780588582130568,
+            "0.25": 0.010499769171131572,
+            "0.35": 0.07083769204519531
+          }
+        },
+        {
+          "candidate_index": 6,
+          "area_quantile": 0.9351536252562049,
+          "theta_rad": 4.425203753832616,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.06708102023034593,
+            "0.25": 0.06819989288375741,
+            "0.35": 0.06969575258184675
+          }
+        }
+      ],
+      "rng_seed": 1816778800,
+      "point_cloud_rng_seed": 446433331
+    },
+    {
+      "rollout_index": 5,
+      "normalized_state_index": 5,
+      "normalized_state_id": "tro_s2_idood_rmax40_seed3_ood_normalized_005",
+      "state_id": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1_state_005",
+      "candidate_index": 11,
+      "area_quantile": 0.2704939574012175,
+      "theta_rad": 5.092143827616807,
+      "attempts": 12,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1",
+      "bank": "ood",
+      "start_support_radius_m": 0.15,
+      "global_max_radius_m": 0.4,
+      "shared_start_radius_min": 0.15,
+      "shared_start_radius_max": 0.4,
+      "shared_start_radius": 0.4,
+      "normalized_delta": [
+        0.22642040385273918,
+        0.0,
+        -0.5672870043997428
+      ],
+      "corridor_start_delta": [
+        0.09056816154109568,
+        0.0,
+        -0.22691480175989714
+      ],
+      "radial_distance_from_center": 0.24432134401780664,
+      "start_angle_rad": 5.092143827616807,
+      "corridor_start": [
+        0.39056816154109564,
+        0.0,
+        0.27308519824010286
+      ],
+      "realised_start": [
+        0.3908799939938897,
+        1.0210082316339792e-05,
+        0.27361895568234046
+      ],
+      "ik_error": 0.0006182562021852105,
+      "rejected_count": 6,
+      "recent_rejections": [
+        {
+          "candidate_index": 0,
+          "area_quantile": 0.27210428974397327,
+          "theta_rad": 0.8961878729862571,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.004692160693953618,
+            "0.25": 0.018810642050770817,
+            "0.35": 0.07421820820965969
+          }
+        },
+        {
+          "candidate_index": 1,
+          "area_quantile": 0.44503174495353803,
+          "theta_rad": 1.673712366794745,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.006150522888786093,
+            "0.25": 0.01603601992371864,
+            "0.35": 0.050832930959817536
+          }
+        },
+        {
+          "candidate_index": 2,
+          "area_quantile": 0.6967229511360987,
+          "theta_rad": 1.0625526988689666,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.05779512172450915,
+            "0.25": 0.07405633083275634,
+            "0.35": 0.09741316957503372
+          }
+        },
+        {
+          "candidate_index": 3,
+          "area_quantile": 0.5949276991319343,
+          "theta_rad": 1.689684689349381,
+          "failed_start_radii_m": [
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.01407168967934981,
+            "0.25": 0.028003088050702906,
+            "0.35": 0.055621817052997014
+          }
+        },
+        {
+          "candidate_index": 5,
+          "area_quantile": 0.14665778036506794,
+          "theta_rad": 1.0626967559190563,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.002780588582130568,
+            "0.25": 0.010499769171131572,
+            "0.35": 0.07083769204519531
+          }
+        },
+        {
+          "candidate_index": 6,
+          "area_quantile": 0.9351536252562049,
+          "theta_rad": 4.425203753832616,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.06708102023034593,
+            "0.25": 0.06819989288375741,
+            "0.35": 0.06969575258184675
+          }
+        }
+      ],
+      "rng_seed": 3181444770,
+      "point_cloud_rng_seed": 364324094
+    },
+    {
+      "rollout_index": 6,
+      "normalized_state_index": 6,
+      "normalized_state_id": "tro_s2_idood_rmax40_seed3_ood_normalized_006",
+      "state_id": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1_state_006",
+      "candidate_index": 12,
+      "area_quantile": 0.7130317178558649,
+      "theta_rad": 2.612931477890455,
+      "attempts": 13,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1",
+      "bank": "ood",
+      "start_support_radius_m": 0.15,
+      "global_max_radius_m": 0.4,
+      "shared_start_radius_min": 0.15,
+      "shared_start_radius_max": 0.4,
+      "shared_start_radius": 0.4,
+      "normalized_delta": [
+        -0.7494847591347927,
+        0.0,
+        0.43778902265480074
+      ],
+      "corridor_start_delta": [
+        -0.2997939036539171,
+        0.0,
+        0.1751156090619203
+      ],
+      "radial_distance_from_center": 0.3471913898776602,
+      "start_angle_rad": 2.612931477890455,
+      "corridor_start": [
+        0.00020609634608287353,
+        0.0,
+        0.6751156090619204
+      ],
+      "realised_start": [
+        0.0016144951863185457,
+        1.5193792674624122e-05,
+        0.6744375876812694
+      ],
+      "ik_error": 0.001563179815994594,
+      "rejected_count": 6,
+      "recent_rejections": [
+        {
+          "candidate_index": 0,
+          "area_quantile": 0.27210428974397327,
+          "theta_rad": 0.8961878729862571,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.004692160693953618,
+            "0.25": 0.018810642050770817,
+            "0.35": 0.07421820820965969
+          }
+        },
+        {
+          "candidate_index": 1,
+          "area_quantile": 0.44503174495353803,
+          "theta_rad": 1.673712366794745,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.006150522888786093,
+            "0.25": 0.01603601992371864,
+            "0.35": 0.050832930959817536
+          }
+        },
+        {
+          "candidate_index": 2,
+          "area_quantile": 0.6967229511360987,
+          "theta_rad": 1.0625526988689666,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.05779512172450915,
+            "0.25": 0.07405633083275634,
+            "0.35": 0.09741316957503372
+          }
+        },
+        {
+          "candidate_index": 3,
+          "area_quantile": 0.5949276991319343,
+          "theta_rad": 1.689684689349381,
+          "failed_start_radii_m": [
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.01407168967934981,
+            "0.25": 0.028003088050702906,
+            "0.35": 0.055621817052997014
+          }
+        },
+        {
+          "candidate_index": 5,
+          "area_quantile": 0.14665778036506794,
+          "theta_rad": 1.0626967559190563,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.002780588582130568,
+            "0.25": 0.010499769171131572,
+            "0.35": 0.07083769204519531
+          }
+        },
+        {
+          "candidate_index": 6,
+          "area_quantile": 0.9351536252562049,
+          "theta_rad": 4.425203753832616,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.06708102023034593,
+            "0.25": 0.06819989288375741,
+            "0.35": 0.06969575258184675
+          }
+        }
+      ],
+      "rng_seed": 212968936,
+      "point_cloud_rng_seed": 3789303737
+    },
+    {
+      "rollout_index": 7,
+      "normalized_state_index": 7,
+      "normalized_state_id": "tro_s2_idood_rmax40_seed3_ood_normalized_007",
+      "state_id": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1_state_007",
+      "candidate_index": 13,
+      "area_quantile": 0.8096044435631421,
+      "theta_rad": 2.215824111283512,
+      "attempts": 14,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1",
+      "bank": "ood",
+      "start_support_radius_m": 0.15,
+      "global_max_radius_m": 0.4,
+      "shared_start_radius_min": 0.15,
+      "shared_start_radius_max": 0.4,
+      "shared_start_radius": 0.4,
+      "normalized_delta": [
+        -0.5498388151947476,
+        0.0,
+        0.7307914175688652
+      ],
+      "corridor_start_delta": [
+        -0.21993552607789907,
+        0.0,
+        0.2923165670275461
+      ],
+      "radial_distance_from_center": 0.36581499557827324,
+      "start_angle_rad": 2.215824111283512,
+      "corridor_start": [
+        0.08006447392210092,
+        0.0,
+        0.792316567027546
+      ],
+      "realised_start": [
+        0.08099200083926994,
+        1.7670467491436755e-05,
+        0.788214903784943
+      ],
+      "ik_error": 0.004205265720880865,
+      "rejected_count": 6,
+      "recent_rejections": [
+        {
+          "candidate_index": 0,
+          "area_quantile": 0.27210428974397327,
+          "theta_rad": 0.8961878729862571,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.004692160693953618,
+            "0.25": 0.018810642050770817,
+            "0.35": 0.07421820820965969
+          }
+        },
+        {
+          "candidate_index": 1,
+          "area_quantile": 0.44503174495353803,
+          "theta_rad": 1.673712366794745,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.006150522888786093,
+            "0.25": 0.01603601992371864,
+            "0.35": 0.050832930959817536
+          }
+        },
+        {
+          "candidate_index": 2,
+          "area_quantile": 0.6967229511360987,
+          "theta_rad": 1.0625526988689666,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.05779512172450915,
+            "0.25": 0.07405633083275634,
+            "0.35": 0.09741316957503372
+          }
+        },
+        {
+          "candidate_index": 3,
+          "area_quantile": 0.5949276991319343,
+          "theta_rad": 1.689684689349381,
+          "failed_start_radii_m": [
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.01407168967934981,
+            "0.25": 0.028003088050702906,
+            "0.35": 0.055621817052997014
+          }
+        },
+        {
+          "candidate_index": 5,
+          "area_quantile": 0.14665778036506794,
+          "theta_rad": 1.0626967559190563,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.002780588582130568,
+            "0.25": 0.010499769171131572,
+            "0.35": 0.07083769204519531
+          }
+        },
+        {
+          "candidate_index": 6,
+          "area_quantile": 0.9351536252562049,
+          "theta_rad": 4.425203753832616,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.06708102023034593,
+            "0.25": 0.06819989288375741,
+            "0.35": 0.06969575258184675
+          }
+        }
+      ],
+      "rng_seed": 3483621352,
+      "point_cloud_rng_seed": 3780961515
+    },
+    {
+      "rollout_index": 8,
+      "normalized_state_index": 8,
+      "normalized_state_id": "tro_s2_idood_rmax40_seed3_ood_normalized_008",
+      "state_id": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1_state_008",
+      "candidate_index": 15,
+      "area_quantile": 0.04577984201327445,
+      "theta_rad": 2.3560960489466516,
+      "attempts": 16,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1",
+      "bank": "ood",
+      "start_support_radius_m": 0.15,
+      "global_max_radius_m": 0.4,
+      "shared_start_radius_min": 0.15,
+      "shared_start_radius_max": 0.4,
+      "shared_start_radius": 0.4,
+      "normalized_delta": [
+        -0.29994301072776686,
+        0.0,
+        0.3000020700690588
+      ],
+      "corridor_start_delta": [
+        -0.11997720429110674,
+        0.0,
+        0.12000082802762353
+      ],
+      "radial_distance_from_center": 0.16969009481058475,
+      "start_angle_rad": 2.3560960489466516,
+      "corridor_start": [
+        0.18002279570889324,
+        0.0,
+        0.6200008280276236
+      ],
+      "realised_start": [
+        0.18090916879008537,
+        1.2267364330036886e-05,
+        0.619481319863902
+      ],
+      "ik_error": 0.0010274709044362387,
+      "rejected_count": 7,
+      "recent_rejections": [
+        {
+          "candidate_index": 0,
+          "area_quantile": 0.27210428974397327,
+          "theta_rad": 0.8961878729862571,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.004692160693953618,
+            "0.25": 0.018810642050770817,
+            "0.35": 0.07421820820965969
+          }
+        },
+        {
+          "candidate_index": 1,
+          "area_quantile": 0.44503174495353803,
+          "theta_rad": 1.673712366794745,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.006150522888786093,
+            "0.25": 0.01603601992371864,
+            "0.35": 0.050832930959817536
+          }
+        },
+        {
+          "candidate_index": 2,
+          "area_quantile": 0.6967229511360987,
+          "theta_rad": 1.0625526988689666,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.05779512172450915,
+            "0.25": 0.07405633083275634,
+            "0.35": 0.09741316957503372
+          }
+        },
+        {
+          "candidate_index": 3,
+          "area_quantile": 0.5949276991319343,
+          "theta_rad": 1.689684689349381,
+          "failed_start_radii_m": [
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.01407168967934981,
+            "0.25": 0.028003088050702906,
+            "0.35": 0.055621817052997014
+          }
+        },
+        {
+          "candidate_index": 5,
+          "area_quantile": 0.14665778036506794,
+          "theta_rad": 1.0626967559190563,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.002780588582130568,
+            "0.25": 0.010499769171131572,
+            "0.35": 0.07083769204519531
+          }
+        },
+        {
+          "candidate_index": 6,
+          "area_quantile": 0.9351536252562049,
+          "theta_rad": 4.425203753832616,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.06708102023034593,
+            "0.25": 0.06819989288375741,
+            "0.35": 0.06969575258184675
+          }
+        },
+        {
+          "candidate_index": 14,
+          "area_quantile": 0.043044340326485186,
+          "theta_rad": 0.6754739315927312,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0016178322344549598,
+            "0.25": 0.005028697289005721,
+            "0.35": 0.05180170785251087
+          }
+        }
+      ],
+      "rng_seed": 2294907443,
+      "point_cloud_rng_seed": 1677191698
+    },
+    {
+      "rollout_index": 9,
+      "normalized_state_index": 9,
+      "normalized_state_id": "tro_s2_idood_rmax40_seed3_ood_normalized_009",
+      "state_id": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1_state_009",
+      "candidate_index": 16,
+      "area_quantile": 0.3249006588574649,
+      "theta_rad": 5.450184166747538,
+      "attempts": 17,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1",
+      "bank": "ood",
+      "start_support_radius_m": 0.15,
+      "global_max_radius_m": 0.4,
+      "shared_start_radius_min": 0.15,
+      "shared_start_radius_max": 0.4,
+      "shared_start_radius": 0.4,
+      "normalized_delta": [
+        0.4358474075709963,
+        0.0,
+        -0.479451291602469
+      ],
+      "corridor_start_delta": [
+        0.17433896302839855,
+        0.0,
+        -0.1917805166409876
+      ],
+      "radial_distance_from_center": 0.25917916697316057,
+      "start_angle_rad": 5.450184166747538,
+      "corridor_start": [
+        0.4743389630283985,
+        0.0,
+        0.3082194833590124
+      ],
+      "realised_start": [
+        0.4741807449963806,
+        9.86761875791285e-06,
+        0.3085570516950751
+      ],
+      "ik_error": 0.00037293792656112437,
+      "rejected_count": 7,
+      "recent_rejections": [
+        {
+          "candidate_index": 0,
+          "area_quantile": 0.27210428974397327,
+          "theta_rad": 0.8961878729862571,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.004692160693953618,
+            "0.25": 0.018810642050770817,
+            "0.35": 0.07421820820965969
+          }
+        },
+        {
+          "candidate_index": 1,
+          "area_quantile": 0.44503174495353803,
+          "theta_rad": 1.673712366794745,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.006150522888786093,
+            "0.25": 0.01603601992371864,
+            "0.35": 0.050832930959817536
+          }
+        },
+        {
+          "candidate_index": 2,
+          "area_quantile": 0.6967229511360987,
+          "theta_rad": 1.0625526988689666,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.05779512172450915,
+            "0.25": 0.07405633083275634,
+            "0.35": 0.09741316957503372
+          }
+        },
+        {
+          "candidate_index": 3,
+          "area_quantile": 0.5949276991319343,
+          "theta_rad": 1.689684689349381,
+          "failed_start_radii_m": [
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.01407168967934981,
+            "0.25": 0.028003088050702906,
+            "0.35": 0.055621817052997014
+          }
+        },
+        {
+          "candidate_index": 5,
+          "area_quantile": 0.14665778036506794,
+          "theta_rad": 1.0626967559190563,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.002780588582130568,
+            "0.25": 0.010499769171131572,
+            "0.35": 0.07083769204519531
+          }
+        },
+        {
+          "candidate_index": 6,
+          "area_quantile": 0.9351536252562049,
+          "theta_rad": 4.425203753832616,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.06708102023034593,
+            "0.25": 0.06819989288375741,
+            "0.35": 0.06969575258184675
+          }
+        },
+        {
+          "candidate_index": 14,
+          "area_quantile": 0.043044340326485186,
+          "theta_rad": 0.6754739315927312,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0016178322344549598,
+            "0.25": 0.005028697289005721,
+            "0.35": 0.05180170785251087
+          }
+        }
+      ],
+      "rng_seed": 3843408624,
+      "point_cloud_rng_seed": 561097852
+    },
+    {
+      "rollout_index": 10,
+      "normalized_state_index": 10,
+      "normalized_state_id": "tro_s2_idood_rmax40_seed3_ood_normalized_010",
+      "state_id": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1_state_010",
+      "candidate_index": 19,
+      "area_quantile": 0.9050287490494037,
+      "theta_rad": 2.9234530530400673,
+      "attempts": 20,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1",
+      "bank": "ood",
+      "start_support_radius_m": 0.15,
+      "global_max_radius_m": 0.4,
+      "shared_start_radius_min": 0.15,
+      "shared_start_radius_max": 0.4,
+      "shared_start_radius": 0.4,
+      "normalized_delta": [
+        -0.9356129911555872,
+        0.0,
+        0.20739433935193707
+      ],
+      "corridor_start_delta": [
+        -0.37424519646223486,
+        0.0,
+        0.08295773574077484
+      ],
+      "radial_distance_from_center": 0.38332943142197284,
+      "start_angle_rad": 2.9234530530400673,
+      "corridor_start": [
+        -0.07424519646223487,
+        0.0,
+        0.5829577357407748
+      ],
+      "realised_start": [
+        -0.07255696479754414,
+        1.5000603771124318e-05,
+        0.5835008775072851
+      ],
+      "ik_error": 0.001773514632109313,
+      "rejected_count": 9,
+      "recent_rejections": [
+        {
+          "candidate_index": 0,
+          "area_quantile": 0.27210428974397327,
+          "theta_rad": 0.8961878729862571,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.004692160693953618,
+            "0.25": 0.018810642050770817,
+            "0.35": 0.07421820820965969
+          }
+        },
+        {
+          "candidate_index": 1,
+          "area_quantile": 0.44503174495353803,
+          "theta_rad": 1.673712366794745,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.006150522888786093,
+            "0.25": 0.01603601992371864,
+            "0.35": 0.050832930959817536
+          }
+        },
+        {
+          "candidate_index": 2,
+          "area_quantile": 0.6967229511360987,
+          "theta_rad": 1.0625526988689666,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.05779512172450915,
+            "0.25": 0.07405633083275634,
+            "0.35": 0.09741316957503372
+          }
+        },
+        {
+          "candidate_index": 3,
+          "area_quantile": 0.5949276991319343,
+          "theta_rad": 1.689684689349381,
+          "failed_start_radii_m": [
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.01407168967934981,
+            "0.25": 0.028003088050702906,
+            "0.35": 0.055621817052997014
+          }
+        },
+        {
+          "candidate_index": 5,
+          "area_quantile": 0.14665778036506794,
+          "theta_rad": 1.0626967559190563,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.002780588582130568,
+            "0.25": 0.010499769171131572,
+            "0.35": 0.07083769204519531
+          }
+        },
+        {
+          "candidate_index": 6,
+          "area_quantile": 0.9351536252562049,
+          "theta_rad": 4.425203753832616,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.06708102023034593,
+            "0.25": 0.06819989288375741,
+            "0.35": 0.06969575258184675
+          }
+        },
+        {
+          "candidate_index": 14,
+          "area_quantile": 0.043044340326485186,
+          "theta_rad": 0.6754739315927312,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0016178322344549598,
+            "0.25": 0.005028697289005721,
+            "0.35": 0.05180170785251087
+          }
+        },
+        {
+          "candidate_index": 17,
+          "area_quantile": 0.22745679838795307,
+          "theta_rad": 1.5408336448062996,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0030659266880551446,
+            "0.25": 0.008767966882967437,
+            "0.35": 0.05408704835348408
+          }
+        },
+        {
+          "candidate_index": 18,
+          "area_quantile": 0.9498513578773139,
+          "theta_rad": 0.22018682374838883,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.03555441852911038,
+            "0.25": 0.03747016788593202,
+            "0.35": 0.04038271732471574
+          }
+        }
+      ],
+      "rng_seed": 3103983226,
+      "point_cloud_rng_seed": 698357813
+    },
+    {
+      "rollout_index": 11,
+      "normalized_state_index": 11,
+      "normalized_state_id": "tro_s2_idood_rmax40_seed3_ood_normalized_011",
+      "state_id": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1_state_011",
+      "candidate_index": 21,
+      "area_quantile": 0.9449581438937096,
+      "theta_rad": 2.649485596349879,
+      "attempts": 22,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1",
+      "bank": "ood",
+      "start_support_radius_m": 0.15,
+      "global_max_radius_m": 0.4,
+      "shared_start_radius_min": 0.15,
+      "shared_start_radius_max": 0.4,
+      "shared_start_radius": 0.4,
+      "normalized_delta": [
+        -0.8602423874043,
+        0.0,
+        0.4611739799919405
+      ],
+      "corridor_start_delta": [
+        -0.34409695496172005,
+        0.0,
+        0.1844695919967762
+      ],
+      "radial_distance_from_center": 0.39042508216735394,
+      "start_angle_rad": 2.649485596349879,
+      "corridor_start": [
+        -0.04409695496172006,
+        0.0,
+        0.6844695919967763
+      ],
+      "realised_start": [
+        -0.042542945583300476,
+        1.5408709562026657e-05,
+        0.6836647645943165
+      ],
+      "ik_error": 0.0017501227740637413,
+      "rejected_count": 10,
+      "recent_rejections": [
+        {
+          "candidate_index": 0,
+          "area_quantile": 0.27210428974397327,
+          "theta_rad": 0.8961878729862571,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.004692160693953618,
+            "0.25": 0.018810642050770817,
+            "0.35": 0.07421820820965969
+          }
+        },
+        {
+          "candidate_index": 1,
+          "area_quantile": 0.44503174495353803,
+          "theta_rad": 1.673712366794745,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.006150522888786093,
+            "0.25": 0.01603601992371864,
+            "0.35": 0.050832930959817536
+          }
+        },
+        {
+          "candidate_index": 2,
+          "area_quantile": 0.6967229511360987,
+          "theta_rad": 1.0625526988689666,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.05779512172450915,
+            "0.25": 0.07405633083275634,
+            "0.35": 0.09741316957503372
+          }
+        },
+        {
+          "candidate_index": 3,
+          "area_quantile": 0.5949276991319343,
+          "theta_rad": 1.689684689349381,
+          "failed_start_radii_m": [
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.01407168967934981,
+            "0.25": 0.028003088050702906,
+            "0.35": 0.055621817052997014
+          }
+        },
+        {
+          "candidate_index": 5,
+          "area_quantile": 0.14665778036506794,
+          "theta_rad": 1.0626967559190563,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.002780588582130568,
+            "0.25": 0.010499769171131572,
+            "0.35": 0.07083769204519531
+          }
+        },
+        {
+          "candidate_index": 6,
+          "area_quantile": 0.9351536252562049,
+          "theta_rad": 4.425203753832616,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.06708102023034593,
+            "0.25": 0.06819989288375741,
+            "0.35": 0.06969575258184675
+          }
+        },
+        {
+          "candidate_index": 14,
+          "area_quantile": 0.043044340326485186,
+          "theta_rad": 0.6754739315927312,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0016178322344549598,
+            "0.25": 0.005028697289005721,
+            "0.35": 0.05180170785251087
+          }
+        },
+        {
+          "candidate_index": 17,
+          "area_quantile": 0.22745679838795307,
+          "theta_rad": 1.5408336448062996,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0030659266880551446,
+            "0.25": 0.008767966882967437,
+            "0.35": 0.05408704835348408
+          }
+        },
+        {
+          "candidate_index": 18,
+          "area_quantile": 0.9498513578773139,
+          "theta_rad": 0.22018682374838883,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.03555441852911038,
+            "0.25": 0.03747016788593202,
+            "0.35": 0.04038271732471574
+          }
+        },
+        {
+          "candidate_index": 20,
+          "area_quantile": 0.7321866906012345,
+          "theta_rad": 4.453674123946743,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0433354573402683,
+            "0.25": 0.050713643903284235,
+            "0.35": 0.05707118522259515
+          }
+        }
+      ],
+      "rng_seed": 207416822,
+      "point_cloud_rng_seed": 1982530665
+    },
+    {
+      "rollout_index": 12,
+      "normalized_state_index": 12,
+      "normalized_state_id": "tro_s2_idood_rmax40_seed3_ood_normalized_012",
+      "state_id": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1_state_012",
+      "candidate_index": 22,
+      "area_quantile": 0.30778781461064064,
+      "theta_rad": 5.449893352192135,
+      "attempts": 23,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1",
+      "bank": "ood",
+      "start_support_radius_m": 0.15,
+      "global_max_radius_m": 0.4,
+      "shared_start_radius_min": 0.15,
+      "shared_start_radius_max": 0.4,
+      "shared_start_radius": 0.4,
+      "normalized_delta": [
+        0.4280087796508578,
+        0.0,
+        -0.47110363798510707
+      ],
+      "corridor_start_delta": [
+        0.17120351186034313,
+        0.0,
+        -0.18844145519404285
+      ],
+      "radial_distance_from_center": 0.25459934114008054,
+      "start_angle_rad": 5.449893352192135,
+      "corridor_start": [
+        0.47120351186034315,
+        0.0,
+        0.3115585448059571
+      ],
+      "realised_start": [
+        0.47106008450549125,
+        9.853000475586996e-06,
+        0.31188459221279746
+      ],
+      "ik_error": 0.00035633607626157026,
+      "rejected_count": 10,
+      "recent_rejections": [
+        {
+          "candidate_index": 0,
+          "area_quantile": 0.27210428974397327,
+          "theta_rad": 0.8961878729862571,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.004692160693953618,
+            "0.25": 0.018810642050770817,
+            "0.35": 0.07421820820965969
+          }
+        },
+        {
+          "candidate_index": 1,
+          "area_quantile": 0.44503174495353803,
+          "theta_rad": 1.673712366794745,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.006150522888786093,
+            "0.25": 0.01603601992371864,
+            "0.35": 0.050832930959817536
+          }
+        },
+        {
+          "candidate_index": 2,
+          "area_quantile": 0.6967229511360987,
+          "theta_rad": 1.0625526988689666,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.05779512172450915,
+            "0.25": 0.07405633083275634,
+            "0.35": 0.09741316957503372
+          }
+        },
+        {
+          "candidate_index": 3,
+          "area_quantile": 0.5949276991319343,
+          "theta_rad": 1.689684689349381,
+          "failed_start_radii_m": [
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.01407168967934981,
+            "0.25": 0.028003088050702906,
+            "0.35": 0.055621817052997014
+          }
+        },
+        {
+          "candidate_index": 5,
+          "area_quantile": 0.14665778036506794,
+          "theta_rad": 1.0626967559190563,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.002780588582130568,
+            "0.25": 0.010499769171131572,
+            "0.35": 0.07083769204519531
+          }
+        },
+        {
+          "candidate_index": 6,
+          "area_quantile": 0.9351536252562049,
+          "theta_rad": 4.425203753832616,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.06708102023034593,
+            "0.25": 0.06819989288375741,
+            "0.35": 0.06969575258184675
+          }
+        },
+        {
+          "candidate_index": 14,
+          "area_quantile": 0.043044340326485186,
+          "theta_rad": 0.6754739315927312,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0016178322344549598,
+            "0.25": 0.005028697289005721,
+            "0.35": 0.05180170785251087
+          }
+        },
+        {
+          "candidate_index": 17,
+          "area_quantile": 0.22745679838795307,
+          "theta_rad": 1.5408336448062996,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0030659266880551446,
+            "0.25": 0.008767966882967437,
+            "0.35": 0.05408704835348408
+          }
+        },
+        {
+          "candidate_index": 18,
+          "area_quantile": 0.9498513578773139,
+          "theta_rad": 0.22018682374838883,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.03555441852911038,
+            "0.25": 0.03747016788593202,
+            "0.35": 0.04038271732471574
+          }
+        },
+        {
+          "candidate_index": 20,
+          "area_quantile": 0.7321866906012345,
+          "theta_rad": 4.453674123946743,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0433354573402683,
+            "0.25": 0.050713643903284235,
+            "0.35": 0.05707118522259515
+          }
+        }
+      ],
+      "rng_seed": 3748160461,
+      "point_cloud_rng_seed": 656423029
+    },
+    {
+      "rollout_index": 13,
+      "normalized_state_index": 13,
+      "normalized_state_id": "tro_s2_idood_rmax40_seed3_ood_normalized_013",
+      "state_id": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1_state_013",
+      "candidate_index": 23,
+      "area_quantile": 0.13980182320285972,
+      "theta_rad": 2.0482358734499293,
+      "attempts": 24,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1",
+      "bank": "ood",
+      "start_support_radius_m": 0.15,
+      "global_max_radius_m": 0.4,
+      "shared_start_radius_min": 0.15,
+      "shared_start_radius_max": 0.4,
+      "shared_start_radius": 0.4,
+      "normalized_delta": [
+        -0.23464871831553885,
+        0.0,
+        0.45354952409613714
+      ],
+      "corridor_start_delta": [
+        -0.09385948732621555,
+        0.0,
+        0.18141980963845486
+      ],
+      "radial_distance_from_center": 0.20426147627585878,
+      "start_angle_rad": 2.0482358734499293,
+      "corridor_start": [
+        0.20614051267378444,
+        0.0,
+        0.6814198096384548
+      ],
+      "realised_start": [
+        0.20668345404478536,
+        1.2414305233946756e-05,
+        0.6801348574348716
+      ],
+      "ik_error": 0.0013950059544002992,
+      "rejected_count": 10,
+      "recent_rejections": [
+        {
+          "candidate_index": 0,
+          "area_quantile": 0.27210428974397327,
+          "theta_rad": 0.8961878729862571,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.004692160693953618,
+            "0.25": 0.018810642050770817,
+            "0.35": 0.07421820820965969
+          }
+        },
+        {
+          "candidate_index": 1,
+          "area_quantile": 0.44503174495353803,
+          "theta_rad": 1.673712366794745,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.006150522888786093,
+            "0.25": 0.01603601992371864,
+            "0.35": 0.050832930959817536
+          }
+        },
+        {
+          "candidate_index": 2,
+          "area_quantile": 0.6967229511360987,
+          "theta_rad": 1.0625526988689666,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.05779512172450915,
+            "0.25": 0.07405633083275634,
+            "0.35": 0.09741316957503372
+          }
+        },
+        {
+          "candidate_index": 3,
+          "area_quantile": 0.5949276991319343,
+          "theta_rad": 1.689684689349381,
+          "failed_start_radii_m": [
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.01407168967934981,
+            "0.25": 0.028003088050702906,
+            "0.35": 0.055621817052997014
+          }
+        },
+        {
+          "candidate_index": 5,
+          "area_quantile": 0.14665778036506794,
+          "theta_rad": 1.0626967559190563,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.002780588582130568,
+            "0.25": 0.010499769171131572,
+            "0.35": 0.07083769204519531
+          }
+        },
+        {
+          "candidate_index": 6,
+          "area_quantile": 0.9351536252562049,
+          "theta_rad": 4.425203753832616,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.06708102023034593,
+            "0.25": 0.06819989288375741,
+            "0.35": 0.06969575258184675
+          }
+        },
+        {
+          "candidate_index": 14,
+          "area_quantile": 0.043044340326485186,
+          "theta_rad": 0.6754739315927312,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0016178322344549598,
+            "0.25": 0.005028697289005721,
+            "0.35": 0.05180170785251087
+          }
+        },
+        {
+          "candidate_index": 17,
+          "area_quantile": 0.22745679838795307,
+          "theta_rad": 1.5408336448062996,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0030659266880551446,
+            "0.25": 0.008767966882967437,
+            "0.35": 0.05408704835348408
+          }
+        },
+        {
+          "candidate_index": 18,
+          "area_quantile": 0.9498513578773139,
+          "theta_rad": 0.22018682374838883,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.03555441852911038,
+            "0.25": 0.03747016788593202,
+            "0.35": 0.04038271732471574
+          }
+        },
+        {
+          "candidate_index": 20,
+          "area_quantile": 0.7321866906012345,
+          "theta_rad": 4.453674123946743,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0433354573402683,
+            "0.25": 0.050713643903284235,
+            "0.35": 0.05707118522259515
+          }
+        }
+      ],
+      "rng_seed": 3881059776,
+      "point_cloud_rng_seed": 3695888086
+    },
+    {
+      "rollout_index": 14,
+      "normalized_state_index": 14,
+      "normalized_state_id": "tro_s2_idood_rmax40_seed3_ood_normalized_014",
+      "state_id": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1_state_014",
+      "candidate_index": 27,
+      "area_quantile": 0.2087628561121182,
+      "theta_rad": 5.949106447842079,
+      "attempts": 28,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1",
+      "bank": "ood",
+      "start_support_radius_m": 0.15,
+      "global_max_radius_m": 0.4,
+      "shared_start_radius_min": 0.15,
+      "shared_start_radius_max": 0.4,
+      "shared_start_radius": 0.4,
+      "normalized_delta": [
+        0.534435768067062,
+        0.0,
+        -0.18549660180693614
+      ],
+      "corridor_start_delta": [
+        0.2137743072268248,
+        0.0,
+        -0.07419864072277446
+      ],
+      "radial_distance_from_center": 0.22628498119719798,
+      "start_angle_rad": 5.949106447842079,
+      "corridor_start": [
+        0.5137743072268248,
+        0.0,
+        0.4258013592772255
+      ],
+      "realised_start": [
+        0.5131265761595426,
+        9.468356052547277e-06,
+        0.4254900083374945
+      ],
+      "ik_error": 0.0007187381950058592,
+      "rejected_count": 13,
+      "recent_rejections": [
+        {
+          "candidate_index": 3,
+          "area_quantile": 0.5949276991319343,
+          "theta_rad": 1.689684689349381,
+          "failed_start_radii_m": [
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.01407168967934981,
+            "0.25": 0.028003088050702906,
+            "0.35": 0.055621817052997014
+          }
+        },
+        {
+          "candidate_index": 5,
+          "area_quantile": 0.14665778036506794,
+          "theta_rad": 1.0626967559190563,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.002780588582130568,
+            "0.25": 0.010499769171131572,
+            "0.35": 0.07083769204519531
+          }
+        },
+        {
+          "candidate_index": 6,
+          "area_quantile": 0.9351536252562049,
+          "theta_rad": 4.425203753832616,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.06708102023034593,
+            "0.25": 0.06819989288375741,
+            "0.35": 0.06969575258184675
+          }
+        },
+        {
+          "candidate_index": 14,
+          "area_quantile": 0.043044340326485186,
+          "theta_rad": 0.6754739315927312,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0016178322344549598,
+            "0.25": 0.005028697289005721,
+            "0.35": 0.05180170785251087
+          }
+        },
+        {
+          "candidate_index": 17,
+          "area_quantile": 0.22745679838795307,
+          "theta_rad": 1.5408336448062996,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0030659266880551446,
+            "0.25": 0.008767966882967437,
+            "0.35": 0.05408704835348408
+          }
+        },
+        {
+          "candidate_index": 18,
+          "area_quantile": 0.9498513578773139,
+          "theta_rad": 0.22018682374838883,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.03555441852911038,
+            "0.25": 0.03747016788593202,
+            "0.35": 0.04038271732471574
+          }
+        },
+        {
+          "candidate_index": 20,
+          "area_quantile": 0.7321866906012345,
+          "theta_rad": 4.453674123946743,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0433354573402683,
+            "0.25": 0.050713643903284235,
+            "0.35": 0.05707118522259515
+          }
+        },
+        {
+          "candidate_index": 24,
+          "area_quantile": 0.57968085341221,
+          "theta_rad": 0.6533252906970913,
+          "failed_start_radii_m": [
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.024139815952096456,
+            "0.25": 0.043862114817425406,
+            "0.35": 0.07519693874876102
+          }
+        },
+        {
+          "candidate_index": 25,
+          "area_quantile": 0.536929499787055,
+          "theta_rad": 3.9240745188735375,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.03357912430114002,
+            "0.25": 0.05824220788301306,
+            "0.35": 0.09856598037778161
+          }
+        },
+        {
+          "candidate_index": 26,
+          "area_quantile": 0.5821479224875598,
+          "theta_rad": 3.57398014680784,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.03933978885022045,
+            "0.25": 0.060643379995939065,
+            "0.35": 0.08944945242344213
+          }
+        }
+      ],
+      "rng_seed": 3257483075,
+      "point_cloud_rng_seed": 4013385412
+    },
+    {
+      "rollout_index": 15,
+      "normalized_state_index": 15,
+      "normalized_state_id": "tro_s2_idood_rmax40_seed3_ood_normalized_015",
+      "state_id": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1_state_015",
+      "candidate_index": 31,
+      "area_quantile": 0.40023789003354093,
+      "theta_rad": 5.717884480287164,
+      "attempts": 32,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1",
+      "bank": "ood",
+      "start_support_radius_m": 0.15,
+      "global_max_radius_m": 0.4,
+      "shared_start_radius_min": 0.15,
+      "shared_start_radius_max": 0.4,
+      "shared_start_radius": 0.4,
+      "normalized_delta": [
+        0.5878206734353506,
+        0.0,
+        -0.37288911572957595
+      ],
+      "corridor_start_delta": [
+        0.23512826937414028,
+        0.0,
+        -0.1491556462918304
+      ],
+      "radial_distance_from_center": 0.27844696062196816,
+      "start_angle_rad": 5.717884480287164,
+      "corridor_start": [
+        0.5351282693741403,
+        0.0,
+        0.3508443537081696
+      ],
+      "realised_start": [
+        0.5344952092263342,
+        9.542438859015632e-06,
+        0.3508871036439275
+      ],
+      "ik_error": 0.0006345736883033523,
+      "rejected_count": 16,
+      "recent_rejections": [
+        {
+          "candidate_index": 14,
+          "area_quantile": 0.043044340326485186,
+          "theta_rad": 0.6754739315927312,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0016178322344549598,
+            "0.25": 0.005028697289005721,
+            "0.35": 0.05180170785251087
+          }
+        },
+        {
+          "candidate_index": 17,
+          "area_quantile": 0.22745679838795307,
+          "theta_rad": 1.5408336448062996,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0030659266880551446,
+            "0.25": 0.008767966882967437,
+            "0.35": 0.05408704835348408
+          }
+        },
+        {
+          "candidate_index": 18,
+          "area_quantile": 0.9498513578773139,
+          "theta_rad": 0.22018682374838883,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.03555441852911038,
+            "0.25": 0.03747016788593202,
+            "0.35": 0.04038271732471574
+          }
+        },
+        {
+          "candidate_index": 20,
+          "area_quantile": 0.7321866906012345,
+          "theta_rad": 4.453674123946743,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0433354573402683,
+            "0.25": 0.050713643903284235,
+            "0.35": 0.05707118522259515
+          }
+        },
+        {
+          "candidate_index": 24,
+          "area_quantile": 0.57968085341221,
+          "theta_rad": 0.6533252906970913,
+          "failed_start_radii_m": [
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.024139815952096456,
+            "0.25": 0.043862114817425406,
+            "0.35": 0.07519693874876102
+          }
+        },
+        {
+          "candidate_index": 25,
+          "area_quantile": 0.536929499787055,
+          "theta_rad": 3.9240745188735375,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.03357912430114002,
+            "0.25": 0.05824220788301306,
+            "0.35": 0.09856598037778161
+          }
+        },
+        {
+          "candidate_index": 26,
+          "area_quantile": 0.5821479224875598,
+          "theta_rad": 3.57398014680784,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.03933978885022045,
+            "0.25": 0.060643379995939065,
+            "0.35": 0.08944945242344213
+          }
+        },
+        {
+          "candidate_index": 28,
+          "area_quantile": 0.10337559113291717,
+          "theta_rad": 1.6527776368149334,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0018066326399930966,
+            "0.25": 0.004473503481630226,
+            "0.35": 0.037988234840264874
+          }
+        },
+        {
+          "candidate_index": 29,
+          "area_quantile": 0.6006097090105927,
+          "theta_rad": 1.5867377268839244,
+          "failed_start_radii_m": [
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.020516228530542854,
+            "0.25": 0.037830096977487564,
+            "0.35": 0.06705592541017516
+          }
+        },
+        {
+          "candidate_index": 30,
+          "area_quantile": 0.9415657477905055,
+          "theta_rad": 4.22637792134068,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.11594005962200829,
+            "0.25": 0.1184681747380807,
+            "0.35": 0.12275972669460386
+          }
+        }
+      ],
+      "rng_seed": 2357031467,
+      "point_cloud_rng_seed": 1848012717
+    },
+    {
+      "rollout_index": 16,
+      "normalized_state_index": 16,
+      "normalized_state_id": "tro_s2_idood_rmax40_seed3_ood_normalized_016",
+      "state_id": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1_state_016",
+      "candidate_index": 32,
+      "area_quantile": 0.5990747202189041,
+      "theta_rad": 2.7161477146671964,
+      "attempts": 33,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1",
+      "bank": "ood",
+      "start_support_radius_m": 0.15,
+      "global_max_radius_m": 0.4,
+      "shared_start_radius_min": 0.15,
+      "shared_start_radius_max": 0.4,
+      "shared_start_radius": 0.4,
+      "normalized_delta": [
+        -0.7374298642403517,
+        0.0,
+        0.3341437310717908
+      ],
+      "corridor_start_delta": [
+        -0.2949719456961407,
+        0.0,
+        0.13365749242871633
+      ],
+      "radial_distance_from_center": 0.323840661483544,
+      "start_angle_rad": 2.7161477146671964,
+      "corridor_start": [
+        0.005028054303859275,
+        0.0,
+        0.6336574924287164
+      ],
+      "realised_start": [
+        0.006483442550984371,
+        1.4952334033145596e-05,
+        0.6335022777050577
+      ],
+      "ik_error": 0.001463717914286536,
+      "rejected_count": 16,
+      "recent_rejections": [
+        {
+          "candidate_index": 14,
+          "area_quantile": 0.043044340326485186,
+          "theta_rad": 0.6754739315927312,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0016178322344549598,
+            "0.25": 0.005028697289005721,
+            "0.35": 0.05180170785251087
+          }
+        },
+        {
+          "candidate_index": 17,
+          "area_quantile": 0.22745679838795307,
+          "theta_rad": 1.5408336448062996,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0030659266880551446,
+            "0.25": 0.008767966882967437,
+            "0.35": 0.05408704835348408
+          }
+        },
+        {
+          "candidate_index": 18,
+          "area_quantile": 0.9498513578773139,
+          "theta_rad": 0.22018682374838883,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.03555441852911038,
+            "0.25": 0.03747016788593202,
+            "0.35": 0.04038271732471574
+          }
+        },
+        {
+          "candidate_index": 20,
+          "area_quantile": 0.7321866906012345,
+          "theta_rad": 4.453674123946743,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0433354573402683,
+            "0.25": 0.050713643903284235,
+            "0.35": 0.05707118522259515
+          }
+        },
+        {
+          "candidate_index": 24,
+          "area_quantile": 0.57968085341221,
+          "theta_rad": 0.6533252906970913,
+          "failed_start_radii_m": [
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.024139815952096456,
+            "0.25": 0.043862114817425406,
+            "0.35": 0.07519693874876102
+          }
+        },
+        {
+          "candidate_index": 25,
+          "area_quantile": 0.536929499787055,
+          "theta_rad": 3.9240745188735375,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.03357912430114002,
+            "0.25": 0.05824220788301306,
+            "0.35": 0.09856598037778161
+          }
+        },
+        {
+          "candidate_index": 26,
+          "area_quantile": 0.5821479224875598,
+          "theta_rad": 3.57398014680784,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.03933978885022045,
+            "0.25": 0.060643379995939065,
+            "0.35": 0.08944945242344213
+          }
+        },
+        {
+          "candidate_index": 28,
+          "area_quantile": 0.10337559113291717,
+          "theta_rad": 1.6527776368149334,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0018066326399930966,
+            "0.25": 0.004473503481630226,
+            "0.35": 0.037988234840264874
+          }
+        },
+        {
+          "candidate_index": 29,
+          "area_quantile": 0.6006097090105927,
+          "theta_rad": 1.5867377268839244,
+          "failed_start_radii_m": [
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.020516228530542854,
+            "0.25": 0.037830096977487564,
+            "0.35": 0.06705592541017516
+          }
+        },
+        {
+          "candidate_index": 30,
+          "area_quantile": 0.9415657477905055,
+          "theta_rad": 4.22637792134068,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.11594005962200829,
+            "0.25": 0.1184681747380807,
+            "0.35": 0.12275972669460386
+          }
+        }
+      ],
+      "rng_seed": 2588260786,
+      "point_cloud_rng_seed": 3798858544
+    },
+    {
+      "rollout_index": 17,
+      "normalized_state_index": 17,
+      "normalized_state_id": "tro_s2_idood_rmax40_seed3_ood_normalized_017",
+      "state_id": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1_state_017",
+      "candidate_index": 33,
+      "area_quantile": 0.5286903630805032,
+      "theta_rad": 4.597804860728991,
+      "attempts": 34,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1",
+      "bank": "ood",
+      "start_support_radius_m": 0.15,
+      "global_max_radius_m": 0.4,
+      "shared_start_radius_min": 0.15,
+      "shared_start_radius_max": 0.4,
+      "shared_start_radius": 0.4,
+      "normalized_delta": [
+        -0.08819025052117807,
+        0.0,
+        -0.7662837336687497
+      ],
+      "corridor_start_delta": [
+        -0.03527610020847123,
+        0.0,
+        -0.3065134934674999
+      ],
+      "radial_distance_from_center": 0.30853674809262055,
+      "start_angle_rad": 4.597804860728991,
+      "corridor_start": [
+        0.26472389979152877,
+        0.0,
+        0.1934865065325001
+      ],
+      "realised_start": [
+        0.26576248181742795,
+        1.3330580158534274e-05,
+        0.19419047623322697
+      ],
+      "ik_error": 0.0012547524331236353,
+      "rejected_count": 16,
+      "recent_rejections": [
+        {
+          "candidate_index": 14,
+          "area_quantile": 0.043044340326485186,
+          "theta_rad": 0.6754739315927312,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0016178322344549598,
+            "0.25": 0.005028697289005721,
+            "0.35": 0.05180170785251087
+          }
+        },
+        {
+          "candidate_index": 17,
+          "area_quantile": 0.22745679838795307,
+          "theta_rad": 1.5408336448062996,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0030659266880551446,
+            "0.25": 0.008767966882967437,
+            "0.35": 0.05408704835348408
+          }
+        },
+        {
+          "candidate_index": 18,
+          "area_quantile": 0.9498513578773139,
+          "theta_rad": 0.22018682374838883,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.03555441852911038,
+            "0.25": 0.03747016788593202,
+            "0.35": 0.04038271732471574
+          }
+        },
+        {
+          "candidate_index": 20,
+          "area_quantile": 0.7321866906012345,
+          "theta_rad": 4.453674123946743,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0433354573402683,
+            "0.25": 0.050713643903284235,
+            "0.35": 0.05707118522259515
+          }
+        },
+        {
+          "candidate_index": 24,
+          "area_quantile": 0.57968085341221,
+          "theta_rad": 0.6533252906970913,
+          "failed_start_radii_m": [
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.024139815952096456,
+            "0.25": 0.043862114817425406,
+            "0.35": 0.07519693874876102
+          }
+        },
+        {
+          "candidate_index": 25,
+          "area_quantile": 0.536929499787055,
+          "theta_rad": 3.9240745188735375,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.03357912430114002,
+            "0.25": 0.05824220788301306,
+            "0.35": 0.09856598037778161
+          }
+        },
+        {
+          "candidate_index": 26,
+          "area_quantile": 0.5821479224875598,
+          "theta_rad": 3.57398014680784,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.03933978885022045,
+            "0.25": 0.060643379995939065,
+            "0.35": 0.08944945242344213
+          }
+        },
+        {
+          "candidate_index": 28,
+          "area_quantile": 0.10337559113291717,
+          "theta_rad": 1.6527776368149334,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0018066326399930966,
+            "0.25": 0.004473503481630226,
+            "0.35": 0.037988234840264874
+          }
+        },
+        {
+          "candidate_index": 29,
+          "area_quantile": 0.6006097090105927,
+          "theta_rad": 1.5867377268839244,
+          "failed_start_radii_m": [
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.020516228530542854,
+            "0.25": 0.037830096977487564,
+            "0.35": 0.06705592541017516
+          }
+        },
+        {
+          "candidate_index": 30,
+          "area_quantile": 0.9415657477905055,
+          "theta_rad": 4.22637792134068,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.11594005962200829,
+            "0.25": 0.1184681747380807,
+            "0.35": 0.12275972669460386
+          }
+        }
+      ],
+      "rng_seed": 3068362229,
+      "point_cloud_rng_seed": 4086351075
+    },
+    {
+      "rollout_index": 18,
+      "normalized_state_index": 18,
+      "normalized_state_id": "tro_s2_idood_rmax40_seed3_ood_normalized_018",
+      "state_id": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1_state_018",
+      "candidate_index": 34,
+      "area_quantile": 0.04661701673818197,
+      "theta_rad": 5.793682017531169,
+      "attempts": 35,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1",
+      "bank": "ood",
+      "start_support_radius_m": 0.15,
+      "global_max_radius_m": 0.4,
+      "shared_start_radius_min": 0.15,
+      "shared_start_radius_max": 0.4,
+      "shared_start_radius": 0.4,
+      "normalized_delta": [
+        0.37515461822553814,
+        0.0,
+        -0.19986373153582876
+      ],
+      "corridor_start_delta": [
+        0.15006184729021527,
+        0.0,
+        -0.07994549261433151
+      ],
+      "radial_distance_from_center": 0.1700289381296608,
+      "start_angle_rad": 5.793682017531169,
+      "corridor_start": [
+        0.45006184729021526,
+        0.0,
+        0.4200545073856685
+      ],
+      "realised_start": [
+        0.4499013345316582,
+        9.580899540911407e-06,
+        0.41992409655858765
+      ],
+      "ik_error": 0.00020703411099508458,
+      "rejected_count": 16,
+      "recent_rejections": [
+        {
+          "candidate_index": 14,
+          "area_quantile": 0.043044340326485186,
+          "theta_rad": 0.6754739315927312,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0016178322344549598,
+            "0.25": 0.005028697289005721,
+            "0.35": 0.05180170785251087
+          }
+        },
+        {
+          "candidate_index": 17,
+          "area_quantile": 0.22745679838795307,
+          "theta_rad": 1.5408336448062996,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0030659266880551446,
+            "0.25": 0.008767966882967437,
+            "0.35": 0.05408704835348408
+          }
+        },
+        {
+          "candidate_index": 18,
+          "area_quantile": 0.9498513578773139,
+          "theta_rad": 0.22018682374838883,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.03555441852911038,
+            "0.25": 0.03747016788593202,
+            "0.35": 0.04038271732471574
+          }
+        },
+        {
+          "candidate_index": 20,
+          "area_quantile": 0.7321866906012345,
+          "theta_rad": 4.453674123946743,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0433354573402683,
+            "0.25": 0.050713643903284235,
+            "0.35": 0.05707118522259515
+          }
+        },
+        {
+          "candidate_index": 24,
+          "area_quantile": 0.57968085341221,
+          "theta_rad": 0.6533252906970913,
+          "failed_start_radii_m": [
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.024139815952096456,
+            "0.25": 0.043862114817425406,
+            "0.35": 0.07519693874876102
+          }
+        },
+        {
+          "candidate_index": 25,
+          "area_quantile": 0.536929499787055,
+          "theta_rad": 3.9240745188735375,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.03357912430114002,
+            "0.25": 0.05824220788301306,
+            "0.35": 0.09856598037778161
+          }
+        },
+        {
+          "candidate_index": 26,
+          "area_quantile": 0.5821479224875598,
+          "theta_rad": 3.57398014680784,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.03933978885022045,
+            "0.25": 0.060643379995939065,
+            "0.35": 0.08944945242344213
+          }
+        },
+        {
+          "candidate_index": 28,
+          "area_quantile": 0.10337559113291717,
+          "theta_rad": 1.6527776368149334,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0018066326399930966,
+            "0.25": 0.004473503481630226,
+            "0.35": 0.037988234840264874
+          }
+        },
+        {
+          "candidate_index": 29,
+          "area_quantile": 0.6006097090105927,
+          "theta_rad": 1.5867377268839244,
+          "failed_start_radii_m": [
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.020516228530542854,
+            "0.25": 0.037830096977487564,
+            "0.35": 0.06705592541017516
+          }
+        },
+        {
+          "candidate_index": 30,
+          "area_quantile": 0.9415657477905055,
+          "theta_rad": 4.22637792134068,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.11594005962200829,
+            "0.25": 0.1184681747380807,
+            "0.35": 0.12275972669460386
+          }
+        }
+      ],
+      "rng_seed": 1399949526,
+      "point_cloud_rng_seed": 2928378920
+    },
+    {
+      "rollout_index": 19,
+      "normalized_state_index": 19,
+      "normalized_state_id": "tro_s2_idood_rmax40_seed3_ood_normalized_019",
+      "state_id": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1_state_019",
+      "candidate_index": 37,
+      "area_quantile": 0.7533735665215804,
+      "theta_rad": 2.2479646085393776,
+      "attempts": 38,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1",
+      "bank": "ood",
+      "start_support_radius_m": 0.15,
+      "global_max_radius_m": 0.4,
+      "shared_start_radius_min": 0.15,
+      "shared_start_radius_max": 0.4,
+      "shared_start_radius": 0.4,
+      "normalized_delta": [
+        -0.5562383054273338,
+        0.0,
+        0.6918485067591108
+      ],
+      "corridor_start_delta": [
+        -0.22249532217093354,
+        0.0,
+        0.27673940270364433
+      ],
+      "radial_distance_from_center": 0.3550899398697706,
+      "start_angle_rad": 2.2479646085393776,
+      "corridor_start": [
+        0.07750467782906645,
+        0.0,
+        0.7767394027036443
+      ],
+      "realised_start": [
+        0.07846713321391705,
+        1.6764692520772174e-05,
+        0.773519147964944
+      ],
+      "ik_error": 0.0033610477540291827,
+      "rejected_count": 18,
+      "recent_rejections": [
+        {
+          "candidate_index": 18,
+          "area_quantile": 0.9498513578773139,
+          "theta_rad": 0.22018682374838883,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.03555441852911038,
+            "0.25": 0.03747016788593202,
+            "0.35": 0.04038271732471574
+          }
+        },
+        {
+          "candidate_index": 20,
+          "area_quantile": 0.7321866906012345,
+          "theta_rad": 4.453674123946743,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0433354573402683,
+            "0.25": 0.050713643903284235,
+            "0.35": 0.05707118522259515
+          }
+        },
+        {
+          "candidate_index": 24,
+          "area_quantile": 0.57968085341221,
+          "theta_rad": 0.6533252906970913,
+          "failed_start_radii_m": [
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.024139815952096456,
+            "0.25": 0.043862114817425406,
+            "0.35": 0.07519693874876102
+          }
+        },
+        {
+          "candidate_index": 25,
+          "area_quantile": 0.536929499787055,
+          "theta_rad": 3.9240745188735375,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.03357912430114002,
+            "0.25": 0.05824220788301306,
+            "0.35": 0.09856598037778161
+          }
+        },
+        {
+          "candidate_index": 26,
+          "area_quantile": 0.5821479224875598,
+          "theta_rad": 3.57398014680784,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.03933978885022045,
+            "0.25": 0.060643379995939065,
+            "0.35": 0.08944945242344213
+          }
+        },
+        {
+          "candidate_index": 28,
+          "area_quantile": 0.10337559113291717,
+          "theta_rad": 1.6527776368149334,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0018066326399930966,
+            "0.25": 0.004473503481630226,
+            "0.35": 0.037988234840264874
+          }
+        },
+        {
+          "candidate_index": 29,
+          "area_quantile": 0.6006097090105927,
+          "theta_rad": 1.5867377268839244,
+          "failed_start_radii_m": [
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.020516228530542854,
+            "0.25": 0.037830096977487564,
+            "0.35": 0.06705592541017516
+          }
+        },
+        {
+          "candidate_index": 30,
+          "area_quantile": 0.9415657477905055,
+          "theta_rad": 4.22637792134068,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.11594005962200829,
+            "0.25": 0.1184681747380807,
+            "0.35": 0.12275972669460386
+          }
+        },
+        {
+          "candidate_index": 35,
+          "area_quantile": 0.378299126011281,
+          "theta_rad": 1.7753539965200433,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0038239463954372038,
+            "0.25": 0.008305809370603266,
+            "0.35": 0.03616962599950976
+          }
+        },
+        {
+          "candidate_index": 36,
+          "area_quantile": 0.7319968413691472,
+          "theta_rad": 0.65124714299635,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.04887931467032453,
+            "0.25": 0.06228768388232192,
+            "0.35": 0.08191412818738249
+          }
+        }
+      ],
+      "rng_seed": 2195293078,
+      "point_cloud_rng_seed": 603693895
+    },
+    {
+      "rollout_index": 20,
+      "normalized_state_index": 20,
+      "normalized_state_id": "tro_s2_idood_rmax40_seed3_ood_normalized_020",
+      "state_id": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1_state_020",
+      "candidate_index": 38,
+      "area_quantile": 0.6655321410668102,
+      "theta_rad": 4.887268159154204,
+      "attempts": 39,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1",
+      "bank": "ood",
+      "start_support_radius_m": 0.15,
+      "global_max_radius_m": 0.4,
+      "shared_start_radius_min": 0.15,
+      "shared_start_radius_max": 0.4,
+      "shared_start_radius": 0.4,
+      "normalized_delta": [
+        0.14687062702455914,
+        0.0,
+        -0.8312615127904713
+      ],
+      "corridor_start_delta": [
+        0.058748250809823654,
+        0.0,
+        -0.33250460511618857
+      ],
+      "radial_distance_from_center": 0.33765465996589833,
+      "start_angle_rad": 4.887268159154204,
+      "corridor_start": [
+        0.35874825080982364,
+        0.0,
+        0.16749539488381143
+      ],
+      "realised_start": [
+        0.35918743214424975,
+        1.1440544490232472e-05,
+        0.16863427622944144
+      ],
+      "ik_error": 0.0012206808960537317,
+      "rejected_count": 18,
+      "recent_rejections": [
+        {
+          "candidate_index": 18,
+          "area_quantile": 0.9498513578773139,
+          "theta_rad": 0.22018682374838883,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.03555441852911038,
+            "0.25": 0.03747016788593202,
+            "0.35": 0.04038271732471574
+          }
+        },
+        {
+          "candidate_index": 20,
+          "area_quantile": 0.7321866906012345,
+          "theta_rad": 4.453674123946743,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0433354573402683,
+            "0.25": 0.050713643903284235,
+            "0.35": 0.05707118522259515
+          }
+        },
+        {
+          "candidate_index": 24,
+          "area_quantile": 0.57968085341221,
+          "theta_rad": 0.6533252906970913,
+          "failed_start_radii_m": [
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.024139815952096456,
+            "0.25": 0.043862114817425406,
+            "0.35": 0.07519693874876102
+          }
+        },
+        {
+          "candidate_index": 25,
+          "area_quantile": 0.536929499787055,
+          "theta_rad": 3.9240745188735375,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.03357912430114002,
+            "0.25": 0.05824220788301306,
+            "0.35": 0.09856598037778161
+          }
+        },
+        {
+          "candidate_index": 26,
+          "area_quantile": 0.5821479224875598,
+          "theta_rad": 3.57398014680784,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.03933978885022045,
+            "0.25": 0.060643379995939065,
+            "0.35": 0.08944945242344213
+          }
+        },
+        {
+          "candidate_index": 28,
+          "area_quantile": 0.10337559113291717,
+          "theta_rad": 1.6527776368149334,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0018066326399930966,
+            "0.25": 0.004473503481630226,
+            "0.35": 0.037988234840264874
+          }
+        },
+        {
+          "candidate_index": 29,
+          "area_quantile": 0.6006097090105927,
+          "theta_rad": 1.5867377268839244,
+          "failed_start_radii_m": [
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.020516228530542854,
+            "0.25": 0.037830096977487564,
+            "0.35": 0.06705592541017516
+          }
+        },
+        {
+          "candidate_index": 30,
+          "area_quantile": 0.9415657477905055,
+          "theta_rad": 4.22637792134068,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.11594005962200829,
+            "0.25": 0.1184681747380807,
+            "0.35": 0.12275972669460386
+          }
+        },
+        {
+          "candidate_index": 35,
+          "area_quantile": 0.378299126011281,
+          "theta_rad": 1.7753539965200433,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0038239463954372038,
+            "0.25": 0.008305809370603266,
+            "0.35": 0.03616962599950976
+          }
+        },
+        {
+          "candidate_index": 36,
+          "area_quantile": 0.7319968413691472,
+          "theta_rad": 0.65124714299635,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.04887931467032453,
+            "0.25": 0.06228768388232192,
+            "0.35": 0.08191412818738249
+          }
+        }
+      ],
+      "rng_seed": 2126450517,
+      "point_cloud_rng_seed": 2797057654
+    },
+    {
+      "rollout_index": 21,
+      "normalized_state_index": 21,
+      "normalized_state_id": "tro_s2_idood_rmax40_seed3_ood_normalized_021",
+      "state_id": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1_state_021",
+      "candidate_index": 39,
+      "area_quantile": 0.23614260119670505,
+      "theta_rad": 2.7045960546590915,
+      "attempts": 40,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1",
+      "bank": "ood",
+      "start_support_radius_m": 0.15,
+      "global_max_radius_m": 0.4,
+      "shared_start_radius_min": 0.15,
+      "shared_start_radius_max": 0.4,
+      "shared_start_radius": 0.4,
+      "normalized_delta": [
+        -0.5310585365708017,
+        0.0,
+        0.2480662787214274
+      ],
+      "corridor_start_delta": [
+        -0.21242341462832068,
+        0.0,
+        0.09922651148857096
+      ],
+      "radial_distance_from_center": 0.2344559823603291,
+      "start_angle_rad": 2.7045960546590915,
+      "corridor_start": [
+        0.08757658537167931,
+        0.0,
+        0.599226511488571
+      ],
+      "realised_start": [
+        0.08889246476522417,
+        1.3801684867818892e-05,
+        0.5991941152281076
+      ],
+      "ik_error": 0.0013163504786162298,
+      "rejected_count": 18,
+      "recent_rejections": [
+        {
+          "candidate_index": 18,
+          "area_quantile": 0.9498513578773139,
+          "theta_rad": 0.22018682374838883,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.03555441852911038,
+            "0.25": 0.03747016788593202,
+            "0.35": 0.04038271732471574
+          }
+        },
+        {
+          "candidate_index": 20,
+          "area_quantile": 0.7321866906012345,
+          "theta_rad": 4.453674123946743,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0433354573402683,
+            "0.25": 0.050713643903284235,
+            "0.35": 0.05707118522259515
+          }
+        },
+        {
+          "candidate_index": 24,
+          "area_quantile": 0.57968085341221,
+          "theta_rad": 0.6533252906970913,
+          "failed_start_radii_m": [
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.024139815952096456,
+            "0.25": 0.043862114817425406,
+            "0.35": 0.07519693874876102
+          }
+        },
+        {
+          "candidate_index": 25,
+          "area_quantile": 0.536929499787055,
+          "theta_rad": 3.9240745188735375,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.03357912430114002,
+            "0.25": 0.05824220788301306,
+            "0.35": 0.09856598037778161
+          }
+        },
+        {
+          "candidate_index": 26,
+          "area_quantile": 0.5821479224875598,
+          "theta_rad": 3.57398014680784,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.03933978885022045,
+            "0.25": 0.060643379995939065,
+            "0.35": 0.08944945242344213
+          }
+        },
+        {
+          "candidate_index": 28,
+          "area_quantile": 0.10337559113291717,
+          "theta_rad": 1.6527776368149334,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0018066326399930966,
+            "0.25": 0.004473503481630226,
+            "0.35": 0.037988234840264874
+          }
+        },
+        {
+          "candidate_index": 29,
+          "area_quantile": 0.6006097090105927,
+          "theta_rad": 1.5867377268839244,
+          "failed_start_radii_m": [
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.020516228530542854,
+            "0.25": 0.037830096977487564,
+            "0.35": 0.06705592541017516
+          }
+        },
+        {
+          "candidate_index": 30,
+          "area_quantile": 0.9415657477905055,
+          "theta_rad": 4.22637792134068,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.11594005962200829,
+            "0.25": 0.1184681747380807,
+            "0.35": 0.12275972669460386
+          }
+        },
+        {
+          "candidate_index": 35,
+          "area_quantile": 0.378299126011281,
+          "theta_rad": 1.7753539965200433,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0038239463954372038,
+            "0.25": 0.008305809370603266,
+            "0.35": 0.03616962599950976
+          }
+        },
+        {
+          "candidate_index": 36,
+          "area_quantile": 0.7319968413691472,
+          "theta_rad": 0.65124714299635,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.04887931467032453,
+            "0.25": 0.06228768388232192,
+            "0.35": 0.08191412818738249
+          }
+        }
+      ],
+      "rng_seed": 2983669046,
+      "point_cloud_rng_seed": 3023591588
+    },
+    {
+      "rollout_index": 22,
+      "normalized_state_index": 22,
+      "normalized_state_id": "tro_s2_idood_rmax40_seed3_ood_normalized_022",
+      "state_id": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1_state_022",
+      "candidate_index": 42,
+      "area_quantile": 0.29930461335324665,
+      "theta_rad": 3.288926154914579,
+      "attempts": 43,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1",
+      "bank": "ood",
+      "start_support_radius_m": 0.15,
+      "global_max_radius_m": 0.4,
+      "shared_start_radius_min": 0.15,
+      "shared_start_radius_max": 0.4,
+      "shared_start_radius": 0.4,
+      "normalized_delta": [
+        -0.6239120405690668,
+        0.0,
+        -0.09259410204429563
+      ],
+      "corridor_start_delta": [
+        -0.24956481622762675,
+        0.0,
+        -0.03703764081771826
+      ],
+      "radial_distance_from_center": 0.2522982051780619,
+      "start_angle_rad": 3.288926154914579,
+      "corridor_start": [
+        0.05043518377237324,
+        0.0,
+        0.46296235918228174
+      ],
+      "realised_start": [
+        0.0524955137338133,
+        1.6090742343810585e-05,
+        0.464230365769567
+      ],
+      "ik_error": 0.002419309646861185,
+      "rejected_count": 20,
+      "recent_rejections": [
+        {
+          "candidate_index": 24,
+          "area_quantile": 0.57968085341221,
+          "theta_rad": 0.6533252906970913,
+          "failed_start_radii_m": [
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.024139815952096456,
+            "0.25": 0.043862114817425406,
+            "0.35": 0.07519693874876102
+          }
+        },
+        {
+          "candidate_index": 25,
+          "area_quantile": 0.536929499787055,
+          "theta_rad": 3.9240745188735375,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.03357912430114002,
+            "0.25": 0.05824220788301306,
+            "0.35": 0.09856598037778161
+          }
+        },
+        {
+          "candidate_index": 26,
+          "area_quantile": 0.5821479224875598,
+          "theta_rad": 3.57398014680784,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.03933978885022045,
+            "0.25": 0.060643379995939065,
+            "0.35": 0.08944945242344213
+          }
+        },
+        {
+          "candidate_index": 28,
+          "area_quantile": 0.10337559113291717,
+          "theta_rad": 1.6527776368149334,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0018066326399930966,
+            "0.25": 0.004473503481630226,
+            "0.35": 0.037988234840264874
+          }
+        },
+        {
+          "candidate_index": 29,
+          "area_quantile": 0.6006097090105927,
+          "theta_rad": 1.5867377268839244,
+          "failed_start_radii_m": [
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.020516228530542854,
+            "0.25": 0.037830096977487564,
+            "0.35": 0.06705592541017516
+          }
+        },
+        {
+          "candidate_index": 30,
+          "area_quantile": 0.9415657477905055,
+          "theta_rad": 4.22637792134068,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.11594005962200829,
+            "0.25": 0.1184681747380807,
+            "0.35": 0.12275972669460386
+          }
+        },
+        {
+          "candidate_index": 35,
+          "area_quantile": 0.378299126011281,
+          "theta_rad": 1.7753539965200433,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0038239463954372038,
+            "0.25": 0.008305809370603266,
+            "0.35": 0.03616962599950976
+          }
+        },
+        {
+          "candidate_index": 36,
+          "area_quantile": 0.7319968413691472,
+          "theta_rad": 0.65124714299635,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.04887931467032453,
+            "0.25": 0.06228768388232192,
+            "0.35": 0.08191412818738249
+          }
+        },
+        {
+          "candidate_index": 40,
+          "area_quantile": 0.49202066247633336,
+          "theta_rad": 4.184418846598787,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0360972027540062,
+            "0.25": 0.07505139637798716,
+            "0.35": 0.10607249772877428
+          }
+        },
+        {
+          "candidate_index": 41,
+          "area_quantile": 0.7595960514588258,
+          "theta_rad": 0.3779373929735491,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.028869093847656686,
+            "0.25": 0.0388101084546625,
+            "0.35": 0.054564374054194696
+          }
+        }
+      ],
+      "rng_seed": 769545611,
+      "point_cloud_rng_seed": 2414769432
+    },
+    {
+      "rollout_index": 23,
+      "normalized_state_index": 23,
+      "normalized_state_id": "tro_s2_idood_rmax40_seed3_ood_normalized_023",
+      "state_id": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1_state_023",
+      "candidate_index": 44,
+      "area_quantile": 0.6515432402006307,
+      "theta_rad": 2.6105816633354824,
+      "attempts": 45,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1",
+      "bank": "ood",
+      "start_support_radius_m": 0.15,
+      "global_max_radius_m": 0.4,
+      "shared_start_radius_min": 0.15,
+      "shared_start_radius_max": 0.4,
+      "shared_start_radius": 0.4,
+      "normalized_delta": [
+        -0.721728990135322,
+        0.0,
+        0.4238540277568037
+      ],
+      "corridor_start_delta": [
+        -0.2886915960541288,
+        0.0,
+        0.16954161110272148
+      ],
+      "radial_distance_from_center": 0.33479425850451305,
+      "start_angle_rad": 2.6105816633354824,
+      "corridor_start": [
+        0.011308403945871182,
+        0.0,
+        0.6695416111027215
+      ],
+      "realised_start": [
+        0.01268742555833481,
+        1.5053814855129831e-05,
+        0.6689290795673125
+      ],
+      "ik_error": 0.0015090136204998093,
+      "rejected_count": 21,
+      "recent_rejections": [
+        {
+          "candidate_index": 25,
+          "area_quantile": 0.536929499787055,
+          "theta_rad": 3.9240745188735375,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.03357912430114002,
+            "0.25": 0.05824220788301306,
+            "0.35": 0.09856598037778161
+          }
+        },
+        {
+          "candidate_index": 26,
+          "area_quantile": 0.5821479224875598,
+          "theta_rad": 3.57398014680784,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.03933978885022045,
+            "0.25": 0.060643379995939065,
+            "0.35": 0.08944945242344213
+          }
+        },
+        {
+          "candidate_index": 28,
+          "area_quantile": 0.10337559113291717,
+          "theta_rad": 1.6527776368149334,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0018066326399930966,
+            "0.25": 0.004473503481630226,
+            "0.35": 0.037988234840264874
+          }
+        },
+        {
+          "candidate_index": 29,
+          "area_quantile": 0.6006097090105927,
+          "theta_rad": 1.5867377268839244,
+          "failed_start_radii_m": [
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.020516228530542854,
+            "0.25": 0.037830096977487564,
+            "0.35": 0.06705592541017516
+          }
+        },
+        {
+          "candidate_index": 30,
+          "area_quantile": 0.9415657477905055,
+          "theta_rad": 4.22637792134068,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.11594005962200829,
+            "0.25": 0.1184681747380807,
+            "0.35": 0.12275972669460386
+          }
+        },
+        {
+          "candidate_index": 35,
+          "area_quantile": 0.378299126011281,
+          "theta_rad": 1.7753539965200433,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0038239463954372038,
+            "0.25": 0.008305809370603266,
+            "0.35": 0.03616962599950976
+          }
+        },
+        {
+          "candidate_index": 36,
+          "area_quantile": 0.7319968413691472,
+          "theta_rad": 0.65124714299635,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.04887931467032453,
+            "0.25": 0.06228768388232192,
+            "0.35": 0.08191412818738249
+          }
+        },
+        {
+          "candidate_index": 40,
+          "area_quantile": 0.49202066247633336,
+          "theta_rad": 4.184418846598787,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0360972027540062,
+            "0.25": 0.07505139637798716,
+            "0.35": 0.10607249772877428
+          }
+        },
+        {
+          "candidate_index": 41,
+          "area_quantile": 0.7595960514588258,
+          "theta_rad": 0.3779373929735491,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.028869093847656686,
+            "0.25": 0.0388101084546625,
+            "0.35": 0.054564374054194696
+          }
+        },
+        {
+          "candidate_index": 43,
+          "area_quantile": 0.6903247037188713,
+          "theta_rad": 3.6489223764056073,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.06559108092248385,
+            "0.25": 0.08123039276763809,
+            "0.35": 0.10321170094425165
+          }
+        }
+      ],
+      "rng_seed": 1692470520,
+      "point_cloud_rng_seed": 1233569140
+    },
+    {
+      "rollout_index": 24,
+      "normalized_state_index": 24,
+      "normalized_state_id": "tro_s2_idood_rmax40_seed3_ood_normalized_024",
+      "state_id": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1_state_024",
+      "candidate_index": 50,
+      "area_quantile": 0.6781083403772068,
+      "theta_rad": 5.921671702040931,
+      "attempts": 51,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_s2_idood_rmax40_start15_seed3_ood_n25_v1",
+      "bank": "ood",
+      "start_support_radius_m": 0.15,
+      "global_max_radius_m": 0.4,
+      "shared_start_radius_min": 0.15,
+      "shared_start_radius_max": 0.4,
+      "shared_start_radius": 0.4,
+      "normalized_delta": [
+        0.7955391018271303,
+        0.0,
+        -0.3008187036667519
+      ],
+      "corridor_start_delta": [
+        0.3182156407308521,
+        0.0,
+        -0.12032748146670076
+      ],
+      "radial_distance_from_center": 0.3402056683858545,
+      "start_angle_rad": 5.921671702040931,
+      "corridor_start": [
+        0.6182156407308521,
+        0.0,
+        0.37967251853329925
+      ],
+      "realised_start": [
+        0.6165898154156224,
+        8.964025432598035e-06,
+        0.3792590391151185
+      ],
+      "ik_error": 0.0016776035105628547,
+      "rejected_count": 26,
+      "recent_rejections": [
+        {
+          "candidate_index": 35,
+          "area_quantile": 0.378299126011281,
+          "theta_rad": 1.7753539965200433,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0038239463954372038,
+            "0.25": 0.008305809370603266,
+            "0.35": 0.03616962599950976
+          }
+        },
+        {
+          "candidate_index": 36,
+          "area_quantile": 0.7319968413691472,
+          "theta_rad": 0.65124714299635,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.04887931467032453,
+            "0.25": 0.06228768388232192,
+            "0.35": 0.08191412818738249
+          }
+        },
+        {
+          "candidate_index": 40,
+          "area_quantile": 0.49202066247633336,
+          "theta_rad": 4.184418846598787,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0360972027540062,
+            "0.25": 0.07505139637798716,
+            "0.35": 0.10607249772877428
+          }
+        },
+        {
+          "candidate_index": 41,
+          "area_quantile": 0.7595960514588258,
+          "theta_rad": 0.3779373929735491,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.028869093847656686,
+            "0.25": 0.0388101084546625,
+            "0.35": 0.054564374054194696
+          }
+        },
+        {
+          "candidate_index": 43,
+          "area_quantile": 0.6903247037188713,
+          "theta_rad": 3.6489223764056073,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.06559108092248385,
+            "0.25": 0.08123039276763809,
+            "0.35": 0.10321170094425165
+          }
+        },
+        {
+          "candidate_index": 45,
+          "area_quantile": 0.6733139210674419,
+          "theta_rad": 3.3634114183385497,
+          "failed_start_radii_m": [
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.020590292601767844,
+            "0.25": 0.032650871709243176,
+            "0.35": 0.048819985438662485
+          }
+        },
+        {
+          "candidate_index": 46,
+          "area_quantile": 0.8521143047769322,
+          "theta_rad": 0.4230860573035166,
+          "failed_start_radii_m": [
+            0.15,
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.047369619240300774,
+            "0.25": 0.05403935853735689,
+            "0.35": 0.06401397481350382
+          }
+        },
+        {
+          "candidate_index": 47,
+          "area_quantile": 0.22464630490671367,
+          "theta_rad": 4.331198206928547,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0022656885649719777,
+            "0.25": 0.022304311428687027,
+            "0.35": 0.0782619865700222
+          }
+        },
+        {
+          "candidate_index": 48,
+          "area_quantile": 0.07663157225885686,
+          "theta_rad": 3.8183645299958493,
+          "failed_start_radii_m": [
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.0023759258742950683,
+            "0.25": 0.004160692411729649,
+            "0.35": 0.07941520229186497
+          }
+        },
+        {
+          "candidate_index": 49,
+          "area_quantile": 0.46638096121943695,
+          "theta_rad": 1.5450029831881777,
+          "failed_start_radii_m": [
+            0.25,
+            0.35
+          ],
+          "ik_error_by_start_radius_m": {
+            "0.15": 0.009507944482633084,
+            "0.25": 0.026040108363307005,
+            "0.35": 0.06486539289194954
+          }
+        }
+      ],
+      "rng_seed": 329684907,
+      "point_cloud_rng_seed": 302739475
+    }
+  ]
+}

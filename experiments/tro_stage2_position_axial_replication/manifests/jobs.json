@@ -1,0 +1,235 @@
+{
+  "schema_version": 1,
+  "experiment": "tro_stage2_position_axial_replication",
+  "jobs": [
+    {
+      "job_id": "36034912",
+      "gate": 2,
+      "role": "smoke_collection_and_validation",
+      "array": "0-4%5",
+      "canonical_seeds": [1, 2, 3, 4, 5],
+      "submission_command": "sbatch --parsable --array=0-4%5 scripts/run_tro_position_stage2_smoke.sh",
+      "status": "terminal_scientific_fallback_required",
+      "terminal_summary": {
+        "passed_canonical_seeds": [2, 3, 4],
+        "scientific_failure_canonical_seeds": [1, 5],
+        "infrastructure_failures": []
+      },
+      "retries": []
+    },
+    {
+      "job_id": "36034982",
+      "gate": 2,
+      "role": "whole_slot_fallback_smoke_collection_and_validation",
+      "array": "0,4%2",
+      "canonical_seeds": [1, 5],
+      "submission_command": "sbatch --parsable --array=0,4%2 scripts/run_tro_position_stage2_smoke.sh",
+      "status": "completed",
+      "terminal_summary": {
+        "state": "COMPLETED",
+        "exit_code": "0:0",
+        "validated_canonical_seeds": [1, 5],
+        "infrastructure_failures": []
+      },
+      "reason": "Pre-registered whole-slot fallback after persistent scientific failure of locked reused-slot reference pairing.",
+      "retries": []
+    },
+    {
+      "job_id": "36035006",
+      "gate": 3,
+      "role": "formal_collection_and_strict_raw_validation",
+      "array": "0-4%5",
+      "canonical_seeds": [1, 2, 3, 4, 5],
+      "active_dataset_counts": {
+        "new": 21,
+        "reused": 4,
+        "total": 25
+      },
+      "submission_command": "sbatch --parsable --array=0-4%5 scripts/run_tro_position_stage2_collect.sh",
+      "status": "completed",
+      "terminal_summary": {
+        "state": "COMPLETED",
+        "exit_code": "0:0",
+        "accepted_per_canonical_seed": 30,
+        "new_dataset_slots": 21,
+        "new_successful_demonstrations": 630,
+        "infrastructure_failures": []
+      },
+      "retries": []
+    },
+    {
+      "job_id": "36035085",
+      "gate": 4,
+      "role": "hdf5_build_and_validation",
+      "array": "0-4%5",
+      "canonical_seeds": [1, 2, 3, 4, 5],
+      "new_hdf5_count": 21,
+      "submission_command": "sbatch --parsable --array=0-4%5 scripts/run_tro_position_stage2_hdf5.sh",
+      "status": "completed",
+      "terminal_summary": {
+        "state": "COMPLETED",
+        "exit_code": "0:0",
+        "new_hdf5_validated": 21,
+        "reused_hdf5_validated": 4,
+        "total_dataset_slots_validated": 25,
+        "manifest_write_race_detected": true,
+        "manifest_write_race_resolution": "Sequentially revalidated all five seeds and refreshed only the ledger; HDF5 bytes were not modified.",
+        "post_resolution_full_hash_audit": "passed",
+        "infrastructure_failures": []
+      },
+      "retries": []
+    },
+    {
+      "job_ids": {
+        "seed1/START15_APP6": "36035267",
+        "seed1/START35_APP6": "36035268",
+        "seed1/START25_APP3P6": "36035269",
+        "seed1/START25_APP6": "36035270",
+        "seed1/START25_APP8P4": "36035271",
+        "seed2/START15_APP6": "36035272",
+        "seed2/START35_APP6": "36035273",
+        "seed2/START25_APP3P6": "36035274",
+        "seed2/START25_APP6": "36035275",
+        "seed2/START25_APP8P4": "36035276",
+        "seed3/START15_APP6": "36035277",
+        "seed3/START35_APP6": "36035278",
+        "seed3/START25_APP3P6": "36035279",
+        "seed3/START25_APP6": "36035280",
+        "seed3/START25_APP8P4": "36035281",
+        "seed4/START15_APP6": "36035282",
+        "seed4/START35_APP6": "36035283",
+        "seed4/START25_APP3P6": "36035284",
+        "seed4/START25_APP6": "36035285",
+        "seed4/START25_APP8P4": "36035286",
+        "seed5/START15_APP6": "36035287",
+        "seed5/START35_APP6": "36035288",
+        "seed5/START25_APP3P6": "36035289",
+        "seed5/START25_APP6": "36035290",
+        "seed5/START25_APP8P4": "36035291"
+      },
+      "gate": 5,
+      "role": "from_scratch_validation_early_stopping_training",
+      "job_count": 25,
+      "source_training_seeds": {
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 2702,
+        "5": 2701
+      },
+      "submission_command": "scripts/submit_tro_position_stage2_training.sh",
+      "status": "completed",
+      "terminal_summary": {
+        "state": "COMPLETED",
+        "exit_code": "0:0 for all 25 jobs",
+        "new_policy_slots": 25,
+        "reused_policy_slots": 0,
+        "training_job_count": 25,
+        "checkpoint_file_count": 67,
+        "selected_checkpoint_epochs": {
+          "seed1": [180, 40, 60, 40, 40],
+          "seed2": [60, 40, 40, 40, 40],
+          "seed3": [80, 40, 40, 40, 80],
+          "seed4": [40, 40, 40, 40, 40],
+          "seed5": [60, 40, 60, 60, 60]
+        },
+        "checkpoint_manifest_sha256": "240a936999281f429dd1b043b19df5bd9291ed478933305a7c051c5183227580",
+        "checkpoint_freeze_completed_before_rollout": true,
+        "infrastructure_failures": []
+      },
+      "retries": []
+    },
+    {
+      "job_id": "36036227",
+      "gate": 6,
+      "role": "formal_rollout",
+      "array": "0-249%40",
+      "task_count": 250,
+      "rows_per_task": 25,
+      "expected_rows": 6250,
+      "rollout_seeds": [1, 2, 3, 4, 5],
+      "banks": ["inner", "outer"],
+      "submission_command": "sbatch --parsable --array=0-249%40 scripts/run_tro_position_stage2_rollout.sh",
+      "status": "completed_with_clean_infrastructure_retries",
+      "checkpoint_manifest_sha256": "240a936999281f429dd1b043b19df5bd9291ed478933305a7c051c5183227580",
+      "terminal_summary": {
+        "original_array_completed": 247,
+        "original_array_preempted": 3,
+        "retry_tasks_completed": 3,
+        "final_formal_tasks": 250,
+        "final_formal_rows": 6250,
+        "condition_summaries_with_25_rows": 250,
+        "scientific_performance_retries": 0
+      },
+      "retries": [
+        {
+          "retry_job_id": "36036368",
+          "array": "24,28%2",
+          "submission_command": "sbatch --parsable --array=24,28%2 scripts/run_tro_position_stage2_rollout.sh",
+          "reason": "PREEMPTED infrastructure failure",
+          "original_task_states": {
+            "24": {
+              "slurm_job_id": "36036295",
+              "partial_rows": 17,
+              "artifact_archive": "dataset/tro_position_stage2_axial/infrastructure_retries/rollout_job36036227/task24_attempt1"
+            },
+            "28": {
+              "slurm_job_id": "36036314",
+              "partial_rows": 7,
+              "artifact_archive": "dataset/tro_position_stage2_axial/infrastructure_retries/rollout_job36036227/task28_attempt1"
+            }
+          },
+          "scientific_settings_changed": false,
+          "status": "completed",
+          "terminal_state": "COMPLETED 0:0 for both retry tasks"
+        },
+        {
+          "retry_job_id": "36036894",
+          "array": "244",
+          "submission_command": "sbatch --parsable --array=244 scripts/run_tro_position_stage2_rollout.sh",
+          "reason": "PREEMPTED infrastructure failure",
+          "original_task_states": {
+            "244": {
+              "slurm_job_id": "36036839",
+              "partial_rows": 9,
+              "artifact_archive": "dataset/tro_position_stage2_axial/infrastructure_retries/rollout_job36036227/task244_attempt1"
+            }
+          },
+          "scientific_settings_changed": false,
+          "status": "completed",
+          "terminal_state": "COMPLETED 0:0"
+        }
+      ]
+    },
+    {
+      "job_id": "36036979",
+      "gate": 7,
+      "role": "formal_rollout_merge",
+      "expected_aggregates": 50,
+      "submission_command": "sbatch --parsable scripts/run_tro_position_stage2_merge.sh",
+      "status": "completed",
+      "terminal_summary": {
+        "state": "COMPLETED",
+        "exit_code": "0:0",
+        "aggregates": 50
+      },
+      "retries": []
+    },
+    {
+      "job_id": "36037013",
+      "gate": 7,
+      "role": "strict_validation_analysis_and_figures",
+      "submission_command": "sbatch --parsable scripts/run_tro_position_stage2_analyze.sh",
+      "status": "completed",
+      "terminal_summary": {
+        "state": "COMPLETED",
+        "exit_code": "0:0",
+        "strict_status": "valid",
+        "classification": "partial",
+        "validated_tasks": 250,
+        "validated_rows": 6250
+      },
+      "retries": []
+    }
+  ]
+}

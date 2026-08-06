@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "status": "scientific_stop",
+  "decision": "do_not_submit_formal_rerollout",
+  "authority": "experiments/tro_stage2_position_axial_idood_rerollout/PLAN.md section 4",
+  "reason": "The jointly reachable-conditioned OOD sample is persistently directionally biased across all five rollout seeds.",
+  "formal_manifest_count": 30,
+  "joint_seed_bank_groups": 10,
+  "total_joint_triplet_rejections": 179,
+  "id": {
+    "accepted_normalized_states": 125,
+    "area_quantile_mean": 0.47123763577103256,
+    "area_quantile_range": [
+      0.028834970997388187,
+      0.9882924552978668
+    ],
+    "theta_resultant_length": 0.07373625101870453,
+    "quadrant_counts": [
+      33,
+      34,
+      34,
+      24
+    ],
+    "joint_rejections_by_rollout_seed": [
+      2,
+      2,
+      2,
+      3,
+      3
+    ]
+  },
+  "ood": {
+    "accepted_normalized_states": 125,
+    "area_quantile_mean": 0.4822540601545605,
+    "area_quantile_range": [
+      0.021280066749370663,
+      0.9752563192271709
+    ],
+    "theta_resultant_length": 0.25133298900423606,
+    "quadrant_counts": [
+      5,
+      41,
+      11,
+      68
+    ],
+    "per_rollout_seed": {
+      "1": {
+        "joint_rejections": 21,
+        "area_quantile_mean": 0.443,
+        "theta_resultant_length": 0.197,
+        "quadrant_counts": [
+          1,
+          8,
+          3,
+          13
+        ]
+      },
+      "2": {
+        "joint_rejections": 34,
+        "area_quantile_mean": 0.496,
+        "theta_resultant_length": 0.564,
+        "quadrant_counts": [
+          2,
+          4,
+          1,
+          18
+        ]
+      },
+      "3": {
+        "joint_rejections": 33,
+        "area_quantile_mean": 0.462,
+        "theta_resultant_length": 0.197,
+        "quadrant_counts": [
+          0,
+          10,
+          2,
+          13
+        ]
+      },
+      "4": {
+        "joint_rejections": 55,
+        "area_quantile_mean": 0.511,
+        "theta_resultant_length": 0.321,
+        "quadrant_counts": [
+          1,
+          8,
+          3,
+          13
+        ]
+      },
+      "5": {
+        "joint_rejections": 24,
+        "area_quantile_mean": 0.499,
+        "theta_resultant_length": 0.098,
+        "quadrant_counts": [
+          1,
+          11,
+          2,
+          11
+        ]
+      }
+    }
+  },
+  "interpretation": {
+    "radial_area_quantiles": "well covered",
+    "id_directional_coverage": "well covered",
+    "ood_directional_coverage": "persistently biased by the joint reachability condition",
+    "protocol_changes_made": false,
+    "r_max_reduced": false,
+    "bank_bounds_changed": false,
+    "formal_rollout_submitted": false,
+    "policy_training_performed": false
+  }
+}

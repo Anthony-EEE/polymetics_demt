@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "manifest_type": "tro_position_confirmation_frozen_checkpoints",
+  "condition_order": [
+    "START15_APP6",
+    "START35_APP6",
+    "START25_APP3P6",
+    "START25_APP6",
+    "START25_APP8P4"
+  ],
+  "training_conditions": [
+    "START15_APP6",
+    "START35_APP6",
+    "START25_APP3P6",
+    "START25_APP8P4"
+  ],
+  "baseline_condition": "START25_APP6",
+  "wandb_project": "TRO_MVP",
+  "protocol_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/mvp0_position_event/confirmation_earlystop/manifests/protocol.json",
+  "protocol_sha256": "3b734f0b1d4de05d2bd3ca3294bc8f432814da4ca6b68a4bda66ceddb07a7cba",
+  "git_commit": "2f61da7d0cf4f80609c6a7ee0409c765d1759bb4",
+  "checkpoints": {
+    "START15_APP6": {
+      "condition": "START15_APP6",
+      "source": "new_from_scratch_early_stopping_training",
+      "training_seed": 2701,
+      "run_dir": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_confirmation/START15_APP6/tro_pos_confirm_START15_APP6_d30_seed2701_2gap/20260724142401",
+      "selection_rule": "highest numeric emitted model_epoch_*.pth",
+      "available_checkpoints": [
+        {
+          "epoch": 20,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_confirmation/START15_APP6/tro_pos_confirm_START15_APP6_d30_seed2701_2gap/20260724142401/models/model_epoch_20.pth",
+          "sha256": "5d066ebbb2c354b8a04493351ec82f14b4e2542312968130c161b6ed019b64b7",
+          "size_bytes": 290106724
+        },
+        {
+          "epoch": 40,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_confirmation/START15_APP6/tro_pos_confirm_START15_APP6_d30_seed2701_2gap/20260724142401/models/model_epoch_40.pth",
+          "sha256": "311183a4221d5e80708c5a81b37ab282b9aa6e64000a3b1d44333331315abb17",
+          "size_bytes": 290106724
+        },
+        {
+          "epoch": 60,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_confirmation/START15_APP6/tro_pos_confirm_START15_APP6_d30_seed2701_2gap/20260724142401/models/model_epoch_60.pth",
+          "sha256": "0c62c6927e432b4e58a60fe4e52ace907c7cdd13b7873c68514d74aeb651c607",
+          "size_bytes": 290106724
+        }
+      ],
+      "epoch": 60,
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_confirmation/START15_APP6/tro_pos_confirm_START15_APP6_d30_seed2701_2gap/20260724142401/models/model_epoch_60.pth",
+      "sha256": "0c62c6927e432b4e58a60fe4e52ace907c7cdd13b7873c68514d74aeb651c607",
+      "size_bytes": 290106724
+    },
+    "START35_APP6": {
+      "condition": "START35_APP6",
+      "source": "new_from_scratch_early_stopping_training",
+      "training_seed": 2701,
+      "run_dir": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_confirmation/START35_APP6/tro_pos_confirm_START35_APP6_d30_seed2701_2gap/20260724142441",
+      "selection_rule": "highest numeric emitted model_epoch_*.pth",
+      "available_checkpoints": [
+        {
+          "epoch": 20,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_confirmation/START35_APP6/tro_pos_confirm_START35_APP6_d30_seed2701_2gap/20260724142441/models/model_epoch_20.pth",
+          "sha256": "0dd274144aa60539da40d2f6003aa05a85cb33ca6f5e0e8ae0c46e4bfc588ea7",
+          "size_bytes": 290106724
+        },
+        {
+          "epoch": 40,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_confirmation/START35_APP6/tro_pos_confirm_START35_APP6_d30_seed2701_2gap/20260724142441/models/model_epoch_40.pth",
+          "sha256": "1ff1cd0ce2e2bea147dc2a476a551a9502491977ab02644a1362cb5ee2ac8e0a",
+          "size_bytes": 290106724
+        }
+      ],
+      "epoch": 40,
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_confirmation/START35_APP6/tro_pos_confirm_START35_APP6_d30_seed2701_2gap/20260724142441/models/model_epoch_40.pth",
+      "sha256": "1ff1cd0ce2e2bea147dc2a476a551a9502491977ab02644a1362cb5ee2ac8e0a",
+      "size_bytes": 290106724
+    },
+    "START25_APP3P6": {
+      "condition": "START25_APP3P6",
+      "source": "new_from_scratch_early_stopping_training",
+      "training_seed": 2701,
+      "run_dir": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_confirmation/START25_APP3P6/tro_pos_confirm_START25_APP3P6_d30_seed2701_2gap/20260724142901",
+      "selection_rule": "highest numeric emitted model_epoch_*.pth",
+      "available_checkpoints": [
+        {
+          "epoch": 20,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_confirmation/START25_APP3P6/tro_pos_confirm_START25_APP3P6_d30_seed2701_2gap/20260724142901/models/model_epoch_20.pth",
+          "sha256": "11da4668e91a68690ee3d17884854bcd832896b240657582fd0f1420a8f78f3d",
+          "size_bytes": 290106724
+        },
+        {
+          "epoch": 40,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_confirmation/START25_APP3P6/tro_pos_confirm_START25_APP3P6_d30_seed2701_2gap/20260724142901/models/model_epoch_40.pth",
+          "sha256": "0c7e304792af91a0594977708fb233780ae3eba7a08615ae37dedaf11f1b9da0",
+          "size_bytes": 290106724
+        },
+        {
+          "epoch": 60,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_confirmation/START25_APP3P6/tro_pos_confirm_START25_APP3P6_d30_seed2701_2gap/20260724142901/models/model_epoch_60.pth",
+          "sha256": "d5fa40b5943f153b9ba85b098f7054e2c34c75473b02179a0a7d948794577ac5",
+          "size_bytes": 290106724
+        }
+      ],
+      "epoch": 60,
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_confirmation/START25_APP3P6/tro_pos_confirm_START25_APP3P6_d30_seed2701_2gap/20260724142901/models/model_epoch_60.pth",
+      "sha256": "d5fa40b5943f153b9ba85b098f7054e2c34c75473b02179a0a7d948794577ac5",
+      "size_bytes": 290106724
+    },
+    "START25_APP6": {
+      "condition": "START25_APP6",
+      "source": "reused_legacy_S25_early_stopped_baseline",
+      "training_seed": 1,
+      "epoch": 80,
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/ar_guidance_spatial_S15_S35/S25/spatial_S25_d30_seed1_2gap/20260704004132/models/model_epoch_80.pth",
+      "sha256": "e666ab6a53f87f8d0f2e0a5ba29bd34b28cc39930d57cc848abfa5745465d60f",
+      "size_bytes": 290106596,
+      "selection_rule": "highest numeric checkpoint already emitted by the accepted legacy S25 early-stopping run",
+      "retraining_performed": false
+    },
+    "START25_APP8P4": {
+      "condition": "START25_APP8P4",
+      "source": "new_from_scratch_early_stopping_training",
+      "training_seed": 2701,
+      "run_dir": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_confirmation/START25_APP8P4/tro_pos_confirm_START25_APP8P4_d30_seed2701_2gap/20260724143734",
+      "selection_rule": "highest numeric emitted model_epoch_*.pth",
+      "available_checkpoints": [
+        {
+          "epoch": 20,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_confirmation/START25_APP8P4/tro_pos_confirm_START25_APP8P4_d30_seed2701_2gap/20260724143734/models/model_epoch_20.pth",
+          "sha256": "1bf921b993c7c3cd11ebf41fcd8ed204b82c9c1c7cf8cbd018e29a5622435d80",
+          "size_bytes": 290106724
+        },
+        {
+          "epoch": 40,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_confirmation/START25_APP8P4/tro_pos_confirm_START25_APP8P4_d30_seed2701_2gap/20260724143734/models/model_epoch_40.pth",
+          "sha256": "277937dc20bbfc3d72d00238b47177c8e20465f38bdd36b7634eeb8b37868528",
+          "size_bytes": 290106724
+        },
+        {
+          "epoch": 60,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_confirmation/START25_APP8P4/tro_pos_confirm_START25_APP8P4_d30_seed2701_2gap/20260724143734/models/model_epoch_60.pth",
+          "sha256": "1ebd3297a39ca965cc9323f308f475a840363becec134fd2bb18f6c5ba334c75",
+          "size_bytes": 290106724
+        },
+        {
+          "epoch": 80,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_confirmation/START25_APP8P4/tro_pos_confirm_START25_APP8P4_d30_seed2701_2gap/20260724143734/models/model_epoch_80.pth",
+          "sha256": "773f904ceba38f63f502390447fb2c0ae3e8b2727f215ac7e69575d689298b45",
+          "size_bytes": 290106724
+        }
+      ],
+      "epoch": 80,
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_confirmation/START25_APP8P4/tro_pos_confirm_START25_APP8P4_d30_seed2701_2gap/20260724143734/models/model_epoch_80.pth",
+      "sha256": "773f904ceba38f63f502390447fb2c0ae3e8b2727f215ac7e69575d689298b45",
+      "size_bytes": 290106724
+    }
+  }
+}

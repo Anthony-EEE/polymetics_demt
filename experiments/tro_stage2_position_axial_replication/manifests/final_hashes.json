@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "experiment": "tro_stage2_position_axial_replication",
+  "generated_at": "2026-07-25",
+  "frozen_source_artifacts_unchanged": {
+    "experiments/mvp0_position_event/confirmation_earlystop/analysis/comparison.json": "0c17c65330b8ab25867e75b1409553e1ad2dfbb33ad52789acc586d1f7a9d1d1",
+    "experiments/mvp0_position_event/confirmation_earlystop/analysis/summary.md": "c285ea524ac8ef795b073f6f2e54925745ae2e0ddef4a7238192407b7b6c1d29",
+    "dataset/ar_guidance_spatial_S15_S35/spatial_S25_d30_seed1_2gap.hdf5": "2f2a3ed8c6b99e0dd83cdddd11d43a414bf38ed89b7128a63d30a7d7974877e5",
+    "/scratch/prj/eng_demt_robot_learning/trained_models/ar_guidance_spatial_S15_S35/S25/spatial_S25_d30_seed1_2gap/20260704004132/models/model_epoch_80.pth": "e666ab6a53f87f8d0f2e0a5ba29bd34b28cc39930d57cc848abfa5745465d60f"
+  },
+  "stage2_manifests": {
+    "protocol.json": "d9838ebbbca48d5b1a2e36fbc67337b09ed627bac8ccffa6ae685384d9fca710",
+    "artifact_reuse.json": "5b63c41e2ab7ed5d33a3255166f4efd184d9be0620aa36484d129411c6270dcb",
+    "fallback_activations.json": "b7d78de1bfd1b26f47c42405c71c95dbc6d07a8ed213364dd3e474661840f706",
+    "datasets.json": "3d509097466abfceb65f94521705d7f209eca490aefca44717bf3cd90e7e79bb",
+    "policies.json": "97109695d1680610e9c04625dff60aa3a26489c93b3036e863711e38f0c4f447",
+    "checkpoints.json": "240a936999281f429dd1b043b19df5bd9291ed478933305a7c051c5183227580",
+    "jobs.json": "73b56cbfc9b9490d6597b0ccfa3ff7ae73cba02b2a8a820c3d27b12eef2cd544",
+    "storage_inventory.json": "856b30f03c90e03b9d24ad7ab7659e2eed2cab96222357cbb92664cac92c9cb8"
+  },
+  "analysis": {
+    "comparison.json": "c70020fe70ab5aae9959ea990e66a2e2f3c4af4c05f24557a79d64c973ef9113",
+    "summary.md": "825a13e358b01e8707c99e1f19673b01d46df62edbacecce12bff6bbc6684370",
+    "figures/condition_policy_replication.png": "3ccd995ded22457ffc1d9efab6b23b46b1f1b739f1e6c356a37a6ba942977118",
+    "figures/primary_contrasts_by_seed.png": "ec8da5953a440e2a40a48c2beee7436602e3b0072ccdc8c490582e8e17b287e2"
+  },
+  "execution_docs": {
+    "commands.md": "08b4c4d25e8cdd12a7f782bc081236ccaa007972d0d82463abca8cf82db9b1c5",
+    "implementation_notes.md": "891338973608d49439aa209125ff84fc7cce08e03e6d2da54c8f423be00307ae",
+    "docs/tro_plan.md": "38e55b3747aed5c69a81011db04de0cf3bdc445e481b1c5304cf5fa61be292bf",
+    "handoffs/tro-stage2-position-axial-replication.md": "451c63849bd9af47c33bba255632c68192577b2dcd6c9a9ccf8db383959cd36d"
+  },
+  "shared_registries": {
+    "experiments/shared_artifacts/dataset_policy_registry.json": "acf9195c513c11139d615f4ae582f2ff6f22db9742bf8d386693a7aa6fa733fc",
+    "experiments/shared_artifacts/rollout_manifest_registry.json": "ec7b19a82cff9c7d06944ce3c04d860dc57153e7de50e8583f0296dacde15c7c"
+  },
+  "implementation": {
+    "scripts/tro_position_stage2.py": "5532e27bc37586666da1fb61c5e61fa9954167d1b28939065be73278f2fa7248",
+    "scripts/analyze_tro_position_stage2.py": "d1f5580aad4b32087c4ce5fbd1ea7adc3bef48d06dd0f29950fcba8aff6ea3cd",
+    "tests/test_tro_position_stage2.py": "ede0cabbb756268561dc4e8c097c5af5057cdfc351c21eee72f9684f78d84ba0"
+  }
+}

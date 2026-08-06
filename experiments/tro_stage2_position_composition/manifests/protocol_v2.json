@@ -1,0 +1,111 @@
+{
+  "schema_version": 2,
+  "protocol_id": "tro_stage2_position_composition_missing_cells_v2_retry_until_success",
+  "amends": "tro_stage2_position_composition_missing_cells_v1",
+  "status": "implemented_tested_frozen",
+  "authority": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_composition/PLAN.md",
+  "amendment_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_composition/manifests/protocol_amendment_v2.json",
+  "amendment_sha256": "cf668229f413f737479b89452d649e1f9a20266891e075b98758ad3cdfd235db",
+  "preserved_v1_evidence": {
+    "protocol_blocker_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_composition/manifests/protocol_blocker.json",
+    "protocol_blocker_sha256": "40585f2279b7b8070dc0b9921e00f83a8531061615f44a7ca1bb8954576d8417",
+    "final_hashes_v1_snapshot_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_composition/manifests/final_hashes.json",
+    "final_hashes_v1_snapshot_sha256": "325a2895eb7400edb8f00cfa64a8f75a0911182062554450ea9de73adfc7cfbe",
+    "formal_collection_job_id": "36053381"
+  },
+  "collection": {
+    "accepted_unit": "atomic_four_corner_attempt_bundle",
+    "new_conditions": [
+      "START15_APP3P6",
+      "START15_APP8P4",
+      "START35_APP3P6",
+      "START35_APP8P4"
+    ],
+    "canonical_seeds": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "frozen_latent_ids_per_seed": 30,
+    "attempt_zero": "frozen Stage 2 runtime_seed",
+    "attempt_seed_derivation": "uint32_be(SHA256(\"composition-v2:{base_runtime_seed}:{attempt_index}\")[0:4])",
+    "integer_encoding": "decimal integers with no whitespace",
+    "same_attempt_seed_across_four_corners": true,
+    "scientific_attempt_limit": null,
+    "failed_bundles_enter_dataset": false,
+    "condition_specific_retry": false
+  },
+  "progress_migration": [
+    {
+      "canonical_seed": 1,
+      "v1_progress_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_stage2_composition/formal/seed1/collection_progress.json",
+      "v1_progress_sha256": "370fa5b37d508f58c92b15c2f1a96e6f49a4d288123d18ada260f4dc84d4eca6",
+      "v2_progress_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_stage2_composition/formal/seed1/collection_progress_v2.json",
+      "v2_progress_sha256": "07d70061228b96edc48565321d1f06df2734fb16f97bc69c66282dee32a7e69e",
+      "retained_complete_bundles": 5,
+      "migrated_scientific_attempts": 0,
+      "archived_infrastructure_attempts": 1
+    },
+    {
+      "canonical_seed": 2,
+      "v1_progress_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_stage2_composition/formal/seed2/collection_progress.json",
+      "v1_progress_sha256": "ace26a9dd266b50a942cb9859c8409fd34673cea9d1b19951463ce7997f011c5",
+      "v2_progress_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_stage2_composition/formal/seed2/collection_progress_v2.json",
+      "v2_progress_sha256": "abcaeac2fc7aae62b6ce2a3033ebf765089baad71957e3e6603d405d75f7759b",
+      "retained_complete_bundles": 5,
+      "migrated_scientific_attempts": 0,
+      "archived_infrastructure_attempts": 1
+    },
+    {
+      "canonical_seed": 3,
+      "v1_progress_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_stage2_composition/formal/seed3/collection_progress.json",
+      "v1_progress_sha256": "30263b8eae4e9a3507889fd1df43a40205039e6d497b3fd9cdce172975e1068e",
+      "v2_progress_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_stage2_composition/formal/seed3/collection_progress_v2.json",
+      "v2_progress_sha256": "d1c5685d77c2a21236c7df35fed8d8332cbafdedc1ae0e451379a844fc635f42",
+      "retained_complete_bundles": 4,
+      "migrated_scientific_attempts": 0,
+      "archived_infrastructure_attempts": 1
+    },
+    {
+      "canonical_seed": 4,
+      "v1_progress_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_stage2_composition/formal/seed4/collection_progress.json",
+      "v1_progress_sha256": "a85e4fdb0f0825907d32563e8c8ca1f6fb769f32de524b6c203752989ac50951",
+      "v2_progress_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_stage2_composition/formal/seed4/collection_progress_v2.json",
+      "v2_progress_sha256": "75faf69b1c9fe22965046cbce34508457b83e50e5c1c5536c36f10e59f9bff4b",
+      "retained_complete_bundles": 2,
+      "migrated_scientific_attempts": 1,
+      "archived_infrastructure_attempts": 0
+    },
+    {
+      "canonical_seed": 5,
+      "v1_progress_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_stage2_composition/formal/seed5/collection_progress.json",
+      "v1_progress_sha256": "5726c09d4c78b48c6fc29a8046cd48f0b80fe90ccc178d74e102ef3324e4f712",
+      "v2_progress_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_stage2_composition/formal/seed5/collection_progress_v2.json",
+      "v2_progress_sha256": "3ea6980f38b1ad7e4936a743e7c23f251b87b0e3f28d890a0379d8167596d989",
+      "retained_complete_bundles": 1,
+      "migrated_scientific_attempts": 1,
+      "archived_infrastructure_attempts": 0
+    }
+  ],
+  "tests_required": [
+    "attempt-seed determinism",
+    "atomic rejection and acceptance",
+    "failure archival",
+    "crash/resume idempotence",
+    "exact 30-latent preservation"
+  ],
+  "test_evidence": {
+    "command": "/scratch/users/k23114984/conda/arcap/bin/python -m pytest -q tests/test_tro_position_mvp0.py tests/test_tro_position_confirmation.py tests/test_tro_position_stage2.py tests/test_tro_position_stage2_idood.py tests/test_tro_position_composition.py",
+    "result": "43 passed in 68.88s",
+    "all_required_v2_semantics_covered": true
+  },
+  "implementation": {
+    "collector_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/scripts/tro_position_composition.py",
+    "collector_sha256": "e398b202c6ed04fbe0ab69d939ccd4dcb05abbf876df8bfe51ae7c648d6f0630",
+    "tests_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/tests/test_tro_position_composition.py",
+    "tests_sha256": "14659204dbe21291f46902327afcda60e12a3e302472d7371e253434c83c672c"
+  },
+  "immutable_anchors_revalidated": true
+}

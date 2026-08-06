@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "experiment": "tro_stage2_position_axial_replication",
+  "measured_at": "2026-07-25",
+  "inventory": {
+    "dataset_formal_nonfallback": {
+      "path": "dataset/tro_position_stage2_axial/formal",
+      "bytes": 17145460601
+    },
+    "dataset_formal_whole_slot_fallback": {
+      "path": "dataset/tro_position_stage2_axial/formal_fallback",
+      "bytes": 15273465642
+    },
+    "smoke_locked_paths": {
+      "path": "dataset/tro_position_stage2_axial/smoke",
+      "bytes": 129434758
+    },
+    "smoke_fallback_paths": {
+      "path": "dataset/tro_position_stage2_axial/smoke_fallback",
+      "bytes": 89647992
+    },
+    "formal_rollouts": {
+      "path": "dataset/tro_position_stage2_axial/rollouts",
+      "bytes": 62418490,
+      "formal_rows": 6250,
+      "condition_summaries": 250,
+      "aggregates": 50,
+      "videos": 0
+    },
+    "logs": {
+      "path": "dataset/tro_position_stage2_axial/logs",
+      "bytes": 15364769
+    },
+    "archived_infrastructure_retries": {
+      "path": "dataset/tro_position_stage2_axial/infrastructure_retries",
+      "bytes": 102679,
+      "preempted_tasks": [24, 28, 244]
+    },
+    "models": {
+      "path": "/scratch/prj/eng_demt_robot_learning/trained_models/tro_position_stage2_axial",
+      "bytes": 19455828462,
+      "checkpoint_files": 67,
+      "checkpoint_bytes": 19437151318,
+      "selected_checkpoint_files": 25,
+      "selected_checkpoint_bytes": 7252668262,
+      "nonselected_checkpoint_files": 42,
+      "nonselected_checkpoint_bytes": 12184483056
+    }
+  },
+  "artifact_counts": {
+    "new_successful_demonstrations": 630,
+    "new_hdf5_files": 21,
+    "reused_hdf5_references": 4,
+    "new_policy_runs": 25,
+    "selected_policy_checkpoints": 25
+  },
+  "safe_cleanup_candidates_requiring_separate_user_authorization": [
+    {
+      "category": "smoke outputs",
+      "paths": [
+        "dataset/tro_position_stage2_axial/smoke",
+        "dataset/tro_position_stage2_axial/smoke_fallback"
+      ],
+      "approximate_bytes": 219082750
+    },
+    {
+      "category": "archived preemption partials",
+      "paths": [
+        "dataset/tro_position_stage2_axial/infrastructure_retries"
+      ],
+      "approximate_bytes": 102679
+    },
+    {
+      "category": "nonselected emitted checkpoints",
+      "selection_source": "experiments/tro_stage2_position_axial_replication/manifests/checkpoints.json",
+      "file_count": 42,
+      "bytes": 12184483056
+    }
+  ],
+  "cleanup_performed": false,
+  "protected_from_cleanup": [
+    "all frozen Stage 1 and Stage 1b artifacts",
+    "all 25 selected Stage 2 checkpoints",
+    "formal raw data and HDF5 files",
+    "formal rollout manifests, rows and aggregates",
+    "analysis and provenance manifests"
+  ]
+}

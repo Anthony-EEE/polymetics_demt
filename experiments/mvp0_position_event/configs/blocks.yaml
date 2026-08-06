@@ -1,0 +1,23 @@
+{
+  "block0": {
+    "mandatory": true,
+    "collection_seed": 1701,
+    "training_seed": 2701,
+    "demonstration_sample_hz": 8.0,
+    "successful_demonstrations_per_condition": 30,
+    "rollouts_per_policy": 50
+  },
+  "block1": {
+    "conditional": true,
+    "collection_seed": 1702,
+    "training_seed": 2702,
+    "demonstration_sample_hz": 8.0,
+    "successful_demonstrations_per_condition": 30,
+    "rollouts_per_policy": 50
+  },
+  "continuation_rule": {
+    "delta_start_outer_min_successes_per_25": 4,
+    "delta_approach_reference_min_successes_per_25": 4,
+    "operator": "OR"
+  }
+}

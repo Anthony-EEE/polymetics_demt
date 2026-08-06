@@ -1,0 +1,1269 @@
+{
+  "schema_version": 2,
+  "condition_order": [
+    "START15_APP6",
+    "START35_APP6",
+    "START25_APP3P6",
+    "START25_APP8P4"
+  ],
+  "protocol": {
+    "seed": 630,
+    "num_rollouts": 25,
+    "horizon": 200,
+    "sample_hz": 8.0,
+    "action_gap": 2,
+    "action_dt": 0.25,
+    "terminate_on_success": true,
+    "success_lift_height": 0.2,
+    "num_points": 10000,
+    "corridor_start_center": [
+      0.3,
+      0.0,
+      0.5
+    ],
+    "shared_start_radius_min": 0.25,
+    "shared_start_radius_max": 0.35,
+    "corridor_start_max_error": 0.025,
+    "evaluation_distribution": "tro_pos_seed630_outer_n25_v1",
+    "rng_protocol": "independent spatial/runtime/point-cloud streams; Python, NumPy, Torch and CUDA reset per rollout",
+    "bank_id": "tro_pos_seed630_outer_n25_v1"
+  },
+  "seed": 630,
+  "num_rollouts": 25,
+  "sample_hz": 8.0,
+  "corridor_start_center": [
+    0.3,
+    0.0,
+    0.5
+  ],
+  "start_sampling_mode": "xz_annulus",
+  "shared_start_radius_min": 0.25,
+  "shared_start_radius_max": 0.35,
+  "shared_start_radius": 0.35,
+  "corridor_start_max_error": 0.025,
+  "max_start_sample_attempts": 1000,
+  "evaluation_distribution": "tro_pos_seed630_outer_n25_v1",
+  "shared_corridor_starts": [
+    [
+      0.35406555391359873,
+      0.0,
+      0.7947048151117873
+    ],
+    [
+      0.4301725378222292,
+      0.0,
+      0.7301292691773806
+    ],
+    [
+      0.5581461733050779,
+      0.0,
+      0.267930574764899
+    ],
+    [
+      0.10514981479651017,
+      0.0,
+      0.7345774905457421
+    ],
+    [
+      0.1199219942285627,
+      0.0,
+      0.7002004611246582
+    ],
+    [
+      0.3038460492517352,
+      0.0,
+      0.18663056187328475
+    ],
+    [
+      0.6103963434120605,
+      0.0,
+      0.5673358633018388
+    ],
+    [
+      0.5855932686429859,
+      0.0,
+      0.6481615048741102
+    ],
+    [
+      0.005069930630682173,
+      0.0,
+      0.43817784853180375
+    ],
+    [
+      0.217833695659012,
+      0.0,
+      0.24990828673224547
+    ],
+    [
+      0.46343532280851435,
+      0.0,
+      0.21814775335448922
+    ],
+    [
+      0.5612059984155646,
+      0.0,
+      0.549817169220869
+    ],
+    [
+      0.04678689090863475,
+      0.0,
+      0.6151864615436828
+    ],
+    [
+      0.37809560125527014,
+      0.0,
+      0.21382894797305918
+    ],
+    [
+      0.5281652378137909,
+      0.0,
+      0.35101796704112354
+    ],
+    [
+      0.21757362009981834,
+      0.0,
+      0.7492355253188023
+    ],
+    [
+      0.09379920245029591,
+      0.0,
+      0.2872684024656381
+    ],
+    [
+      0.5532929315763122,
+      0.0,
+      0.631690641726327
+    ],
+    [
+      0.029458066404191963,
+      0.0,
+      0.45174004536154744
+    ],
+    [
+      0.3103316128191855,
+      0.0,
+      0.20718681139182277
+    ],
+    [
+      0.04942805629884045,
+      0.0,
+      0.5945563738380621
+    ],
+    [
+      0.013983575263276371,
+      0.0,
+      0.6261194257162266
+    ],
+    [
+      0.5579431298101611,
+      0.0,
+      0.5773901564544621
+    ],
+    [
+      0.3034547348377578,
+      0.0,
+      0.2301510567869245
+    ],
+    [
+      0.373868264708247,
+      0.0,
+      0.17454144436247038
+    ]
+  ],
+  "shared_start_records": [
+    {
+      "rollout_index": 0,
+      "state_id": "tro_pos_seed630_outer_n25_v1_state_000",
+      "attempts": 1,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_pos_seed630_outer_n25_v1",
+      "shared_start_radius_min": 0.25,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        0.15447301118171072,
+        0.0,
+        0.8420137574622492
+      ],
+      "corridor_start_delta": [
+        0.054065553913598755,
+        0.0,
+        0.2947048151117872
+      ],
+      "radial_distance_from_center": 0.29962311688195375,
+      "start_angle_rad": 1.3893572621716495,
+      "corridor_start": [
+        0.35406555391359873,
+        0.0,
+        0.7947048151117873
+      ],
+      "realised_start": [
+        0.3486832352234065,
+        1.5226719761259648e-05,
+        0.7799801740325868
+      ],
+      "ik_error": 0.015677520251846752,
+      "rejected_count": 0,
+      "recent_rejections": [],
+      "rng_seed": 3550025314,
+      "point_cloud_rng_seed": 346879896
+    },
+    {
+      "rollout_index": 1,
+      "state_id": "tro_pos_seed630_outer_n25_v1_state_001",
+      "attempts": 1,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_pos_seed630_outer_n25_v1",
+      "shared_start_radius_min": 0.25,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        0.3719215366349407,
+        0.0,
+        0.6575121976496591
+      ],
+      "corridor_start_delta": [
+        0.13017253782222923,
+        0.0,
+        0.23012926917738066
+      ],
+      "radial_distance_from_center": 0.264394345883559,
+      "start_angle_rad": 1.0560174833540381,
+      "corridor_start": [
+        0.4301725378222292,
+        0.0,
+        0.7301292691773806
+      ],
+      "realised_start": [
+        0.42680921183602044,
+        1.2072460647598066e-05,
+        0.7235457798898036
+      ],
+      "ik_error": 0.007392864034557547,
+      "rejected_count": 0,
+      "recent_rejections": [],
+      "rng_seed": 3288251705,
+      "point_cloud_rng_seed": 1622129154
+    },
+    {
+      "rollout_index": 2,
+      "state_id": "tro_pos_seed630_outer_n25_v1_state_002",
+      "attempts": 1,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_pos_seed630_outer_n25_v1",
+      "shared_start_radius_min": 0.25,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        0.7375604951573655,
+        0.0,
+        -0.663055500671717
+      ],
+      "corridor_start_delta": [
+        0.25814617330507794,
+        0.0,
+        -0.23206942523510096
+      ],
+      "radial_distance_from_center": 0.3471248549456023,
+      "start_angle_rad": -0.7322538044560106,
+      "corridor_start": [
+        0.5581461733050779,
+        0.0,
+        0.267930574764899
+      ],
+      "realised_start": [
+        0.5574954200541653,
+        9.75498806833024e-06,
+        0.26833396177109725
+      ],
+      "ik_error": 0.0007656996997094062,
+      "rejected_count": 0,
+      "recent_rejections": [],
+      "rng_seed": 1918738195,
+      "point_cloud_rng_seed": 3184103526
+    },
+    {
+      "rollout_index": 3,
+      "state_id": "tro_pos_seed630_outer_n25_v1_state_003",
+      "attempts": 1,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_pos_seed630_outer_n25_v1",
+      "shared_start_radius_min": 0.25,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        -0.5567148148671138,
+        0.0,
+        0.6702214015592631
+      ],
+      "corridor_start_delta": [
+        -0.19485018520348982,
+        0.0,
+        0.2345774905457421
+      ],
+      "radial_distance_from_center": 0.3049478541399693,
+      "start_angle_rad": 2.263944850676123,
+      "corridor_start": [
+        0.10514981479651017,
+        0.0,
+        0.7345774905457421
+      ],
+      "realised_start": [
+        0.10603506765993721,
+        1.477805861516678e-05,
+        0.7326759944372153
+      ],
+      "ik_error": 0.0020975172166074266,
+      "rejected_count": 0,
+      "recent_rejections": [],
+      "rng_seed": 2936135457,
+      "point_cloud_rng_seed": 2018128927
+    },
+    {
+      "rollout_index": 4,
+      "state_id": "tro_pos_seed630_outer_n25_v1_state_004",
+      "attempts": 1,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_pos_seed630_outer_n25_v1",
+      "shared_start_radius_min": 0.25,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        -0.5145085879183923,
+        0.0,
+        0.5720013174990232
+      ],
+      "corridor_start_delta": [
+        -0.1800780057714373,
+        0.0,
+        0.2002004611246581
+      ],
+      "radial_distance_from_center": 0.26927367639103444,
+      "start_angle_rad": 2.3033287414981025,
+      "corridor_start": [
+        0.1199219942285627,
+        0.0,
+        0.7002004611246582
+      ],
+      "realised_start": [
+        0.12082547801649282,
+        1.3885447756265421e-05,
+        0.6989231639315902
+      ],
+      "ik_error": 0.0015645970344249618,
+      "rejected_count": 0,
+      "recent_rejections": [],
+      "rng_seed": 1675157998,
+      "point_cloud_rng_seed": 3827825483
+    },
+    {
+      "rollout_index": 5,
+      "state_id": "tro_pos_seed630_outer_n25_v1_state_005",
+      "attempts": 1,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_pos_seed630_outer_n25_v1",
+      "shared_start_radius_min": 0.25,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        0.01098871214781489,
+        0.0,
+        -0.8953412517906151
+      ],
+      "corridor_start_delta": [
+        0.0038460492517352115,
+        0.0,
+        -0.31336943812671525
+      ],
+      "radial_distance_from_center": 0.31339303892508524,
+      "start_angle_rad": -1.558523731930981,
+      "corridor_start": [
+        0.3038460492517352,
+        0.0,
+        0.18663056187328475
+      ],
+      "realised_start": [
+        0.3045253405125978,
+        1.1848884205316042e-05,
+        0.18756544706370482
+      ],
+      "ik_error": 0.0011556761364707442,
+      "rejected_count": 0,
+      "recent_rejections": [],
+      "rng_seed": 1101654777,
+      "point_cloud_rng_seed": 3768665332
+    },
+    {
+      "rollout_index": 6,
+      "state_id": "tro_pos_seed630_outer_n25_v1_state_006",
+      "attempts": 1,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_pos_seed630_outer_n25_v1",
+      "shared_start_radius_min": 0.25,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        0.8868466954630303,
+        0.0,
+        0.1923881808623968
+      ],
+      "corridor_start_delta": [
+        0.31039634341206057,
+        0.0,
+        0.06733586330183888
+      ],
+      "radial_distance_from_center": 0.31761613386316156,
+      "start_angle_rad": 0.21362502945368286,
+      "corridor_start": [
+        0.6103963434120605,
+        0.0,
+        0.5673358633018388
+      ],
+      "realised_start": [
+        0.6059628923465435,
+        9.154353819244823e-06,
+        0.5636339526483307
+      ],
+      "ik_error": 0.005775786928123661,
+      "rejected_count": 0,
+      "recent_rejections": [],
+      "rng_seed": 702601535,
+      "point_cloud_rng_seed": 2962311255
+    },
+    {
+      "rollout_index": 7,
+      "state_id": "tro_pos_seed630_outer_n25_v1_state_007",
+      "attempts": 1,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_pos_seed630_outer_n25_v1",
+      "shared_start_radius_min": 0.25,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        0.8159807675513885,
+        0.0,
+        0.4233185853546006
+      ],
+      "corridor_start_delta": [
+        0.28559326864298595,
+        0.0,
+        0.1481615048741102
+      ],
+      "radial_distance_from_center": 0.32173800928821844,
+      "start_angle_rad": 0.478562427486222,
+      "corridor_start": [
+        0.5855932686429859,
+        0.0,
+        0.6481615048741102
+      ],
+      "realised_start": [
+        0.5746659278606683,
+        9.847321661612231e-06,
+        0.6365531198858307
+      ],
+      "ik_error": 0.015942442585085783,
+      "rejected_count": 0,
+      "recent_rejections": [],
+      "rng_seed": 3879623454,
+      "point_cloud_rng_seed": 4267476910
+    },
+    {
+      "rollout_index": 8,
+      "state_id": "tro_pos_seed630_outer_n25_v1_state_008",
+      "attempts": 1,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_pos_seed630_outer_n25_v1",
+      "shared_start_radius_min": 0.25,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        -0.8426573410551939,
+        0.0,
+        -0.17663471848056067
+      ],
+      "corridor_start_delta": [
+        -0.2949300693693178,
+        0.0,
+        -0.06182215146819623
+      ],
+      "radial_distance_from_center": 0.3013398815795002,
+      "start_angle_rad": -2.934967976157953,
+      "corridor_start": [
+        0.005069930630682173,
+        0.0,
+        0.43817784853180375
+      ],
+      "realised_start": [
+        0.007308591635906221,
+        1.7604160234836243e-05,
+        0.44003530434024746
+      ],
+      "ik_error": 0.0029089611690583956,
+      "rejected_count": 0,
+      "recent_rejections": [],
+      "rng_seed": 733193311,
+      "point_cloud_rng_seed": 236149098
+    },
+    {
+      "rollout_index": 9,
+      "state_id": "tro_pos_seed630_outer_n25_v1_state_009",
+      "attempts": 2,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_pos_seed630_outer_n25_v1",
+      "shared_start_radius_min": 0.25,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        -0.23476086954567993,
+        0.0,
+        -0.7145477521935845
+      ],
+      "corridor_start_delta": [
+        -0.08216630434098797,
+        0.0,
+        -0.25009171326775453
+      ],
+      "radial_distance_from_center": 0.2632435499955443,
+      "start_angle_rad": -1.8882309284457899,
+      "corridor_start": [
+        0.217833695659012,
+        0.0,
+        0.24990828673224547
+      ],
+      "realised_start": [
+        0.22009228217423382,
+        1.533789832165798e-05,
+        0.250295132158246
+      ],
+      "ik_error": 0.0022915273686963224,
+      "rejected_count": 1,
+      "recent_rejections": [
+        {
+          "start_sampling_mode": "xz_annulus",
+          "shared_start_radius_min": 0.25,
+          "shared_start_radius_max": 0.35,
+          "normalized_delta": [
+            0.41200753872339746,
+            0.0,
+            0.8949616566184441
+          ],
+          "corridor_start_delta": [
+            0.1442026385531891,
+            0.0,
+            0.3132365798164554
+          ],
+          "radial_distance_from_center": 0.3448355490676858,
+          "start_angle_rad": 1.1393577417888647,
+          "corridor_start": [
+            0.4442026385531891,
+            0.0,
+            0.8132365798164554
+          ],
+          "ik_error": 0.058166698669449825
+        }
+      ],
+      "rng_seed": 1239783530,
+      "point_cloud_rng_seed": 977875394
+    },
+    {
+      "rollout_index": 10,
+      "state_id": "tro_pos_seed630_outer_n25_v1_state_010",
+      "attempts": 1,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_pos_seed630_outer_n25_v1",
+      "shared_start_radius_min": 0.25,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        0.4669580651671839,
+        0.0,
+        -0.805292133272888
+      ],
+      "corridor_start_delta": [
+        0.16343532280851436,
+        0.0,
+        -0.2818522466455108
+      ],
+      "radial_distance_from_center": 0.32580944381746385,
+      "start_angle_rad": -1.0453160266476458,
+      "corridor_start": [
+        0.46343532280851435,
+        0.0,
+        0.21814775335448922
+      ],
+      "realised_start": [
+        0.46342063356972035,
+        1.066538354118666e-05,
+        0.2189090387130998
+      ],
+      "ik_error": 0.0007615017540211423,
+      "rejected_count": 0,
+      "recent_rejections": [],
+      "rng_seed": 2891622783,
+      "point_cloud_rng_seed": 2392987776
+    },
+    {
+      "rollout_index": 11,
+      "state_id": "tro_pos_seed630_outer_n25_v1_state_011",
+      "attempts": 2,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_pos_seed630_outer_n25_v1",
+      "shared_start_radius_min": 0.25,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        0.746302852615899,
+        0.0,
+        0.14233476920248295
+      ],
+      "corridor_start_delta": [
+        0.26120599841556463,
+        0.0,
+        0.04981716922086903
+      ],
+      "radial_distance_from_center": 0.2659141289165595,
+      "start_angle_rad": 0.1884566249632788,
+      "corridor_start": [
+        0.5612059984155646,
+        0.0,
+        0.549817169220869
+      ],
+      "realised_start": [
+        0.5591496862562902,
+        9.48902859045298e-06,
+        0.5479748173250207
+      ],
+      "ik_error": 0.0027609364799246784,
+      "rejected_count": 1,
+      "recent_rejections": [
+        {
+          "start_sampling_mode": "xz_annulus",
+          "shared_start_radius_min": 0.25,
+          "shared_start_radius_max": 0.35,
+          "normalized_delta": [
+            0.6674734144819553,
+            0.0,
+            0.7229676666603578
+          ],
+          "corridor_start_delta": [
+            0.23361569506868432,
+            0.0,
+            0.2530386833311252
+          ],
+          "radial_distance_from_center": 0.34439057513871363,
+          "start_angle_rad": 0.8252882495761091,
+          "corridor_start": [
+            0.5336156950686843,
+            0.0,
+            0.7530386833311252
+          ],
+          "ik_error": 0.053014108973327104
+        }
+      ],
+      "rng_seed": 2899875737,
+      "point_cloud_rng_seed": 2236995989
+    },
+    {
+      "rollout_index": 12,
+      "state_id": "tro_pos_seed630_outer_n25_v1_state_012",
+      "attempts": 1,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_pos_seed630_outer_n25_v1",
+      "shared_start_radius_min": 0.25,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        -0.7234660259753293,
+        0.0,
+        0.32910417583909374
+      ],
+      "corridor_start_delta": [
+        -0.25321310909136524,
+        0.0,
+        0.1151864615436828
+      ],
+      "radial_distance_from_center": 0.2781812350584955,
+      "start_angle_rad": 2.7146719589089305,
+      "corridor_start": [
+        0.04678689090863475,
+        0.0,
+        0.6151864615436828
+      ],
+      "realised_start": [
+        0.04817506310033763,
+        1.445417597823102e-05,
+        0.6151299656790806
+      ],
+      "ik_error": 0.001389396537975227,
+      "rejected_count": 0,
+      "recent_rejections": [],
+      "rng_seed": 960212796,
+      "point_cloud_rng_seed": 2878925111
+    },
+    {
+      "rollout_index": 13,
+      "state_id": "tro_pos_seed630_outer_n25_v1_state_013",
+      "attempts": 1,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_pos_seed630_outer_n25_v1",
+      "shared_start_radius_min": 0.25,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        0.22313028930077183,
+        0.0,
+        -0.8176315772198309
+      ],
+      "corridor_start_delta": [
+        0.07809560125527014,
+        0.0,
+        -0.2861710520269408
+      ],
+      "radial_distance_from_center": 0.2966357934464892,
+      "start_angle_rad": -1.3043850727603792,
+      "corridor_start": [
+        0.37809560125527014,
+        0.0,
+        0.21382894797305918
+      ],
+      "realised_start": [
+        0.37845603351872636,
+        1.0751977069018218e-05,
+        0.2146599539738459
+      ],
+      "ik_error": 0.0009058686410813759,
+      "rejected_count": 0,
+      "recent_rejections": [],
+      "rng_seed": 2497549260,
+      "point_cloud_rng_seed": 248743424
+    },
+    {
+      "rollout_index": 14,
+      "state_id": "tro_pos_seed630_outer_n25_v1_state_014",
+      "attempts": 2,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_pos_seed630_outer_n25_v1",
+      "shared_start_radius_min": 0.25,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        0.6519006794679741,
+        0.0,
+        -0.42566295131107557
+      ],
+      "corridor_start_delta": [
+        0.22816523781379092,
+        0.0,
+        -0.14898203295887644
+      ],
+      "radial_distance_from_center": 0.2724977465800103,
+      "start_angle_rad": -0.5784509745077246,
+      "corridor_start": [
+        0.5281652378137909,
+        0.0,
+        0.35101796704112354
+      ],
+      "realised_start": [
+        0.5275858240671994,
+        9.566225371768912e-06,
+        0.35107450956057756
+      ],
+      "ik_error": 0.0005822446727220341,
+      "rejected_count": 1,
+      "recent_rejections": [
+        {
+          "start_sampling_mode": "xz_annulus",
+          "shared_start_radius_min": 0.25,
+          "shared_start_radius_max": 0.35,
+          "normalized_delta": [
+            0.2838898359390694,
+            0.0,
+            0.9584918536525664
+          ],
+          "corridor_start_delta": [
+            0.0993614425786743,
+            0.0,
+            0.3354721487783982
+          ],
+          "radial_distance_from_center": 0.3498774912413071,
+          "start_angle_rad": 1.282844226729959,
+          "corridor_start": [
+            0.3993614425786743,
+            0.0,
+            0.8354721487783983
+          ],
+          "ik_error": 0.05916280667751714
+        }
+      ],
+      "rng_seed": 1463638272,
+      "point_cloud_rng_seed": 3952445531
+    },
+    {
+      "rollout_index": 15,
+      "state_id": "tro_pos_seed630_outer_n25_v1_state_015",
+      "attempts": 2,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_pos_seed630_outer_n25_v1",
+      "shared_start_radius_min": 0.25,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        -0.23550394257194754,
+        0.0,
+        0.712101500910864
+      ],
+      "corridor_start_delta": [
+        -0.08242637990018163,
+        0.0,
+        0.2492355253188024
+      ],
+      "radial_distance_from_center": 0.26251181913275534,
+      "start_angle_rad": 1.8901901719650458,
+      "corridor_start": [
+        0.21757362009981834,
+        0.0,
+        0.7492355253188023
+      ],
+      "realised_start": [
+        0.21770335399983332,
+        1.3576780769295113e-05,
+        0.7464438746802752
+      ],
+      "ik_error": 0.002794696495395917,
+      "rejected_count": 1,
+      "recent_rejections": [
+        {
+          "start_sampling_mode": "xz_annulus",
+          "shared_start_radius_min": 0.25,
+          "shared_start_radius_max": 0.35,
+          "normalized_delta": [
+            -0.8731627704541736,
+            0.0,
+            -0.4033726944630363
+          ],
+          "corridor_start_delta": [
+            -0.3056069696589607,
+            0.0,
+            -0.1411804430620627
+          ],
+          "radial_distance_from_center": 0.33664155626917674,
+          "start_angle_rad": -2.7088313611657875,
+          "corridor_start": [
+            -0.0056069696589607365,
+            0.0,
+            0.3588195569379373
+          ],
+          "ik_error": 0.05333890348821073
+        }
+      ],
+      "rng_seed": 424020373,
+      "point_cloud_rng_seed": 3641775790
+    },
+    {
+      "rollout_index": 16,
+      "state_id": "tro_pos_seed630_outer_n25_v1_state_016",
+      "attempts": 1,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_pos_seed630_outer_n25_v1",
+      "shared_start_radius_min": 0.25,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        -0.5891451358562974,
+        0.0,
+        -0.6078045643838911
+      ],
+      "corridor_start_delta": [
+        -0.20620079754970408,
+        0.0,
+        -0.21273159753436185
+      ],
+      "radial_distance_from_center": 0.29626593037279153,
+      "start_angle_rad": -2.340606602751333,
+      "corridor_start": [
+        0.09379920245029591,
+        0.0,
+        0.2872684024656381
+      ],
+      "realised_start": [
+        0.10987410108145063,
+        3.818175107398554e-05,
+        0.29817867402521425
+      ],
+      "ik_error": 0.01942775976152965,
+      "rejected_count": 0,
+      "recent_rejections": [],
+      "rng_seed": 3887115724,
+      "point_cloud_rng_seed": 2497847249
+    },
+    {
+      "rollout_index": 17,
+      "state_id": "tro_pos_seed630_outer_n25_v1_state_017",
+      "attempts": 1,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_pos_seed630_outer_n25_v1",
+      "shared_start_radius_min": 0.25,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        0.7236940902180351,
+        0.0,
+        0.3762589763609343
+      ],
+      "corridor_start_delta": [
+        0.2532929315763123,
+        0.0,
+        0.131690641726327
+      ],
+      "radial_distance_from_center": 0.28548158312720323,
+      "start_angle_rad": 0.47945190673556926,
+      "corridor_start": [
+        0.5532929315763122,
+        0.0,
+        0.631690641726327
+      ],
+      "realised_start": [
+        0.5491540184753334,
+        9.967121414491943e-06,
+        0.6270542094689423
+      ],
+      "ik_error": 0.006215078847310072,
+      "rejected_count": 0,
+      "recent_rejections": [],
+      "rng_seed": 3690965201,
+      "point_cloud_rng_seed": 1946325237
+    },
+    {
+      "rollout_index": 18,
+      "state_id": "tro_pos_seed630_outer_n25_v1_state_018",
+      "attempts": 1,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_pos_seed630_outer_n25_v1",
+      "shared_start_radius_min": 0.25,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        -0.7729769531308801,
+        0.0,
+        -0.137885584681293
+      ],
+      "corridor_start_delta": [
+        -0.270541933595808,
+        0.0,
+        -0.04825995463845255
+      ],
+      "radial_distance_from_center": 0.2748125926071513,
+      "start_angle_rad": -2.9650668644757974,
+      "corridor_start": [
+        0.029458066404191963,
+        0.0,
+        0.45174004536154744
+      ],
+      "realised_start": [
+        0.031615019948856016,
+        1.6829717761707052e-05,
+        0.453267696680747
+      ],
+      "ik_error": 0.002643189434431623,
+      "rejected_count": 0,
+      "recent_rejections": [],
+      "rng_seed": 1221723880,
+      "point_cloud_rng_seed": 3580920323
+    },
+    {
+      "rollout_index": 19,
+      "state_id": "tro_pos_seed630_outer_n25_v1_state_019",
+      "attempts": 2,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_pos_seed630_outer_n25_v1",
+      "shared_start_radius_min": 0.25,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        0.029518893769101398,
+        0.0,
+        -0.8366091103090778
+      ],
+      "corridor_start_delta": [
+        0.010331612819185489,
+        0.0,
+        -0.29281318860817723
+      ],
+      "radial_distance_from_center": 0.2929954020907726,
+      "start_angle_rad": -1.5355269846226467,
+      "corridor_start": [
+        0.3103316128191855,
+        0.0,
+        0.20718681139182277
+      ],
+      "realised_start": [
+        0.3110258390854624,
+        1.1542346807967751e-05,
+        0.20798079723012278
+      ],
+      "ik_error": 0.0010547496603363201,
+      "rejected_count": 1,
+      "recent_rejections": [
+        {
+          "start_sampling_mode": "xz_annulus",
+          "shared_start_radius_min": 0.25,
+          "shared_start_radius_max": 0.35,
+          "normalized_delta": [
+            -0.8561307698297375,
+            0.0,
+            -0.46929765407962815
+          ],
+          "corridor_start_delta": [
+            -0.2996457694404081,
+            0.0,
+            -0.16425417892786984
+          ],
+          "radial_distance_from_center": 0.34171189976177724,
+          "start_angle_rad": -2.6401622998114056,
+          "corridor_start": [
+            0.00035423055959188376,
+            0.0,
+            0.33574582107213014
+          ],
+          "ik_error": 0.06429874698010798
+        }
+      ],
+      "rng_seed": 1089893150,
+      "point_cloud_rng_seed": 3019903786
+    },
+    {
+      "rollout_index": 20,
+      "state_id": "tro_pos_seed630_outer_n25_v1_state_020",
+      "attempts": 1,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_pos_seed630_outer_n25_v1",
+      "shared_start_radius_min": 0.25,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        -0.7159198391461702,
+        0.0,
+        0.27016106810874885
+      ],
+      "corridor_start_delta": [
+        -0.25057194370115954,
+        0.0,
+        0.09455637383806209
+      ],
+      "radial_distance_from_center": 0.26781935479643815,
+      "start_angle_rad": 2.7807526447987976,
+      "corridor_start": [
+        0.04942805629884045,
+        0.0,
+        0.5945563738380621
+      ],
+      "realised_start": [
+        0.050869667261886124,
+        1.4457170020633395e-05,
+        0.5946889528079772
+      ],
+      "ik_error": 0.0014477666807197254,
+      "rejected_count": 0,
+      "recent_rejections": [],
+      "rng_seed": 570908336,
+      "point_cloud_rng_seed": 866922090
+    },
+    {
+      "rollout_index": 21,
+      "state_id": "tro_pos_seed630_outer_n25_v1_state_021",
+      "attempts": 1,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_pos_seed630_outer_n25_v1",
+      "shared_start_radius_min": 0.25,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        -0.8171897849620675,
+        0.0,
+        0.3603412163320759
+      ],
+      "corridor_start_delta": [
+        -0.2860164247367236,
+        0.0,
+        0.12611942571622656
+      ],
+      "radial_distance_from_center": 0.312588395117555,
+      "start_angle_rad": 2.7262887317918945,
+      "corridor_start": [
+        0.013983575263276371,
+        0.0,
+        0.6261194257162266
+      ],
+      "realised_start": [
+        0.015431345216954877,
+        1.486318730742679e-05,
+        0.6260301294974329
+      ],
+      "ik_error": 0.0014505973141440926,
+      "rejected_count": 0,
+      "recent_rejections": [],
+      "rng_seed": 3335059271,
+      "point_cloud_rng_seed": 235729489
+    },
+    {
+      "rollout_index": 22,
+      "state_id": "tro_pos_seed630_outer_n25_v1_state_022",
+      "attempts": 2,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_pos_seed630_outer_n25_v1",
+      "shared_start_radius_min": 0.25,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        0.736980370886175,
+        0.0,
+        0.22111473272703472
+      ],
+      "corridor_start_delta": [
+        0.2579431298101612,
+        0.0,
+        0.07739015645446215
+      ],
+      "radial_distance_from_center": 0.2693026077339538,
+      "start_angle_rad": 0.2914824649390815,
+      "corridor_start": [
+        0.5579431298101611,
+        0.0,
+        0.5773901564544621
+      ],
+      "realised_start": [
+        0.5555127233789496,
+        9.613216967681608e-06,
+        0.5750070074564504
+      ],
+      "ik_error": 0.0034038752887758737,
+      "rejected_count": 1,
+      "recent_rejections": [
+        {
+          "start_sampling_mode": "xz_annulus",
+          "shared_start_radius_min": 0.25,
+          "shared_start_radius_max": 0.35,
+          "normalized_delta": [
+            0.5202236308973208,
+            0.0,
+            0.7525950157866712
+          ],
+          "corridor_start_delta": [
+            0.18207827081406228,
+            0.0,
+            0.2634082555253349
+          ],
+          "radial_distance_from_center": 0.3202130631025835,
+          "start_angle_rad": 0.9659739167977202,
+          "corridor_start": [
+            0.4820782708140623,
+            0.0,
+            0.763408255525335
+          ],
+          "ik_error": 0.03571090486464931
+        }
+      ],
+      "rng_seed": 2984093928,
+      "point_cloud_rng_seed": 3836868152
+    },
+    {
+      "rollout_index": 23,
+      "state_id": "tro_pos_seed630_outer_n25_v1_state_023",
+      "attempts": 1,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_pos_seed630_outer_n25_v1",
+      "shared_start_radius_min": 0.25,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        0.009870670965022336,
+        0.0,
+        -0.7709969806087872
+      ],
+      "corridor_start_delta": [
+        0.0034547348377578176,
+        0.0,
+        -0.2698489432130755
+      ],
+      "radial_distance_from_center": 0.2698710568883089,
+      "start_angle_rad": -1.5579945493724072,
+      "corridor_start": [
+        0.3034547348377578,
+        0.0,
+        0.2301510567869245
+      ],
+      "realised_start": [
+        0.3042615809656674,
+        1.1549965303485766e-05,
+        0.23078768017168283
+      ],
+      "ik_error": 0.0010278246007186197,
+      "rejected_count": 0,
+      "recent_rejections": [],
+      "rng_seed": 2690371738,
+      "point_cloud_rng_seed": 587918338
+    },
+    {
+      "rollout_index": 24,
+      "state_id": "tro_pos_seed630_outer_n25_v1_state_024",
+      "attempts": 1,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_annulus",
+      "evaluation_distribution": "tro_pos_seed630_outer_n25_v1",
+      "shared_start_radius_min": 0.25,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        0.21105218488070587,
+        0.0,
+        -0.929881587535799
+      ],
+      "corridor_start_delta": [
+        0.07386826470824705,
+        0.0,
+        -0.3254585556375296
+      ],
+      "radial_distance_from_center": 0.3337361112745737,
+      "start_angle_rad": -1.347610711117443,
+      "corridor_start": [
+        0.373868264708247,
+        0.0,
+        0.17454144436247038
+      ],
+      "realised_start": [
+        0.374252673979439,
+        1.1320615668258903e-05,
+        0.17562113058339165
+      ],
+      "ik_error": 0.00114613305500048,
+      "rejected_count": 0,
+      "recent_rejections": [],
+      "rng_seed": 2866383734,
+      "point_cloud_rng_seed": 1112580820
+    }
+  ]
+}

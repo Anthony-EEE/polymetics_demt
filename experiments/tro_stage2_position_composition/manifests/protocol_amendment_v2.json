@@ -1,0 +1,47 @@
+{
+  "protocol_id": "tro_stage2_position_composition_missing_cells_v2_retry_until_success",
+  "amends": "tro_stage2_position_composition_missing_cells_v1",
+  "authorized_by": "user",
+  "authorized_date": "2026-07-26",
+  "status": "authorized_ready_to_implement",
+  "reason": "The user explicitly instructed the collection code to keep trying until the frozen latent succeeds.",
+  "scope": {
+    "new_conditions": [
+      "START15_APP3P6",
+      "START15_APP8P4",
+      "START35_APP3P6",
+      "START35_APP8P4"
+    ],
+    "canonical_seeds": [1, 2, 3, 4, 5],
+    "frozen_latent_ids_per_seed": 30,
+    "accepted_demonstrations_per_dataset": 30,
+    "additional_latent_ids_allowed": false,
+    "condition_specific_latent_replacement_allowed": false,
+    "old_anchor_mutation_allowed": false
+  },
+  "collection_retry_rule": {
+    "unit": "atomic_four_corner_attempt_bundle",
+    "attempt_zero_runtime_seed": "frozen Stage 2 runtime_seed",
+    "later_runtime_seed": "uint32_be(SHA256(\"composition-v2:{base_runtime_seed}:{attempt_index}\")[0:4]); decimal integers, no whitespace",
+    "same_attempt_seed_across_four_corners": true,
+    "acceptance": "accept all four corner trajectories only when all four succeed in the same attempt bundle",
+    "failure": "accept none; archive the whole attempted bundle and increment attempt_index",
+    "scientific_attempt_limit": null,
+    "continue_until_success": true,
+    "failed_attempts_enter_dataset": false,
+    "failed_attempts_enter_training": false,
+    "failed_attempts_enter_analysis": false
+  },
+  "v1_evidence": {
+    "preserve_protocol_blocker_json": true,
+    "preserve_final_hashes_json_as_v1_snapshot": true,
+    "failed_attempts_are_superseded_not_deleted": true,
+    "formal_collection_job_id": "36053381"
+  },
+  "implementation_gate": [
+    "Patch the collector before resuming collection.",
+    "Test deterministic attempt-seed derivation, atomic acceptance, failure archival, and resume idempotence.",
+    "Freeze the implemented derivation and migrated progress in protocol_v2.json.",
+    "Do not submit downstream jobs until all 20 datasets and HDF5 files strictly validate."
+  ]
+}

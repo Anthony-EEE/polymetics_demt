@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "protocol_id": "tro_stage2_position_composition_missing_cells_v3_continue_candidate_stream_until_30_successes",
+  "amends": "tro_stage2_position_composition_missing_cells_v2_retry_until_success",
+  "authorized_by": "user",
+  "authorized_date": "2026-07-26",
+  "status": "authorized_ready_to_implement",
+  "user_clarification": "If one of the initially sampled demonstrations fails, continue sampling candidate 31, 32, 33, and so on until successful.",
+  "confirmed_interpretation": "For every canonical seed, continue the same deterministic normalized-latent candidate stream. Treat every candidate as one atomic four-corner bundle; archive and reject the whole candidate if any corner fails; accept the whole candidate only if all four corners succeed; continue until exactly 30 bundles have been accepted.",
+  "superseded_v2_constraints": {
+    "accepted_latents_must_be_exactly_the_original_frozen_30": false,
+    "new_latent_ids_are_prohibited": false,
+    "failed_frozen_latent_must_be_retried_until_success": false
+  },
+  "preserved_constraints": {
+    "new_conditions": [
+      "START15_APP3P6",
+      "START15_APP8P4",
+      "START35_APP3P6",
+      "START35_APP8P4"
+    ],
+    "canonical_seeds": [1, 2, 3, 4, 5],
+    "accepted_demonstrations_per_dataset": 30,
+    "accepted_unit": "one atomic four-corner candidate bundle",
+    "same_normalized_latent_across_four_corners": true,
+    "condition_specific_retry_or_selection": false,
+    "failed_candidate_outputs_enter_dataset": false,
+    "old_anchor_mutation": false,
+    "learner_and_evaluation_protocol_unchanged": true,
+    "out_of_scope_experiments_prohibited": true
+  },
+  "candidate_order": {
+    "phase_1": "Continue the unprocessed records from the original active frozen-30 list in its exact frozen order.",
+    "phase_2": "After all original frozen records are decided, continue at max(original_frozen_candidate_index)+1 in ascending candidate_index order.",
+    "skip_rule": "Skip candidate indices already accepted or rejected in the composition ledger; do not revisit old Stage 2 rejected indices below the frozen-stream frontier.",
+    "termination": "Stop immediately when 30 atomic four-corner bundles have been accepted for the canonical seed.",
+    "scientific_candidate_limit": null
+  },
+  "deterministic_candidate_stream": {
+    "numpy_version": "1.24.4",
+    "bit_generator": "PCG64",
+    "initialization": "numpy.random.default_rng(source_collection_seed)",
+    "per_candidate_draw_order": [
+      "start_angle = float(rng.uniform(0.0, 2*pi))",
+      "start_radial_quantile = float(rng.uniform(0.0, 1.0))",
+      "approach_angle = float(rng.uniform(0.0, 2*pi))",
+      "approach_radial_quantile = float(rng.uniform(0.0, 1.0))",
+      "runtime_seed = int(rng.integers(0, 2**32, dtype=numpy.uint32))"
+    ],
+    "candidate_index": "zero-based draw position in this stream",
+    "extension_beyond_159": "Regenerate deterministically from index zero and continue the identical draw order for indices 160 and above.",
+    "wall_clock_scheduler_host_or_outcome_dependence": false
+  },
+  "source_pool_verification": [
+    {
+      "canonical_seed": 1,
+      "source_collection_seed": 1,
+      "path": "experiments/tro_stage2_position_axial_replication/manifests/paired_latents/seed1_fallback_whole_slot.json",
+      "sha256": "ba1719e3b47c346ba9a84e15be1f71997762d1b37df2b9fe44c3b5ad9e904cb9",
+      "verified_generator_records": "160/160",
+      "extension_start_candidate_index": 54
+    },
+    {
+      "canonical_seed": 2,
+      "source_collection_seed": 2,
+      "path": "experiments/tro_stage2_position_axial_replication/manifests/paired_latents/seed2.json",
+      "sha256": "46df349f0cc5a634bb05db82f877dbfb5440d4f2afb200426cdefe5741bf2708",
+      "verified_generator_records": "160/160",
+      "extension_start_candidate_index": 44
+    },
+    {
+      "canonical_seed": 3,
+      "source_collection_seed": 3,
+      "path": "experiments/tro_stage2_position_axial_replication/manifests/paired_latents/seed3.json",
+      "sha256": "3caafcaf7593b8a8fe93f85e4258c2802f9eb2ecdd83099a4cfaa9d43ca08558",
+      "verified_generator_records": "160/160",
+      "extension_start_candidate_index": 41
+    },
+    {
+      "canonical_seed": 4,
+      "source_collection_seed": 1702,
+      "path": "experiments/mvp0_position_event/manifests/paired_latents_b1.json",
+      "sha256": "56740c1895ca58070c59e57a503e13ef911da1080f1468d6d25d349325808aeb",
+      "verified_generator_records": "160/160",
+      "extension_start_candidate_index": 51
+    },
+    {
+      "canonical_seed": 5,
+      "source_collection_seed": 1701,
+      "path": "experiments/tro_stage2_position_axial_replication/manifests/paired_latents/seed5_fallback_whole_slot.json",
+      "sha256": "7769897582816fde2feb73791f60165cb471aa8a5396f2b300058d9f6585aa35",
+      "verified_generator_records": "160/160",
+      "extension_start_candidate_index": 39
+    }
+  ],
+  "pairing_change": {
+    "four_new_corners_remain_exactly_paired_with_each_other": true,
+    "retained_original_frozen_bundles_remain_paired_to_old_anchors": true,
+    "replacement_candidates_beyond_the_original_frozen_30_are_paired_to_old_anchors": false,
+    "analysis_requirement": "Audit and report which accepted rows retain old-anchor latent pairing. Do not claim replacement rows are paired to the 25 immutable anchors."
+  },
+  "evidence_preservation": {
+    "preserve_protocol_blocker_json": true,
+    "preserve_protocol_blocker_v2_runtime_rng_json": true,
+    "preserve_runtime_rng_capability_audit_json": true,
+    "preserve_all_v1_v2_progress_and_attempt_directories": true,
+    "preserve_old_final_hash_snapshots": true
+  },
+  "implementation_gate": [
+    "Implement deterministic candidate generation and verify all existing 0-159 source records exactly.",
+    "Test frozen-list continuation, extension ordering, whole-candidate atomic reject/accept, crash/resume idempotence, and exact 30-success termination.",
+    "Create collection_progress_v3.json without modifying v1 or v2 progress.",
+    "Freeze candidate_stream_v3.json and protocol_v3.json before submitting a v3 collection job.",
+    "Do not submit HDF5 or downstream jobs until all five seeds have exactly 30 accepted bundles and all 20 raw datasets strictly validate."
+  ]
+}

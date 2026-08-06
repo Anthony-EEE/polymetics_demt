@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "protocol_rule": "persistent reused-slot scientific failure rebuilds the full five-condition canonical slot",
+  "activations": [
+    {
+      "canonical_seed": 1,
+      "source_collection_seed": 1,
+      "source_training_seed": 1,
+      "reason": "persistent scientific failure in exact reused-slot pairing",
+      "evidence_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_stage2_axial/smoke/seed1/collection_progress.json",
+      "evidence_sha256": "1cd27f4baf9d5ec9b28b7cf49fc2662b53fd9c3cbb7de63fcde9eaec9f99565e",
+      "latent_manifest_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/manifests/paired_latents/seed1_fallback_whole_slot.json",
+      "latent_manifest_sha256": "ba1719e3b47c346ba9a84e15be1f71997762d1b37df2b9fe44c3b5ad9e904cb9",
+      "all_five_conditions_rebuilt": true
+    },
+    {
+      "canonical_seed": 5,
+      "source_collection_seed": 1701,
+      "source_training_seed": 2701,
+      "reason": "persistent scientific failure in exact reused-slot pairing",
+      "evidence_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_stage2_axial/smoke/seed5/collection_progress.json",
+      "evidence_sha256": "a7b9da0e2f1048f171ec304a74fc29dee8c7789fb7dff48a255581848f8d587f",
+      "latent_manifest_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/manifests/paired_latents/seed5_fallback_whole_slot.json",
+      "latent_manifest_sha256": "7769897582816fde2feb73791f60165cb471aa8a5396f2b300058d9f6585aa35",
+      "all_five_conditions_rebuilt": true
+    }
+  ]
+}

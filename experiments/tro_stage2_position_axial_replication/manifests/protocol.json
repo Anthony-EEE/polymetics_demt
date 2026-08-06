@@ -1,0 +1,387 @@
+{
+  "schema_version": 1,
+  "experiment": "tro_stage2_position_axial_replication",
+  "authority": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/PLAN.md",
+  "git_commit_at_freeze": "2f61da7d0cf4f80609c6a7ee0409c765d1759bb4",
+  "condition_order": [
+    "START15_APP6",
+    "START35_APP6",
+    "START25_APP3P6",
+    "START25_APP6",
+    "START25_APP8P4"
+  ],
+  "conditions": {
+    "START15_APP6": {
+      "start_radius_m": 0.15,
+      "approach_radius_m": 0.06,
+      "role": "axial"
+    },
+    "START35_APP6": {
+      "start_radius_m": 0.35,
+      "approach_radius_m": 0.06,
+      "role": "axial"
+    },
+    "START25_APP3P6": {
+      "start_radius_m": 0.25,
+      "approach_radius_m": 0.036,
+      "role": "axial"
+    },
+    "START25_APP6": {
+      "start_radius_m": 0.25,
+      "approach_radius_m": 0.06,
+      "role": "reference"
+    },
+    "START25_APP8P4": {
+      "start_radius_m": 0.25,
+      "approach_radius_m": 0.084,
+      "role": "axial"
+    }
+  },
+  "canonical_seed_mapping": {
+    "1": {
+      "canonical_seed": 1,
+      "source_collection_seed": 1,
+      "source_training_seed": 1,
+      "source": "new_plus_legacy_reference"
+    },
+    "2": {
+      "canonical_seed": 2,
+      "source_collection_seed": 2,
+      "source_training_seed": 2,
+      "source": "fully_new"
+    },
+    "3": {
+      "canonical_seed": 3,
+      "source_collection_seed": 3,
+      "source_training_seed": 3,
+      "source": "fully_new"
+    },
+    "4": {
+      "canonical_seed": 4,
+      "source_collection_seed": 1702,
+      "source_training_seed": 2702,
+      "source": "old_block1_alias"
+    },
+    "5": {
+      "canonical_seed": 5,
+      "source_collection_seed": 1701,
+      "source_training_seed": 2701,
+      "source": "stage1b_block0_alias"
+    }
+  },
+  "slot_matrix": [
+    {
+      "canonical_seed": 1,
+      "condition": "START15_APP6",
+      "source_collection_seed": 1,
+      "source_training_seed": 1,
+      "reused_dataset": false,
+      "reused_policy": false
+    },
+    {
+      "canonical_seed": 1,
+      "condition": "START35_APP6",
+      "source_collection_seed": 1,
+      "source_training_seed": 1,
+      "reused_dataset": false,
+      "reused_policy": false
+    },
+    {
+      "canonical_seed": 1,
+      "condition": "START25_APP3P6",
+      "source_collection_seed": 1,
+      "source_training_seed": 1,
+      "reused_dataset": false,
+      "reused_policy": false
+    },
+    {
+      "canonical_seed": 1,
+      "condition": "START25_APP6",
+      "source_collection_seed": 1,
+      "source_training_seed": 1,
+      "reused_dataset": true,
+      "reused_policy": true
+    },
+    {
+      "canonical_seed": 1,
+      "condition": "START25_APP8P4",
+      "source_collection_seed": 1,
+      "source_training_seed": 1,
+      "reused_dataset": false,
+      "reused_policy": false
+    },
+    {
+      "canonical_seed": 2,
+      "condition": "START15_APP6",
+      "source_collection_seed": 2,
+      "source_training_seed": 2,
+      "reused_dataset": false,
+      "reused_policy": false
+    },
+    {
+      "canonical_seed": 2,
+      "condition": "START35_APP6",
+      "source_collection_seed": 2,
+      "source_training_seed": 2,
+      "reused_dataset": false,
+      "reused_policy": false
+    },
+    {
+      "canonical_seed": 2,
+      "condition": "START25_APP3P6",
+      "source_collection_seed": 2,
+      "source_training_seed": 2,
+      "reused_dataset": false,
+      "reused_policy": false
+    },
+    {
+      "canonical_seed": 2,
+      "condition": "START25_APP6",
+      "source_collection_seed": 2,
+      "source_training_seed": 2,
+      "reused_dataset": false,
+      "reused_policy": false
+    },
+    {
+      "canonical_seed": 2,
+      "condition": "START25_APP8P4",
+      "source_collection_seed": 2,
+      "source_training_seed": 2,
+      "reused_dataset": false,
+      "reused_policy": false
+    },
+    {
+      "canonical_seed": 3,
+      "condition": "START15_APP6",
+      "source_collection_seed": 3,
+      "source_training_seed": 3,
+      "reused_dataset": false,
+      "reused_policy": false
+    },
+    {
+      "canonical_seed": 3,
+      "condition": "START35_APP6",
+      "source_collection_seed": 3,
+      "source_training_seed": 3,
+      "reused_dataset": false,
+      "reused_policy": false
+    },
+    {
+      "canonical_seed": 3,
+      "condition": "START25_APP3P6",
+      "source_collection_seed": 3,
+      "source_training_seed": 3,
+      "reused_dataset": false,
+      "reused_policy": false
+    },
+    {
+      "canonical_seed": 3,
+      "condition": "START25_APP6",
+      "source_collection_seed": 3,
+      "source_training_seed": 3,
+      "reused_dataset": false,
+      "reused_policy": false
+    },
+    {
+      "canonical_seed": 3,
+      "condition": "START25_APP8P4",
+      "source_collection_seed": 3,
+      "source_training_seed": 3,
+      "reused_dataset": false,
+      "reused_policy": false
+    },
+    {
+      "canonical_seed": 4,
+      "condition": "START15_APP6",
+      "source_collection_seed": 1702,
+      "source_training_seed": 2702,
+      "reused_dataset": true,
+      "reused_policy": false
+    },
+    {
+      "canonical_seed": 4,
+      "condition": "START35_APP6",
+      "source_collection_seed": 1702,
+      "source_training_seed": 2702,
+      "reused_dataset": true,
+      "reused_policy": false
+    },
+    {
+      "canonical_seed": 4,
+      "condition": "START25_APP3P6",
+      "source_collection_seed": 1702,
+      "source_training_seed": 2702,
+      "reused_dataset": true,
+      "reused_policy": false
+    },
+    {
+      "canonical_seed": 4,
+      "condition": "START25_APP6",
+      "source_collection_seed": 1702,
+      "source_training_seed": 2702,
+      "reused_dataset": false,
+      "reused_policy": false
+    },
+    {
+      "canonical_seed": 4,
+      "condition": "START25_APP8P4",
+      "source_collection_seed": 1702,
+      "source_training_seed": 2702,
+      "reused_dataset": true,
+      "reused_policy": false
+    },
+    {
+      "canonical_seed": 5,
+      "condition": "START15_APP6",
+      "source_collection_seed": 1701,
+      "source_training_seed": 2701,
+      "reused_dataset": true,
+      "reused_policy": true
+    },
+    {
+      "canonical_seed": 5,
+      "condition": "START35_APP6",
+      "source_collection_seed": 1701,
+      "source_training_seed": 2701,
+      "reused_dataset": true,
+      "reused_policy": true
+    },
+    {
+      "canonical_seed": 5,
+      "condition": "START25_APP3P6",
+      "source_collection_seed": 1701,
+      "source_training_seed": 2701,
+      "reused_dataset": true,
+      "reused_policy": true
+    },
+    {
+      "canonical_seed": 5,
+      "condition": "START25_APP6",
+      "source_collection_seed": 1701,
+      "source_training_seed": 2701,
+      "reused_dataset": false,
+      "reused_policy": false
+    },
+    {
+      "canonical_seed": 5,
+      "condition": "START25_APP8P4",
+      "source_collection_seed": 1701,
+      "source_training_seed": 2701,
+      "reused_dataset": true,
+      "reused_policy": true
+    }
+  ],
+  "expected_counts": {
+    "total_slots": 25,
+    "new_datasets": 16,
+    "reused_datasets": 9,
+    "new_policies": 20,
+    "reused_policies": 5,
+    "new_successful_demonstrations": 480,
+    "rollout_tasks": 250,
+    "rollout_rows": 6250
+  },
+  "task": {
+    "trajectory": [
+      "Start",
+      "Approach",
+      "Descent",
+      "Grasp",
+      "Lift"
+    ],
+    "base_corridor_start": [
+      0.3,
+      0.0,
+      0.5
+    ],
+    "start_plane": "xz",
+    "approach_plane": "xy",
+    "sample_hz": 8,
+    "action_gap": 2,
+    "successful_demonstrations_per_dataset": 30,
+    "success": "final cube z >= 0.20 m"
+  },
+  "training": {
+    "from_scratch": true,
+    "max_epochs": 3000,
+    "validation_early_stopping_patience": 41,
+    "checkpoint_interval_epochs": 20,
+    "checkpoint_selection": "highest numeric emitted model_epoch_*.pth",
+    "rollout_based_checkpoint_selection": false,
+    "wandb_project": "TRO_MVP"
+  },
+  "formal_rollout": {
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "banks": {
+      "inner": {
+        "count": 25,
+        "range_m": "[0.00, 0.25]"
+      },
+      "outer": {
+        "count": 25,
+        "range_m": "(0.25, 0.35]"
+      }
+    },
+    "horizon": 200,
+    "sample_hz": 8,
+    "action_gap": 2,
+    "action_dt": 0.25,
+    "num_points": 10000,
+    "terminate_on_success": true,
+    "videos": false
+  },
+  "analysis": {
+    "independent_unit": "dataset-policy slot",
+    "delta_min": 0.05,
+    "positive_slots_required": 4,
+    "classification": [
+      "strong",
+      "partial",
+      "null/unstable"
+    ]
+  },
+  "frozen_hashes": {
+    "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/mvp0_position_event/confirmation_earlystop/analysis/comparison.json": "0c17c65330b8ab25867e75b1409553e1ad2dfbb33ad52789acc586d1f7a9d1d1",
+    "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/mvp0_position_event/confirmation_earlystop/analysis/summary.md": "c285ea524ac8ef795b073f6f2e54925745ae2e0ddef4a7238192407b7b6c1d29",
+    "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/ar_guidance_spatial_S15_S35/spatial_S25_d30_seed1_2gap.hdf5": "2f2a3ed8c6b99e0dd83cdddd11d43a414bf38ed89b7128a63d30a7d7974877e5",
+    "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/ar_guidance_spatial_S15_S35/S25/spatial_S25_d30_seed1_2gap/20260704004132/models/model_epoch_80.pth": "e666ab6a53f87f8d0f2e0a5ba29bd34b28cc39930d57cc848abfa5745465d60f"
+  },
+  "paired_latent_manifests": {
+    "1": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/manifests/paired_latents/seed1.json",
+      "sha256": "e668691009c38df4ce876dd3a9a59300dd86f953bbb65fd17a12dca396029eac",
+      "candidate_count": 30,
+      "locked": true
+    },
+    "2": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/manifests/paired_latents/seed2.json",
+      "sha256": "46df349f0cc5a634bb05db82f877dbfb5440d4f2afb200426cdefe5741bf2708",
+      "candidate_count": 160,
+      "locked": false
+    },
+    "3": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/manifests/paired_latents/seed3.json",
+      "sha256": "3caafcaf7593b8a8fe93f85e4258c2802f9eb2ecdd83099a4cfaa9d43ca08558",
+      "candidate_count": 160,
+      "locked": false
+    },
+    "4": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/manifests/paired_latents/seed4.json",
+      "sha256": "04cc4afa899c160e9af4331245c5f9e5338619593bd3df8999edc6f4dd65f9bc",
+      "candidate_count": 30,
+      "locked": true
+    },
+    "5": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/manifests/paired_latents/seed5.json",
+      "sha256": "519dbd7506e766015dea389fcf2d99c49910e22410a9ba5b1321025ed3435408",
+      "candidate_count": 30,
+      "locked": true
+    }
+  }
+}

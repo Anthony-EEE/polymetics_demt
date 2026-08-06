@@ -1,0 +1,183 @@
+{
+  "schema_version": 1,
+  "status": "protocol_blocker",
+  "protocol_id": "tro_stage2_position_composition_missing_cells_v2_retry_until_success",
+  "detected_at_gate": 3,
+  "detected_date": "2026-07-26",
+  "decision": "stop_identical_deterministic_attempt_loop_without_unregistered_perturbation",
+  "reason": "The frozen attempt seed is derived and recorded correctly, but it is not consumed by any stochastic operation in the paired-latent physics path. Distinct attempt seeds therefore produce byte-for-byte identical scientific outcomes for a failed latent, so retry-until-success cannot change the outcome under the frozen simulator.",
+  "not_a_failure_count_stop": true,
+  "causal_audit": {
+    "attempt_seed_derivation": {
+      "path": "scripts/tro_position_composition.py",
+      "lines": "163-192",
+      "collector_sha256": "e398b202c6ed04fbe0ab69d939ccd4dcb05abbf876df8bfe51ae7c648d6f0630",
+      "status": "correct"
+    },
+    "seed_application": {
+      "path": "scripts/tro_position_composition.py",
+      "lines": "965-985",
+      "application": [
+        "random.seed(attempt_runtime_seed)",
+        "numpy.random.seed(attempt_runtime_seed)"
+      ]
+    },
+    "paired_latent_physics_path": {
+      "path": "examples/main_abla_1.py",
+      "sha256": "557b9538c659da8f5c751ba6d7ebe08653aec3cd615ba55cf9fb735312798635",
+      "fixed_cube_lines": "422-440",
+      "fixed_paired_offsets_lines": "785-824",
+      "fixed_control_and_success_lines": "895-920",
+      "physics_setup_lines": "128-150",
+      "rng_draws_after_seed_in_this_path": 0,
+      "pybullet_physics_random_seed_api_available": false
+    },
+    "conclusion": "The attempt seed has deterministic provenance but no causal route to the cube/contact/controller dynamics. Adding a cube, contact, joint, waypoint, timing, solver or other seed-dependent perturbation now would be an unregistered protocol change and is not authorised by PLAN.md."
+  },
+  "formal_collection_v2": {
+    "array_job_id": "36054403",
+    "submission_command": "sbatch --parsable --array=0-4 scripts/run_tro_position_composition_collect.sh",
+    "node": "erc-hpc-comp230",
+    "elapsed": "00:13:09",
+    "terminal_array_states": {
+      "36054403_0": "CANCELLED after causal runtime-RNG audit",
+      "36054403_1": "CANCELLED after causal runtime-RNG audit",
+      "36054403_2": "CANCELLED after causal runtime-RNG audit",
+      "36054403_3": "CANCELLED after causal runtime-RNG audit",
+      "36054403_4": "CANCELLED after causal runtime-RNG audit"
+    },
+    "all_scheduler_tasks_terminal": true,
+    "infrastructure_failure": false,
+    "performance_based_retry": false
+  },
+  "progress": [
+    {
+      "canonical_seed": 1,
+      "accepted_bundles": 6,
+      "scientific_attempts": 25,
+      "blocked_demo_index": 6,
+      "blocked_candidate_index": 12,
+      "unique_attempt_runtime_seeds": 25,
+      "unique_failed_outcomes": {
+        "START15_APP8P4_final_cube_z_m": [0.03498996314729906],
+        "START35_APP8P4_final_cube_z_m": [0.03498996309229016]
+      },
+      "progress_path": "dataset/tro_position_stage2_composition/formal/seed1/collection_progress_v2.json",
+      "progress_sha256": "cd0508c3ff6e93dc6b3d311f3bdfc181565d1175dca03fb926665f4d5beea9c2"
+    },
+    {
+      "canonical_seed": 2,
+      "accepted_bundles": 21,
+      "scientific_attempts": 3,
+      "blocked_demo_index": 21,
+      "blocked_candidate_index": 28,
+      "unique_attempt_runtime_seeds": 3,
+      "unique_failed_outcomes": {
+        "START35_APP8P4_final_cube_z_m": [0.03498996328880795]
+      },
+      "progress_path": "dataset/tro_position_stage2_composition/formal/seed2/collection_progress_v2.json",
+      "progress_sha256": "0bdbaee13fa7f5eb229b26ed3db34d1c10ac2d4c86a8b6a19a2d96445357912c"
+    },
+    {
+      "canonical_seed": 3,
+      "accepted_bundles": 5,
+      "scientific_attempts": 18,
+      "blocked_demo_index": 5,
+      "blocked_candidate_index": 10,
+      "unique_attempt_runtime_seeds": 18,
+      "unique_failed_outcomes": {
+        "START15_APP8P4_final_cube_z_m": [0.034989857081168634],
+        "START35_APP8P4_final_cube_z_m": [0.03498996272314327]
+      },
+      "progress_path": "dataset/tro_position_stage2_composition/formal/seed3/collection_progress_v2.json",
+      "progress_sha256": "eec82dd80697557f2f32be02e38166c254d99911d1d10661cd8c6a4e41dff1c3"
+    },
+    {
+      "canonical_seed": 4,
+      "accepted_bundles": 2,
+      "scientific_attempts": 23,
+      "blocked_demo_index": 2,
+      "blocked_candidate_index": 4,
+      "unique_attempt_runtime_seeds": 23,
+      "unique_failed_outcomes": {
+        "START35_APP8P4_final_cube_z_m": [0.03498996287124328]
+      },
+      "progress_path": "dataset/tro_position_stage2_composition/formal/seed4/collection_progress_v2.json",
+      "progress_sha256": "9aa9e8195787874d60a30bffd708caeebc83c38c6d262ec0456719e91c636197"
+    },
+    {
+      "canonical_seed": 5,
+      "accepted_bundles": 1,
+      "scientific_attempts": 23,
+      "blocked_demo_index": 1,
+      "blocked_candidate_index": 1,
+      "unique_attempt_runtime_seeds": 23,
+      "unique_failed_outcomes": {
+        "START35_APP8P4_final_cube_z_m": [0.03498985718810666]
+      },
+      "progress_path": "dataset/tro_position_stage2_composition/formal/seed5/collection_progress_v2.json",
+      "progress_sha256": "6db9f3fb4d317fcd01806f124fb2bc9753b8471a80e5b5356f05931014d65f7e"
+    }
+  ],
+  "attempt_audit": {
+    "total_scientific_attempts_in_v2_ledgers": 92,
+    "preserved_v1_attempts": 2,
+    "new_v2_scientific_attempts": 90,
+    "failed_then_later_accepted_bundles": 0,
+    "distinct_seeds_with_identical_outcome_sets": true,
+    "condition_specific_retries": 0,
+    "added_or_replaced_latents": 0
+  },
+  "interrupted_attempts_archived_at_stop": [
+    {
+      "canonical_seed": 1,
+      "path": "dataset/tro_position_stage2_composition/formal/seed1/protocol_blocker_attempts_v2/demo_006_candidate_0012_attempt_025",
+      "tree_sha256": "e8821c669cad61545c88db5ef880cc83a575c11ac6a13f165660f2c90527588c"
+    },
+    {
+      "canonical_seed": 2,
+      "path": "dataset/tro_position_stage2_composition/formal/seed2/protocol_blocker_attempts_v2/demo_021_candidate_0028_attempt_003",
+      "tree_sha256": "356c1719d796b9c57fa3fdb355d11dfb6c1ea1be2772f188974728891d3c6a65"
+    },
+    {
+      "canonical_seed": 3,
+      "path": "dataset/tro_position_stage2_composition/formal/seed3/protocol_blocker_attempts_v2/demo_005_candidate_0010_attempt_018",
+      "tree_sha256": "91a4efc951d1ea1ee987d7d89200e31d1b3d092f56a354e67ca2031c1d58b046"
+    },
+    {
+      "canonical_seed": 4,
+      "path": "dataset/tro_position_stage2_composition/formal/seed4/protocol_blocker_attempts_v2/demo_002_candidate_0004_attempt_023",
+      "tree_sha256": "6e121a90fb1a02bde607b9b12678ede10cad0489a0e9254c2799c5fabb4a7c49"
+    },
+    {
+      "canonical_seed": 5,
+      "path": "dataset/tro_position_stage2_composition/formal/seed5/protocol_blocker_attempts_v2/demo_001_candidate_0001_attempt_023",
+      "tree_sha256": "62dbc165f0a0bbf12dbe76fa5cbe230167ee9121b4ce98e31ff4193a47e9275b"
+    }
+  ],
+  "frozen_evidence_preserved": {
+    "protocol_v2_path": "experiments/tro_stage2_position_composition/manifests/protocol_v2.json",
+    "protocol_v2_sha256": "85fb309d660f0821fa80102bccb1d1e987d19ad6c217b54deb897366cda59efe",
+    "v1_protocol_blocker_path": "experiments/tro_stage2_position_composition/manifests/protocol_blocker.json",
+    "v1_protocol_blocker_sha256": "40585f2279b7b8070dc0b9921e00f83a8531061615f44a7ca1bb8954576d8417",
+    "v1_final_hashes_path": "experiments/tro_stage2_position_composition/manifests/final_hashes.json",
+    "v1_final_hashes_sha256": "325a2895eb7400edb8f00cfa64a8f75a0911182062554450ea9de73adfc7cfbe"
+  },
+  "prohibited_rescues_not_performed": {
+    "latent_replacement": false,
+    "condition_specific_retry": false,
+    "contact_or_cube_perturbation": false,
+    "joint_or_waypoint_perturbation": false,
+    "solver_parameter_randomization": false,
+    "sample_reduction": false,
+    "old_anchor_mutation": false
+  },
+  "downstream_not_started": {
+    "hdf5": true,
+    "training": true,
+    "formal_rollouts": true,
+    "merge_and_analysis": true,
+    "out_of_scope_experiments": true
+  },
+  "required_protocol_decision": "A scientifically operative seed-coupled simulator randomness mechanism and its frozen distribution would need explicit protocol authority. Without that amendment, exact pairing and the no-perturbation boundary require identical dynamics, so Gate 3 cannot reach 30 accepted bundles per seed."
+}

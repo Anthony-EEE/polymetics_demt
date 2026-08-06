@@ -1,0 +1,1634 @@
+{
+  "schema_version": 1,
+  "manifest_type": "tro_stage2_five_condition_paired_latents",
+  "canonical_seed": 3,
+  "source_collection_seed": 3,
+  "source_training_seed": 3,
+  "condition_order": [
+    "START15_APP6",
+    "START35_APP6",
+    "START25_APP3P6",
+    "START25_APP6",
+    "START25_APP8P4"
+  ],
+  "formal_new_collection_conditions": [
+    "START15_APP6",
+    "START35_APP6",
+    "START25_APP3P6",
+    "START25_APP6",
+    "START25_APP8P4"
+  ],
+  "target_successful_demonstrations_per_condition": 30,
+  "sampling": {
+    "start_plane": "xz",
+    "approach_plane": "xy",
+    "radial_mapping": "realised_fraction = sqrt(radial_quantile)",
+    "whole_slot_rejection_rule": "if any condition fails, reject candidate for the whole five-condition slot"
+  },
+  "locked_to_existing_accepted_records": false,
+  "locked_accepted_candidate_ids": null,
+  "source_artifact_path": null,
+  "source_artifact_sha256": null,
+  "candidates": [
+    {
+      "candidate_index": 0,
+      "accepted_candidate_id": "seed3_candidate_000",
+      "start_angle": 0.5381495885689892,
+      "start_radial_quantile": 0.2368105065960997,
+      "approach_angle": 5.034555946803014,
+      "approach_radial_quantile": 0.5821620360643678,
+      "collection_seed": 3,
+      "runtime_seed": 169217806
+    },
+    {
+      "candidate_index": 1,
+      "accepted_candidate_id": "seed3_candidate_001",
+      "start_angle": 2.721416827037463,
+      "start_radial_quantile": 0.479051298140834,
+      "approach_angle": 1.0036692014325062,
+      "approach_radial_quantile": 0.7345771514092145,
+      "collection_seed": 3,
+      "runtime_seed": 404279440
+    },
+    {
+      "candidate_index": 2,
+      "accepted_candidate_id": "seed3_candidate_002",
+      "start_angle": 0.7142223654075871,
+      "start_radial_quantile": 0.39122819049566204,
+      "approach_angle": 3.2467743230758486,
+      "approach_radial_quantile": 0.4306280204141778,
+      "collection_seed": 3,
+      "runtime_seed": 2861884719
+    },
+    {
+      "candidate_index": 3,
+      "accepted_candidate_id": "seed3_candidate_003",
+      "start_angle": 4.635971544195998,
+      "start_radial_quantile": 0.9562672548360985,
+      "approach_angle": 1.785688576349746,
+      "approach_radial_quantile": 0.648547207079825,
+      "collection_seed": 3,
+      "runtime_seed": 2520280673
+    },
+    {
+      "candidate_index": 4,
+      "accepted_candidate_id": "seed3_candidate_004",
+      "start_angle": 4.374454120901312,
+      "start_radial_quantile": 0.2927207490124871,
+      "approach_angle": 0.009362470809190032,
+      "approach_radial_quantile": 0.9734602747664127,
+      "collection_seed": 3,
+      "runtime_seed": 4053950061
+    },
+    {
+      "candidate_index": 5,
+      "accepted_candidate_id": "seed3_candidate_005",
+      "start_angle": 1.9728322346422047,
+      "start_radial_quantile": 0.8917110704451572,
+      "approach_angle": 3.676687186228565,
+      "approach_radial_quantile": 0.47130966518183137,
+      "collection_seed": 3,
+      "runtime_seed": 1281623493
+    },
+    {
+      "candidate_index": 6,
+      "accepted_candidate_id": "seed3_candidate_006",
+      "start_angle": 4.85864274540521,
+      "start_radial_quantile": 0.030346007662471197,
+      "approach_angle": 4.441992701712224,
+      "approach_radial_quantile": 0.3742438334784708,
+      "collection_seed": 3,
+      "runtime_seed": 1089397086
+    },
+    {
+      "candidate_index": 7,
+      "accepted_candidate_id": "seed3_candidate_007",
+      "start_angle": 4.150044319054075,
+      "start_radial_quantile": 0.9314638547413545,
+      "approach_angle": 1.3018205030639232,
+      "approach_radial_quantile": 0.630090199785343,
+      "collection_seed": 3,
+      "runtime_seed": 390209433
+    },
+    {
+      "candidate_index": 8,
+      "accepted_candidate_id": "seed3_candidate_008",
+      "start_angle": 1.8734139503619862,
+      "start_radial_quantile": 0.7417566800693304,
+      "approach_angle": 4.5374953118807175,
+      "approach_radial_quantile": 0.21871542456880455,
+      "collection_seed": 3,
+      "runtime_seed": 1665739756
+    },
+    {
+      "candidate_index": 9,
+      "accepted_candidate_id": "seed3_candidate_009",
+      "start_angle": 4.132150708592933,
+      "start_radial_quantile": 0.6827989078603502,
+      "approach_angle": 5.1526879042457825,
+      "approach_radial_quantile": 0.42857290429846195,
+      "collection_seed": 3,
+      "runtime_seed": 3564336984
+    },
+    {
+      "candidate_index": 10,
+      "accepted_candidate_id": "seed3_candidate_010",
+      "start_angle": 4.767087006005499,
+      "start_radial_quantile": 0.8784801846662539,
+      "approach_angle": 0.6428950300525403,
+      "approach_radial_quantile": 0.8497683374661538,
+      "collection_seed": 3,
+      "runtime_seed": 2819187802
+    },
+    {
+      "candidate_index": 11,
+      "accepted_candidate_id": "seed3_candidate_011",
+      "start_angle": 3.0139429803025823,
+      "start_radial_quantile": 0.14633456975819847,
+      "approach_angle": 4.38834214871872,
+      "approach_radial_quantile": 0.291978615987851,
+      "collection_seed": 3,
+      "runtime_seed": 1691905010
+    },
+    {
+      "candidate_index": 12,
+      "accepted_candidate_id": "seed3_candidate_012",
+      "start_angle": 5.4735287064919955,
+      "start_radial_quantile": 0.2753743769480771,
+      "approach_angle": 3.5299545701606236,
+      "approach_radial_quantile": 0.39965622113045274,
+      "collection_seed": 3,
+      "runtime_seed": 553850866
+    },
+    {
+      "candidate_index": 13,
+      "accepted_candidate_id": "seed3_candidate_013",
+      "start_angle": 1.2355207821511716,
+      "start_radial_quantile": 0.18028754084309517,
+      "approach_angle": 4.692662201629541,
+      "approach_radial_quantile": 0.7522234183692774,
+      "collection_seed": 3,
+      "runtime_seed": 2632426223
+    },
+    {
+      "candidate_index": 14,
+      "accepted_candidate_id": "seed3_candidate_014",
+      "start_angle": 3.5624270502584503,
+      "start_radial_quantile": 0.9210796772829299,
+      "approach_angle": 1.2929227596167419,
+      "approach_radial_quantile": 0.8509011245916515,
+      "collection_seed": 3,
+      "runtime_seed": 2528901311
+    },
+    {
+      "candidate_index": 15,
+      "accepted_candidate_id": "seed3_candidate_015",
+      "start_angle": 6.05923826278813,
+      "start_radial_quantile": 0.6236927281061517,
+      "approach_angle": 3.8131632999900154,
+      "approach_radial_quantile": 0.9705587631326238,
+      "collection_seed": 3,
+      "runtime_seed": 725794975
+    },
+    {
+      "candidate_index": 16,
+      "accepted_candidate_id": "seed3_candidate_016",
+      "start_angle": 4.9450723835472825,
+      "start_radial_quantile": 0.7899174760885543,
+      "approach_angle": 0.33988110466497906,
+      "approach_radial_quantile": 0.3692863060944199,
+      "collection_seed": 3,
+      "runtime_seed": 223581087
+    },
+    {
+      "candidate_index": 17,
+      "accepted_candidate_id": "seed3_candidate_017",
+      "start_angle": 1.2159696563981206,
+      "start_radial_quantile": 0.2138669906921472,
+      "approach_angle": 5.395006372313101,
+      "approach_radial_quantile": 0.1267549797183054,
+      "collection_seed": 3,
+      "runtime_seed": 364620270
+    },
+    {
+      "candidate_index": 18,
+      "accepted_candidate_id": "seed3_candidate_018",
+      "start_angle": 1.8645840501359914,
+      "start_radial_quantile": 0.4928469789243326,
+      "approach_angle": 5.337317174616828,
+      "approach_radial_quantile": 0.9652314208373755,
+      "collection_seed": 3,
+      "runtime_seed": 4016322117
+    },
+    {
+      "candidate_index": 19,
+      "accepted_candidate_id": "seed3_candidate_019",
+      "start_angle": 1.3426363974580802,
+      "start_radial_quantile": 0.5449826814580041,
+      "approach_angle": 4.43567148636577,
+      "approach_radial_quantile": 0.05188252772662516,
+      "collection_seed": 3,
+      "runtime_seed": 3041458630
+    },
+    {
+      "candidate_index": 20,
+      "accepted_candidate_id": "seed3_candidate_020",
+      "start_angle": 4.271838210086314,
+      "start_radial_quantile": 0.3682818351390811,
+      "approach_angle": 3.7051961775307096,
+      "approach_radial_quantile": 0.6695332811416651,
+      "collection_seed": 3,
+      "runtime_seed": 3440957737
+    },
+    {
+      "candidate_index": 21,
+      "accepted_candidate_id": "seed3_candidate_021",
+      "start_angle": 3.2864186645076416,
+      "start_radial_quantile": 0.5547374324650892,
+      "approach_angle": 1.245011369198393,
+      "approach_radial_quantile": 0.49518739153540214,
+      "collection_seed": 3,
+      "runtime_seed": 2873880712
+    },
+    {
+      "candidate_index": 22,
+      "accepted_candidate_id": "seed3_candidate_022",
+      "start_angle": 0.7879709559057948,
+      "start_radial_quantile": 0.48074700192606445,
+      "approach_angle": 3.3693262373898505,
+      "approach_radial_quantile": 0.7741048163103185,
+      "collection_seed": 3,
+      "runtime_seed": 2133046730
+    },
+    {
+      "candidate_index": 23,
+      "accepted_candidate_id": "seed3_candidate_023",
+      "start_angle": 0.12315306185804327,
+      "start_radial_quantile": 0.5277499332135033,
+      "approach_angle": 1.2895137811182376,
+      "approach_radial_quantile": 0.7412575231943688,
+      "collection_seed": 3,
+      "runtime_seed": 1690777411
+    },
+    {
+      "candidate_index": 24,
+      "accepted_candidate_id": "seed3_candidate_024",
+      "start_angle": 2.4422567270958386,
+      "start_radial_quantile": 0.3804731641328024,
+      "approach_angle": 5.714271653153632,
+      "approach_radial_quantile": 0.39297044395520897,
+      "collection_seed": 3,
+      "runtime_seed": 102894332
+    },
+    {
+      "candidate_index": 25,
+      "accepted_candidate_id": "seed3_candidate_025",
+      "start_angle": 2.186672487811523,
+      "start_radial_quantile": 0.48076557030258193,
+      "approach_angle": 0.5861716069826833,
+      "approach_radial_quantile": 0.5467474079457146,
+      "collection_seed": 3,
+      "runtime_seed": 1498306115
+    },
+    {
+      "candidate_index": 26,
+      "accepted_candidate_id": "seed3_candidate_026",
+      "start_angle": 5.789499491082433,
+      "start_radial_quantile": 0.5629220648797367,
+      "approach_angle": 4.674125684685877,
+      "approach_radial_quantile": 0.9471406631656772,
+      "collection_seed": 3,
+      "runtime_seed": 207088243
+    },
+    {
+      "candidate_index": 27,
+      "accepted_candidate_id": "seed3_candidate_027",
+      "start_angle": 4.6747297266343475,
+      "start_radial_quantile": 0.8131637391945609,
+      "approach_angle": 5.153085576194841,
+      "approach_radial_quantile": 0.25375519476203323,
+      "collection_seed": 3,
+      "runtime_seed": 3616858047
+    },
+    {
+      "candidate_index": 28,
+      "accepted_candidate_id": "seed3_candidate_028",
+      "start_angle": 3.028263136697547,
+      "start_radial_quantile": 0.34271675065851503,
+      "approach_angle": 1.6445187849272802,
+      "approach_radial_quantile": 0.5715515831226305,
+      "collection_seed": 3,
+      "runtime_seed": 1978028546
+    },
+    {
+      "candidate_index": 29,
+      "accepted_candidate_id": "seed3_candidate_029",
+      "start_angle": 3.887133718589204,
+      "start_radial_quantile": 0.5824165302717571,
+      "approach_angle": 0.6559581019214202,
+      "approach_radial_quantile": 0.44241765155908375,
+      "collection_seed": 3,
+      "runtime_seed": 1365309642
+    },
+    {
+      "candidate_index": 30,
+      "accepted_candidate_id": "seed3_candidate_030",
+      "start_angle": 2.4495304161248654,
+      "start_radial_quantile": 0.7066524111003846,
+      "approach_angle": 0.5537549893093693,
+      "approach_radial_quantile": 0.16895817245999722,
+      "collection_seed": 3,
+      "runtime_seed": 1467314169
+    },
+    {
+      "candidate_index": 31,
+      "accepted_candidate_id": "seed3_candidate_031",
+      "start_angle": 2.542137372473596,
+      "start_radial_quantile": 0.6653466801817194,
+      "approach_angle": 2.091400249904022,
+      "approach_radial_quantile": 0.19721876834499596,
+      "collection_seed": 3,
+      "runtime_seed": 2201589309
+    },
+    {
+      "candidate_index": 32,
+      "accepted_candidate_id": "seed3_candidate_032",
+      "start_angle": 5.8549574720161335,
+      "start_radial_quantile": 0.24389649332303487,
+      "approach_angle": 0.9240322956750414,
+      "approach_radial_quantile": 0.2798941543182133,
+      "collection_seed": 3,
+      "runtime_seed": 1571553166
+    },
+    {
+      "candidate_index": 33,
+      "accepted_candidate_id": "seed3_candidate_033",
+      "start_angle": 1.4144454974884482,
+      "start_radial_quantile": 0.536316451063914,
+      "approach_angle": 5.886928972898554,
+      "approach_radial_quantile": 0.1260188515151106,
+      "collection_seed": 3,
+      "runtime_seed": 1459105090
+    },
+    {
+      "candidate_index": 34,
+      "accepted_candidate_id": "seed3_candidate_034",
+      "start_angle": 2.6085561957295873,
+      "start_radial_quantile": 0.6681574410339702,
+      "approach_angle": 5.5588281789939655,
+      "approach_radial_quantile": 0.9998030282851982,
+      "collection_seed": 3,
+      "runtime_seed": 260345251
+    },
+    {
+      "candidate_index": 35,
+      "accepted_candidate_id": "seed3_candidate_035",
+      "start_angle": 3.3759411677027393,
+      "start_radial_quantile": 0.8812005287254918,
+      "approach_angle": 0.3331952739149466,
+      "approach_radial_quantile": 0.5882931558557919,
+      "collection_seed": 3,
+      "runtime_seed": 616915987
+    },
+    {
+      "candidate_index": 36,
+      "accepted_candidate_id": "seed3_candidate_036",
+      "start_angle": 1.0927172352283023,
+      "start_radial_quantile": 0.7678302621654288,
+      "approach_angle": 5.8913095409517275,
+      "approach_radial_quantile": 0.5382881926606792,
+      "collection_seed": 3,
+      "runtime_seed": 1593780172
+    },
+    {
+      "candidate_index": 37,
+      "accepted_candidate_id": "seed3_candidate_037",
+      "start_angle": 0.40369667696054073,
+      "start_radial_quantile": 0.41570192391922234,
+      "approach_angle": 5.3237678564748006,
+      "approach_radial_quantile": 0.23676692267033106,
+      "collection_seed": 3,
+      "runtime_seed": 38510709
+    },
+    {
+      "candidate_index": 38,
+      "accepted_candidate_id": "seed3_candidate_038",
+      "start_angle": 4.204315367985882,
+      "start_radial_quantile": 0.40530784212393256,
+      "approach_angle": 1.6660191949861731,
+      "approach_radial_quantile": 0.703889108027187,
+      "collection_seed": 3,
+      "runtime_seed": 2432226011
+    },
+    {
+      "candidate_index": 39,
+      "accepted_candidate_id": "seed3_candidate_039",
+      "start_angle": 2.3365969160930598,
+      "start_radial_quantile": 0.7653103087676975,
+      "approach_angle": 3.1114327898261487,
+      "approach_radial_quantile": 0.7839185609550596,
+      "collection_seed": 3,
+      "runtime_seed": 1323952684
+    },
+    {
+      "candidate_index": 40,
+      "accepted_candidate_id": "seed3_candidate_040",
+      "start_angle": 3.2440119115371844,
+      "start_radial_quantile": 0.15997166501999804,
+      "approach_angle": 2.7878356498329886,
+      "approach_radial_quantile": 0.8727650626329742,
+      "collection_seed": 3,
+      "runtime_seed": 1484219065
+    },
+    {
+      "candidate_index": 41,
+      "accepted_candidate_id": "seed3_candidate_041",
+      "start_angle": 6.062114885302345,
+      "start_radial_quantile": 0.001148413743897403,
+      "approach_angle": 2.138585578553095,
+      "approach_radial_quantile": 0.769050154191463,
+      "collection_seed": 3,
+      "runtime_seed": 2426303669
+    },
+    {
+      "candidate_index": 42,
+      "accepted_candidate_id": "seed3_candidate_042",
+      "start_angle": 4.311213638663605,
+      "start_radial_quantile": 0.5609786443382162,
+      "approach_angle": 4.170420454810295,
+      "approach_radial_quantile": 0.8764309030577203,
+      "collection_seed": 3,
+      "runtime_seed": 3456501502
+    },
+    {
+      "candidate_index": 43,
+      "accepted_candidate_id": "seed3_candidate_043",
+      "start_angle": 3.438338440279079,
+      "start_radial_quantile": 0.56246846941706,
+      "approach_angle": 4.186969703954023,
+      "approach_radial_quantile": 0.32391219550415395,
+      "collection_seed": 3,
+      "runtime_seed": 2935831090
+    },
+    {
+      "candidate_index": 44,
+      "accepted_candidate_id": "seed3_candidate_044",
+      "start_angle": 4.2061854518373565,
+      "start_radial_quantile": 0.6150083202390563,
+      "approach_angle": 4.938023138322702,
+      "approach_radial_quantile": 0.4802251364085529,
+      "collection_seed": 3,
+      "runtime_seed": 160667162
+    },
+    {
+      "candidate_index": 45,
+      "accepted_candidate_id": "seed3_candidate_045",
+      "start_angle": 3.373577692772916,
+      "start_radial_quantile": 0.8576882934374721,
+      "approach_angle": 4.021357921975887,
+      "approach_radial_quantile": 0.6434724541360264,
+      "collection_seed": 3,
+      "runtime_seed": 116001267
+    },
+    {
+      "candidate_index": 46,
+      "accepted_candidate_id": "seed3_candidate_046",
+      "start_angle": 2.4564036867977226,
+      "start_radial_quantile": 0.3565715039475891,
+      "approach_angle": 4.517025461231112,
+      "approach_radial_quantile": 0.07777792836489461,
+      "collection_seed": 3,
+      "runtime_seed": 1282767893
+    },
+    {
+      "candidate_index": 47,
+      "accepted_candidate_id": "seed3_candidate_047",
+      "start_angle": 5.505891901440271,
+      "start_radial_quantile": 0.9624443813499501,
+      "approach_angle": 0.8524875432324334,
+      "approach_radial_quantile": 0.11537751269401142,
+      "collection_seed": 3,
+      "runtime_seed": 3721328336
+    },
+    {
+      "candidate_index": 48,
+      "accepted_candidate_id": "seed3_candidate_048",
+      "start_angle": 5.617304993731863,
+      "start_radial_quantile": 0.4011253998887595,
+      "approach_angle": 1.6987270950799584,
+      "approach_radial_quantile": 0.38221466152012973,
+      "collection_seed": 3,
+      "runtime_seed": 3282506504
+    },
+    {
+      "candidate_index": 49,
+      "accepted_candidate_id": "seed3_candidate_049",
+      "start_angle": 1.0146945026097365,
+      "start_radial_quantile": 0.48716389141804806,
+      "approach_angle": 4.147221158987992,
+      "approach_radial_quantile": 0.7207721695546327,
+      "collection_seed": 3,
+      "runtime_seed": 2832547647
+    },
+    {
+      "candidate_index": 50,
+      "accepted_candidate_id": "seed3_candidate_050",
+      "start_angle": 0.0770479856463665,
+      "start_radial_quantile": 0.8108964249652103,
+      "approach_angle": 2.728030880135468,
+      "approach_radial_quantile": 0.4357990363097678,
+      "collection_seed": 3,
+      "runtime_seed": 2215654144
+    },
+    {
+      "candidate_index": 51,
+      "accepted_candidate_id": "seed3_candidate_051",
+      "start_angle": 1.7601433682861414,
+      "start_radial_quantile": 0.8867217586623545,
+      "approach_angle": 1.3328864528479893,
+      "approach_radial_quantile": 0.542717227711984,
+      "collection_seed": 3,
+      "runtime_seed": 2415321494
+    },
+    {
+      "candidate_index": 52,
+      "accepted_candidate_id": "seed3_candidate_052",
+      "start_angle": 1.0558371645154083,
+      "start_radial_quantile": 0.6161163270034956,
+      "approach_angle": 5.666846558807532,
+      "approach_radial_quantile": 0.8826366511581263,
+      "collection_seed": 3,
+      "runtime_seed": 258849896
+    },
+    {
+      "candidate_index": 53,
+      "accepted_candidate_id": "seed3_candidate_053",
+      "start_angle": 3.926166141670741,
+      "start_radial_quantile": 0.8925523288105455,
+      "approach_angle": 1.2583673244883502,
+      "approach_radial_quantile": 0.41474121707579237,
+      "collection_seed": 3,
+      "runtime_seed": 578446916
+    },
+    {
+      "candidate_index": 54,
+      "accepted_candidate_id": "seed3_candidate_054",
+      "start_angle": 4.480886196238546,
+      "start_radial_quantile": 0.7381025959044417,
+      "approach_angle": 2.834833891516697,
+      "approach_radial_quantile": 0.6386185766079893,
+      "collection_seed": 3,
+      "runtime_seed": 1683501451
+    },
+    {
+      "candidate_index": 55,
+      "accepted_candidate_id": "seed3_candidate_055",
+      "start_angle": 2.2187359556784174,
+      "start_radial_quantile": 0.6520735737354493,
+      "approach_angle": 3.6280523211894815,
+      "approach_radial_quantile": 0.6973859535679194,
+      "collection_seed": 3,
+      "runtime_seed": 2872984754
+    },
+    {
+      "candidate_index": 56,
+      "accepted_candidate_id": "seed3_candidate_056",
+      "start_angle": 3.214760517941754,
+      "start_radial_quantile": 0.33643108386183496,
+      "approach_angle": 2.7294296508930582,
+      "approach_radial_quantile": 0.9224613395674699,
+      "collection_seed": 3,
+      "runtime_seed": 3982222391
+    },
+    {
+      "candidate_index": 57,
+      "accepted_candidate_id": "seed3_candidate_057",
+      "start_angle": 0.9318140667762673,
+      "start_radial_quantile": 0.012152882102121731,
+      "approach_angle": 5.354193871662883,
+      "approach_radial_quantile": 0.9886481576138294,
+      "collection_seed": 3,
+      "runtime_seed": 805543863
+    },
+    {
+      "candidate_index": 58,
+      "accepted_candidate_id": "seed3_candidate_058",
+      "start_angle": 1.4857660477111383,
+      "start_radial_quantile": 0.2660980473753387,
+      "approach_angle": 1.2464093245588759,
+      "approach_radial_quantile": 0.6001924578245686,
+      "collection_seed": 3,
+      "runtime_seed": 3180025022
+    },
+    {
+      "candidate_index": 59,
+      "accepted_candidate_id": "seed3_candidate_059",
+      "start_angle": 5.155831835650923,
+      "start_radial_quantile": 0.2097043096079455,
+      "approach_angle": 5.516233516535925,
+      "approach_radial_quantile": 0.4639515153969921,
+      "collection_seed": 3,
+      "runtime_seed": 2083524735
+    },
+    {
+      "candidate_index": 60,
+      "accepted_candidate_id": "seed3_candidate_060",
+      "start_angle": 5.075976882696814,
+      "start_radial_quantile": 0.8020806151389231,
+      "approach_angle": 5.722412451362062,
+      "approach_radial_quantile": 0.49881345034301394,
+      "collection_seed": 3,
+      "runtime_seed": 1823134987
+    },
+    {
+      "candidate_index": 61,
+      "accepted_candidate_id": "seed3_candidate_061",
+      "start_angle": 3.5250601482253967,
+      "start_radial_quantile": 0.1903026772336317,
+      "approach_angle": 3.1511537778272736,
+      "approach_radial_quantile": 0.9266192075346227,
+      "collection_seed": 3,
+      "runtime_seed": 2618229511
+    },
+    {
+      "candidate_index": 62,
+      "accepted_candidate_id": "seed3_candidate_062",
+      "start_angle": 5.710777369225911,
+      "start_radial_quantile": 0.0215045292002346,
+      "approach_angle": 4.167987879397194,
+      "approach_radial_quantile": 0.32677163373788376,
+      "collection_seed": 3,
+      "runtime_seed": 3703716591
+    },
+    {
+      "candidate_index": 63,
+      "accepted_candidate_id": "seed3_candidate_063",
+      "start_angle": 0.8761263808143461,
+      "start_radial_quantile": 0.79496144420249,
+      "approach_angle": 6.026617536381402,
+      "approach_radial_quantile": 0.5202406948930788,
+      "collection_seed": 3,
+      "runtime_seed": 583852382
+    },
+    {
+      "candidate_index": 64,
+      "accepted_candidate_id": "seed3_candidate_064",
+      "start_angle": 2.409729700376506,
+      "start_radial_quantile": 0.5098869655687766,
+      "approach_angle": 5.2105992922218745,
+      "approach_radial_quantile": 0.7467434606177826,
+      "collection_seed": 3,
+      "runtime_seed": 3053604886
+    },
+    {
+      "candidate_index": 65,
+      "accepted_candidate_id": "seed3_candidate_065",
+      "start_angle": 1.3353665183054733,
+      "start_radial_quantile": 0.8677048167081813,
+      "approach_angle": 3.0981126525121,
+      "approach_radial_quantile": 0.6577278338278879,
+      "collection_seed": 3,
+      "runtime_seed": 275390289
+    },
+    {
+      "candidate_index": 66,
+      "accepted_candidate_id": "seed3_candidate_066",
+      "start_angle": 4.885317571056985,
+      "start_radial_quantile": 0.6365975589458712,
+      "approach_angle": 4.611197931998251,
+      "approach_radial_quantile": 0.5456422200054575,
+      "collection_seed": 3,
+      "runtime_seed": 2992989392
+    },
+    {
+      "candidate_index": 67,
+      "accepted_candidate_id": "seed3_candidate_067",
+      "start_angle": 1.175548167183111,
+      "start_radial_quantile": 0.9935386373389712,
+      "approach_angle": 0.06601877877957422,
+      "approach_radial_quantile": 0.6909121579218223,
+      "collection_seed": 3,
+      "runtime_seed": 984954550
+    },
+    {
+      "candidate_index": 68,
+      "accepted_candidate_id": "seed3_candidate_068",
+      "start_angle": 5.5333136897104325,
+      "start_radial_quantile": 0.23140820650033145,
+      "approach_angle": 0.30498698258117435,
+      "approach_radial_quantile": 0.3992468194872897,
+      "collection_seed": 3,
+      "runtime_seed": 618327461
+    },
+    {
+      "candidate_index": 69,
+      "accepted_candidate_id": "seed3_candidate_069",
+      "start_angle": 2.9002513025252683,
+      "start_radial_quantile": 0.42741583442760755,
+      "approach_angle": 5.9189139892486144,
+      "approach_radial_quantile": 0.11932600012925731,
+      "collection_seed": 3,
+      "runtime_seed": 1417161867
+    },
+    {
+      "candidate_index": 70,
+      "accepted_candidate_id": "seed3_candidate_070",
+      "start_angle": 5.931481320485673,
+      "start_radial_quantile": 0.04574561899395957,
+      "approach_angle": 5.895125498479179,
+      "approach_radial_quantile": 0.33300069219226325,
+      "collection_seed": 3,
+      "runtime_seed": 766838446
+    },
+    {
+      "candidate_index": 71,
+      "accepted_candidate_id": "seed3_candidate_071",
+      "start_angle": 0.01943666468844873,
+      "start_radial_quantile": 0.4472758751299015,
+      "approach_angle": 4.258509601617738,
+      "approach_radial_quantile": 0.6283249873750498,
+      "collection_seed": 3,
+      "runtime_seed": 3122812500
+    },
+    {
+      "candidate_index": 72,
+      "accepted_candidate_id": "seed3_candidate_072",
+      "start_angle": 5.066565573235687,
+      "start_radial_quantile": 0.15342345795860957,
+      "approach_angle": 2.520817057314505,
+      "approach_radial_quantile": 0.613690447441781,
+      "collection_seed": 3,
+      "runtime_seed": 116449374
+    },
+    {
+      "candidate_index": 73,
+      "accepted_candidate_id": "seed3_candidate_073",
+      "start_angle": 5.250601134500517,
+      "start_radial_quantile": 0.4162377097384282,
+      "approach_angle": 1.5461577854332178,
+      "approach_radial_quantile": 0.2224624760789503,
+      "collection_seed": 3,
+      "runtime_seed": 123391220
+    },
+    {
+      "candidate_index": 74,
+      "accepted_candidate_id": "seed3_candidate_074",
+      "start_angle": 4.089846986451071,
+      "start_radial_quantile": 0.047838329842185945,
+      "approach_angle": 1.5359509811359962,
+      "approach_radial_quantile": 0.3039172723370256,
+      "collection_seed": 3,
+      "runtime_seed": 1119648646
+    },
+    {
+      "candidate_index": 75,
+      "accepted_candidate_id": "seed3_candidate_075",
+      "start_angle": 4.590535165182172,
+      "start_radial_quantile": 0.5924374841668901,
+      "approach_angle": 5.679770916045624,
+      "approach_radial_quantile": 0.7009773735404422,
+      "collection_seed": 3,
+      "runtime_seed": 1110213858
+    },
+    {
+      "candidate_index": 76,
+      "accepted_candidate_id": "seed3_candidate_076",
+      "start_angle": 1.850119778105798,
+      "start_radial_quantile": 0.32423481029679413,
+      "approach_angle": 0.7743702498414472,
+      "approach_radial_quantile": 0.24254353053145528,
+      "collection_seed": 3,
+      "runtime_seed": 199873023
+    },
+    {
+      "candidate_index": 77,
+      "accepted_candidate_id": "seed3_candidate_077",
+      "start_angle": 4.592985544636665,
+      "start_radial_quantile": 0.29589749297005674,
+      "approach_angle": 2.1628613644823824,
+      "approach_radial_quantile": 0.8028930984850934,
+      "collection_seed": 3,
+      "runtime_seed": 2596823340
+    },
+    {
+      "candidate_index": 78,
+      "accepted_candidate_id": "seed3_candidate_078",
+      "start_angle": 6.022303200995967,
+      "start_radial_quantile": 0.08471535374634753,
+      "approach_angle": 0.4477949841962407,
+      "approach_radial_quantile": 0.7592085212120198,
+      "collection_seed": 3,
+      "runtime_seed": 1565326459
+    },
+    {
+      "candidate_index": 79,
+      "accepted_candidate_id": "seed3_candidate_079",
+      "start_angle": 2.670429246903865,
+      "start_radial_quantile": 0.633565663712613,
+      "approach_angle": 4.777684268469669,
+      "approach_radial_quantile": 0.06984832383036021,
+      "collection_seed": 3,
+      "runtime_seed": 2128949966
+    },
+    {
+      "candidate_index": 80,
+      "accepted_candidate_id": "seed3_candidate_080",
+      "start_angle": 6.043232887111382,
+      "start_radial_quantile": 0.9580670103284027,
+      "approach_angle": 2.617908304792527,
+      "approach_radial_quantile": 0.46956349344556647,
+      "collection_seed": 3,
+      "runtime_seed": 4130643376
+    },
+    {
+      "candidate_index": 81,
+      "accepted_candidate_id": "seed3_candidate_081",
+      "start_angle": 3.6912749705353765,
+      "start_radial_quantile": 0.20514798600592787,
+      "approach_angle": 3.3590368415882548,
+      "approach_radial_quantile": 0.9043342510395173,
+      "collection_seed": 3,
+      "runtime_seed": 1169520205
+    },
+    {
+      "candidate_index": 82,
+      "accepted_candidate_id": "seed3_candidate_082",
+      "start_angle": 3.1804379393507567,
+      "start_radial_quantile": 0.8270888009986372,
+      "approach_angle": 1.1259015718955476,
+      "approach_radial_quantile": 0.8835176156524173,
+      "collection_seed": 3,
+      "runtime_seed": 2593106923
+    },
+    {
+      "candidate_index": 83,
+      "accepted_candidate_id": "seed3_candidate_083",
+      "start_angle": 1.3374487374877388,
+      "start_radial_quantile": 0.7202386126644783,
+      "approach_angle": 1.897448023071556,
+      "approach_radial_quantile": 0.11891256164587016,
+      "collection_seed": 3,
+      "runtime_seed": 529104012
+    },
+    {
+      "candidate_index": 84,
+      "accepted_candidate_id": "seed3_candidate_084",
+      "start_angle": 0.5453566266521558,
+      "start_radial_quantile": 0.7932985304052319,
+      "approach_angle": 0.12419208114999845,
+      "approach_radial_quantile": 0.056343258434234045,
+      "collection_seed": 3,
+      "runtime_seed": 4045325900
+    },
+    {
+      "candidate_index": 85,
+      "accepted_candidate_id": "seed3_candidate_085",
+      "start_angle": 4.9143945297141505,
+      "start_radial_quantile": 0.3704349132357774,
+      "approach_angle": 1.208728998040702,
+      "approach_radial_quantile": 0.867178837318998,
+      "collection_seed": 3,
+      "runtime_seed": 4060982054
+    },
+    {
+      "candidate_index": 86,
+      "accepted_candidate_id": "seed3_candidate_086",
+      "start_angle": 4.948921858397272,
+      "start_radial_quantile": 0.6685196806606923,
+      "approach_angle": 3.3325010343741206,
+      "approach_radial_quantile": 0.5252679910055196,
+      "collection_seed": 3,
+      "runtime_seed": 4240135737
+    },
+    {
+      "candidate_index": 87,
+      "accepted_candidate_id": "seed3_candidate_087",
+      "start_angle": 3.281648161394052,
+      "start_radial_quantile": 0.08403124803742068,
+      "approach_angle": 0.4699502943219038,
+      "approach_radial_quantile": 0.595553776474898,
+      "collection_seed": 3,
+      "runtime_seed": 4200214574
+    },
+    {
+      "candidate_index": 88,
+      "accepted_candidate_id": "seed3_candidate_088",
+      "start_angle": 4.603558289781112,
+      "start_radial_quantile": 0.6282420580873196,
+      "approach_angle": 4.66726912007761,
+      "approach_radial_quantile": 0.29419627631755907,
+      "collection_seed": 3,
+      "runtime_seed": 2508617759
+    },
+    {
+      "candidate_index": 89,
+      "accepted_candidate_id": "seed3_candidate_089",
+      "start_angle": 1.6671789749826986,
+      "start_radial_quantile": 0.3725969934672386,
+      "approach_angle": 1.675278379531043,
+      "approach_radial_quantile": 0.8341383229002534,
+      "collection_seed": 3,
+      "runtime_seed": 1593978222
+    },
+    {
+      "candidate_index": 90,
+      "accepted_candidate_id": "seed3_candidate_090",
+      "start_angle": 0.9288302637989923,
+      "start_radial_quantile": 0.20788997979176904,
+      "approach_angle": 4.48666741176273,
+      "approach_radial_quantile": 0.39792126076716217,
+      "collection_seed": 3,
+      "runtime_seed": 1553954067
+    },
+    {
+      "candidate_index": 91,
+      "accepted_candidate_id": "seed3_candidate_091",
+      "start_angle": 6.122679572198885,
+      "start_radial_quantile": 0.89380117264771,
+      "approach_angle": 1.3756591923480952,
+      "approach_radial_quantile": 0.15534434961879828,
+      "collection_seed": 3,
+      "runtime_seed": 1465738151
+    },
+    {
+      "candidate_index": 92,
+      "accepted_candidate_id": "seed3_candidate_092",
+      "start_angle": 3.0936203312579544,
+      "start_radial_quantile": 0.5741126110854864,
+      "approach_angle": 2.178550437879256,
+      "approach_radial_quantile": 0.5914343371570514,
+      "collection_seed": 3,
+      "runtime_seed": 1875385516
+    },
+    {
+      "candidate_index": 93,
+      "accepted_candidate_id": "seed3_candidate_093",
+      "start_angle": 5.118437989757827,
+      "start_radial_quantile": 0.24216827131495133,
+      "approach_angle": 4.053352922255018,
+      "approach_radial_quantile": 0.05809611590126196,
+      "collection_seed": 3,
+      "runtime_seed": 2912774111
+    },
+    {
+      "candidate_index": 94,
+      "accepted_candidate_id": "seed3_candidate_094",
+      "start_angle": 0.40719197976851257,
+      "start_radial_quantile": 0.05535435108097453,
+      "approach_angle": 0.7311985174983636,
+      "approach_radial_quantile": 0.7817559409906394,
+      "collection_seed": 3,
+      "runtime_seed": 1862029511
+    },
+    {
+      "candidate_index": 95,
+      "accepted_candidate_id": "seed3_candidate_095",
+      "start_angle": 3.0964821975856403,
+      "start_radial_quantile": 0.4508997191161449,
+      "approach_angle": 1.3010663519815198,
+      "approach_radial_quantile": 0.0457766267295876,
+      "collection_seed": 3,
+      "runtime_seed": 1592873864
+    },
+    {
+      "candidate_index": 96,
+      "accepted_candidate_id": "seed3_candidate_096",
+      "start_angle": 1.1424764216632346,
+      "start_radial_quantile": 0.8582904401083417,
+      "approach_angle": 2.1276803558312243,
+      "approach_radial_quantile": 0.42053643744070945,
+      "collection_seed": 3,
+      "runtime_seed": 486717267
+    },
+    {
+      "candidate_index": 97,
+      "accepted_candidate_id": "seed3_candidate_097",
+      "start_angle": 4.657167704255467,
+      "start_radial_quantile": 0.7023657918483504,
+      "approach_angle": 2.4116769837422383,
+      "approach_radial_quantile": 0.5063840414302688,
+      "collection_seed": 3,
+      "runtime_seed": 1135594807
+    },
+    {
+      "candidate_index": 98,
+      "accepted_candidate_id": "seed3_candidate_098",
+      "start_angle": 2.486964964896426,
+      "start_radial_quantile": 0.5733256681469887,
+      "approach_angle": 3.729639713619512,
+      "approach_radial_quantile": 0.5774483691948687,
+      "collection_seed": 3,
+      "runtime_seed": 3315860493
+    },
+    {
+      "candidate_index": 99,
+      "accepted_candidate_id": "seed3_candidate_099",
+      "start_angle": 5.970580650734159,
+      "start_radial_quantile": 0.05139881989008033,
+      "approach_angle": 2.3860242715365763,
+      "approach_radial_quantile": 0.04034771475568388,
+      "collection_seed": 3,
+      "runtime_seed": 3872258503
+    },
+    {
+      "candidate_index": 100,
+      "accepted_candidate_id": "seed3_candidate_100",
+      "start_angle": 2.3542139698342197,
+      "start_radial_quantile": 0.8030645235219132,
+      "approach_angle": 4.269385128655685,
+      "approach_radial_quantile": 0.5673341670813656,
+      "collection_seed": 3,
+      "runtime_seed": 2201023466
+    },
+    {
+      "candidate_index": 101,
+      "accepted_candidate_id": "seed3_candidate_101",
+      "start_angle": 5.097980926691529,
+      "start_radial_quantile": 0.6124397057418215,
+      "approach_angle": 1.9015017871142943,
+      "approach_radial_quantile": 0.7853318179464187,
+      "collection_seed": 3,
+      "runtime_seed": 370666658
+    },
+    {
+      "candidate_index": 102,
+      "accepted_candidate_id": "seed3_candidate_102",
+      "start_angle": 0.2454361493726672,
+      "start_radial_quantile": 0.18754468317091455,
+      "approach_angle": 4.958195705017064,
+      "approach_radial_quantile": 0.045902549748612076,
+      "collection_seed": 3,
+      "runtime_seed": 3722180397
+    },
+    {
+      "candidate_index": 103,
+      "accepted_candidate_id": "seed3_candidate_103",
+      "start_angle": 3.151749374935324,
+      "start_radial_quantile": 0.7101216442130145,
+      "approach_angle": 3.7024180803018902,
+      "approach_radial_quantile": 0.036941998815416155,
+      "collection_seed": 3,
+      "runtime_seed": 567573928
+    },
+    {
+      "candidate_index": 104,
+      "accepted_candidate_id": "seed3_candidate_104",
+      "start_angle": 1.726625194397605,
+      "start_radial_quantile": 0.7062072907858129,
+      "approach_angle": 2.1890081123230916,
+      "approach_radial_quantile": 0.19421826538901188,
+      "collection_seed": 3,
+      "runtime_seed": 2011587500
+    },
+    {
+      "candidate_index": 105,
+      "accepted_candidate_id": "seed3_candidate_105",
+      "start_angle": 1.650655083002828,
+      "start_radial_quantile": 0.930775743504317,
+      "approach_angle": 0.3112777271153034,
+      "approach_radial_quantile": 0.5531451033068637,
+      "collection_seed": 3,
+      "runtime_seed": 9773242
+    },
+    {
+      "candidate_index": 106,
+      "accepted_candidate_id": "seed3_candidate_106",
+      "start_angle": 5.715664467736675,
+      "start_radial_quantile": 0.7006029395944852,
+      "approach_angle": 1.7654154464529,
+      "approach_radial_quantile": 0.64858333939462,
+      "collection_seed": 3,
+      "runtime_seed": 1644373671
+    },
+    {
+      "candidate_index": 107,
+      "accepted_candidate_id": "seed3_candidate_107",
+      "start_angle": 3.13464770922141,
+      "start_radial_quantile": 0.26321706931108113,
+      "approach_angle": 5.502017994631111,
+      "approach_radial_quantile": 0.8659714889657388,
+      "collection_seed": 3,
+      "runtime_seed": 512800133
+    },
+    {
+      "candidate_index": 108,
+      "accepted_candidate_id": "seed3_candidate_108",
+      "start_angle": 4.7867128227365425,
+      "start_radial_quantile": 0.37556261781349276,
+      "approach_angle": 5.007302746585078,
+      "approach_radial_quantile": 0.9798656581661846,
+      "collection_seed": 3,
+      "runtime_seed": 1300375951
+    },
+    {
+      "candidate_index": 109,
+      "accepted_candidate_id": "seed3_candidate_109",
+      "start_angle": 3.2998977556442495,
+      "start_radial_quantile": 0.16243703582876579,
+      "approach_angle": 0.6806564724713526,
+      "approach_radial_quantile": 0.7201409437338033,
+      "collection_seed": 3,
+      "runtime_seed": 1586743470
+    },
+    {
+      "candidate_index": 110,
+      "accepted_candidate_id": "seed3_candidate_110",
+      "start_angle": 0.3787451274392701,
+      "start_radial_quantile": 0.6013530937098678,
+      "approach_angle": 0.7138588302680116,
+      "approach_radial_quantile": 0.669027657079978,
+      "collection_seed": 3,
+      "runtime_seed": 3003790657
+    },
+    {
+      "candidate_index": 111,
+      "accepted_candidate_id": "seed3_candidate_111",
+      "start_angle": 5.911863886973994,
+      "start_radial_quantile": 0.3899035165510635,
+      "approach_angle": 2.44721792957397,
+      "approach_radial_quantile": 0.3996467183591207,
+      "collection_seed": 3,
+      "runtime_seed": 3236062205
+    },
+    {
+      "candidate_index": 112,
+      "accepted_candidate_id": "seed3_candidate_112",
+      "start_angle": 4.434732121207789,
+      "start_radial_quantile": 0.7877201847344714,
+      "approach_angle": 0.7271658600098483,
+      "approach_radial_quantile": 0.32476751349705324,
+      "collection_seed": 3,
+      "runtime_seed": 2530198656
+    },
+    {
+      "candidate_index": 113,
+      "accepted_candidate_id": "seed3_candidate_113",
+      "start_angle": 1.4759218287830584,
+      "start_radial_quantile": 0.7337377647369177,
+      "approach_angle": 5.886130117605512,
+      "approach_radial_quantile": 0.9803345746379707,
+      "collection_seed": 3,
+      "runtime_seed": 237245315
+    },
+    {
+      "candidate_index": 114,
+      "accepted_candidate_id": "seed3_candidate_114",
+      "start_angle": 0.42822489960826193,
+      "start_radial_quantile": 0.4019081435882381,
+      "approach_angle": 5.481694406574784,
+      "approach_radial_quantile": 0.5047832939867178,
+      "collection_seed": 3,
+      "runtime_seed": 3762190354
+    },
+    {
+      "candidate_index": 115,
+      "accepted_candidate_id": "seed3_candidate_115",
+      "start_angle": 4.9157361252160685,
+      "start_radial_quantile": 0.8643286026868968,
+      "approach_angle": 0.9168912463552786,
+      "approach_radial_quantile": 0.5171682072518639,
+      "collection_seed": 3,
+      "runtime_seed": 1501072937
+    },
+    {
+      "candidate_index": 116,
+      "accepted_candidate_id": "seed3_candidate_116",
+      "start_angle": 0.9249833268592469,
+      "start_radial_quantile": 0.18020589562006806,
+      "approach_angle": 3.3341788697155947,
+      "approach_radial_quantile": 0.2527819465204907,
+      "collection_seed": 3,
+      "runtime_seed": 1842712591
+    },
+    {
+      "candidate_index": 117,
+      "accepted_candidate_id": "seed3_candidate_117",
+      "start_angle": 2.2958342321809013,
+      "start_radial_quantile": 0.1812849232124385,
+      "approach_angle": 3.953665308917851,
+      "approach_radial_quantile": 0.2620260933143759,
+      "collection_seed": 3,
+      "runtime_seed": 3457612189
+    },
+    {
+      "candidate_index": 118,
+      "accepted_candidate_id": "seed3_candidate_118",
+      "start_angle": 0.4171551398494727,
+      "start_radial_quantile": 0.999101892816518,
+      "approach_angle": 1.1577218449365343,
+      "approach_radial_quantile": 0.13130731599329237,
+      "collection_seed": 3,
+      "runtime_seed": 1458141713
+    },
+    {
+      "candidate_index": 119,
+      "accepted_candidate_id": "seed3_candidate_119",
+      "start_angle": 0.024874920217222967,
+      "start_radial_quantile": 0.7893311796619056,
+      "approach_angle": 0.4723872777469735,
+      "approach_radial_quantile": 0.039544281918753255,
+      "collection_seed": 3,
+      "runtime_seed": 2064011278
+    },
+    {
+      "candidate_index": 120,
+      "accepted_candidate_id": "seed3_candidate_120",
+      "start_angle": 6.069812008949535,
+      "start_radial_quantile": 0.516739580371654,
+      "approach_angle": 5.835512145844686,
+      "approach_radial_quantile": 0.8970916360711042,
+      "collection_seed": 3,
+      "runtime_seed": 3409840446
+    },
+    {
+      "candidate_index": 121,
+      "accepted_candidate_id": "seed3_candidate_121",
+      "start_angle": 0.1863092613679053,
+      "start_radial_quantile": 0.6437725172509348,
+      "approach_angle": 0.40871791453287293,
+      "approach_radial_quantile": 0.010671777299953278,
+      "collection_seed": 3,
+      "runtime_seed": 3152466839
+    },
+    {
+      "candidate_index": 122,
+      "accepted_candidate_id": "seed3_candidate_122",
+      "start_angle": 5.3055171067964695,
+      "start_radial_quantile": 0.30680335816138105,
+      "approach_angle": 4.6945277053536545,
+      "approach_radial_quantile": 0.5298127745067456,
+      "collection_seed": 3,
+      "runtime_seed": 3857879669
+    },
+    {
+      "candidate_index": 123,
+      "accepted_candidate_id": "seed3_candidate_123",
+      "start_angle": 4.0198500713650365,
+      "start_radial_quantile": 0.9727645641827785,
+      "approach_angle": 2.9830611248375045,
+      "approach_radial_quantile": 0.853198555642182,
+      "collection_seed": 3,
+      "runtime_seed": 3367758881
+    },
+    {
+      "candidate_index": 124,
+      "accepted_candidate_id": "seed3_candidate_124",
+      "start_angle": 5.163632197633474,
+      "start_radial_quantile": 0.5867108232850349,
+      "approach_angle": 3.181441566118762,
+      "approach_radial_quantile": 0.43017021058212157,
+      "collection_seed": 3,
+      "runtime_seed": 2877690657
+    },
+    {
+      "candidate_index": 125,
+      "accepted_candidate_id": "seed3_candidate_125",
+      "start_angle": 1.230497788700421,
+      "start_radial_quantile": 0.4391905625575804,
+      "approach_angle": 4.06572001194068,
+      "approach_radial_quantile": 0.3073698617056102,
+      "collection_seed": 3,
+      "runtime_seed": 2774708025
+    },
+    {
+      "candidate_index": 126,
+      "accepted_candidate_id": "seed3_candidate_126",
+      "start_angle": 1.3616651601883414,
+      "start_radial_quantile": 0.10634344958763076,
+      "approach_angle": 5.054914962657577,
+      "approach_radial_quantile": 0.8757291368950023,
+      "collection_seed": 3,
+      "runtime_seed": 167490204
+    },
+    {
+      "candidate_index": 127,
+      "accepted_candidate_id": "seed3_candidate_127",
+      "start_angle": 4.439123496626759,
+      "start_radial_quantile": 0.604612368485309,
+      "approach_angle": 0.36398394269477397,
+      "approach_radial_quantile": 0.880724727199539,
+      "collection_seed": 3,
+      "runtime_seed": 3581971188
+    },
+    {
+      "candidate_index": 128,
+      "accepted_candidate_id": "seed3_candidate_128",
+      "start_angle": 2.975284673892256,
+      "start_radial_quantile": 0.6865644924074132,
+      "approach_angle": 0.7606941294088004,
+      "approach_radial_quantile": 0.7457528435654768,
+      "collection_seed": 3,
+      "runtime_seed": 1488809211
+    },
+    {
+      "candidate_index": 129,
+      "accepted_candidate_id": "seed3_candidate_129",
+      "start_angle": 6.021763476325727,
+      "start_radial_quantile": 0.7106467590526012,
+      "approach_angle": 3.3340489196642675,
+      "approach_radial_quantile": 0.653291261334993,
+      "collection_seed": 3,
+      "runtime_seed": 630757315
+    },
+    {
+      "candidate_index": 130,
+      "accepted_candidate_id": "seed3_candidate_130",
+      "start_angle": 1.4439381246087089,
+      "start_radial_quantile": 0.4990675661638897,
+      "approach_angle": 0.5409385195020204,
+      "approach_radial_quantile": 0.279534371436978,
+      "collection_seed": 3,
+      "runtime_seed": 1809135859
+    },
+    {
+      "candidate_index": 131,
+      "accepted_candidate_id": "seed3_candidate_131",
+      "start_angle": 1.0375608498612634,
+      "start_radial_quantile": 0.41610159967703064,
+      "approach_angle": 0.3973076006144933,
+      "approach_radial_quantile": 0.025780530297874193,
+      "collection_seed": 3,
+      "runtime_seed": 1226112482
+    },
+    {
+      "candidate_index": 132,
+      "accepted_candidate_id": "seed3_candidate_132",
+      "start_angle": 2.090143936726238,
+      "start_radial_quantile": 0.9914220815384828,
+      "approach_angle": 4.5682287802954,
+      "approach_radial_quantile": 0.42773063663748223,
+      "collection_seed": 3,
+      "runtime_seed": 4055554047
+    },
+    {
+      "candidate_index": 133,
+      "accepted_candidate_id": "seed3_candidate_133",
+      "start_angle": 0.7637157923578164,
+      "start_radial_quantile": 0.41650819479603096,
+      "approach_angle": 4.105315921188184,
+      "approach_radial_quantile": 0.8261202355891327,
+      "collection_seed": 3,
+      "runtime_seed": 856350404
+    },
+    {
+      "candidate_index": 134,
+      "accepted_candidate_id": "seed3_candidate_134",
+      "start_angle": 2.9057317000583387,
+      "start_radial_quantile": 0.8518579909454647,
+      "approach_angle": 5.097517366808858,
+      "approach_radial_quantile": 0.8496318367454552,
+      "collection_seed": 3,
+      "runtime_seed": 2553585555
+    },
+    {
+      "candidate_index": 135,
+      "accepted_candidate_id": "seed3_candidate_135",
+      "start_angle": 2.934207954548665,
+      "start_radial_quantile": 0.16027797451424564,
+      "approach_angle": 3.67290791253254,
+      "approach_radial_quantile": 0.04236853325588741,
+      "collection_seed": 3,
+      "runtime_seed": 1425589989
+    },
+    {
+      "candidate_index": 136,
+      "accepted_candidate_id": "seed3_candidate_136",
+      "start_angle": 2.9500341918156447,
+      "start_radial_quantile": 0.1636078349703115,
+      "approach_angle": 3.001508610502034,
+      "approach_radial_quantile": 0.18127855346638877,
+      "collection_seed": 3,
+      "runtime_seed": 2748075593
+    },
+    {
+      "candidate_index": 137,
+      "accepted_candidate_id": "seed3_candidate_137",
+      "start_angle": 2.6499719463726796,
+      "start_radial_quantile": 0.4282652388840501,
+      "approach_angle": 3.3998397873538955,
+      "approach_radial_quantile": 0.12465480679335095,
+      "collection_seed": 3,
+      "runtime_seed": 6461616
+    },
+    {
+      "candidate_index": 138,
+      "accepted_candidate_id": "seed3_candidate_138",
+      "start_angle": 3.130719439394135,
+      "start_radial_quantile": 0.29967306703498076,
+      "approach_angle": 0.5113672563715743,
+      "approach_radial_quantile": 0.410206914199307,
+      "collection_seed": 3,
+      "runtime_seed": 1160660693
+    },
+    {
+      "candidate_index": 139,
+      "accepted_candidate_id": "seed3_candidate_139",
+      "start_angle": 1.902720912891714,
+      "start_radial_quantile": 0.7134332289068664,
+      "approach_angle": 4.9559952385093204,
+      "approach_radial_quantile": 0.014016758692037334,
+      "collection_seed": 3,
+      "runtime_seed": 2864144184
+    },
+    {
+      "candidate_index": 140,
+      "accepted_candidate_id": "seed3_candidate_140",
+      "start_angle": 1.354381052978899,
+      "start_radial_quantile": 0.28364511358968014,
+      "approach_angle": 3.7215389584021508,
+      "approach_radial_quantile": 0.4869677313486108,
+      "collection_seed": 3,
+      "runtime_seed": 176741584
+    },
+    {
+      "candidate_index": 141,
+      "accepted_candidate_id": "seed3_candidate_141",
+      "start_angle": 0.46369546058699174,
+      "start_radial_quantile": 0.28711111364531605,
+      "approach_angle": 1.010329799677125,
+      "approach_radial_quantile": 0.7459953186157857,
+      "collection_seed": 3,
+      "runtime_seed": 2439834880
+    },
+    {
+      "candidate_index": 142,
+      "accepted_candidate_id": "seed3_candidate_142",
+      "start_angle": 4.294435522356744,
+      "start_radial_quantile": 0.3048872669048518,
+      "approach_angle": 5.505114975608414,
+      "approach_radial_quantile": 0.13562609356966948,
+      "collection_seed": 3,
+      "runtime_seed": 321227067
+    },
+    {
+      "candidate_index": 143,
+      "accepted_candidate_id": "seed3_candidate_143",
+      "start_angle": 2.345875919643034,
+      "start_radial_quantile": 0.6684516564547307,
+      "approach_angle": 5.944977200668386,
+      "approach_radial_quantile": 0.5086451325752177,
+      "collection_seed": 3,
+      "runtime_seed": 76539386
+    },
+    {
+      "candidate_index": 144,
+      "accepted_candidate_id": "seed3_candidate_144",
+      "start_angle": 0.8575758471742343,
+      "start_radial_quantile": 0.5973685033345462,
+      "approach_angle": 0.10559167017466843,
+      "approach_radial_quantile": 0.8180421497765824,
+      "collection_seed": 3,
+      "runtime_seed": 895029802
+    },
+    {
+      "candidate_index": 145,
+      "accepted_candidate_id": "seed3_candidate_145",
+      "start_angle": 0.6398488077411806,
+      "start_radial_quantile": 0.1492924272981202,
+      "approach_angle": 5.206462571035904,
+      "approach_radial_quantile": 0.9064264491235857,
+      "collection_seed": 3,
+      "runtime_seed": 1384812351
+    },
+    {
+      "candidate_index": 146,
+      "accepted_candidate_id": "seed3_candidate_146",
+      "start_angle": 1.1595426833073017,
+      "start_radial_quantile": 0.9980819533059645,
+      "approach_angle": 5.405436646982557,
+      "approach_radial_quantile": 0.3293776097597979,
+      "collection_seed": 3,
+      "runtime_seed": 1071181649
+    },
+    {
+      "candidate_index": 147,
+      "accepted_candidate_id": "seed3_candidate_147",
+      "start_angle": 0.9502406393746663,
+      "start_radial_quantile": 0.43642377399452525,
+      "approach_angle": 1.29129043339105,
+      "approach_radial_quantile": 0.1819425820722531,
+      "collection_seed": 3,
+      "runtime_seed": 219569247
+    },
+    {
+      "candidate_index": 148,
+      "accepted_candidate_id": "seed3_candidate_148",
+      "start_angle": 1.7135411165749057,
+      "start_radial_quantile": 0.8776376914537236,
+      "approach_angle": 0.2290155936932849,
+      "approach_radial_quantile": 0.9224580545285921,
+      "collection_seed": 3,
+      "runtime_seed": 2591874013
+    },
+    {
+      "candidate_index": 149,
+      "accepted_candidate_id": "seed3_candidate_149",
+      "start_angle": 4.636972721333683,
+      "start_radial_quantile": 0.5119344734114881,
+      "approach_angle": 5.940102133661152,
+      "approach_radial_quantile": 0.18129125671145307,
+      "collection_seed": 3,
+      "runtime_seed": 1929559880
+    },
+    {
+      "candidate_index": 150,
+      "accepted_candidate_id": "seed3_candidate_150",
+      "start_angle": 1.6040608038763156,
+      "start_radial_quantile": 0.5081722740751675,
+      "approach_angle": 3.189416693663322,
+      "approach_radial_quantile": 0.33102630587145154,
+      "collection_seed": 3,
+      "runtime_seed": 3700476120
+    },
+    {
+      "candidate_index": 151,
+      "accepted_candidate_id": "seed3_candidate_151",
+      "start_angle": 0.5600770041360182,
+      "start_radial_quantile": 0.502194965050265,
+      "approach_angle": 5.218868029402655,
+      "approach_radial_quantile": 0.8668177844750512,
+      "collection_seed": 3,
+      "runtime_seed": 1311319290
+    },
+    {
+      "candidate_index": 152,
+      "accepted_candidate_id": "seed3_candidate_152",
+      "start_angle": 2.605646935192431,
+      "start_radial_quantile": 0.9795661745710059,
+      "approach_angle": 6.075663673281258,
+      "approach_radial_quantile": 0.31950944607837195,
+      "collection_seed": 3,
+      "runtime_seed": 1373393053
+    },
+    {
+      "candidate_index": 153,
+      "accepted_candidate_id": "seed3_candidate_153",
+      "start_angle": 5.251100161968233,
+      "start_radial_quantile": 0.9407266251629952,
+      "approach_angle": 4.078763299459487,
+      "approach_radial_quantile": 0.9643899206268444,
+      "collection_seed": 3,
+      "runtime_seed": 500560784
+    },
+    {
+      "candidate_index": 154,
+      "accepted_candidate_id": "seed3_candidate_154",
+      "start_angle": 3.000458432250304,
+      "start_radial_quantile": 0.5238107230328893,
+      "approach_angle": 0.46552498143516413,
+      "approach_radial_quantile": 0.36998141749932834,
+      "collection_seed": 3,
+      "runtime_seed": 4073426139
+    },
+    {
+      "candidate_index": 155,
+      "accepted_candidate_id": "seed3_candidate_155",
+      "start_angle": 0.6489484472036888,
+      "start_radial_quantile": 0.1374856360363702,
+      "approach_angle": 0.2078682706224033,
+      "approach_radial_quantile": 0.495716001528576,
+      "collection_seed": 3,
+      "runtime_seed": 3971181938
+    },
+    {
+      "candidate_index": 156,
+      "accepted_candidate_id": "seed3_candidate_156",
+      "start_angle": 3.791639053927942,
+      "start_radial_quantile": 0.5325028067055965,
+      "approach_angle": 5.522909455327026,
+      "approach_radial_quantile": 0.6806092471734928,
+      "collection_seed": 3,
+      "runtime_seed": 2792591303
+    },
+    {
+      "candidate_index": 157,
+      "accepted_candidate_id": "seed3_candidate_157",
+      "start_angle": 3.7869401713828874,
+      "start_radial_quantile": 0.5059503420826138,
+      "approach_angle": 0.4688164183532502,
+      "approach_radial_quantile": 0.09734779261310689,
+      "collection_seed": 3,
+      "runtime_seed": 2735658590
+    },
+    {
+      "candidate_index": 158,
+      "accepted_candidate_id": "seed3_candidate_158",
+      "start_angle": 4.046951082006669,
+      "start_radial_quantile": 0.21188651009416581,
+      "approach_angle": 2.609973395682786,
+      "approach_radial_quantile": 0.6473517524272654,
+      "collection_seed": 3,
+      "runtime_seed": 529283465
+    },
+    {
+      "candidate_index": 159,
+      "accepted_candidate_id": "seed3_candidate_159",
+      "start_angle": 1.5349528268732082,
+      "start_radial_quantile": 0.2673046855931618,
+      "approach_angle": 0.8832878721230398,
+      "approach_radial_quantile": 0.6625056778066076,
+      "collection_seed": 3,
+      "runtime_seed": 2575825968
+    }
+  ]
+}

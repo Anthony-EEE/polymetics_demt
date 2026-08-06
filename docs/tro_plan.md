@@ -1,1313 +1,728 @@
-# T-RO 实验总计划与本周 MVP-0 执行规范
+# T-RO 实验总览：为什么做、怎么做、为什么这样做
 
-**状态：** execution-ready
-**日期：** 2026-07-23
-**本周范围：** 只做 PyBullet grasping、只研究 Position variation、只验证 robot-side 的 event-conditioned compatibility/coverage 假设。
-**本周不做：** encoder-decoder、forward model、AR redesign、human study、Rotation/Velocity、跨任务学习。
+**日期：** 2026-07-26
+**当前阶段：** Stage 2c Position composition Gate 3 出现真实 runtime-RNG
+protocol blocker；不得原样恢复 deterministic retry loop
+**当前执行计划：**
+`experiments/tro_stage2_position_composition/PLAN.md`
 
----
+## 一句话目标
 
-## 0. 给 Codex 的执行约定
+DEMT 已经证明 demonstration structure 会影响机器人学习。T-RO 要进一步让机器人
+通过 deployment experiments 学会：
 
-这份文件是本周实验的 source of truth。执行时遵守以下规则：
+> 不同任务阶段允许多大的 demonstration variation，以及哪些阶段需要更集中；
+> 然后把这些知识用于新任务的自动 guidance 和人类教学训练。
 
-1. 先阅读仓库中的 `AGENTS.md`、README、现有实验说明和当前 git 状态。
-2. 先定位现有 S15-S35 demonstration generator、policy training、rollout evaluation 和 metric code；不要假设文件名，也不要另起一套平行框架。
-3. 保留用户已有改动。只修改与本实验直接相关的代码。
-4. 所有新行为必须 config-driven；不要把 condition、seed、路径或评估状态硬编码在脚本中。
-5. 在通过“干预解耦”和“evaluation bank 校准”两个 gate 之前，不启动完整 policy matrix。
-6. 每完成一个 gate，先产出可检查的 manifest/summary，再进入下一步。
-7. 如果仓库实际语义与本计划中的 `free_reach_radius` 或 `pre_grasp_radius` 不一致，暂停训练；先在 `implementation_notes.md` 中写清真实语义及最小映射，再按科学意图实现。
-8. 本周是 screening，不用 2 个 repeats 宣称显著性，也不要把 rollout 当成独立 policy 样本。
-
----
-
-## 1. 研究的前因后果
-
-### 1.1 LfD 的隐藏假设
-
-Learning from Demonstration 通常希望机器人学习 expert behaviour，但经常默认：
-
-> 人能成功完成任务
-> 约等于
-> 人提供了适合当前机器人学习的数据。
-
-这两个命题并不等价。人可以依靠触觉、在线纠错、语义理解和自身身体能力完成任务，但固定机器人 learner 在有限数据预算下未必能从这些示范中学会。
-
-因此：
-
-> **Task-execution expert 不一定是 robot-teaching expert。**
-
-### 1.2 DEMT/CoRL 已经完成了什么
-
-DEMT 用固定 learner、固定数据预算和固定 deployment protocol，把 demonstration quality operationalise 为：
-
-\[
-D^\star=\arg\max_D J(A(D)).
-\]
-
-它不再只看 human task success，而是看由数据 \(D\) 训练出的 learner \(A(D)\) 在 deployment 中表现如何。
-
-DEMT manuscript 已经包含：
-
-- 在 grasping 和 insertion 中比较有限候选集
-  \(C=\{z_0,z_P,z_R,z_V\}\)；
-- 证明同样 task-successful 的 P/R/V 数据结构可产生显著不同的 deployment success；
-- 人工将 selected structures 转译为 corridor、grasp cue 和 speed bar；
-- 人工设定 corridor、orientation tolerance 和 speed thresholds；
-- 用 prism 训练 novice，并在撤除 guidance 后验证 prism、cube 和 ordered pick-and-place；
-- 明确主张 retained and transferable learner-aware teaching behaviour。
-
-因此 T-RO 不能把以下内容当作新的核心贡献：
-
-- deployment-based demonstration comparison；
-- “保持 P/R/V 一致”本身；
-- 用 AR guidance 训练 novice；
-- 从 prism 迁移到 cube/related manipulation；
-- 把人工阈值简单换成复杂 neural network。
-
-### 1.3 T-RO 真正要新增什么
-
-DEMT 目前是在人工给定、task-level 的有限候选集中做选择。T-RO 要进一步学习并保存：
-
-\[
-\text{task/event semantics}
-\rightarrow
-\text{learner-compatible demonstration distribution}.
-\]
-
-也就是从多个 source-task deployments 中自动提取：
-
-> 在什么任务事件中，人必须保持哪些性质聚拢；在什么事件中，适度多样性可以扩展 coverage；这些约束如何随 task/event 和 deployment distribution 改变。
-
-最终希望形成：
-
-> **The robot does not merely learn from experts; it learns from deployment what expertise should look like, and uses that knowledge to train future human teachers.**
-
-但严格来说，robot-only deployment 数据首先只能学习“机器人需要什么样的数据”，不能自动等价于“怎样最有效地教人”。
-
----
-
-## 2. 必须保持分开的三层
-
-### Layer 1: Robot compatibility
-
-\[
-F_{\mathrm{robot}}(x,q,\mathcal A,N,\rho)
-\rightarrow p_{\mathrm{success}},
-\]
-
-其中：
-
-- \(x\)：task/event semantic features；
-- \(q\)：demonstration dataset 中实际实现的 P/R/V variation；
-- \(\mathcal A\)：固定 learner；
-- \(N\)：demonstration budget；
-- \(\rho\)：deployment/evaluation distribution。
-
-### Layer 2: Guidance realisation
-
-\[
-H_{\mathrm{human}}(x,g,u)
-\rightarrow q_{\mathrm{realised}},
-\]
-
-其中 \(g\) 是 AR guidance setting，\(u\) 是具体用户。相同 guidance 不保证不同用户产生相同 demonstration distribution。
-
-### Layer 3: Human teaching
-
-\[
-g
-\rightarrow
-\text{behaviour change, retention, workload, transfer}.
-\]
-
-本周只验证 Layer 1 的最小前提。输出是 event-local compatible variation 的证据，不是 AR setting，也不是“学会了如何教人”。
-
-完整系统未来才求：
-
-\[
-g^\star=\arg\min_g C_{\mathrm{human}}(g)
-\]
-
-subject to
-
-\[
-\operatorname{LCB}
-\left[
-F_{\mathrm{robot}}
-\left(x,H_{\mathrm{human}}(x,g,u)\right)
-\right]\geq\eta.
-\]
-
----
-
-## 3. 整篇 T-RO 的完整逻辑链
-
-### 科学主张
-
-> Task- and event-conditioned demonstration compatibility can be predicted across tasks from deployment interventions.
-
-### 系统主张
-
-> Predicted compatibility boundaries can be translated into minimum-burden guidance for a held-out task.
-
-### 人体主张
-
-> Training with generated guidance produces retained teaching behaviour that transfers unguided to a further unseen task.
-
-完整验证链为：
-
-1. 多个 source tasks 上做 event-local deployment interventions；
-2. 学习并冻结 task/event-conditioned compatibility predictor；
-3. 在整个 held-out task A 上预测 \(q^\star\)；
-4. 用固定、预注册的 \(q^\star\rightarrow g\) 规则生成 guidance；
-5. 用 task A guidance 训练 novice；
-6. 撤除 task A guidance，验证 retention 和 A-policy deployment；
-7. 在 further held-out task B 上完全不给 guidance；
-8. 验证 human teaching-skill transfer；
-9. 训练 B-policy，并测 nominal 与明确指定的 shifted deployment。
-
-两个 held-out task 的作用不能混：
-
-| 测试 | 支持的主张 |
-|---|---|
-| Held-out A 上自动生成 guidance | selector/generalisation |
-| A 上撤除 guidance 后仍有效 | retention |
-| Held-out B 上完全无 guidance | human teaching-skill transfer |
-| B-policy nominal/shifted rollout | downstream policy performance/generalisation |
-
-本周 MVP-0 只回答：上述第 1 层是否存在值得学习的非平凡结构。
-
----
-
-## 4. 本周唯一科学问题
-
-> **在固定 \(N=30\) 的数据预算下，相同相对幅度的 Position variation 放在不同 event，是否产生不同 deployment effect；并且 free-reach variation 是否可能用 coverage 换取 shifted-start robustness，而 pre-contact variation 更受 precision/density 约束？**
-
-这里不是预设“多样性好”或“一致性好”。在有限数据下，variation 同时具有：
-
-- **Coverage benefit：** 覆盖更多状态，可能改善某个明确 shift 下的表现；
-- **Density/ambiguity cost：** 数据被摊薄，局部动作分布更散，可能降低精密学习。
-
-因此要寻找的是：
-
-\[
-q_e^\star
-=
-\arg\max_{q_e}
-\left[
-J_{\mathrm{ID}}(q_e)
-+
-\lambda J_{\mathrm{shift}}(q_e)
-\right],
-\]
-
-并检验 \(q_e^\star\) 是否依赖 event \(e\)。
-
-### 最小成功与强成功
-
-**最小成功：**
-
-> 同样的 P variation 在 `free_reach` 和 `pre_contact` 中产生方向或幅度不同的 deployment effect。
-
-这支持 event-conditioned compatibility，但尚不证明 diversity 提高 robustness。
-
-**强成功：**
-
-> `Free-wide` 改善 shifted-start coverage，且 nominal cost 很小；`Pre-tight` 保持 alignment/contact precision。
-
-这开始支持 event-conditioned consistency-coverage trade-off。
-
----
-
-## 5. 预注册假设与 contrasts
-
-令 \(J_\rho(c)\) 表示 condition \(c\) 在 evaluation regime \(\rho\) 下的 deployment success。
-
-### H1: Free-reach coverage benefit
-
-\[
-B_{\mathrm{free}}
-=
-J_{\rho_{\mathrm{free}}}(\text{Free-wide})
--
-J_{\rho_{\mathrm{free}}}(\text{Free-tight})
->0.
-\]
-
-同时检查 nominal cost：
-
-\[
-C_{\mathrm{free}}
-=
-J_{\rho_{\mathrm{ID}}}(\text{Free-wide})
--
-J_{\rho_{\mathrm{ID}}}(\text{Free-tight}).
-\]
-
-期望：
-
-\[
-B_{\mathrm{free}}>0,\qquad C_{\mathrm{free}}\approx0.
-\]
-
-### H2: Pre-contact precision benefit
-
-\[
-B_{\mathrm{pre}}
-=
-J_{\rho_{\mathrm{ID}}}(\text{Pre-tight})
--
-J_{\rho_{\mathrm{ID}}}(\text{Pre-wide})
->0.
-\]
-
-并且 `Pre-wide` 的额外失败应主要发生在 alignment/contact/lift transition，而不是 free reach。
-
-### H3: Event interaction
-
-\[
-I_{\mathrm{event}}
-=
-\left[
-J_{\rho_{\mathrm{ID}}}(\text{Free-wide})
--
-J_{\rho_{\mathrm{ID}}}(\text{Free-tight})
-\right]
--
-\left[
-J_{\rho_{\mathrm{ID}}}(\text{Pre-wide})
--
-J_{\rho_{\mathrm{ID}}}(\text{Pre-tight})
-\right].
-\]
-
-若 \(I_{\mathrm{event}}>0\)，说明 widening 的影响依赖 variation 所在 event。
-
-### H4: Coverage-specific interaction
-
-\[
-I_{\mathrm{coverage}}
-=
-\left[
-J_{\rho_{\mathrm{free}}}(\text{Free-wide})
--
-J_{\rho_{\mathrm{free}}}(\text{Free-tight})
-\right]
--
-\left[
-J_{\rho_{\mathrm{ID}}}(\text{Free-wide})
--
-J_{\rho_{\mathrm{ID}}}(\text{Free-tight})
-\right].
-\]
-
-若 \(I_{\mathrm{coverage}}>0\)，Free-wide 的价值确实与 shifted-start coverage 有关，而不是对所有 evaluation 都统一更好。
-
-### H5: Combined recipe，只有 MVP-0A 通过后测试
-
-\[
-J(\text{Free-wide + Pre-tight})
->
-J(\text{Free-tight + Pre-wide}).
-\]
-
-这一步检验 event-conditioned recipe 是否优于把原则放反，而不是只比较单个局部效应。
-
----
-
-## 6. 操作定义
-
-### 6.1 两个 event
-
-只使用两个 event：
-
-- `free_reach`：episode 开始至首次进入固定 alignment/approach region；
-- `pre_contact`：首次进入该 region 至 `min(gripper_close_onset, first_contact)`；若其中一个事件不存在，则使用另一个。
-
-实现时必须：
-
-1. 优先使用 simulator 的几何/接触/夹爪事件，不按轨迹“前 60%/后 40%”切分；
-2. 冻结一个与 condition 无关的 `event_definition_version`；
-3. alignment region 的边界不能使用 condition-specific variation radius；
-4. 同时记录 `first_alignment_entry`、`gripper_close_onset` 和 `first_contact`，即使主分段只使用其中两个；
-5. 如果当前 generator 的语义不支持上述分段，先记录真实 state machine，再做最小映射。
-
-### 6.2 两个 manipulated knobs
-
-- `free_reach_radius`：只控制 free-reach demonstration distribution；
-- `pre_grasp_radius`：只控制 pre-contact/final-alignment demonstration distribution。
-
-这两个量是 demonstration generator 的干预参数，不是 event boundary，也不是 AR guidance setting。
-
-特别注意：
-
-> 本 MVP 中的 reference `25 cm / 6 cm` 是当前 simulation intervention 的计划值。DEMT manuscript Appendix A.5 中的 AR corridor 是 `25 cm / 5 cm / 3 cm`；两者不能混写或互相引用。
-
-### 6.3 Planned 与 realised variation
-
-训练 condition 由 planned radius 定义，但分析必须同时报告 realised event-local variation。
-
-在 object/event frame 中，将每个 event 按 event progress 重采样到固定长度 \(T_e\)，计算：
-
-\[
-q_{P,e}^{\mathrm{metres}}
-=
-\sqrt{
-\frac{1}{T_e}
-\sum_{t=1}^{T_e}
-\operatorname{tr}
-\left[
-\operatorname{Cov}_i
-\left(p^\perp_{i,t}\right)
-\right]
-}.
-\]
-
-同时保存无量纲量：
-
-\[
-a_{P,e}
-=
-\frac{q_{P,e}^{\mathrm{metres}}}{s_e},
-\]
-
-其中 \(s_e\) 是冻结的 local geometric scale，例如 workspace span、clearance 或 alignment tolerance。MVP 内同时报告 raw metres 和 dimensionless value；不要只报告 planned radius。
-
-### 6.4 Evaluation regimes
-
-每个 policy 在完全相同的三组 evaluation states 上测试：
-
-| Regime | 定义 | 回答的问题 |
-|---|---|---|
-| \(\rho_{\mathrm{ID}}\) | 原始 nominal rollout distribution | 基本任务精度/成功 |
-| \(\rho_{\mathrm{free}}\) | 冻结的 held-out outer-band start states | free-reach coverage |
-| \(\rho_{\mathrm{pre}}\) | 在进入 pre-contact 时施加冻结的小幅 lateral/alignment perturbation | local recovery/precision |
-
-“Robustness”只能写成对上述明确 shift 的 robustness，不能泛称 general robustness。
-
----
-
-## 7. MVP-0A：五条件 screening
-
-五个训练条件使用相同的相对 multipliers：tight = \(0.6\times\)，reference = \(1.0\times\)，wide = \(1.4\times\)。
-
-| Condition | Free-reach radius | Pre-grasp radius | Free multiplier | Pre multiplier |
-|---|---:|---:|---:|---:|
-| `reference` | 25 cm | 6.0 cm | 1.0 | 1.0 |
-| `free_tight` | 15 cm | 6.0 cm | 0.6 | 1.0 |
-| `free_wide` | 35 cm | 6.0 cm | 1.4 | 1.0 |
-| `pre_tight` | 25 cm | 3.6 cm | 1.0 | 0.6 |
-| `pre_wide` | 25 cm | 8.4 cm | 1.0 | 1.4 |
-
-### Screening 规模
-
-- 5 conditions；
-- 每个 condition 2 个 independent paired dataset-policy blocks；
-- 每个 dataset 30 个 task-successful demonstrations；
-- 每个 dataset 从头训练 1 个 policy；
-- 每个 policy 在 3 个 regimes 下各 10 个 rollouts。
-
-总计：
-
-- 10 datasets；
-- 10 policies；
-- 300 rollouts。
-
-这只能用于 screening 和方向判断，不能作为正式 statistical claim。
-
----
-
-## 8. 配对、随机种子和独立实验单位
-
-### 8.1 Paired block
-
-每个 `paired_block_id`：
-
-1. 先生成一组 30 个 canonical latent samples；
-2. 五个 conditions 共用 task instances、object states、扰动方向/quantiles 和 demonstration indices；
-3. 只改变目标 event 对应的 radius/multiplier；
-4. 五个 policies 使用相同 training seed；
-5. 第二个 block 使用另一组 demo seed 和 training seed。
-
-建议 seed contract：
+完整逻辑为：
 
 ```text
-block_id
-demo_base_seed
-policy_seed
-eval_bank_version
-condition_id
-```
-
-### 8.2 避免 condition-specific selection bias
-
-所有 demonstrations 必须 task-successful，但不能让某个 condition 无限 retry，直到保留了更容易的样本。
-
-必须：
-
-- 预先固定 latent sample/perturbation index；
-- 记录每次生成尝试、失败原因和 retry count；
-- 使用所有 conditions 相同的 retry policy；
-- 如果某个 latent sample 在某 condition 下不可生成，标记 invalid 并对整个 paired block 的该 index 共同重采样；
-- 在 manifest 中保留 discarded indices。
-
-### 8.3 独立单位
-
-主要独立实验单位是：
-
-\[
-\text{demonstration dataset}
-\rightarrow
-\text{trained policy}.
-\]
-
-rollouts 是同一 policy 的重复 deployment trials。300 个 rollouts 不能被当成 300 个独立 learner samples。
-
----
-
-## 9. Evaluation bank 的构造与冻结
-
-### 9.1 \(\rho_{\mathrm{ID}}\)
-
-- 复用原始 nominal rollout protocol；
-- 创建 10 个固定 `eval_state_id`；
-- 任何 condition 都使用完全相同的 state 顺序。
-
-### 9.2 \(\rho_{\mathrm{free}}\)
-
-- 从机器人可达、无碰撞的 outer-band start states 中采样；
-- 与 demonstration generation seeds 完全分离；
-- state 应对 `free_tight` 形成 coverage challenge；
-- 不要通过改变 object/grasp geometry 同时引入 pre-contact confound。
-
-优先实现为一个版本化 `eval_state_bank`，而不是每次 rollout 在线随机采样。
-
-### 9.3 \(\rho_{\mathrm{pre}}\)
-
-优先方案：
-
-- 完整执行 free reach；
-- 在首次进入固定 pre-contact region 时，对 EE/object-relative alignment state 施加一次冻结的 lateral offset；
-- 记录注入前后 state 和 perturbation vector；
-- 之后正常闭环 rollout。
-
-如果 simulator 不支持安全 mid-episode injection，替代方案是从已保存的 pre-contact states reset 并评估 alignment-to-lift subepisode；此时必须单独标记 `rollout_scope=precontact_subepisode`，不能与 full-task ID success 混为同一指标。
-
-### 9.4 只用 reference policy 校准一次
-
-在完整 matrix 运行前，可用现有/reference policy 检查 evaluation bank：
-
-- ID 不应完全 floor；
-- shifted regime 不应全部 0% 或 100%；
-- perturbation 必须物理可行且不直接造成任务失败。
-
-默认校准目标是让 reference policy 在 shifted regime 中落在约 20%-80% 的非饱和区间。只允许在看到其他 condition 结果前调整一次；冻结后写入：
-
-```text
-eval_bank_version
-creation_seed
-state_ids
-shift_type
-shift_magnitude
-calibration_policy_id
-frozen_at
+多个机器人 source tasks
+        ↓
+分别改变 Start / Approach / Grasp 等阶段的数据 variation
+        ↓
+训练 policy 并测 deployment success
+        ↓
+学习“哪个阶段允许多样、哪个阶段需要集中”
+        ↓
+在 held-out task A 上自动生成 guidance
+        ↓
+训练人类教师，撤除 guidance 后测 retention
+        ↓
+在完全未见过的 task B 上无 guidance 测 teaching transfer
 ```
 
 ---
 
-## 10. 数据存储规范
+## 1. 为什么做？
 
-不要只保存 aggregate success rate。至少保留四层。
+### 1.1 DEMT 已经证明了什么
 
-### 10.1 Dataset manifest：一行一个 dataset
+DEMT 已经证明：
 
-```text
-dataset_id
-paired_block_id
-task_id
-condition_id
-event_definition_version
-generator_version
-demo_base_seed
-free_radius_planned_m
-pre_radius_planned_m
-free_multiplier
-pre_multiplier
-q_P_free_realised_m
-q_P_pre_realised_m
-a_P_free_realised
-a_P_pre_realised
-num_demonstrations
-num_generation_attempts
-num_discarded_indices
-all_demo_task_success
-trajectory_store
-created_at
-```
+- 人能成功完成任务，不代表 demonstrations 适合机器人 learner；
+- Position、Rotation、Velocity 数据结构会影响 policy deployment success；
+- 相同 demonstration 数量下，更适合 learner 的数据可以训练出更好的 policy；
+- AR guidance 可以帮助 novice 产生更适合 learner 的 demonstrations。
 
-### 10.2 Demonstration trajectory：逐步保存
+这些结果是 T-RO 的起点，不是 T-RO 要重新包装的新贡献。
 
-尽量复用现有 trajectory format，并补充：
+### 1.2 DEMT 仍然缺少什么
+
+DEMT 的设置主要由研究者人工决定：
+
+- 人工选择 P/R/V candidates；
+- task-level 参数可能同时改变多个 trajectory stages；
+- corridor、orientation tolerance 和 speed range 由研究者设置；
+- 到新任务时仍需要研究者重新设计 guidance。
+
+以 Position S15–S35 为例，原条件同时改变：
 
 ```text
-dataset_id
-demo_id
-timestep
-sim_time
-event_label
-event_progress
-ee_position
-ee_orientation
-gripper_state
-object_pose
-distance_to_contact
-contact_state
-required_precision
-constrained_dof
-task_success
+Start radius
+Approach/pre-grasp radius
 ```
 
-### 10.3 Policy manifest：一行一个 trained policy
+因此旧实验能说明整体 Position scale 影响 policy，但不能回答：
 
-```text
-policy_id
-dataset_id
-paired_block_id
-condition_id
-training_seed
-learner_name
-learner_version
-git_commit
-config_path
-data_budget
-checkpoint_path
-training_status
-best_or_final_checkpoint_rule
-validation_loss
-created_at
-```
+- Start variation 的独立作用是什么；
+- Approach variation 的独立作用是什么；
+- variation 的作用是否依赖 trajectory stage；
+- 这些 stage-conditioned 规律能否迁移到新任务。
 
-所有 condition 必须使用同一 checkpoint selection rule。不能根据 rollout performance 选 checkpoint。
+### 1.3 T-RO 的核心研究问题
 
-### 10.4 Rollout table：一行一个 rollout
+T-RO 要回答：
 
-```text
-rollout_id
-policy_id
-dataset_id
-paired_block_id
-condition_id
-eval_bank_version
-eval_regime
-eval_state_id
-rollout_scope
-shift_event
-shift_type
-shift_vector
-shift_magnitude
-rollout_initial_state
-success
-first_failure_event
-reached_alignment
-gripper_close_started
-contact_formed
-stable_contact
-lift_started
-lift_success
-termination_reason
-video_or_trace_path
-```
+> 机器人能否从多个任务的 deployment results 中学出 stage-conditioned
+> demonstration requirements，并用于一个没参与训练的新任务？
 
-### 10.5 推荐目录结构
+可能的规律包括：
 
-适配现有仓库结构，不要机械新建重复目录。若现有结构没有等价位置，可采用：
+- Start variation 增加初始状态 coverage；
+- Approach/Descent variation 过大时，在固定数据预算下可能降低抓取精度；
+- Grasp 附近的 Position/Rotation 可能需要更集中；
+- 非接触关键阶段可以允许更多 variation，从而减少对人的限制。
 
-```text
-experiments/mvp0_position_event/
-  configs/
-    conditions.yaml
-    eval_bank.yaml
-    training.yaml
-  manifests/
-    datasets.csv
-    policies.csv
-    rollouts.parquet
-  data/
-    demonstrations/
-    eval_banks/
-  checkpoints/
-  analysis/
-    summary.md
-    screening_decision.json
-    figures/
-  logs/
-  implementation_notes.md
-```
+这些是待验证假设，不是预设结论。实验也必须允许相反结果。
 
-大体量 trajectory/checkpoint 是否进入 git，应遵守仓库现有规则。
+### 1.4 为什么还需要 human study
+
+Robot deployment 只能告诉我们：
+
+> 什么 demonstrations 对固定 learner 有用。
+
+它不能直接证明：
+
+> 什么 guidance 容易被人理解、实现、保留和迁移。
+
+因此整篇 T-RO 必须分开验证：
+
+1. **Robot compatibility：** 机器人需要什么数据；
+2. **Guidance realisation：** guidance 能否让人产生目标数据；
+3. **Human teaching：** 撤掉 guidance 后，人能否保留并迁移教学行为。
 
 ---
 
-## 11. 实现任务：按 gate 顺序执行
+## 2. 怎么做？
 
-### Gate 0: Repository audit
+## Stage 1：单任务机制验证——当前 Position MVP
 
-先输出 `implementation_notes.md`，回答：
-
-1. S15-S35 在哪里定义？
-2. 现有一个 radius 实际影响哪些 trajectory waypoints/events？
-3. 30 demonstrations 如何生成和验证 task success？
-4. learner 的训练入口、seed、checkpoint selection 是什么？
-5. rollout initial state 当前如何采样？
-6. success 与 failure 当前如何判断？
-7. 是否已有 event/contact/gripper logs？
-8. 是否已有 MPCV 或 event-local variation metrics？
-
-**Gate 0 通过条件：** 找到最小修改点，并明确现有 confound 的代码证据。
-
-### Gate 1: 解耦 generator
-
-将原先共同变化的参数拆为：
+使用现有 PyBullet grasping：
 
 ```text
-free_reach_radius
-pre_grasp_radius
+Start → Approach → Descent → Grasp → Lift
 ```
 
-要求：
+轨迹、generator、grasp target 和 lift target 不变，只把原 S15–S35 中共同变化的
+两个 radius 拆开。
 
-- 两者独立配置；
-- reference config 可重现现有 S25/reference 行为；
-- 其他 task geometry、orientation、velocity、data budget 保持不变；
-- generator 每步输出 event label/state；
-- 保存 planned 和 realised variation。
+旧 S25 `(25 cm, 6.0 cm)` 与 Reference 完全相同，因此保留为 historical
+reference，不重新采集和训练。新实验只做四个拆分条件：
 
-**必要测试：**
-
-1. `reference` 的关键 trajectory statistics 与旧 reference 在容差内一致；
-2. 改 `free_reach_radius` 时，planned pre setting 不变；
-3. 改 `pre_grasp_radius` 时，planned free setting 不变；
-4. event definition 不随 condition 改变；
-5. 5 个 condition 各生成 2-3 条 smoke demos，均可 task-success；
-6. trajectory visualisation 能直观看到 variation 只发生在目标 event。
-
-**Gate 1 通过条件：** 干预在 planned 与 realised 层面均基本解耦。若非目标 event 的 realised variation 改变超过预注册容差，先诊断动力学耦合，不训练完整 matrix。
-
-建议 screening 容差：非目标 event 的 realised variation 相对 reference 改变不超过 10%。若物理耦合使 10% 不可达，报告实际耦合量并重新定义可识别 contrast。
-
-### Gate 2: Event labelling 与 failure state machine
-
-实现统一 state machine：
-
-```text
-free_reach
-pre_contact
-contact
-lift
-success
-failure
-```
-
-至少自动输出：
-
-```text
-reached_alignment
-gripper_close_started
-contact_formed
-stable_contact
-lift_started
-lift_success
-first_failure_event
-```
-
-**Gate 2 通过条件：** 在一小组成功/失败 rollout traces 上人工核验自动 label，无明显 phase misclassification。
-
-### Gate 3: Evaluation banks
-
-创建并版本化：
-
-- `rho_id_v1`；
-- `rho_free_v1`；
-- `rho_pre_v1`。
-
-用 reference policy 做一次非饱和校准，冻结后不再依据 condition results 修改。
-
-**Gate 3 通过条件：**
-
-- 每个 bank 有 10 个固定 state IDs；
-- 所有 state 物理可行；
-- shift 不会直接强制失败；
-- 每个 policy 可按完全相同顺序复现。
-
-### Gate 4: Generate MVP-0A datasets
-
-生成 2 个 paired blocks × 5 conditions × 30 demonstrations。
-
-先只生成 block 0，运行 realised-variation validation；通过后再生成 block 1。
-
-**Gate 4 通过条件：**
-
-- 10 个 datasets 均为 30 个 task-successful demos；
-- manifest 完整；
-- 配对 seed contract 正确；
-- `free_tight < reference < free_wide` 的 realised free variation 单调；
-- `pre_tight < reference < pre_wide` 的 realised pre variation 单调；
-- 非目标 event 变化在容差内。
-
-### Gate 5: Train policies
-
-- 每个 dataset 从头训练；
-- block 内使用相同 policy seed；
-- block 间使用不同 seed；
-- 固定 learner、data budget、training steps、augmentation 和 checkpoint rule；
-- 不根据 rollout 结果重新选 checkpoint。
-
-建议先训练一个完整 paired block 的 5 个 policies，确认 pipeline 后再训练第二 block。
-
-**Gate 5 通过条件：**
-
-- 10 个 policy jobs 均成功；
-- configs、logs、git commit、checkpoint 均可追溯；
-- 没有 silent resume 或 checkpoint reuse。
-
-### Gate 6: Evaluate
-
-每个 policy：
-
-- `rho_id_v1`: 10 rollouts；
-- `rho_free_v1`: 10 rollouts；
-- `rho_pre_v1`: 10 rollouts。
-
-总计 300 rollouts。
-
-运行期间不按结果中途更换 state bank 或 perturbation magnitude。
-
-**Gate 6 通过条件：** rollout table 300 行，state ID coverage 完整，无 condition-specific missingness。
-
-### Gate 7: Analyse and decide
-
-输出：
-
-1. 每个 policy × regime 的 success；
-2. paired block contrasts；
-3. Beta-binomial/Wilson uncertainty for rollout success；
-4. realised variation plots；
-5. failure-event composition；
-6. H1-H4 的方向和 effect size；
-7. `screening_decision.json`。
-
-本周 screening 不做以 300 rollouts 为 \(n=300\) 的普通 t-test。
-
----
-
-## 12. MVP-0A 的 screening decision rule
-
-以下阈值是工程决策阈值，不是论文显著性阈值。必须在运行完整 matrix 前冻结；如果已有更合理的领域阈值，可修改一次并在 config 中记录理由。
-
-### Strong pass
-
-同时满足：
-
-1. 两个 blocks 中 \(B_{\mathrm{free}}\) 方向均为正；
-2. 平均 \(B_{\mathrm{free}}\geq 0.20\)；
-3. 平均 \(C_{\mathrm{free}}\geq -0.10\)；
-4. 两个 blocks 中 \(B_{\mathrm{pre}}\) 方向均为正；
-5. 平均 \(B_{\mathrm{pre}}\geq 0.20\)；
-6. `Pre-wide` 的额外失败主要集中在 alignment/contact/lift transition。
-
-动作：进入 MVP-0B。
-
-### Directional but inconclusive
-
-两类 contrast 方向基本符合，但 effect 小于 0.20、某 block 为 0，或 K=10 的离散性太大。
-
-动作：
-
-- 先把每个已有 policy 的每个 regime 补到 K=20；
-- 不立即增加新 dataset-policy repeats；
-- 使用同一 frozen evaluation bank 的扩展 state IDs；
-- 重新判断方向和不确定性。
-
-### Event-conditioned minimum pass
-
-若 \(B_{\mathrm{pre}}>0\) 且 free/pre widening 的 effect 明显不同，但 Free-wide 没有提高 \(\rho_{\mathrm{free}}\)：
-
-动作：
-
-- 可以保留“event-conditioned sensitivity”故事；
-- 不得声称 coverage/robustness benefit；
-- MVP-0B 是否执行取决于 event interaction 是否稳定。
-
-### Fail / diagnostic branch
-
-见第 15 节 decision table。
-
----
-
-## 13. MVP-0B：组合验证，仅在 Gate 7 通过后执行
-
-增加：
-
-| Condition | Free reach | Pre-contact | 含义 |
-|---|---:|---:|---|
-| `event_conditioned` | 35 cm | 3.6 cm | free 多样、pre 聚拢 |
-| `swapped` | 15 cm | 8.4 cm | 将原则放反 |
-
-规模：
-
-- 2 conditions；
-- 2 paired blocks；
-- 30 demos/dataset；
-- 4 policies；
-- 每个 policy 3 regimes × 10 rollouts；
-- 120 rollouts。
-
-本周若 MVP-0A strong pass，总量为：
-
-- 14 policies；
-- 420 rollouts。
-
-### MVP-0B 主要判断
-
-报告：
-
-\[
-\Delta_\rho
-=
-J_\rho(\text{event-conditioned})
--
-J_\rho(\text{swapped})
-\]
-
-for \(\rho_{\mathrm{ID}},\rho_{\mathrm{free}},\rho_{\mathrm{pre}}\)。
-
-screening pass：
-
-- 两个 paired blocks 的 equal-weight mean
-  \(\frac{1}{3}\sum_\rho\Delta_\rho\) 均为正；
-- 没有任一关键 regime 出现大于 10 percentage points 的不可解释 regression；
-- failure modes 与“swapped 在 pre-contact 失去精度”一致。
-
-这一步仍不是正式论文实验。
-
-### 正式 follow-up controls，不默认纳入本周
-
-正式实验需再加入：
-
-| Condition | Free reach | Pre-contact |
+| New condition | Start radius | Approach radius |
 |---|---:|---:|
-| `taskwide_tight` | 15 cm | 3.6 cm |
-| `taskwide_wide` | 35 cm | 8.4 cm |
+| Start-tight | 15 cm | 6.0 cm |
+| Start-wide | 35 cm | 6.0 cm |
+| Approach-tight | 25 cm | 3.6 cm |
+| Approach-wide | 25 cm | 8.4 cm |
 
-并把所有关键 conditions 补到至少 4 个 independent dataset-policy repeats。这样才能证明 event-conditioned recipe 不只是“全部收紧”或“全部放宽”。
+回答：
 
----
+- Start variation 是否影响 outer-start coverage；
+- Approach variation 是否影响最终 grasp/lift success；
+- 两个阶段的 variation effect 是否不同。
 
-## 14. 分析规范
+评估：
 
-### 14.1 Primary outputs
+- 复用旧正式 N50 shared-start manifest；
+- Reference-range starts：旧 manifest 中 0–25 cm 的 25 个 states；
+- Outer starts：旧 manifest 中 25–35 cm 的 25 个 states；
+- Primary outcome：`cube z >= 0.20 m`；
+- 每个 dataset 30 条成功 demonstrations；
+- learner、40 epochs、epoch-40 checkpoint 和 rollout states 全部固定；
+- 先做一个 4-policy paired block；
+- 只有任一预注册 primary contrast 达到 `4/25 = 0.16` 的预期方向，才做第二个
+  independent 4-policy block。
 
-每个 policy/regime：
+第一 block 没有方向性信号就因 futility 停止。第二 block 只用于确认第一 block
+中值得确认的信号。无论结果如何，Stage 1 结束后都不自动启动 Stage 2。
 
-\[
-\hat J=\frac{\text{successes}}{K}.
-\]
-
-同时报告：
-
-- successes / K；
-- rollout-level binomial interval；
-- paired-block effect；
-- across-policy mean 仅作 descriptive summary。
-
-### 14.2 Failure analysis
-
-至少分：
+本阶段的唯一执行规范见：
 
 ```text
-reach_failure
-alignment_failure
-no_contact
-unstable_contact
-lift_failure
-timeout
-unsafe_or_workspace
-unknown
+experiments/mvp0_position_event/PLAN.md
 ```
 
-必须检查：
-
-- `Pre-wide` 的失败是否在 alignment/contact；
-- `Free-tight` 在 \(\rho_{\mathrm{free}}\) 下是否在进入 alignment 前失败；
-- shift 注入是否直接造成 failure；
-- success 变化是否来自意外的 termination logic。
-
-### 14.3 Realised intervention check
-
-画出：
-
-- \(q_{P,\mathrm{free}}\) by condition/block；
-- \(q_{P,\mathrm{pre}}\) by condition/block；
-- planned radius vs realised variation；
-- target-event effect vs leakage into non-target event。
-
-若 planned ordering 没有反映在 realised variation 中，则 rollout 结果不能解释为 event-local P intervention。
-
-### 14.4 正式阶段统计模型
-
-当 repeats 至少为 4 且 design 完整后，可用 hierarchical/binomial model：
-
-\[
-y_{b,c,r,k}\sim\operatorname{Bernoulli}(p_{b,c,r}),
-\]
-
-\[
-\operatorname{logit}(p_{b,c,r})
-=
-\alpha_b+\beta_c+\gamma_r+(\beta\gamma)_{c,r},
-\]
-
-其中 \(b\) 是 dataset-policy block，\(c\) 是 training condition，\(r\) 是 evaluation regime。
-
-本周不需要为这个模型写复杂 neural code。
-
----
-
-## 15. 结果分支与停止条件
-
-| 观察 | 科学解释 | 下一步 |
-|---|---|---|
-| `Free-wide` 改善 \(\rho_{\mathrm{free}}\)，ID 基本不降；`Pre-tight` 改善 ID/contact | 强 consistency-coverage trade-off | 做 MVP-0B |
-| Pre effect 强，free effect 接近 0 | event-conditioned sensitivity 成立，coverage 未证明 | 补 K；谨慎决定组合验证 |
-| Free/pre widening 在所有 regimes 同样有害 | 可能是 task-wide finite-data density cost | 暂停“free diversity 有益”主张；检查 event 解耦 |
-| Free/pre widening 都无影响 | amplitude 未跨边界或 learner 不敏感 | 只允许一次幅度扩展后复测 |
-| Free-wide 提高 shift 但明显损害 ID | 存在 coverage-precision trade-off，但不是免费收益 | 后续显式学习 Pareto/utility，而非宣称 wide 最优 |
-| Pre-wide 也提高 \(\rho_{\mathrm{pre}}\) 且不损害 ID | pre-contact 同样受 coverage benefit | 接受结果，寻找 event-dependent optimum，不强迫“pre 必须 tight” |
-| 两个 blocks 效应方向相反 | dataset/policy variance 主导 | 补 repeats/检查训练稳定性，不训练 generator |
-| realised intervention 泄漏到另一 event | 干预不可识别 | 回到 Gate 1，禁止解释 deployment contrast |
-| reference/所有 conditions floor 或 ceiling | evaluation 缺乏分辨率 | 在解盲其他结果前重新校准 bank；否则新建预注册 follow-up |
-| failure label 大量 unknown | 机制解释不可用 | 修 state machine 后重跑必要 traces |
-
-### 一次 amplitude adjustment 的规则
-
-若 tight/reference/wide 的 realised variation 已单调，但所有 deployment effects 接近 0，可将 multiplier 从 `0.6/1.4` 改成更强的、物理可行的一组，例如 `0.4/1.6`。
-
-要求：
-
-- 只调整一次；
-- 两个 events 使用相同相对 multipliers；
-- 重新生成全部相关 paired datasets；
-- 不把原、新 amplitude 混成同一 condition；
-- 在 analysis 中明确标为 follow-up，不隐藏第一次 null result。
-
----
-
-## 16. 本周建议执行节奏
-
-### Day 1: Audit + 解耦
-
-- 完成 Gate 0；
-- 找到 S15-S35 confound；
-- 实现两个独立 knobs；
-- 生成 trajectory overlay/smoke demos。
-
-### Day 2: Labels + evaluation banks
-
-- 完成 event/failure state machine；
-- 构建 3 个 evaluation banks；
-- 用 reference policy 校准并冻结；
-- 完成 config/manifest contract。
-
-### Day 3: Dataset generation + first block
-
-- 生成 block 0 的五个 datasets；
-- 做 realised variation/leakage validation；
-- 训练 block 0 的五个 policies；
-- 做小规模 pipeline sanity evaluation。
-
-### Day 4: Second block + full evaluation
-
-- 生成/训练 block 1；
-- 完成 MVP-0A 的 300 rollouts；
-- 自动生成 summary 和 figures。
-
-### Day 5: Decision
-
-- 按 Gate 7 判定 strong/directional/fail；
-- strong pass 时启动 MVP-0B；
-- 否则执行对应诊断，不提前进入 insertion/model/human。
-
-实际训练耗时若较长，保持 gate 顺序，不为赶进度跳过 realised-intervention validation。
-
----
-
-## 17. 本周必须交付的 artifacts
-
-1. `implementation_notes.md`
-   - 现有代码路径；
-   - 原 S15-S35 confound；
-   - 实际 event/parameter 语义；
-   - 所有偏离本计划的决定。
-2. `conditions.yaml`
-   - 五个 MVP-0A conditions；
-   - 若通过，再追加两个 MVP-0B conditions。
-3. `eval_bank.yaml` 与可复现 state files。
-4. dataset/policy/rollout manifests。
-5. event-labelled trajectory traces。
-6. 三类 figures：
-   - realised event-local variation；
-   - success by condition × regime；
-   - failure-event composition。
-7. `analysis/summary.md`
-   - H1-H4；
-   - paired effects；
-   - limitations；
-   - gate decision。
-8. `analysis/screening_decision.json`
-   - `strong_pass` / `directional` / `minimum_pass` / `fail`；
-   - 触发的证据和下一动作。
-9. 可复制的 commands 或 launcher config，能从 manifest 重现全部 run。
-
----
-
-## 18. Definition of Done
-
-本周 MVP-0A 只有同时满足以下条件才算完成：
-
-- [ ] Free/pre generator knobs 已独立；
-- [ ] reference 行为与旧 pipeline 兼容；
-- [ ] event definition 固定且不依赖 condition；
-- [ ] realised target-event variation 单调；
-- [ ] 非目标 event leakage 已量化；
-- [ ] 三个 evaluation banks 已冻结；
-- [ ] 10 个 datasets，每个 30 个成功 demos；
-- [ ] 10 个 policies 全部从头训练；
-- [ ] 300 个 rollouts 使用相同 state banks；
-- [ ] rollout-level outcome 和 failure event 完整；
-- [ ] 分析以 dataset-policy 为独立单位；
-- [ ] H1-H4 的 effect/direction 已报告；
-- [ ] 按预注册规则作出下一步决定；
-- [ ] 没有训练 encoder-decoder 或启动 human study。
-
-MVP-0B 只有在 strong pass 后才进入；完成标准为额外 4 policies、120 rollouts 和 event-conditioned vs swapped 的 paired comparison。
-
----
-
-## 19. 本周明确不做什么
-
-以下内容全部 deferred：
-
-- 不增加 Rotation 或 Velocity；
-- 不把 “need consistency/diversity” 当作人工 ground-truth label；
-- 不训练 success latent 或 encoder-decoder；
-- 不从 success rate 直接反解 guidance setting；
-- 不重新设计 AR corridor/cue；
-- 不招 human participants；
-- 不做 held-out human task A/B；
-- 不把 grasping 单任务结果称为 cross-task transferable knowledge；
-- 不把两个 repeats 当正式统计证据；
-- 不用 validation loss 替代 deployment success；
-- 不把 cube/ordered transfer 再包装成 T-RO novelty。
-
----
-
-## 20. MVP-0 成功后的迭代路线
-
-### MVP-1: Frozen cross-task test on insertion
-
-目标：验证规则是否从 grasping 迁移到 insertion，而不是记住 25 cm/6 cm。
-
-1. 将 absolute radius 转成无量纲：
-
-   \[
-   a_P
-   =
-   \frac{\text{position variation}}
-   {\text{local clearance/tolerance}}.
-   \]
-
-2. 冻结从 grasping 得出的 event rule、threshold 和 selection logic；
-3. 在 insertion 上比较：
-   - event-local predicted setting；
-   - swapped setting；
-   - task-wide tight；
-   - task-wide wide/reference；
-4. 使用全新的 dataset-policy blocks 和 frozen evaluation protocol；
-5. 若在看到 insertion 结果后重新调 rule，则 insertion 不再是 held-out transfer test。
-
-### MVP-2: Multiple source tasks + low-capacity forward model
-
-只有在至少三个任务能提供 task/event variation 后，学习：
-
-\[
-\hat p
-\left(
-y=1
-\mid
-x_e,a_{P,e},\mathcal A,N,\rho
-\right).
-\]
-
-优先模型：
-
-- regularised logistic/binomial regression；
-- monotonic/shape-constrained additive model；
-- shallow tree/boosting 作为 secondary；
-- leave-one-task-out evaluation。
-
-模型输入使用 event semantics 和 dimensionless variation；`task_id` 只用于 grouping/split，不作为主要可迁移 feature。
-
-### MVP-3: Compatibility boundary selection
-
-先预测 forward outcome，再优化：
-
-\[
-q^\star
-=
-\arg\max_q C_{\mathrm{coverage}}(q)
-\]
-
-subject to
-
-\[
-\operatorname{LCB}
-\left[
-\hat J_{\mathrm{ID}}(q)
-\right]\geq\eta,
-\qquad
-\operatorname{LCB}
-\left[
-\hat J_{\mathrm{shift}}(q)
-\right]\geq\eta_{\mathrm{gen}}.
-\]
-
-多解由预注册 utility/burden rule 处理，不使用“success latent decoder”假设唯一逆解。
-
-### MVP-4: Fixed guidance translation + human validation
-
-- 冻结 \(q^\star\rightarrow g\) 的 AR template；
-- 在 held-out A 上检验 guidance 是否实现目标 \(q_{\mathrm{realised}}\)；
-- 测 workload、retention 和 A-policy deployment；
-- 在 held-out B 上无 guidance 测 human teaching transfer；
-- 不把 robot compatibility 与 human teachability 合并成同一未经验证的映射。
-
----
-
-## 21. 本阶段允许与不允许的论文表述
-
-### MVP-0A 最小通过后允许
-
-> Position-variation compatibility is event-dependent within the grasping task under a fixed learner and finite data budget.
-
-### 强通过后允许
-
-> Under the tested shifted-start deployment, free-reach diversity improves coverage with limited nominal cost, whereas tighter pre-contact demonstrations preserve contact precision.
-
-必须加限定：
-
-- within the tested grasping task；
-- under the fixed learner and \(N=30\)；
-- for the specified deployment shifts。
-
-### insertion frozen test 通过后才允许
-
-> A dimensionless event-conditioned compatibility rule transfers across the tested grasping and insertion tasks.
-
-### 多 source + held-out task 通过后才允许
-
-> Deployment interventions can be used to learn task/event-conditioned demonstration expertise criteria that generalise to a held-out task.
-
-### human A/B study 通过后才允许
-
-> Generated guidance trains retained human teaching behaviour that transfers unguided to a further unseen task.
-
----
-
-## 22. 配置示例
-
-文件名和 schema 应适配现有仓库；以下仅定义必需语义。
-
-```yaml
-experiment:
-  name: mvp0_position_event
-  data_budget: 30
-  event_definition_version: grasp_events_v1
-  eval_bank_version: grasp_eval_v1
-
-conditions:
-  reference:
-    free_reach_radius_m: 0.25
-    pre_grasp_radius_m: 0.060
-  free_tight:
-    free_reach_radius_m: 0.15
-    pre_grasp_radius_m: 0.060
-  free_wide:
-    free_reach_radius_m: 0.35
-    pre_grasp_radius_m: 0.060
-  pre_tight:
-    free_reach_radius_m: 0.25
-    pre_grasp_radius_m: 0.036
-  pre_wide:
-    free_reach_radius_m: 0.25
-    pre_grasp_radius_m: 0.084
-
-paired_blocks:
-  - block_id: b0
-    demo_base_seed: 1000
-    policy_seed: 2000
-  - block_id: b1
-    demo_base_seed: 1001
-    policy_seed: 2001
-
-evaluation:
-  regimes:
-    - rho_id
-    - rho_free
-    - rho_pre
-  rollouts_per_policy_per_regime: 10
-  use_frozen_state_ids: true
+## Stage 2：Position axial five-repeat replication
+
+Stage 1b 的 single-block early-stopping confirmation 将
+`START25_APP3P6` 识别为最佳 observed policy，但旧 B0/B1 learner blocks
+仍然不稳定，legacy reference 也存在 dataset/training provenance mismatch。
+因此当前不直接执行 Position corner/composition experiment，而先对既有 axial
+条件做五个 dataset-policy repeats：
+
+| Condition | Start | Approach |
+|---|---:|---:|
+| `START15_APP6` | 15 cm | 6.0 cm |
+| `START35_APP6` | 35 cm | 6.0 cm |
+| `START25_APP3P6` | 25 cm | 3.6 cm |
+| `START25_APP6` | 25 cm | 6.0 cm |
+| `START25_APP8P4` | 25 cm | 8.4 cm |
+
+每个 condition 最终都有 canonical seed `1–5` 五个 dataset-policy slots。
+为避免重复实验和浪费存储：
+
+- seed 1–3 主要为新实验；
+- canonical seed 4 复用旧 Block 1 data
+  (`collection=1702`, `training=2702`) 并 early-stop 重训；
+- canonical seed 5 复用 Stage 1b
+  (`collection=1701`, `training=2701`)；
+- legacy `START25_APP6` seed-1 data/policy 直接复用；
+- reference seed 2–5 补齐为新的 matched slots。
+
+总计为 25 个 policy slots，其中新增 16 组 data、20 个 policy；正式评估统一
+使用 rollout seeds `1–5`，每 policy 每 seed 为 25 inner + 25 outer，共
+6,250 rows。`1701/2701` 是一个 dataset-policy repeat，绝不拆成两个独立样本。
+
+本阶段回答：
+
+- tighter Approach 是否跨五个独立 policy realisations 优于 reference 和 wide；
+- Start variation 的 deployment effect 是否稳定；
+- Stage 1b observed winner 是否具有 paper-level repeatability。
+
+完整执行和判定规则只以
+`experiments/tro_stage2_position_axial_replication/PLAN.md` 为准。Stage 2 的
+固定结果、后续 ID/OOD rerollout 和 GO-to-composition 决定记录在本文末尾。
+
+## Stage 2c：Position composition missing cells
+
+Stage 2 axial 和 condition-relative ID/OOD rerollout 表明 Start coverage 与
+Approach variation 具有不同的 deployment trade-off，但现有五个条件只覆盖
+3 x 3 Start x Approach 网格的中间行和中间列。进入多个 source tasks 前，先只补
+四个缺失 cells：
+
+| New condition | Start | Approach |
+|---|---:|---:|
+| `START15_APP3P6` | 15 cm | 3.6 cm |
+| `START15_APP8P4` | 15 cm | 8.4 cm |
+| `START35_APP3P6` | 35 cm | 3.6 cm |
+| `START35_APP8P4` | 35 cm | 8.4 cm |
+
+旧五个 axial conditions、datasets、policies、checkpoints 和 rollouts 全部作为
+immutable anchors 复用。新实验只创建四个 corners 的五个 canonical
+dataset-policy repeats，共 20 个新 datasets、20 个新 policies。主分析在九个
+conditions 的共同绝对 deployment states 上预注册 Start x Approach
+difference-in-differences；RMAX40 condition-relative ID/OOD 作为次级泛化诊断。
+
+本阶段回答：
+
+- Approach-tight/reference/wide 的作用是否依赖 Start support；
+- Start 和 Approach effects 在测试网格内是否存在可复现 interaction；
+- 单任务 Position response surface 是否足以作为 Stage 3 compatibility table
+  的第一个 source-task block。
+
+唯一执行规范为：
+
+```text
+experiments/tro_stage2_position_composition/PLAN.md
 ```
 
-seed 数字可以改，但必须写入 manifest 并冻结。
+本阶段完成后仍须停止，不自动启动 Stage 3。
+
+## Stage 3：多个 source tasks 与 compatibility model
+
+单个 grasping task 只能证明 within-task stage dependence，不能证明 cross-task
+learning。
+
+因此后续需要多个 source tasks，每个任务先使用 task code 已知的 scripted phases：
+
+```text
+Grasping:
+Start → Approach → Descent → Grasp → Lift
+
+Insertion:
+Start → Approach → Align → Insert
+
+其他 manipulation task:
+Start → Transport → Contact-critical stage → Completion
+```
+
+不在第一版同时学习自动 phase segmentation。
+
+在每个任务中：
+
+- 一次只改变一个 stage 的 Position variation；
+- Position 机制成立后再加入 Rotation 和 Velocity；
+- 固定 learner 和 `N=30`；
+- 训练多个 independent policies；
+- 在共同 nominal 和明确 shifted deployments 中评估。
+
+形成 robot-side 数据表：
+
+```text
+task features
+stage features
+variation type
+variation magnitude
+learner
+data budget
+deployment distribution
+policy success
+```
+
+然后训练低复杂度 forward compatibility model：
+
+```text
+输入：task/stage features + variation setting
+输出：预计 deployment success
+```
+
+第一版优先使用 regularised logistic/binomial regression、additive model 或 shallow
+tree，不从小数据直接训练复杂 encoder-decoder。
+
+## Stage 4：held-out task A 上预测并生成 guidance
+
+选择一个未参与 compatibility model 训练的新任务 A。
+
+流程：
+
+1. 输入 task A 的几何和 stage features；
+2. 预测各阶段适合的 variation；
+3. 在查看 task A 新结果前冻结预测；
+4. 用固定规则把预测转成 guidance；
+5. 在 task A 上进行 robot-side held-out validation；
+6. 验证人使用 guidance 后是否实际产生目标 variation。
+
+Robot-side baselines 至少包括：
+
+- predicted stage-conditioned；
+- reversed；
+- all-tight；
+- all-wide/reference。
+
+这一步分别回答：
+
+- compatibility rule 是否跨任务有效；
+- guidance 是否真正实现了目标 demonstration distribution。
+
+## Stage 5：human teaching、retention 与 transfer
+
+建议至少包含：
+
+| Group | Task A training |
+|---|---|
+| Unguided control | 无 guidance |
+| Manual/DEMT guidance | 人工设计 guidance |
+| T-RO generated guidance | 模型生成 guidance |
+
+Task A 流程：
+
+```text
+A unguided pre-test
+        ↓
+A guided training
+        ↓
+移除 guidance
+        ↓
+A unguided post-test
+```
+
+测量：
+
+- human task success；
+- realised demonstration structure；
+- workload 和 guidance burden；
+- retention；
+- 用 post-test demonstrations 训练出的 A-policy deployment success。
+
+随后使用进一步未见任务 B：
+
+```text
+Task A training 完成
+        ↓
+Task B 第一次出现
+        ↓
+完全无 guidance
+        ↓
+收集 demonstrations
+        ↓
+训练 B-policy 并 rollout
+```
+
+Task B 用于检验 human teaching-skill transfer，而不是 task A corridor 的记忆。
 
 ---
 
-## 23. Codex 首个工作回合的具体输出
+## 3. 为什么这样做？
 
-第一次执行本计划时，先不要直接运行 10 个 policies。先完成并汇报：
+### 3.1 为什么先做 Position MVP
 
-1. 仓库和当前 git 状态摘要；
-2. S15-S35 相关代码路径；
-3. 当前 radius 如何同时影响 free reach 和 pre-grasp 的证据；
-4. 最小修改方案；
-5. 预计新增/修改文件；
-6. 现有训练与 rollout commands；
-7. 任何会阻止严格 event-local intervention 的技术问题。
+整个 T-RO 建立在一个最小前提上：
 
-然后实现 Gate 1，并提供：
+> variation 的作用确实随 trajectory stage 改变。
 
-- reference/free-tight/free-wide/pre-tight/pre-wide 的 2-3 条 smoke trajectories；
-- event-coloured trajectory overlay；
-- planned/realised variation summary；
-- unit/integration test 结果。
+如果 Start 和 Approach variation 没有不同 effect，就没有理由立刻扩展 Rotation、
+Velocity、多任务模型或 human study。
 
-只有 Gate 1 的干预解耦通过后，才开始 evaluation bank 和完整训练。
+### 3.2 为什么保持 scripted phases
+
+当前科学问题是“每个阶段需要什么数据”，不是“如何自动发现阶段”。如果同时学习
+phase segmentation 和 compatibility，失败时无法判断是哪一部分出错。
+
+### 3.3 为什么一次只改变一个 stage
+
+这是从旧 S15–S35 中识别原因的最直接方法。两个 radius 同时改变时无法判断谁导致
+policy 差异；一次只改一个 radius 才能解释结果。
+
+### 3.4 为什么复用旧 S25 和 evaluation states
+
+旧 S25 就是新设计的 `(25 cm, 6.0 cm)` Reference。旧正式 50-state manifest
+按几何半径恰好分成 25 个 reference-range states 和 25 个 outer states，并且
+旧 S25 已在这些 states 上完成 rollout。把它作为 historical anchor 可以减少
+重复实验，同时不参与新四条件的 primary contrasts。
+
+旧 S15/S35 不能被重新命名为 Start-tight/Start-wide，因为它们同时改变了
+Approach radius，而且旧 demonstrations 不是跨 condition paired samples。它们只作
+secondary historical evidence。
+
+### 3.5 为什么先做一个 block
+
+Stage 1 是机制 screening，不是最终 paper-level significance test。先执行一个
+预注册 paired block；只有出现足够大的预期方向信号才付出第二个 block 的采集和
+训练成本。这样 null result 最多只需 4 个新 policy，而不是无条件训练 10 个。
+
+### 3.6 为什么固定 learner、`N=30` 和训练 protocol
+
+实验要测 demonstration distribution 的影响。如果 demonstration 数量、learner、
+training 或 checkpoint rule 同时变化，就不能把结果归因于 Start/Approach radius。
+新 policy 统一训练 40 epochs，并固定使用 epoch-40 checkpoint；不得根据 validation
+或 rollout outcome 为不同 condition 选择不同 epoch。
+
+### 3.7 为什么需要多个 source tasks
+
+只在 grasping 上得到的规律可能是 task-specific。必须在多个 source tasks 上学习，
+再冻结并预测 held-out task A，才能支持 cross-task claim。
+
+### 3.8 为什么使用 forward model
+
+相同 deployment success 可能对应多个可行 variation setting，不存在唯一逆解。
+因此先预测“某种 variation 会产生什么 deployment outcome”，再在满足 success
+要求的候选中选择对人约束较小的 setting。
+
+### 3.9 为什么 held-out A 和 B 分开
+
+- Held-out A：检验模型能否为新任务生成 guidance；
+- A 撤除 guidance：检验 retention；
+- Held-out B 完全无 guidance：检验 human teaching-skill transfer。
+
+只在 A 上测试，无法区分人真正学会教学原则，还是只记住 task A guidance。
+
+### 3.10 为什么最终仍要训练 human-demo policies
+
+Human trajectories 更整齐不等于机器人学得更好。最终标准仍然是：
+
+> 用这些 demonstrations 训练出的 policy，在 deployment 中是否更成功。
 
 ---
 
-## 24. Source boundary notes
+## Claim ladder
 
-本计划以 DEMT manuscript 为边界依据：
+Stage 1 通过后最多允许：
 
-- §3.2：selected structures 被人工转译为 corridor、grasp cue、speed bar；
-- §4.1 / Table 2：固定候选集、grasping/insertion、每 condition 4 个 independently scripted datasets、每 dataset 30 demos、每 policy 10 rollouts；
-- §4.2 / Table 1：prism curriculum、cube pre/post、ordered pick-and-place P8；
-- Appendix A.5：AR guidance 数值为 25/5/3 cm、15 deg、\([0.5,2.0]\times v_{\mathrm{ref}}\)；
-- Appendix A.9 / B：rollout protocol 和 demonstration-level structural metrics；
-- Failure analysis：主要 bottleneck 在 contact-critical transitions。
+> Under a fixed learner and 30-demonstration budget in the tested grasping
+> task, Start and Approach position variation have different deployment effects.
 
-这些内容用于防止 T-RO 重复已有贡献；MVP-0 的新增点是：
+Stage 3 held-out robot task 通过后才允许：
 
-> **把 task-level P variation 拆成 event-local interventions，并显式测试 training variation × evaluation shift，从而判断何时聚拢、何时 coverage 有益。**
+> Deployment interventions can learn stage-conditioned demonstration
+> compatibility that transfers across the tested tasks.
+
+Stage 4 通过后才允许：
+
+> Predicted compatibility settings can be translated into guidance for a
+> held-out task.
+
+Stage 5 A/B human study 通过后才允许：
+
+> Generated guidance produces retained human teaching behaviour that transfers
+> unguided to a further unseen task.
+
+## 当前边界
+
+- 当前只允许执行 Stage 2c Position composition 的四个 missing cells；
+- 已完成的 Stage 2 axial 与 RMAX40 artifacts 均为 immutable anchors，不重训、
+  不重采、不覆盖；
+- 不修改 trajectory 的 `Start → Approach → Descent → Grasp → Lift` 结构；
+- 不实现 contact state machine、mid-episode perturbation 或自动 phase discovery；
+- 不启动 Rotation、Velocity、cross-task model 或 human study；
+- composition 完成后停止，不自动启动 Stage 3。
+
+## Stage 2 Position axial replication 执行结果（2026-07-25）
+
+Stage 2 已按
+`experiments/tro_stage2_position_axial_replication/PLAN.md` 完整执行并停止。
+严格验证覆盖 25/25 dataset-policy slots、250/250 正式 rollout tasks 和
+6,250/6,250 rollout rows；每个 canonical slot 的五条件 accepted latents
+严格配对。
+
+两个 locked reused-slot paths 触发了 PLAN 中预注册的 whole-slot fallback：
+canonical seed1 的 legacy candidate 2 在 `START35_APP6` waypoint IK 不可达，
+canonical seed5 的 Block-0 candidate 2 在 reference 条件下持续未满足 lift
+成功判据。因此 seed1 与 seed5 都在新 namespace 中重建完整五条件 slot，并保留
+actual source seeds `1/1` 与 `1701/2701`。最终 active artifacts 为 21 个新、
+4 个复用 datasets（630 条新成功 demonstrations），以及 25 个新、0 个复用
+policies；25-slot 科学矩阵未改变。
+
+预注册 primary 结果为 `partial`：
+
+- `D_candidate_reference`：五槽 mean delta `-0.0400`，`2/5` 为正，未通过；
+- `D_candidate_wide`：五槽 mean delta `+0.2088`，`4/5` 为正，通过；
+- combined five-policy ranking：
+  `START25_APP6 > START25_APP3P6 > START15_APP6 > START35_APP6 > START25_APP8P4`。
+
+三条 rollout tasks 遭遇 infrastructure `PREEMPTED`；其 partial outputs 已归档，
+仅使用完全相同 frozen inputs 做 clean retry。没有按 policy performance 重试。
+完整统计、Wilson descriptive intervals、policy-level cluster bootstrap、
+validation histories、sensitivity analyses 和 exact pairing assertion 位于
+`experiments/tro_stage2_position_axial_replication/analysis/`。
+
+Stage 2 完成时尚未启动 Position composition、Rotation、Velocity、cross-task、
+AR 或 human study。
+
+## Stage 2 condition-relative ID/OOD rerollout 结果（2026-07-26）
+
+Stage 2 的 25 个 frozen policies 随后在 condition-relative Start support 下完成
+独立 rerollout。最初的 `R_MAX=0.45 m` pilot 因 joint IK conditioning 产生明显
+方向不均匀，仅作为 audit evidence 保留；经用户批准后，active protocol 冻结为
+`R_MAX=0.40 m`，没有重训或覆盖任何旧 Stage 2 artifact。
+
+Active RMAX40 v2 严格验证 250/250 tasks 和 6,250/6,250 rollout rows。结果为：
+
+- `START25_APP3P6` 与 `START25_APP6` 的 ID mean 均为 `0.4784`；
+- OOD mean 分别为 `0.3168` 与 `0.3600`；
+- `APP3P6` 的跨 policy 波动更小，而 `APP6` 的平均 OOD success 更高；
+- ID/OOD Pareto front 为 `START15_APP6` 与 `START25_APP6`；
+- balanced ranking 只作描述，不把不同 Start families 的 condition-relative
+  banks 解释成共同绝对 deployment distribution。
+
+完整 authority、结果与审计位于：
+
+```text
+experiments/tro_stage2_position_axial_idood_rerollout/
+handoffs/tro-stage2-position-axial-id-ood-rerollout.md
+```
+
+## GO-to-composition stage gate（2026-07-26）
+
+用户明确批准 Stage 2 正式结束并进入 Position composition 协议。该 GO 决定基于：
+
+1. Stage 2 预注册结果保持 `partial`，其中 candidate-minus-wide contrast 通过；
+2. RMAX40 rerollout 进一步确认 Start coverage 与 Approach variation 呈现不同
+   的 ID/OOD、均值与复现波动 trade-off；
+3. 现有证据足以支持检验 Start x Approach interaction，但不足以把
+   `START25_APP3P6` 或 `START25_APP6` 宣称为普遍最优。
+
+这个 stage gate 不改变任何旧 classification，也不授权半径搜索。下一阶段仅补
+`START15/35 x APP3P6/APP8P4` 四个 missing cells，并以
+`experiments/tro_stage2_position_composition/PLAN.md` 为唯一执行规范。
+
+## Stage 2c composition v1 blocker 与 v2 修订（2026-07-26）
+
+Composition 的 Gate 0、Gate 1 和 Gate 2 已完成：
+
+- 25 个旧 checkpoint 与 HDF5 anchors、Stage 2/RMAX40 顶层 hashes 均复核不变；
+- 600/600 个 four-corner frozen-latent records 与五个 axial anchors 的
+  normalized latent 精确一致并通过 waypoint IK；
+- 38 个相关测试通过；
+- Slurm smoke array `36053326` 的五个 canonical seeds 全部完成四 corners。
+
+正式 collection array `36053381` 随后出现两个 scientific failures，均为
+`START35_APP8P4`：
+
+- canonical seed4，frozen candidate 4，final cube z
+  `0.03498996287124328 m`；
+- canonical seed5，frozen candidate 1，final cube z
+  `0.03498985718810666 m`。
+
+两者都未达到 frozen success threshold `0.20 m`。v1 当时把它们视为 terminal
+scientific failures，因此没有 retry；也没有更换 latent、缩减样本、重建旧
+anchors 或放宽 pairing。剩余 seed1-3 collection tasks 已立即取消，所有
+partial rows 排除于训练和分析。
+
+用户随后明确修订协议：保持每个 canonical seed 的 30 个 frozen normalized
+latents 不变；一个 latent 的四个新 corners 构成 atomic attempt bundle。任一
+corner 失败，则整组四 corners 的该次 attempt 全部归档且不进入 dataset，并用
+确定性的新 attempt seed 整组重试，直到同一次 attempt 四个 corners 都成功。
+这不是新增 sample/latent，也不是只为失败 condition 挑一次好运结果；最终每个
+dataset 仍恰好 30 条 accepted demonstrations。
+
+v1 的两个 failures、blocker 和 hashes 必须作为历史审计证据保留，但不再构成
+terminal blocker。新的 YOLO agent 必须先修改并测试 collector、冻结
+`protocol_v2.json`，然后才能恢复 Gate 3。当前 Definition of Done 仍未满足；
+HDF5、training、checkpoint freeze、两个 formal rollout surfaces、merge 和
+interaction/ID-OOD analysis 均未启动。Rotation、Velocity、Stage 3、
+cross-task、AR 与 human study 也均未启动。协议证据位于：
+
+```text
+experiments/tro_stage2_position_composition/manifests/protocol_blocker.json
+experiments/tro_stage2_position_composition/manifests/protocol_amendment_v2.json
+handoffs/tro-stage2-position-composition.md
+```
+
+Protocol v2 随后已实现、测试和冻结：43/43 个相关测试通过，旧 progress 迁移
+保留 17 个完整 four-corner bundles、归档 3 个 interrupted bundles，并保留
+seed4/5 的两个 v1 scientific failures。Formal collection v2 array
+`36054403` 执行了 90 个新的 atomic scientific attempts。
+
+这次执行发现了与失败次数无关的真实协议问题。派生 attempt seed 正确写入
+metadata，并调用 Python/NumPy seeding；但 paired-latent physics path 此后使用
+固定 cube、固定 normalized offsets、固定 IK/controller/PyBullet settings，
+没有任何影响动力学的 RNG draw。对每个 blocked latent，多个不同派生 seeds
+得到逐位相同的 failed `final_cube_z`；没有一个 failed bundle 在后续 attempt
+转为 accepted。继续运行只会无限复制相同 deterministic outcome，不能实现
+协议声称的 runtime physics RNG。
+
+因此 job `36054403` 的 5/5 tasks 在 causal audit 后被停止并监控到 terminal
+`CANCELLED`，五个 in-flight incomplete bundles 全部归档。没有擅自添加 cube、
+contact、joint、waypoint、timing 或 solver perturbation，因为这些都需要新的
+预注册分布并会改变 frozen experiment。当前 accepted bundle counts 为
+seed1–5=`6,21,5,2,1`；HDF5、training、formal rollout、merge 与 outcome
+analysis 仍未启动。完整证据位于：
+
+```text
+experiments/tro_stage2_position_composition/manifests/
+  protocol_v2.json
+  protocol_blocker_v2_runtime_rng.json
+  runtime_rng_capability_audit.json
+```
+
+在获得对“seed 如何因果作用于 simulator physics”的明确协议授权和冻结分布前，
+不得恢复原 deterministic retry loop，也不得根据已观察结果自行设计 perturbation。
+
+后续 continuation 又完成了内容级排查：对 seeds 1/4/5 的四组不同 attempt seeds，
+排除 metadata 后逐文件比较共 3,609 个 point-cloud、joint、EE、cube、time 与
+command 文件，全部内容相同。本机 PyBullet 也不支持 `randomSeed` 或
+`solverRandomSeed` physics 参数。仓库内没有既能改变 physics outcome、又不改变
+frozen latent 或物理协议的现成机制，因此当前 blocker 不可在原 authority 下绕过。
+
+## Stage 2c composition Protocol v3 candidate-stream continuation（2026-07-26）
+
+用户随后澄清并明确确认真正的 collection 语义：若初始候选中的一条失败，不对
+同一 deterministic latent 无限复制，而是保留完整失败证据并沿同一个确定性
+normalized-latent candidate stream 继续 candidate 31、32、33……，直到每个
+canonical seed 累计 30 个成功样本。每个 candidate 仍是四个新 corners 的 atomic
+bundle；四角全部成功才整组接受，任一角失败则整组归档并推进。只有
+infrastructure interruption 才对完全相同的 candidate 做 clean retry。
+
+该规则由
+`experiments/tro_stage2_position_composition/manifests/protocol_amendment_v3.json`
+记录。v3 collector 已实现并通过 49/49 个完整相关回归测试；五个 source streams
+的 0--159 共 800 条已有记录均与冻结的 NumPy PCG64 生成器逐条精确一致，index
+160 以后也由相同 draw order 确定性延伸。v1/v2 progress、failures、blockers、
+in-flight archives 和旧 hash snapshots 均保留，新的 v3 ledger 只增量迁移。
+
+冻结证据为：
+
+```text
+experiments/tro_stage2_position_composition/manifests/
+  candidate_stream_v3.json
+  test_evidence_v3.json
+  protocol_v3.json
+```
+
+Formal collection v3 array `36055938` 已提交并正在监控。最终每个新 dataset 仍
+必须恰好 30 条 demonstrations。原 frozen-30 内保留成功的 rows 继续与 25 个旧
+anchors 具有 normalized-latent pairing；超出原 frozen-30 的 replacement rows
+只保证四个新 corners 彼此精确配对，不得声称与旧 anchors 配对。旧 anchors
+保持 immutable。
+
+## Stage 2c composition 最终结果（2026-07-27）
+
+Protocol v3 已完整执行并通过 Definition of Done。Formal collection job
+`36055938` 完成 5/5；20 个新 datasets 各含严格 30 条 accepted
+demonstrations。五个 canonical seeds 中仍与旧 anchors normalized-latent
+配对的 accepted counts 分别为 `28,28,24,24,29`，合计 133；其余 17 个
+replacement candidates 仅在四个新 corners 间严格配对。五个 v3 ledgers
+记录 25 个 rejected candidate identities，其中 5 个是从 v2 frontier
+迁移的历史 candidate、20 个是 v3 新执行 rejection。旧 v1/v2 的 92 次
+failed simulator executions 全部保留，因此实际 failed executions 合计 112，
+不会把迁移 identity 再计一次。Collection 没有 v3 infrastructure retry。
+
+HDF5 job `36056459` 完成 5/5，20/20 新 HDF5 严格有效；每个文件 60 episodes，
+使用冻结的 54/6 train/valid masks。首次 training submission
+`36057059`--`36057078` 因 code-root export 错误在进入 learner 前失败或取消，
+没有产生 checkpoint；完全相同 configs 的 clean retry
+`36057105`--`36057124` 完成 20/20 from-scratch policies。随后在任何 formal
+rollout outcome 出现前，按最高 numeric emitted epoch 规则冻结 45/45
+checkpoint paths 与 hashes。
+
+Primary common-absolute 首次 job `36059233` 因 immutable Stage 2 manifests
+仍保留合法的五条件 metadata order 而在 policy loading 前停止，产生 0 rows。
+profile-scoped loader 修正不改变 state、RNG、半径或 IK 校验；identical-input
+retry `36059244` 完成 200/200 tasks 与 5,000/5,000 rows。Secondary RMAX40
+job `36061752` 完成 188 tasks，另有 12 tasks 在 `erc-hpc-comp054` 上
+`PREEMPTED`。其 40 条 partial rows 按 task ownership 归档；冻结输入不变的
+retry `36062210` 完成 12/12，最终同样为 200/200 tasks 与 5,000/5,000 rows。
+
+Strict merge 验证：
+
+```text
+new tasks / rows                 = 400 / 10,000
+common-absolute full surface     = 45 policies, 450 tasks, 11,250 rows
+condition-relative RMAX40 surface = 45 policies, 450 tasks, 11,250 rows
+```
+
+Primary common-absolute 的四个预注册 interaction means 为：
+
+```text
+I_tight_15 = +0.1624  (4/5 same non-zero sign; signal)
+I_tight_35 = -0.0064  (1/5; no signal)
+I_wide_15  = +0.1608  (3/5; no signal)
+I_wide_35  = +0.1304  (4/5; signal)
+```
+
+因此按预注册的 `abs(mean) >= 0.05` 且至少 4/5 同号规则，实验级 classification
+为 `interaction`。Common-absolute condition means 为：
+
+```text
+START15: APP3P6 0.4944, APP6 0.3720, APP8P4 0.2840
+START25: APP3P6 0.4496, APP6 0.4896, APP8P4 0.2408
+START35: APP3P6 0.2872, APP6 0.3336, APP8P4 0.2152
+```
+
+Secondary RMAX40 的 ID/OOD means 为：
+
+```text
+START15_APP3P6 0.7584 / 0.2688
+START15_APP6   0.5776 / 0.2208
+START15_APP8P4 0.4176 / 0.1488
+START25_APP3P6 0.4784 / 0.3168
+START25_APP6   0.4784 / 0.3600
+START25_APP8P4 0.2736 / 0.1776
+START35_APP3P6 0.2800 / 0.2512
+START35_APP6   0.3200 / 0.3280
+START35_APP8P4 0.1792 / 0.1632
+```
+
+ID/OOD Pareto front 为 `START15_APP3P6` 与 `START25_APP6`。RMAX40 仍是
+condition-relative secondary view；不同 Start families 不被解释成共同绝对
+deployment trials。
+
+最终相关测试 52/52 通过。25 个旧 checkpoints 与 25 个旧 HDF5 hashes
+逐项复核无 mismatch；旧 Stage 2/RMAX40 顶层 hashes 也保持不变。新 dataset
+namespace 约 32.70 GB，新 model namespace 约 15.68 GB。没有自动清理；
+仅把约 59.68 MB smoke 与 34 个未选 checkpoints（约 9.86 GB）列为需用户另行
+批准的 cleanup candidates。
+
+完整结果与审计位于：
+
+```text
+experiments/tro_stage2_position_composition/analysis/
+experiments/tro_stage2_position_composition/manifests/
+handoffs/tro-stage2-position-composition.md
+```
+
+Stage 2c 在此停止。没有启动 Stage 3、Rotation、Velocity、cross-task model、
+compatibility model、AR guidance 或 human study；没有重采、重训或修改任何旧
+anchor，也没有 commit、push 或创建 PR。

@@ -1,0 +1,9 @@
+{
+  "architecture_and_preprocessing": "legacy_S15_S35",
+  "demonstrations": 30,
+  "epochs": 40,
+  "checkpoint": "model_epoch_40.pth",
+  "action_gap": 2,
+  "checkpoint_selection": "fixed_pre_registered_epoch_only",
+  "early_stopping": false
+}

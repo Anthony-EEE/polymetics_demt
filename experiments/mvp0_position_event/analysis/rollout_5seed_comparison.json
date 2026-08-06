@@ -1,0 +1,2316 @@
+{
+  "schema_version": 1,
+  "status": "valid",
+  "evaluation": {
+    "seeds": [
+      628,
+      629,
+      630,
+      631,
+      632
+    ],
+    "rollouts_per_seed_per_policy": 50,
+    "inner_rollouts_per_seed_per_policy": 25,
+    "outer_rollouts_per_seed_per_policy": 25,
+    "rollouts_per_policy": 250,
+    "num_policies": 8,
+    "validated_rollout_rows": 2000,
+    "shared_state_and_rng_pairing_across_all_policies": true,
+    "retraining_performed": false,
+    "checkpoint_selection": "highest numeric model_epoch_*.pth already present in each existing training run"
+  },
+  "ranking": [
+    "block0/START25_APP3P6",
+    "block0/START15_APP6",
+    "block0/START25_APP8P4",
+    "block1/START25_APP8P4",
+    "block1/START25_APP3P6",
+    "block0/START35_APP6",
+    "block1/START15_APP6",
+    "block1/START35_APP6"
+  ],
+  "condition_average_ranking": [
+    "START25_APP3P6",
+    "START25_APP8P4",
+    "START15_APP6",
+    "START35_APP6"
+  ],
+  "condition_block_mean_and_sample_std": {
+    "START15_APP6": {
+      "combined": {
+        "block_rates": [
+          0.456,
+          0.252
+        ],
+        "mean_rate": 0.354,
+        "sample_std_rate_ddof1": 0.1442497833620557
+      },
+      "inner": {
+        "block_rates": [
+          0.64,
+          0.328
+        ],
+        "mean_rate": 0.484,
+        "sample_std_rate_ddof1": 0.22061731573020282
+      },
+      "outer": {
+        "block_rates": [
+          0.272,
+          0.176
+        ],
+        "mean_rate": 0.224,
+        "sample_std_rate_ddof1": 0.06788225099390859
+      }
+    },
+    "START35_APP6": {
+      "combined": {
+        "block_rates": [
+          0.284,
+          0.112
+        ],
+        "mean_rate": 0.19799999999999998,
+        "sample_std_rate_ddof1": 0.12162236636408615
+      },
+      "inner": {
+        "block_rates": [
+          0.28,
+          0.096
+        ],
+        "mean_rate": 0.188,
+        "sample_std_rate_ddof1": 0.13010764773832476
+      },
+      "outer": {
+        "block_rates": [
+          0.288,
+          0.128
+        ],
+        "mean_rate": 0.208,
+        "sample_std_rate_ddof1": 0.11313708498984758
+      }
+    },
+    "START25_APP3P6": {
+      "combined": {
+        "block_rates": [
+          0.548,
+          0.324
+        ],
+        "mean_rate": 0.43600000000000005,
+        "sample_std_rate_ddof1": 0.15839191898578667
+      },
+      "inner": {
+        "block_rates": [
+          0.584,
+          0.376
+        ],
+        "mean_rate": 0.48,
+        "sample_std_rate_ddof1": 0.14707821048680186
+      },
+      "outer": {
+        "block_rates": [
+          0.512,
+          0.272
+        ],
+        "mean_rate": 0.392,
+        "sample_std_rate_ddof1": 0.16970562748477142
+      }
+    },
+    "START25_APP8P4": {
+      "combined": {
+        "block_rates": [
+          0.4,
+          0.372
+        ],
+        "mean_rate": 0.386,
+        "sample_std_rate_ddof1": 0.019798989873223347
+      },
+      "inner": {
+        "block_rates": [
+          0.368,
+          0.44
+        ],
+        "mean_rate": 0.404,
+        "sample_std_rate_ddof1": 0.05091168824543143
+      },
+      "outer": {
+        "block_rates": [
+          0.432,
+          0.304
+        ],
+        "mean_rate": 0.368,
+        "sample_std_rate_ddof1": 0.09050966799187808
+      }
+    }
+  },
+  "inner_ranking": [
+    "block0/START15_APP6",
+    "block0/START25_APP3P6",
+    "block1/START25_APP8P4",
+    "block1/START25_APP3P6",
+    "block0/START25_APP8P4",
+    "block1/START15_APP6",
+    "block0/START35_APP6",
+    "block1/START35_APP6"
+  ],
+  "outer_ranking": [
+    "block0/START25_APP3P6",
+    "block0/START25_APP8P4",
+    "block1/START25_APP8P4",
+    "block0/START35_APP6",
+    "block0/START15_APP6",
+    "block1/START25_APP3P6",
+    "block1/START15_APP6",
+    "block1/START35_APP6"
+  ],
+  "policies": {
+    "block0/START15_APP6": {
+      "block": 0,
+      "condition": "START15_APP6",
+      "checkpoint": {
+        "epoch": 40,
+        "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_mvp0/block0/START15_APP6/tro_pos_b0_START15_APP6_d30/20260723175014/models/model_epoch_40.pth",
+        "sha256": "d653e77f6372aa9bf47d6131c54908742762415e0691c0dd718cb5e5ab2e054f",
+        "selection_rule": "highest numeric model_epoch_*.pth already present in the sole existing training run; no retraining"
+      },
+      "combined": {
+        "successes": 114,
+        "total": 250,
+        "rate": 0.456,
+        "wilson_95": [
+          0.39539213359180114,
+          0.5179395967637979
+        ]
+      },
+      "inner": {
+        "successes": 80,
+        "total": 125,
+        "rate": 0.64,
+        "wilson_95": [
+          0.5528385550024603,
+          0.7188131347592083
+        ]
+      },
+      "outer": {
+        "successes": 34,
+        "total": 125,
+        "rate": 0.272,
+        "wilson_95": [
+          0.20166078136595392,
+          0.3559350381650431
+        ]
+      },
+      "per_seed": {
+        "628": {
+          "inner": {
+            "successes": 16,
+            "total": 25,
+            "rate": 0.64,
+            "wilson_95": [
+              0.44518497748164865,
+              0.7975211922554178
+            ]
+          },
+          "outer": {
+            "successes": 5,
+            "total": 25,
+            "rate": 0.2,
+            "wilson_95": [
+              0.08860584686802572,
+              0.3913095036954033
+            ]
+          },
+          "combined": {
+            "successes": 21,
+            "total": 50,
+            "rate": 0.42,
+            "wilson_95": [
+              0.2937500335471198,
+              0.5576655823142176
+            ]
+          }
+        },
+        "629": {
+          "inner": {
+            "successes": 15,
+            "total": 25,
+            "rate": 0.6,
+            "wilson_95": [
+              0.40739457358967,
+              0.7659669762225203
+            ]
+          },
+          "outer": {
+            "successes": 8,
+            "total": 25,
+            "rate": 0.32,
+            "wilson_95": [
+              0.17205190306907978,
+              0.5158973072689775
+            ]
+          },
+          "combined": {
+            "successes": 23,
+            "total": 50,
+            "rate": 0.46,
+            "wilson_95": [
+              0.3296965219222435,
+              0.5960112860084253
+            ]
+          }
+        },
+        "630": {
+          "inner": {
+            "successes": 19,
+            "total": 25,
+            "rate": 0.76,
+            "wilson_95": [
+              0.5657031664457093,
+              0.8850368630659855
+            ]
+          },
+          "outer": {
+            "successes": 8,
+            "total": 25,
+            "rate": 0.32,
+            "wilson_95": [
+              0.17205190306907978,
+              0.5158973072689775
+            ]
+          },
+          "combined": {
+            "successes": 27,
+            "total": 50,
+            "rate": 0.54,
+            "wilson_95": [
+              0.40398871399157477,
+              0.6703034780777566
+            ]
+          }
+        },
+        "631": {
+          "inner": {
+            "successes": 14,
+            "total": 25,
+            "rate": 0.56,
+            "wilson_95": [
+              0.3706733186979878,
+              0.7333436111893266
+            ]
+          },
+          "outer": {
+            "successes": 8,
+            "total": 25,
+            "rate": 0.32,
+            "wilson_95": [
+              0.17205190306907978,
+              0.5158973072689775
+            ]
+          },
+          "combined": {
+            "successes": 22,
+            "total": 50,
+            "rate": 0.44,
+            "wilson_95": [
+              0.3116219921125717,
+              0.5769397197834315
+            ]
+          }
+        },
+        "632": {
+          "inner": {
+            "successes": 16,
+            "total": 25,
+            "rate": 0.64,
+            "wilson_95": [
+              0.44518497748164865,
+              0.7975211922554178
+            ]
+          },
+          "outer": {
+            "successes": 5,
+            "total": 25,
+            "rate": 0.2,
+            "wilson_95": [
+              0.08860584686802572,
+              0.3913095036954033
+            ]
+          },
+          "combined": {
+            "successes": 21,
+            "total": 50,
+            "rate": 0.42,
+            "wilson_95": [
+              0.2937500335471198,
+              0.5576655823142176
+            ]
+          }
+        }
+      },
+      "rollout_seed_mean_and_sample_std": {
+        "combined": {
+          "seed_rates": [
+            0.42,
+            0.46,
+            0.54,
+            0.44,
+            0.42
+          ],
+          "mean_rate": 0.456,
+          "sample_std_rate_ddof1": 0.04979959839195495,
+          "num_seeds": 5
+        },
+        "inner": {
+          "seed_rates": [
+            0.64,
+            0.6,
+            0.76,
+            0.56,
+            0.64
+          ],
+          "mean_rate": 0.64,
+          "sample_std_rate_ddof1": 0.07483314773547882,
+          "num_seeds": 5
+        },
+        "outer": {
+          "seed_rates": [
+            0.2,
+            0.32,
+            0.32,
+            0.32,
+            0.2
+          ],
+          "mean_rate": 0.272,
+          "sample_std_rate_ddof1": 0.06572670690061992,
+          "num_seeds": 5
+        }
+      }
+    },
+    "block0/START35_APP6": {
+      "block": 0,
+      "condition": "START35_APP6",
+      "checkpoint": {
+        "epoch": 40,
+        "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_mvp0/block0/START35_APP6/tro_pos_b0_START35_APP6_d30/20260723175014/models/model_epoch_40.pth",
+        "sha256": "40a12752d1d5d34b902f81bd01da37c825e4771f599ab024318b0e8250940430",
+        "selection_rule": "highest numeric model_epoch_*.pth already present in the sole existing training run; no retraining"
+      },
+      "combined": {
+        "successes": 71,
+        "total": 250,
+        "rate": 0.284,
+        "wilson_95": [
+          0.2316994606970238,
+          0.3428381246850081
+        ]
+      },
+      "inner": {
+        "successes": 35,
+        "total": 125,
+        "rate": 0.28,
+        "wilson_95": [
+          0.2087531598446115,
+          0.3643656133870522
+        ]
+      },
+      "outer": {
+        "successes": 36,
+        "total": 125,
+        "rate": 0.288,
+        "wilson_95": [
+          0.21587483942917216,
+          0.37276688750315823
+        ]
+      },
+      "per_seed": {
+        "628": {
+          "inner": {
+            "successes": 7,
+            "total": 25,
+            "rate": 0.28,
+            "wilson_95": [
+              0.14283853850956563,
+              0.47576605190361576
+            ]
+          },
+          "outer": {
+            "successes": 5,
+            "total": 25,
+            "rate": 0.2,
+            "wilson_95": [
+              0.08860584686802572,
+              0.3913095036954033
+            ]
+          },
+          "combined": {
+            "successes": 12,
+            "total": 50,
+            "rate": 0.24,
+            "wilson_95": [
+              0.1429739139699173,
+              0.3741268375794292
+            ]
+          }
+        },
+        "629": {
+          "inner": {
+            "successes": 10,
+            "total": 25,
+            "rate": 0.4,
+            "wilson_95": [
+              0.23403302377747973,
+              0.5926054264103301
+            ]
+          },
+          "outer": {
+            "successes": 10,
+            "total": 25,
+            "rate": 0.4,
+            "wilson_95": [
+              0.23403302377747973,
+              0.5926054264103301
+            ]
+          },
+          "combined": {
+            "successes": 20,
+            "total": 50,
+            "rate": 0.4,
+            "wilson_95": [
+              0.27608389730256544,
+              0.5381856225241064
+            ]
+          }
+        },
+        "630": {
+          "inner": {
+            "successes": 5,
+            "total": 25,
+            "rate": 0.2,
+            "wilson_95": [
+              0.08860584686802572,
+              0.3913095036954033
+            ]
+          },
+          "outer": {
+            "successes": 6,
+            "total": 25,
+            "rate": 0.24,
+            "wilson_95": [
+              0.11496313693401444,
+              0.4342968335542908
+            ]
+          },
+          "combined": {
+            "successes": 11,
+            "total": 50,
+            "rate": 0.22,
+            "wilson_95": [
+              0.1275391597021442,
+              0.3524154958125367
+            ]
+          }
+        },
+        "631": {
+          "inner": {
+            "successes": 5,
+            "total": 25,
+            "rate": 0.2,
+            "wilson_95": [
+              0.08860584686802572,
+              0.3913095036954033
+            ]
+          },
+          "outer": {
+            "successes": 6,
+            "total": 25,
+            "rate": 0.24,
+            "wilson_95": [
+              0.11496313693401444,
+              0.4342968335542908
+            ]
+          },
+          "combined": {
+            "successes": 11,
+            "total": 50,
+            "rate": 0.22,
+            "wilson_95": [
+              0.1275391597021442,
+              0.3524154958125367
+            ]
+          }
+        },
+        "632": {
+          "inner": {
+            "successes": 8,
+            "total": 25,
+            "rate": 0.32,
+            "wilson_95": [
+              0.17205190306907978,
+              0.5158973072689775
+            ]
+          },
+          "outer": {
+            "successes": 9,
+            "total": 25,
+            "rate": 0.36,
+            "wilson_95": [
+              0.20247880774458224,
+              0.5548150225183514
+            ]
+          },
+          "combined": {
+            "successes": 17,
+            "total": 50,
+            "rate": 0.34,
+            "wilson_95": [
+              0.2243694922250009,
+              0.478461739497674
+            ]
+          }
+        }
+      },
+      "rollout_seed_mean_and_sample_std": {
+        "combined": {
+          "seed_rates": [
+            0.24,
+            0.4,
+            0.22,
+            0.22,
+            0.34
+          ],
+          "mean_rate": 0.28400000000000003,
+          "sample_std_rate_ddof1": 0.08173126696681021,
+          "num_seeds": 5
+        },
+        "inner": {
+          "seed_rates": [
+            0.28,
+            0.4,
+            0.2,
+            0.2,
+            0.32
+          ],
+          "mean_rate": 0.28,
+          "sample_std_rate_ddof1": 0.08485281374238571,
+          "num_seeds": 5
+        },
+        "outer": {
+          "seed_rates": [
+            0.2,
+            0.4,
+            0.24,
+            0.24,
+            0.36
+          ],
+          "mean_rate": 0.288,
+          "sample_std_rate_ddof1": 0.0867179335547152,
+          "num_seeds": 5
+        }
+      }
+    },
+    "block0/START25_APP3P6": {
+      "block": 0,
+      "condition": "START25_APP3P6",
+      "checkpoint": {
+        "epoch": 40,
+        "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_mvp0/block0/START25_APP3P6/tro_pos_b0_START25_APP3P6_d30/20260723175014/models/model_epoch_40.pth",
+        "sha256": "ff16150e0f67b36e73d86eb9bbc4a167a3cff3b9a6ecb78bfd7a8e5592d5d4d1",
+        "selection_rule": "highest numeric model_epoch_*.pth already present in the sole existing training run; no retraining"
+      },
+      "combined": {
+        "successes": 137,
+        "total": 250,
+        "rate": 0.548,
+        "wilson_95": [
+          0.48604464273690806,
+          0.6085025605115293
+        ]
+      },
+      "inner": {
+        "successes": 73,
+        "total": 125,
+        "rate": 0.584,
+        "wilson_95": [
+          0.49635008136364206,
+          0.666640932493359
+        ]
+      },
+      "outer": {
+        "successes": 64,
+        "total": 125,
+        "rate": 0.512,
+        "wilson_95": [
+          0.4253306690009912,
+          0.5979537615500091
+        ]
+      },
+      "per_seed": {
+        "628": {
+          "inner": {
+            "successes": 14,
+            "total": 25,
+            "rate": 0.56,
+            "wilson_95": [
+              0.3706733186979878,
+              0.7333436111893266
+            ]
+          },
+          "outer": {
+            "successes": 15,
+            "total": 25,
+            "rate": 0.6,
+            "wilson_95": [
+              0.40739457358967,
+              0.7659669762225203
+            ]
+          },
+          "combined": {
+            "successes": 29,
+            "total": 50,
+            "rate": 0.58,
+            "wilson_95": [
+              0.4423344176857823,
+              0.7062499664528802
+            ]
+          }
+        },
+        "629": {
+          "inner": {
+            "successes": 14,
+            "total": 25,
+            "rate": 0.56,
+            "wilson_95": [
+              0.3706733186979878,
+              0.7333436111893266
+            ]
+          },
+          "outer": {
+            "successes": 11,
+            "total": 25,
+            "rate": 0.44,
+            "wilson_95": [
+              0.26665638881067344,
+              0.6293266813020123
+            ]
+          },
+          "combined": {
+            "successes": 25,
+            "total": 50,
+            "rate": 0.5,
+            "wilson_95": [
+              0.3664451431682858,
+              0.6335548568317142
+            ]
+          }
+        },
+        "630": {
+          "inner": {
+            "successes": 17,
+            "total": 25,
+            "rate": 0.68,
+            "wilson_95": [
+              0.48410269273102247,
+              0.8279480969309202
+            ]
+          },
+          "outer": {
+            "successes": 14,
+            "total": 25,
+            "rate": 0.56,
+            "wilson_95": [
+              0.3706733186979878,
+              0.7333436111893266
+            ]
+          },
+          "combined": {
+            "successes": 31,
+            "total": 50,
+            "rate": 0.62,
+            "wilson_95": [
+              0.4815044693099298,
+              0.7413721068980641
+            ]
+          }
+        },
+        "631": {
+          "inner": {
+            "successes": 13,
+            "total": 25,
+            "rate": 0.52,
+            "wilson_95": [
+              0.3349851695035678,
+              0.6996871404588704
+            ]
+          },
+          "outer": {
+            "successes": 11,
+            "total": 25,
+            "rate": 0.44,
+            "wilson_95": [
+              0.26665638881067344,
+              0.6293266813020123
+            ]
+          },
+          "combined": {
+            "successes": 24,
+            "total": 50,
+            "rate": 0.48,
+            "wilson_95": [
+              0.34797135286578046,
+              0.6148825510995539
+            ]
+          }
+        },
+        "632": {
+          "inner": {
+            "successes": 15,
+            "total": 25,
+            "rate": 0.6,
+            "wilson_95": [
+              0.40739457358967,
+              0.7659669762225203
+            ]
+          },
+          "outer": {
+            "successes": 13,
+            "total": 25,
+            "rate": 0.52,
+            "wilson_95": [
+              0.3349851695035678,
+              0.6996871404588704
+            ]
+          },
+          "combined": {
+            "successes": 28,
+            "total": 50,
+            "rate": 0.56,
+            "wilson_95": [
+              0.4230602802165686,
+              0.6883780078874284
+            ]
+          }
+        }
+      },
+      "rollout_seed_mean_and_sample_std": {
+        "combined": {
+          "seed_rates": [
+            0.58,
+            0.5,
+            0.62,
+            0.48,
+            0.56
+          ],
+          "mean_rate": 0.548,
+          "sample_std_rate_ddof1": 0.057619441163551735,
+          "num_seeds": 5
+        },
+        "inner": {
+          "seed_rates": [
+            0.56,
+            0.56,
+            0.68,
+            0.52,
+            0.6
+          ],
+          "mean_rate": 0.5840000000000001,
+          "sample_std_rate_ddof1": 0.06066300355241241,
+          "num_seeds": 5
+        },
+        "outer": {
+          "seed_rates": [
+            0.6,
+            0.44,
+            0.56,
+            0.44,
+            0.52
+          ],
+          "mean_rate": 0.512,
+          "sample_std_rate_ddof1": 0.07155417527999328,
+          "num_seeds": 5
+        }
+      }
+    },
+    "block0/START25_APP8P4": {
+      "block": 0,
+      "condition": "START25_APP8P4",
+      "checkpoint": {
+        "epoch": 40,
+        "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_mvp0/block0/START25_APP8P4/tro_pos_b0_START25_APP8P4_d30/20260723175201/models/model_epoch_40.pth",
+        "sha256": "6e007249642ecadb20ef8b8d3d8b4508bf948767dd178188a2920d1c2f7d3009",
+        "selection_rule": "highest numeric model_epoch_*.pth already present in the sole existing training run; no retraining"
+      },
+      "combined": {
+        "successes": 100,
+        "total": 250,
+        "rate": 0.4,
+        "wilson_95": [
+          0.34122832313654916,
+          0.4617983367625397
+        ]
+      },
+      "inner": {
+        "successes": 46,
+        "total": 125,
+        "rate": 0.368,
+        "wilson_95": [
+          0.2885699663384549,
+          0.4553012976005434
+        ]
+      },
+      "outer": {
+        "successes": 54,
+        "total": 125,
+        "rate": 0.432,
+        "wilson_95": [
+          0.34846990714538484,
+          0.5195849863989477
+        ]
+      },
+      "per_seed": {
+        "628": {
+          "inner": {
+            "successes": 13,
+            "total": 25,
+            "rate": 0.52,
+            "wilson_95": [
+              0.3349851695035678,
+              0.6996871404588704
+            ]
+          },
+          "outer": {
+            "successes": 13,
+            "total": 25,
+            "rate": 0.52,
+            "wilson_95": [
+              0.3349851695035678,
+              0.6996871404588704
+            ]
+          },
+          "combined": {
+            "successes": 26,
+            "total": 50,
+            "rate": 0.52,
+            "wilson_95": [
+              0.38511744890044614,
+              0.6520286471342196
+            ]
+          }
+        },
+        "629": {
+          "inner": {
+            "successes": 11,
+            "total": 25,
+            "rate": 0.44,
+            "wilson_95": [
+              0.26665638881067344,
+              0.6293266813020123
+            ]
+          },
+          "outer": {
+            "successes": 9,
+            "total": 25,
+            "rate": 0.36,
+            "wilson_95": [
+              0.20247880774458224,
+              0.5548150225183514
+            ]
+          },
+          "combined": {
+            "successes": 20,
+            "total": 50,
+            "rate": 0.4,
+            "wilson_95": [
+              0.27608389730256544,
+              0.5381856225241064
+            ]
+          }
+        },
+        "630": {
+          "inner": {
+            "successes": 8,
+            "total": 25,
+            "rate": 0.32,
+            "wilson_95": [
+              0.17205190306907978,
+              0.5158973072689775
+            ]
+          },
+          "outer": {
+            "successes": 12,
+            "total": 25,
+            "rate": 0.48,
+            "wilson_95": [
+              0.30031285954112974,
+              0.6650148304964322
+            ]
+          },
+          "combined": {
+            "successes": 20,
+            "total": 50,
+            "rate": 0.4,
+            "wilson_95": [
+              0.27608389730256544,
+              0.5381856225241064
+            ]
+          }
+        },
+        "631": {
+          "inner": {
+            "successes": 8,
+            "total": 25,
+            "rate": 0.32,
+            "wilson_95": [
+              0.17205190306907978,
+              0.5158973072689775
+            ]
+          },
+          "outer": {
+            "successes": 7,
+            "total": 25,
+            "rate": 0.28,
+            "wilson_95": [
+              0.14283853850956563,
+              0.47576605190361576
+            ]
+          },
+          "combined": {
+            "successes": 15,
+            "total": 50,
+            "rate": 0.3,
+            "wilson_95": [
+              0.19103553500880954,
+              0.437503504644534
+            ]
+          }
+        },
+        "632": {
+          "inner": {
+            "successes": 6,
+            "total": 25,
+            "rate": 0.24,
+            "wilson_95": [
+              0.11496313693401444,
+              0.4342968335542908
+            ]
+          },
+          "outer": {
+            "successes": 13,
+            "total": 25,
+            "rate": 0.52,
+            "wilson_95": [
+              0.3349851695035678,
+              0.6996871404588704
+            ]
+          },
+          "combined": {
+            "successes": 19,
+            "total": 50,
+            "rate": 0.38,
+            "wilson_95": [
+              0.25862789310193596,
+              0.5184955306900703
+            ]
+          }
+        }
+      },
+      "rollout_seed_mean_and_sample_std": {
+        "combined": {
+          "seed_rates": [
+            0.52,
+            0.4,
+            0.4,
+            0.3,
+            0.38
+          ],
+          "mean_rate": 0.4,
+          "sample_std_rate_ddof1": 0.07874007874011812,
+          "num_seeds": 5
+        },
+        "inner": {
+          "seed_rates": [
+            0.52,
+            0.44,
+            0.32,
+            0.32,
+            0.24
+          ],
+          "mean_rate": 0.368,
+          "sample_std_rate_ddof1": 0.11099549540409287,
+          "num_seeds": 5
+        },
+        "outer": {
+          "seed_rates": [
+            0.52,
+            0.36,
+            0.48,
+            0.28,
+            0.52
+          ],
+          "mean_rate": 0.432,
+          "sample_std_rate_ddof1": 0.1073312629199899,
+          "num_seeds": 5
+        }
+      }
+    },
+    "block1/START15_APP6": {
+      "block": 1,
+      "condition": "START15_APP6",
+      "checkpoint": {
+        "epoch": 40,
+        "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_mvp0/block1/START15_APP6/tro_pos_b1_START15_APP6_d30/20260723192141/models/model_epoch_40.pth",
+        "sha256": "277406ec37e2366ef9075c090e76c6e0926b44ad184825e471be7e4ab8d70736",
+        "selection_rule": "highest numeric model_epoch_*.pth already present in the sole existing training run; no retraining"
+      },
+      "combined": {
+        "successes": 63,
+        "total": 250,
+        "rate": 0.252,
+        "wilson_95": [
+          0.2022119351253892,
+          0.3092941814243512
+        ]
+      },
+      "inner": {
+        "successes": 41,
+        "total": 125,
+        "rate": 0.328,
+        "wilson_95": [
+          0.25189962748906103,
+          0.4143568679466034
+        ]
+      },
+      "outer": {
+        "successes": 22,
+        "total": 125,
+        "rate": 0.176,
+        "wilson_95": [
+          0.11919766518324572,
+          0.25212270993974983
+        ]
+      },
+      "per_seed": {
+        "628": {
+          "inner": {
+            "successes": 8,
+            "total": 25,
+            "rate": 0.32,
+            "wilson_95": [
+              0.17205190306907978,
+              0.5158973072689775
+            ]
+          },
+          "outer": {
+            "successes": 2,
+            "total": 25,
+            "rate": 0.08,
+            "wilson_95": [
+              0.022220401284847563,
+              0.24966108950395313
+            ]
+          },
+          "combined": {
+            "successes": 10,
+            "total": 50,
+            "rate": 0.2,
+            "wilson_95": [
+              0.1124375001577611,
+              0.3303710593222542
+            ]
+          }
+        },
+        "629": {
+          "inner": {
+            "successes": 8,
+            "total": 25,
+            "rate": 0.32,
+            "wilson_95": [
+              0.17205190306907978,
+              0.5158973072689775
+            ]
+          },
+          "outer": {
+            "successes": 2,
+            "total": 25,
+            "rate": 0.08,
+            "wilson_95": [
+              0.022220401284847563,
+              0.24966108950395313
+            ]
+          },
+          "combined": {
+            "successes": 10,
+            "total": 50,
+            "rate": 0.2,
+            "wilson_95": [
+              0.1124375001577611,
+              0.3303710593222542
+            ]
+          }
+        },
+        "630": {
+          "inner": {
+            "successes": 9,
+            "total": 25,
+            "rate": 0.36,
+            "wilson_95": [
+              0.20247880774458224,
+              0.5548150225183514
+            ]
+          },
+          "outer": {
+            "successes": 6,
+            "total": 25,
+            "rate": 0.24,
+            "wilson_95": [
+              0.11496313693401444,
+              0.4342968335542908
+            ]
+          },
+          "combined": {
+            "successes": 15,
+            "total": 50,
+            "rate": 0.3,
+            "wilson_95": [
+              0.19103553500880954,
+              0.437503504644534
+            ]
+          }
+        },
+        "631": {
+          "inner": {
+            "successes": 7,
+            "total": 25,
+            "rate": 0.28,
+            "wilson_95": [
+              0.14283853850956563,
+              0.47576605190361576
+            ]
+          },
+          "outer": {
+            "successes": 7,
+            "total": 25,
+            "rate": 0.28,
+            "wilson_95": [
+              0.14283853850956563,
+              0.47576605190361576
+            ]
+          },
+          "combined": {
+            "successes": 14,
+            "total": 50,
+            "rate": 0.28,
+            "wilson_95": [
+              0.17474170665911232,
+              0.4166512369595657
+            ]
+          }
+        },
+        "632": {
+          "inner": {
+            "successes": 9,
+            "total": 25,
+            "rate": 0.36,
+            "wilson_95": [
+              0.20247880774458224,
+              0.5548150225183514
+            ]
+          },
+          "outer": {
+            "successes": 5,
+            "total": 25,
+            "rate": 0.2,
+            "wilson_95": [
+              0.08860584686802572,
+              0.3913095036954033
+            ]
+          },
+          "combined": {
+            "successes": 14,
+            "total": 50,
+            "rate": 0.28,
+            "wilson_95": [
+              0.17474170665911232,
+              0.4166512369595657
+            ]
+          }
+        }
+      },
+      "rollout_seed_mean_and_sample_std": {
+        "combined": {
+          "seed_rates": [
+            0.2,
+            0.2,
+            0.3,
+            0.28,
+            0.28
+          ],
+          "mean_rate": 0.252,
+          "sample_std_rate_ddof1": 0.048166378315169185,
+          "num_seeds": 5
+        },
+        "inner": {
+          "seed_rates": [
+            0.32,
+            0.32,
+            0.36,
+            0.28,
+            0.36
+          ],
+          "mean_rate": 0.328,
+          "sample_std_rate_ddof1": 0.033466401061363005,
+          "num_seeds": 5
+        },
+        "outer": {
+          "seed_rates": [
+            0.08,
+            0.08,
+            0.24,
+            0.28,
+            0.2
+          ],
+          "mean_rate": 0.17600000000000002,
+          "sample_std_rate_ddof1": 0.09208691546577072,
+          "num_seeds": 5
+        }
+      }
+    },
+    "block1/START35_APP6": {
+      "block": 1,
+      "condition": "START35_APP6",
+      "checkpoint": {
+        "epoch": 40,
+        "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_mvp0/block1/START35_APP6/tro_pos_b1_START35_APP6_d30/20260723192141/models/model_epoch_40.pth",
+        "sha256": "49b4c3f5d9246d92a3ef4580c5a33581121c28837792b3195e16ace27e2323c8",
+        "selection_rule": "highest numeric model_epoch_*.pth already present in the sole existing training run; no retraining"
+      },
+      "combined": {
+        "successes": 28,
+        "total": 250,
+        "rate": 0.112,
+        "wilson_95": [
+          0.07863430779240635,
+          0.1571091326160586
+        ]
+      },
+      "inner": {
+        "successes": 12,
+        "total": 125,
+        "rate": 0.096,
+        "wilson_95": [
+          0.05577122611489426,
+          0.16031961200143352
+        ]
+      },
+      "outer": {
+        "successes": 16,
+        "total": 125,
+        "rate": 0.128,
+        "wilson_95": [
+          0.08034702880619571,
+          0.1978356241127992
+        ]
+      },
+      "per_seed": {
+        "628": {
+          "inner": {
+            "successes": 2,
+            "total": 25,
+            "rate": 0.08,
+            "wilson_95": [
+              0.022220401284847563,
+              0.24966108950395313
+            ]
+          },
+          "outer": {
+            "successes": 3,
+            "total": 25,
+            "rate": 0.12,
+            "wilson_95": [
+              0.04166817150440358,
+              0.2995579392092732
+            ]
+          },
+          "combined": {
+            "successes": 5,
+            "total": 50,
+            "rate": 0.1,
+            "wilson_95": [
+              0.04347576493189041,
+              0.21360231437479654
+            ]
+          }
+        },
+        "629": {
+          "inner": {
+            "successes": 2,
+            "total": 25,
+            "rate": 0.08,
+            "wilson_95": [
+              0.022220401284847563,
+              0.24966108950395313
+            ]
+          },
+          "outer": {
+            "successes": 3,
+            "total": 25,
+            "rate": 0.12,
+            "wilson_95": [
+              0.04166817150440358,
+              0.2995579392092732
+            ]
+          },
+          "combined": {
+            "successes": 5,
+            "total": 50,
+            "rate": 0.1,
+            "wilson_95": [
+              0.04347576493189041,
+              0.21360231437479654
+            ]
+          }
+        },
+        "630": {
+          "inner": {
+            "successes": 0,
+            "total": 25,
+            "rate": 0.0,
+            "wilson_95": [
+              1.3877787807814457e-17,
+              0.13319225093904846
+            ]
+          },
+          "outer": {
+            "successes": 2,
+            "total": 25,
+            "rate": 0.08,
+            "wilson_95": [
+              0.022220401284847563,
+              0.24966108950395313
+            ]
+          },
+          "combined": {
+            "successes": 2,
+            "total": 50,
+            "rate": 0.04,
+            "wilson_95": [
+              0.011038884327619805,
+              0.1346009068750702
+            ]
+          }
+        },
+        "631": {
+          "inner": {
+            "successes": 5,
+            "total": 25,
+            "rate": 0.2,
+            "wilson_95": [
+              0.08860584686802572,
+              0.3913095036954033
+            ]
+          },
+          "outer": {
+            "successes": 4,
+            "total": 25,
+            "rate": 0.16,
+            "wilson_95": [
+              0.0640345145667644,
+              0.3465362160717886
+            ]
+          },
+          "combined": {
+            "successes": 9,
+            "total": 50,
+            "rate": 0.18,
+            "wilson_95": [
+              0.09770192670234178,
+              0.30796053674300783
+            ]
+          }
+        },
+        "632": {
+          "inner": {
+            "successes": 3,
+            "total": 25,
+            "rate": 0.12,
+            "wilson_95": [
+              0.04166817150440358,
+              0.2995579392092732
+            ]
+          },
+          "outer": {
+            "successes": 4,
+            "total": 25,
+            "rate": 0.16,
+            "wilson_95": [
+              0.0640345145667644,
+              0.3465362160717886
+            ]
+          },
+          "combined": {
+            "successes": 7,
+            "total": 50,
+            "rate": 0.14,
+            "wilson_95": [
+              0.06950833427016294,
+              0.2618619371058554
+            ]
+          }
+        }
+      },
+      "rollout_seed_mean_and_sample_std": {
+        "combined": {
+          "seed_rates": [
+            0.1,
+            0.1,
+            0.04,
+            0.18,
+            0.14
+          ],
+          "mean_rate": 0.112,
+          "sample_std_rate_ddof1": 0.052153619241621194,
+          "num_seeds": 5
+        },
+        "inner": {
+          "seed_rates": [
+            0.08,
+            0.08,
+            0.0,
+            0.2,
+            0.12
+          ],
+          "mean_rate": 0.096,
+          "sample_std_rate_ddof1": 0.0726636084983398,
+          "num_seeds": 5
+        },
+        "outer": {
+          "seed_rates": [
+            0.12,
+            0.12,
+            0.08,
+            0.16,
+            0.16
+          ],
+          "mean_rate": 0.128,
+          "sample_std_rate_ddof1": 0.033466401061363026,
+          "num_seeds": 5
+        }
+      }
+    },
+    "block1/START25_APP3P6": {
+      "block": 1,
+      "condition": "START25_APP3P6",
+      "checkpoint": {
+        "epoch": 40,
+        "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_mvp0/block1/START25_APP3P6/tro_pos_b1_START25_APP3P6_d30/20260723192141/models/model_epoch_40.pth",
+        "sha256": "a690298a8aa30570c5f881d177ca3a69d7dded1554fe1eacfc1db6031059a86b",
+        "selection_rule": "highest numeric model_epoch_*.pth already present in the sole existing training run; no retraining"
+      },
+      "combined": {
+        "successes": 81,
+        "total": 250,
+        "rate": 0.324,
+        "wilson_95": [
+          0.2690297048761813,
+          0.3842972165462152
+        ]
+      },
+      "inner": {
+        "successes": 47,
+        "total": 125,
+        "rate": 0.376,
+        "wilson_95": [
+          0.29597688696723545,
+          0.46341733067242963
+        ]
+      },
+      "outer": {
+        "successes": 34,
+        "total": 125,
+        "rate": 0.272,
+        "wilson_95": [
+          0.20166078136595392,
+          0.3559350381650431
+        ]
+      },
+      "per_seed": {
+        "628": {
+          "inner": {
+            "successes": 7,
+            "total": 25,
+            "rate": 0.28,
+            "wilson_95": [
+              0.14283853850956563,
+              0.47576605190361576
+            ]
+          },
+          "outer": {
+            "successes": 4,
+            "total": 25,
+            "rate": 0.16,
+            "wilson_95": [
+              0.0640345145667644,
+              0.3465362160717886
+            ]
+          },
+          "combined": {
+            "successes": 11,
+            "total": 50,
+            "rate": 0.22,
+            "wilson_95": [
+              0.1275391597021442,
+              0.3524154958125367
+            ]
+          }
+        },
+        "629": {
+          "inner": {
+            "successes": 11,
+            "total": 25,
+            "rate": 0.44,
+            "wilson_95": [
+              0.26665638881067344,
+              0.6293266813020123
+            ]
+          },
+          "outer": {
+            "successes": 9,
+            "total": 25,
+            "rate": 0.36,
+            "wilson_95": [
+              0.20247880774458224,
+              0.5548150225183514
+            ]
+          },
+          "combined": {
+            "successes": 20,
+            "total": 50,
+            "rate": 0.4,
+            "wilson_95": [
+              0.27608389730256544,
+              0.5381856225241064
+            ]
+          }
+        },
+        "630": {
+          "inner": {
+            "successes": 8,
+            "total": 25,
+            "rate": 0.32,
+            "wilson_95": [
+              0.17205190306907978,
+              0.5158973072689775
+            ]
+          },
+          "outer": {
+            "successes": 6,
+            "total": 25,
+            "rate": 0.24,
+            "wilson_95": [
+              0.11496313693401444,
+              0.4342968335542908
+            ]
+          },
+          "combined": {
+            "successes": 14,
+            "total": 50,
+            "rate": 0.28,
+            "wilson_95": [
+              0.17474170665911232,
+              0.4166512369595657
+            ]
+          }
+        },
+        "631": {
+          "inner": {
+            "successes": 11,
+            "total": 25,
+            "rate": 0.44,
+            "wilson_95": [
+              0.26665638881067344,
+              0.6293266813020123
+            ]
+          },
+          "outer": {
+            "successes": 6,
+            "total": 25,
+            "rate": 0.24,
+            "wilson_95": [
+              0.11496313693401444,
+              0.4342968335542908
+            ]
+          },
+          "combined": {
+            "successes": 17,
+            "total": 50,
+            "rate": 0.34,
+            "wilson_95": [
+              0.2243694922250009,
+              0.478461739497674
+            ]
+          }
+        },
+        "632": {
+          "inner": {
+            "successes": 10,
+            "total": 25,
+            "rate": 0.4,
+            "wilson_95": [
+              0.23403302377747973,
+              0.5926054264103301
+            ]
+          },
+          "outer": {
+            "successes": 9,
+            "total": 25,
+            "rate": 0.36,
+            "wilson_95": [
+              0.20247880774458224,
+              0.5548150225183514
+            ]
+          },
+          "combined": {
+            "successes": 19,
+            "total": 50,
+            "rate": 0.38,
+            "wilson_95": [
+              0.25862789310193596,
+              0.5184955306900703
+            ]
+          }
+        }
+      },
+      "rollout_seed_mean_and_sample_std": {
+        "combined": {
+          "seed_rates": [
+            0.22,
+            0.4,
+            0.28,
+            0.34,
+            0.38
+          ],
+          "mean_rate": 0.324,
+          "sample_std_rate_ddof1": 0.07402702209328699,
+          "num_seeds": 5
+        },
+        "inner": {
+          "seed_rates": [
+            0.28,
+            0.44,
+            0.32,
+            0.44,
+            0.4
+          ],
+          "mean_rate": 0.376,
+          "sample_std_rate_ddof1": 0.07266360849833979,
+          "num_seeds": 5
+        },
+        "outer": {
+          "seed_rates": [
+            0.16,
+            0.36,
+            0.24,
+            0.24,
+            0.36
+          ],
+          "mean_rate": 0.272,
+          "sample_std_rate_ddof1": 0.08671793355471519,
+          "num_seeds": 5
+        }
+      }
+    },
+    "block1/START25_APP8P4": {
+      "block": 1,
+      "condition": "START25_APP8P4",
+      "checkpoint": {
+        "epoch": 40,
+        "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_mvp0/block1/START25_APP8P4/tro_pos_b1_START25_APP8P4_d30/20260723192141/models/model_epoch_40.pth",
+        "sha256": "03af1476df98c6002ab76cb7358443fe4bc790e46435a7147de15b1a839a98bf",
+        "selection_rule": "highest numeric model_epoch_*.pth already present in the sole existing training run; no retraining"
+      },
+      "combined": {
+        "successes": 93,
+        "total": 250,
+        "rate": 0.372,
+        "wilson_95": [
+          0.3144464487445396,
+          0.4334276759262941
+        ]
+      },
+      "inner": {
+        "successes": 55,
+        "total": 125,
+        "rate": 0.44,
+        "wilson_95": [
+          0.3560584549578599,
+          0.5275193922871394
+        ]
+      },
+      "outer": {
+        "successes": 38,
+        "total": 125,
+        "rate": 0.304,
+        "wilson_95": [
+          0.23020330949980428,
+          0.38948432483385975
+        ]
+      },
+      "per_seed": {
+        "628": {
+          "inner": {
+            "successes": 8,
+            "total": 25,
+            "rate": 0.32,
+            "wilson_95": [
+              0.17205190306907978,
+              0.5158973072689775
+            ]
+          },
+          "outer": {
+            "successes": 6,
+            "total": 25,
+            "rate": 0.24,
+            "wilson_95": [
+              0.11496313693401444,
+              0.4342968335542908
+            ]
+          },
+          "combined": {
+            "successes": 14,
+            "total": 50,
+            "rate": 0.28,
+            "wilson_95": [
+              0.17474170665911232,
+              0.4166512369595657
+            ]
+          }
+        },
+        "629": {
+          "inner": {
+            "successes": 14,
+            "total": 25,
+            "rate": 0.56,
+            "wilson_95": [
+              0.3706733186979878,
+              0.7333436111893266
+            ]
+          },
+          "outer": {
+            "successes": 8,
+            "total": 25,
+            "rate": 0.32,
+            "wilson_95": [
+              0.17205190306907978,
+              0.5158973072689775
+            ]
+          },
+          "combined": {
+            "successes": 22,
+            "total": 50,
+            "rate": 0.44,
+            "wilson_95": [
+              0.3116219921125717,
+              0.5769397197834315
+            ]
+          }
+        },
+        "630": {
+          "inner": {
+            "successes": 10,
+            "total": 25,
+            "rate": 0.4,
+            "wilson_95": [
+              0.23403302377747973,
+              0.5926054264103301
+            ]
+          },
+          "outer": {
+            "successes": 9,
+            "total": 25,
+            "rate": 0.36,
+            "wilson_95": [
+              0.20247880774458224,
+              0.5548150225183514
+            ]
+          },
+          "combined": {
+            "successes": 19,
+            "total": 50,
+            "rate": 0.38,
+            "wilson_95": [
+              0.25862789310193596,
+              0.5184955306900703
+            ]
+          }
+        },
+        "631": {
+          "inner": {
+            "successes": 11,
+            "total": 25,
+            "rate": 0.44,
+            "wilson_95": [
+              0.26665638881067344,
+              0.6293266813020123
+            ]
+          },
+          "outer": {
+            "successes": 10,
+            "total": 25,
+            "rate": 0.4,
+            "wilson_95": [
+              0.23403302377747973,
+              0.5926054264103301
+            ]
+          },
+          "combined": {
+            "successes": 21,
+            "total": 50,
+            "rate": 0.42,
+            "wilson_95": [
+              0.2937500335471198,
+              0.5576655823142176
+            ]
+          }
+        },
+        "632": {
+          "inner": {
+            "successes": 12,
+            "total": 25,
+            "rate": 0.48,
+            "wilson_95": [
+              0.30031285954112974,
+              0.6650148304964322
+            ]
+          },
+          "outer": {
+            "successes": 5,
+            "total": 25,
+            "rate": 0.2,
+            "wilson_95": [
+              0.08860584686802572,
+              0.3913095036954033
+            ]
+          },
+          "combined": {
+            "successes": 17,
+            "total": 50,
+            "rate": 0.34,
+            "wilson_95": [
+              0.2243694922250009,
+              0.478461739497674
+            ]
+          }
+        }
+      },
+      "rollout_seed_mean_and_sample_std": {
+        "combined": {
+          "seed_rates": [
+            0.28,
+            0.44,
+            0.38,
+            0.42,
+            0.34
+          ],
+          "mean_rate": 0.372,
+          "sample_std_rate_ddof1": 0.06418722614352483,
+          "num_seeds": 5
+        },
+        "inner": {
+          "seed_rates": [
+            0.32,
+            0.56,
+            0.4,
+            0.44,
+            0.48
+          ],
+          "mean_rate": 0.44,
+          "sample_std_rate_ddof1": 0.0894427190999916,
+          "num_seeds": 5
+        },
+        "outer": {
+          "seed_rates": [
+            0.24,
+            0.32,
+            0.36,
+            0.4,
+            0.2
+          ],
+          "mean_rate": 0.304,
+          "sample_std_rate_ddof1": 0.08294576541331088,
+          "num_seeds": 5
+        }
+      }
+    }
+  },
+  "within_block_primary_contrasts": {
+    "block0": {
+      "delta_start_outer_wide_minus_tight": {
+        "success_difference": 2,
+        "rate_difference": 0.01599999999999996,
+        "per_seed_success_differences": [
+          0,
+          2,
+          -2,
+          -2,
+          4
+        ]
+      },
+      "delta_approach_inner_tight_minus_wide": {
+        "success_difference": 27,
+        "rate_difference": 0.21599999999999997,
+        "per_seed_success_differences": [
+          1,
+          3,
+          9,
+          5,
+          9
+        ]
+      }
+    },
+    "block1": {
+      "delta_start_outer_wide_minus_tight": {
+        "success_difference": -6,
+        "rate_difference": -0.04799999999999999,
+        "per_seed_success_differences": [
+          1,
+          1,
+          -4,
+          -3,
+          -1
+        ]
+      },
+      "delta_approach_inner_tight_minus_wide": {
+        "success_difference": -8,
+        "rate_difference": -0.064,
+        "per_seed_success_differences": [
+          -1,
+          -3,
+          -2,
+          0,
+          -2
+        ]
+      }
+    }
+  },
+  "all_policy_paired_comparisons": {
+    "block0/START15_APP6__vs__block0/START35_APP6": {
+      "left": "block0/START15_APP6",
+      "right": "block0/START35_APP6",
+      "both_success": 26,
+      "left_only": 88,
+      "right_only": 45,
+      "both_failure": 91,
+      "success_difference_right_minus_left": -43,
+      "rate_difference_right_minus_left": -0.172
+    },
+    "block0/START15_APP6__vs__block0/START25_APP3P6": {
+      "left": "block0/START15_APP6",
+      "right": "block0/START25_APP3P6",
+      "both_success": 71,
+      "left_only": 43,
+      "right_only": 66,
+      "both_failure": 70,
+      "success_difference_right_minus_left": 23,
+      "rate_difference_right_minus_left": 0.092
+    },
+    "block0/START15_APP6__vs__block0/START25_APP8P4": {
+      "left": "block0/START15_APP6",
+      "right": "block0/START25_APP8P4",
+      "both_success": 41,
+      "left_only": 73,
+      "right_only": 59,
+      "both_failure": 77,
+      "success_difference_right_minus_left": -14,
+      "rate_difference_right_minus_left": -0.056
+    },
+    "block0/START15_APP6__vs__block1/START15_APP6": {
+      "left": "block0/START15_APP6",
+      "right": "block1/START15_APP6",
+      "both_success": 41,
+      "left_only": 73,
+      "right_only": 22,
+      "both_failure": 114,
+      "success_difference_right_minus_left": -51,
+      "rate_difference_right_minus_left": -0.204
+    },
+    "block0/START15_APP6__vs__block1/START35_APP6": {
+      "left": "block0/START15_APP6",
+      "right": "block1/START35_APP6",
+      "both_success": 12,
+      "left_only": 102,
+      "right_only": 16,
+      "both_failure": 120,
+      "success_difference_right_minus_left": -86,
+      "rate_difference_right_minus_left": -0.344
+    },
+    "block0/START15_APP6__vs__block1/START25_APP3P6": {
+      "left": "block0/START15_APP6",
+      "right": "block1/START25_APP3P6",
+      "both_success": 50,
+      "left_only": 64,
+      "right_only": 31,
+      "both_failure": 105,
+      "success_difference_right_minus_left": -33,
+      "rate_difference_right_minus_left": -0.132
+    },
+    "block0/START15_APP6__vs__block1/START25_APP8P4": {
+      "left": "block0/START15_APP6",
+      "right": "block1/START25_APP8P4",
+      "both_success": 50,
+      "left_only": 64,
+      "right_only": 43,
+      "both_failure": 93,
+      "success_difference_right_minus_left": -21,
+      "rate_difference_right_minus_left": -0.084
+    },
+    "block0/START35_APP6__vs__block0/START25_APP3P6": {
+      "left": "block0/START35_APP6",
+      "right": "block0/START25_APP3P6",
+      "both_success": 47,
+      "left_only": 24,
+      "right_only": 90,
+      "both_failure": 89,
+      "success_difference_right_minus_left": 66,
+      "rate_difference_right_minus_left": 0.264
+    },
+    "block0/START35_APP6__vs__block0/START25_APP8P4": {
+      "left": "block0/START35_APP6",
+      "right": "block0/START25_APP8P4",
+      "both_success": 35,
+      "left_only": 36,
+      "right_only": 65,
+      "both_failure": 114,
+      "success_difference_right_minus_left": 29,
+      "rate_difference_right_minus_left": 0.116
+    },
+    "block0/START35_APP6__vs__block1/START15_APP6": {
+      "left": "block0/START35_APP6",
+      "right": "block1/START15_APP6",
+      "both_success": 21,
+      "left_only": 50,
+      "right_only": 42,
+      "both_failure": 137,
+      "success_difference_right_minus_left": -8,
+      "rate_difference_right_minus_left": -0.032
+    },
+    "block0/START35_APP6__vs__block1/START35_APP6": {
+      "left": "block0/START35_APP6",
+      "right": "block1/START35_APP6",
+      "both_success": 13,
+      "left_only": 58,
+      "right_only": 15,
+      "both_failure": 164,
+      "success_difference_right_minus_left": -43,
+      "rate_difference_right_minus_left": -0.172
+    },
+    "block0/START35_APP6__vs__block1/START25_APP3P6": {
+      "left": "block0/START35_APP6",
+      "right": "block1/START25_APP3P6",
+      "both_success": 29,
+      "left_only": 42,
+      "right_only": 52,
+      "both_failure": 127,
+      "success_difference_right_minus_left": 10,
+      "rate_difference_right_minus_left": 0.04
+    },
+    "block0/START35_APP6__vs__block1/START25_APP8P4": {
+      "left": "block0/START35_APP6",
+      "right": "block1/START25_APP8P4",
+      "both_success": 37,
+      "left_only": 34,
+      "right_only": 56,
+      "both_failure": 123,
+      "success_difference_right_minus_left": 22,
+      "rate_difference_right_minus_left": 0.088
+    },
+    "block0/START25_APP3P6__vs__block0/START25_APP8P4": {
+      "left": "block0/START25_APP3P6",
+      "right": "block0/START25_APP8P4",
+      "both_success": 66,
+      "left_only": 71,
+      "right_only": 34,
+      "both_failure": 79,
+      "success_difference_right_minus_left": -37,
+      "rate_difference_right_minus_left": -0.148
+    },
+    "block0/START25_APP3P6__vs__block1/START15_APP6": {
+      "left": "block0/START25_APP3P6",
+      "right": "block1/START15_APP6",
+      "both_success": 42,
+      "left_only": 95,
+      "right_only": 21,
+      "both_failure": 92,
+      "success_difference_right_minus_left": -74,
+      "rate_difference_right_minus_left": -0.296
+    },
+    "block0/START25_APP3P6__vs__block1/START35_APP6": {
+      "left": "block0/START25_APP3P6",
+      "right": "block1/START35_APP6",
+      "both_success": 15,
+      "left_only": 122,
+      "right_only": 13,
+      "both_failure": 100,
+      "success_difference_right_minus_left": -109,
+      "rate_difference_right_minus_left": -0.436
+    },
+    "block0/START25_APP3P6__vs__block1/START25_APP3P6": {
+      "left": "block0/START25_APP3P6",
+      "right": "block1/START25_APP3P6",
+      "both_success": 52,
+      "left_only": 85,
+      "right_only": 29,
+      "both_failure": 84,
+      "success_difference_right_minus_left": -56,
+      "rate_difference_right_minus_left": -0.224
+    },
+    "block0/START25_APP3P6__vs__block1/START25_APP8P4": {
+      "left": "block0/START25_APP3P6",
+      "right": "block1/START25_APP8P4",
+      "both_success": 59,
+      "left_only": 78,
+      "right_only": 34,
+      "both_failure": 79,
+      "success_difference_right_minus_left": -44,
+      "rate_difference_right_minus_left": -0.176
+    },
+    "block0/START25_APP8P4__vs__block1/START15_APP6": {
+      "left": "block0/START25_APP8P4",
+      "right": "block1/START15_APP6",
+      "both_success": 30,
+      "left_only": 70,
+      "right_only": 33,
+      "both_failure": 117,
+      "success_difference_right_minus_left": -37,
+      "rate_difference_right_minus_left": -0.148
+    },
+    "block0/START25_APP8P4__vs__block1/START35_APP6": {
+      "left": "block0/START25_APP8P4",
+      "right": "block1/START35_APP6",
+      "both_success": 17,
+      "left_only": 83,
+      "right_only": 11,
+      "both_failure": 139,
+      "success_difference_right_minus_left": -72,
+      "rate_difference_right_minus_left": -0.288
+    },
+    "block0/START25_APP8P4__vs__block1/START25_APP3P6": {
+      "left": "block0/START25_APP8P4",
+      "right": "block1/START25_APP3P6",
+      "both_success": 33,
+      "left_only": 67,
+      "right_only": 48,
+      "both_failure": 102,
+      "success_difference_right_minus_left": -19,
+      "rate_difference_right_minus_left": -0.076
+    },
+    "block0/START25_APP8P4__vs__block1/START25_APP8P4": {
+      "left": "block0/START25_APP8P4",
+      "right": "block1/START25_APP8P4",
+      "both_success": 44,
+      "left_only": 56,
+      "right_only": 49,
+      "both_failure": 101,
+      "success_difference_right_minus_left": -7,
+      "rate_difference_right_minus_left": -0.028
+    },
+    "block1/START15_APP6__vs__block1/START35_APP6": {
+      "left": "block1/START15_APP6",
+      "right": "block1/START35_APP6",
+      "both_success": 8,
+      "left_only": 55,
+      "right_only": 20,
+      "both_failure": 167,
+      "success_difference_right_minus_left": -35,
+      "rate_difference_right_minus_left": -0.14
+    },
+    "block1/START15_APP6__vs__block1/START25_APP3P6": {
+      "left": "block1/START15_APP6",
+      "right": "block1/START25_APP3P6",
+      "both_success": 31,
+      "left_only": 32,
+      "right_only": 50,
+      "both_failure": 137,
+      "success_difference_right_minus_left": 18,
+      "rate_difference_right_minus_left": 0.072
+    },
+    "block1/START15_APP6__vs__block1/START25_APP8P4": {
+      "left": "block1/START15_APP6",
+      "right": "block1/START25_APP8P4",
+      "both_success": 29,
+      "left_only": 34,
+      "right_only": 64,
+      "both_failure": 123,
+      "success_difference_right_minus_left": 30,
+      "rate_difference_right_minus_left": 0.12
+    },
+    "block1/START35_APP6__vs__block1/START25_APP3P6": {
+      "left": "block1/START35_APP6",
+      "right": "block1/START25_APP3P6",
+      "both_success": 7,
+      "left_only": 21,
+      "right_only": 74,
+      "both_failure": 148,
+      "success_difference_right_minus_left": 53,
+      "rate_difference_right_minus_left": 0.212
+    },
+    "block1/START35_APP6__vs__block1/START25_APP8P4": {
+      "left": "block1/START35_APP6",
+      "right": "block1/START25_APP8P4",
+      "both_success": 14,
+      "left_only": 14,
+      "right_only": 79,
+      "both_failure": 143,
+      "success_difference_right_minus_left": 65,
+      "rate_difference_right_minus_left": 0.26
+    },
+    "block1/START25_APP3P6__vs__block1/START25_APP8P4": {
+      "left": "block1/START25_APP3P6",
+      "right": "block1/START25_APP8P4",
+      "both_success": 41,
+      "left_only": 40,
+      "right_only": 52,
+      "both_failure": 117,
+      "success_difference_right_minus_left": 12,
+      "rate_difference_right_minus_left": 0.048
+    }
+  },
+  "source_aggregate_summaries": [
+    "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_mvp0/rollouts_5seed_n50/block0/seed628/inner/summary_seed628_n25.json",
+    "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_mvp0/rollouts_5seed_n50/block0/seed628/outer/summary_seed628_n25.json",
+    "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_mvp0/rollouts_5seed_n50/block0/seed629/inner/summary_seed629_n25.json",
+    "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_mvp0/rollouts_5seed_n50/block0/seed629/outer/summary_seed629_n25.json",
+    "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_mvp0/rollouts_5seed_n50/block0/seed630/inner/summary_seed630_n25.json",
+    "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_mvp0/rollouts_5seed_n50/block0/seed630/outer/summary_seed630_n25.json",
+    "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_mvp0/rollouts_5seed_n50/block0/seed631/inner/summary_seed631_n25.json",
+    "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_mvp0/rollouts_5seed_n50/block0/seed631/outer/summary_seed631_n25.json",
+    "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_mvp0/rollouts_5seed_n50/block0/seed632/inner/summary_seed632_n25.json",
+    "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_mvp0/rollouts_5seed_n50/block0/seed632/outer/summary_seed632_n25.json",
+    "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_mvp0/rollouts_5seed_n50/block1/seed628/inner/summary_seed628_n25.json",
+    "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_mvp0/rollouts_5seed_n50/block1/seed628/outer/summary_seed628_n25.json",
+    "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_mvp0/rollouts_5seed_n50/block1/seed629/inner/summary_seed629_n25.json",
+    "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_mvp0/rollouts_5seed_n50/block1/seed629/outer/summary_seed629_n25.json",
+    "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_mvp0/rollouts_5seed_n50/block1/seed630/inner/summary_seed630_n25.json",
+    "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_mvp0/rollouts_5seed_n50/block1/seed630/outer/summary_seed630_n25.json",
+    "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_mvp0/rollouts_5seed_n50/block1/seed631/inner/summary_seed631_n25.json",
+    "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_mvp0/rollouts_5seed_n50/block1/seed631/outer/summary_seed631_n25.json",
+    "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_mvp0/rollouts_5seed_n50/block1/seed632/inner/summary_seed632_n25.json",
+    "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_mvp0/rollouts_5seed_n50/block1/seed632/outer/summary_seed632_n25.json"
+  ],
+  "corrected_replication_decision": {
+    "rule_applied_descriptively": "positive in both learner blocks and mean rate difference >= 0.15",
+    "start_primary": {
+      "block_rate_differences": [
+        0.016,
+        -0.048
+      ],
+      "mean_rate_difference": -0.016,
+      "replicated": false
+    },
+    "approach_primary": {
+      "block_rate_differences": [
+        0.216,
+        -0.064
+      ],
+      "mean_rate_difference": 0.076,
+      "replicated": false
+    },
+    "classification": "null/unstable"
+  }
+}

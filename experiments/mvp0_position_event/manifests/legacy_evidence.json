@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "status": "verified",
+  "legacy_root_read_only": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/ar_guidance_spatial_S15_S35/policy_rollouts_seed628_shared_r35_paired_n50_h200",
+  "verified_hashes": {
+    "summary_seed628_n50": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/ar_guidance_spatial_S15_S35/policy_rollouts_seed628_shared_r35_paired_n50_h200/summary_seed628_n50.json",
+      "sha256": "ec9c95ba26e3a4b9f18ae7c34966a8d55dc3acca2af10c18bdbc43d12c827d78"
+    },
+    "shared_start_manifest_seed628_n50_r35": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/ar_guidance_spatial_S15_S35/policy_rollouts_seed628_shared_r35_paired_n50_h200/shared_start_manifest_seed628_n50_r35.json",
+      "sha256": "84316b36922ea71225615d285bffccdfef4b99289650e302c963deb761f516ce"
+    },
+    "s25_epoch80_checkpoint": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/ar_guidance_spatial_S15_S35/S25/spatial_S25_d30_seed1_2gap/20260704004132/models/model_epoch_80.pth",
+      "sha256": "e666ab6a53f87f8d0f2e0a5ba29bd34b28cc39930d57cc848abfa5745465d60f",
+      "epoch": 80
+    }
+  },
+  "child_banks": {
+    "legacy_seed628_reference_r00_r25_n25_v1": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/mvp0_position_event/manifests/legacy_seed628_reference_r00_r25_n25_v1.json",
+      "sha256": "13856c9f93254514914c0a9b5e9ae681ab15120e556d63fcba335c8c5cc165bd",
+      "num_states": 25,
+      "legacy_rollout_indices": [
+        0,
+        1,
+        2,
+        3,
+        9,
+        12,
+        13,
+        14,
+        16,
+        17,
+        18,
+        20,
+        21,
+        27,
+        29,
+        33,
+        34,
+        35,
+        37,
+        40,
+        41,
+        42,
+        45,
+        46,
+        48
+      ]
+    },
+    "legacy_seed628_outer_r25_r35_n25_v1": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/mvp0_position_event/manifests/legacy_seed628_outer_r25_r35_n25_v1.json",
+      "sha256": "6eae03148557d67761369a76c7acaa11f4041fdb308d677546295e56bb40e139",
+      "num_states": 25,
+      "legacy_rollout_indices": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        10,
+        11,
+        15,
+        19,
+        22,
+        23,
+        24,
+        25,
+        26,
+        28,
+        30,
+        31,
+        32,
+        36,
+        38,
+        39,
+        43,
+        44,
+        47,
+        49
+      ]
+    }
+  },
+  "historical_only": {
+    "S15": {
+      "reference_bank": 14,
+      "outer_bank": 4,
+      "denominator": 25
+    },
+    "S25": {
+      "reference_bank": 8,
+      "outer_bank": 10,
+      "denominator": 25
+    },
+    "S35": {
+      "reference_bank": 5,
+      "outer_bank": 2,
+      "denominator": 25
+    }
+  }
+}

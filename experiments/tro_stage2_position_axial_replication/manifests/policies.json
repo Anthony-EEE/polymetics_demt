@@ -1,0 +1,1107 @@
+{
+  "schema_version": 1,
+  "counts": {
+    "total": 25,
+    "new": 25,
+    "reused": 0
+  },
+  "policies": [
+    {
+      "canonical_seed": 1,
+      "condition": "START15_APP6",
+      "source_collection_seed": 1,
+      "source_training_seed": 1,
+      "reused_dataset": false,
+      "reused_policy": false,
+      "status": "checkpoint_frozen",
+      "source_artifact_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed1/START15_APP6.json",
+      "source_artifact_sha256": "0a0c405dae12ca16a5336fee64ee488b0425dd19048eecaf00a3b5b8d2f7f358",
+      "config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed1/START15_APP6.json",
+      "checkpoint_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed1/START15_APP6/stage2_seed1_source1_START15_APP6/20260725140609/models/model_epoch_180.pth",
+      "checkpoint_sha256": "23fc3ada11572eeb81b126bd6ac70cc3de5e4083a0ed8f30ce68eca5482ef79c",
+      "epoch": 180,
+      "fallback_activation_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/manifests/fallback_activations.json",
+      "fallback_activation_sha256": "b7d78de1bfd1b26f47c42405c71c95dbc6d07a8ed213364dd3e474661840f706",
+      "config_sha256": "0a0c405dae12ca16a5336fee64ee488b0425dd19048eecaf00a3b5b8d2f7f358",
+      "dataset_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_stage2_axial/formal_fallback/seed1/hdf5/START15_APP6_seed1_d30_2gap.hdf5",
+      "dataset_sha256": "3a10ab4691a16a67382d1870cc3ced027acfcbf6c6c296ea5447e0aed5ec6efd",
+      "run_name": "stage2_seed1_source1_START15_APP6",
+      "wandb_project": "TRO_MVP",
+      "run_dir": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed1/START15_APP6/stage2_seed1_source1_START15_APP6/20260725140609",
+      "available_checkpoints": [
+        {
+          "epoch": 20,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed1/START15_APP6/stage2_seed1_source1_START15_APP6/20260725140609/models/model_epoch_20.pth",
+          "sha256": "4e10234c6cc268e546f0c8afc7ed0420dd59333edd3f4b8cf33df0904fdcabdb",
+          "size_bytes": 290106724
+        },
+        {
+          "epoch": 40,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed1/START15_APP6/stage2_seed1_source1_START15_APP6/20260725140609/models/model_epoch_40.pth",
+          "sha256": "d46b4cfcdee10fb8590f659547f105278b503b9e42fb33e9775cf02001efe37f",
+          "size_bytes": 290106724
+        },
+        {
+          "epoch": 60,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed1/START15_APP6/stage2_seed1_source1_START15_APP6/20260725140609/models/model_epoch_60.pth",
+          "sha256": "14e0d62a70b31486b52106bf0d330f7542e46ed5e1116c4cb761224742d6816c",
+          "size_bytes": 290106724
+        },
+        {
+          "epoch": 80,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed1/START15_APP6/stage2_seed1_source1_START15_APP6/20260725140609/models/model_epoch_80.pth",
+          "sha256": "76152081590b45e25cf83e2a9edddfab14b9496a272cd5a0d2c984d8a76a29a5",
+          "size_bytes": 290106724
+        },
+        {
+          "epoch": 100,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed1/START15_APP6/stage2_seed1_source1_START15_APP6/20260725140609/models/model_epoch_100.pth",
+          "sha256": "b8bfe53875a302a19c75b615be3f7e17f24bdeacee95db538ea130d80c789f89",
+          "size_bytes": 290106886
+        },
+        {
+          "epoch": 120,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed1/START15_APP6/stage2_seed1_source1_START15_APP6/20260725140609/models/model_epoch_120.pth",
+          "sha256": "cde9751263cd7af9451a85fe61af57351d46c91c7d00943f6d9bc558f8cf7a2c",
+          "size_bytes": 290106886
+        },
+        {
+          "epoch": 140,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed1/START15_APP6/stage2_seed1_source1_START15_APP6/20260725140609/models/model_epoch_140.pth",
+          "sha256": "6ad48ede2cb33665f4a3c027232c5c4bd9b20c57d1214192d7107fa0d3100a60",
+          "size_bytes": 290106886
+        },
+        {
+          "epoch": 160,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed1/START15_APP6/stage2_seed1_source1_START15_APP6/20260725140609/models/model_epoch_160.pth",
+          "sha256": "984371f10f60c581d4ce192792c7376e770c010b2a9ce3537de59f15aacbeaad",
+          "size_bytes": 290106886
+        },
+        {
+          "epoch": 180,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed1/START15_APP6/stage2_seed1_source1_START15_APP6/20260725140609/models/model_epoch_180.pth",
+          "sha256": "23fc3ada11572eeb81b126bd6ac70cc3de5e4083a0ed8f30ce68eca5482ef79c",
+          "size_bytes": 290106886
+        }
+      ],
+      "selection_rule": "highest numeric emitted model_epoch_*.pth",
+      "checkpoint_size_bytes": 290106886,
+      "saved_config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed1/START15_APP6/stage2_seed1_source1_START15_APP6/20260725140609/config.json",
+      "saved_config_sha256": "47a6f55219921b7b02307794ad130d908c5a5fe35b7680a382b278610befec37"
+    },
+    {
+      "canonical_seed": 1,
+      "condition": "START35_APP6",
+      "source_collection_seed": 1,
+      "source_training_seed": 1,
+      "reused_dataset": false,
+      "reused_policy": false,
+      "status": "checkpoint_frozen",
+      "source_artifact_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed1/START35_APP6.json",
+      "source_artifact_sha256": "6f89b3dd8b68351b22f861fb14e810eac6e5ee0751bd0dcda343f7aa32e58f48",
+      "config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed1/START35_APP6.json",
+      "checkpoint_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed1/START35_APP6/stage2_seed1_source1_START35_APP6/20260725141417/models/model_epoch_40.pth",
+      "checkpoint_sha256": "045a843e47a9a8eaa4c987b087a17f5d0b0d608208e549fd9c653101ba1f5c00",
+      "epoch": 40,
+      "fallback_activation_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/manifests/fallback_activations.json",
+      "fallback_activation_sha256": "b7d78de1bfd1b26f47c42405c71c95dbc6d07a8ed213364dd3e474661840f706",
+      "config_sha256": "6f89b3dd8b68351b22f861fb14e810eac6e5ee0751bd0dcda343f7aa32e58f48",
+      "dataset_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_stage2_axial/formal_fallback/seed1/hdf5/START35_APP6_seed1_d30_2gap.hdf5",
+      "dataset_sha256": "35c807822b2b38ca5bb37bb2b2c68ebf501287bbaa784765685377cb98c0bbc6",
+      "run_name": "stage2_seed1_source1_START35_APP6",
+      "wandb_project": "TRO_MVP",
+      "run_dir": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed1/START35_APP6/stage2_seed1_source1_START35_APP6/20260725141417",
+      "available_checkpoints": [
+        {
+          "epoch": 20,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed1/START35_APP6/stage2_seed1_source1_START35_APP6/20260725141417/models/model_epoch_20.pth",
+          "sha256": "24e2d36433569c8f727856d8b469a166b5bc0f7898b6494e2569cbdc5ea96c74",
+          "size_bytes": 290106724
+        },
+        {
+          "epoch": 40,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed1/START35_APP6/stage2_seed1_source1_START35_APP6/20260725141417/models/model_epoch_40.pth",
+          "sha256": "045a843e47a9a8eaa4c987b087a17f5d0b0d608208e549fd9c653101ba1f5c00",
+          "size_bytes": 290106724
+        }
+      ],
+      "selection_rule": "highest numeric emitted model_epoch_*.pth",
+      "checkpoint_size_bytes": 290106724,
+      "saved_config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed1/START35_APP6/stage2_seed1_source1_START35_APP6/20260725141417/config.json",
+      "saved_config_sha256": "c1d384e41c0b36696935f7bdc807d070a74bc1eaab5c5f1ac97337ad02361dfa"
+    },
+    {
+      "canonical_seed": 1,
+      "condition": "START25_APP3P6",
+      "source_collection_seed": 1,
+      "source_training_seed": 1,
+      "reused_dataset": false,
+      "reused_policy": false,
+      "status": "checkpoint_frozen",
+      "source_artifact_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed1/START25_APP3P6.json",
+      "source_artifact_sha256": "95a8b54b03f37199edaba270b0aab9e1c362442f9eac48209f737b0d2961cc45",
+      "config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed1/START25_APP3P6.json",
+      "checkpoint_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed1/START25_APP3P6/stage2_seed1_source1_START25_APP3P6/20260725142228/models/model_epoch_60.pth",
+      "checkpoint_sha256": "226926be7be536c6ff6d7e461eeb4bca894a7100634b1cd048a4c2b631a5f972",
+      "epoch": 60,
+      "fallback_activation_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/manifests/fallback_activations.json",
+      "fallback_activation_sha256": "b7d78de1bfd1b26f47c42405c71c95dbc6d07a8ed213364dd3e474661840f706",
+      "config_sha256": "95a8b54b03f37199edaba270b0aab9e1c362442f9eac48209f737b0d2961cc45",
+      "dataset_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_stage2_axial/formal_fallback/seed1/hdf5/START25_APP3P6_seed1_d30_2gap.hdf5",
+      "dataset_sha256": "e20a7108be62dec8bb5e743c94cbb206f4aeda01d1e1cca00014e80069200634",
+      "run_name": "stage2_seed1_source1_START25_APP3P6",
+      "wandb_project": "TRO_MVP",
+      "run_dir": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed1/START25_APP3P6/stage2_seed1_source1_START25_APP3P6/20260725142228",
+      "available_checkpoints": [
+        {
+          "epoch": 20,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed1/START25_APP3P6/stage2_seed1_source1_START25_APP3P6/20260725142228/models/model_epoch_20.pth",
+          "sha256": "f1f75a4d5e9f5f6dfbfb7cfb28a4b77f4192bcd8bc7376df1a46c8ef16437fc2",
+          "size_bytes": 290106724
+        },
+        {
+          "epoch": 40,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed1/START25_APP3P6/stage2_seed1_source1_START25_APP3P6/20260725142228/models/model_epoch_40.pth",
+          "sha256": "5cb4dec9b0d10ea89146000bfb5032f265b4bb43dc8afbee7ccc379cd9b5df73",
+          "size_bytes": 290106724
+        },
+        {
+          "epoch": 60,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed1/START25_APP3P6/stage2_seed1_source1_START25_APP3P6/20260725142228/models/model_epoch_60.pth",
+          "sha256": "226926be7be536c6ff6d7e461eeb4bca894a7100634b1cd048a4c2b631a5f972",
+          "size_bytes": 290106724
+        }
+      ],
+      "selection_rule": "highest numeric emitted model_epoch_*.pth",
+      "checkpoint_size_bytes": 290106724,
+      "saved_config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed1/START25_APP3P6/stage2_seed1_source1_START25_APP3P6/20260725142228/config.json",
+      "saved_config_sha256": "31a1dd6329fb9feb7f00a272199949bd2104709498f068c5611e40df2fa34dc0"
+    },
+    {
+      "canonical_seed": 1,
+      "condition": "START25_APP6",
+      "source_collection_seed": 1,
+      "source_training_seed": 1,
+      "reused_dataset": false,
+      "reused_policy": false,
+      "status": "checkpoint_frozen",
+      "source_artifact_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed1/START25_APP6.json",
+      "source_artifact_sha256": "4e1b1bff2f11cf9ee216a4178cb30868c81f11bdaf8cda65c160c387e6744a80",
+      "checkpoint_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed1/START25_APP6/stage2_seed1_source1_START25_APP6/20260725143153/models/model_epoch_40.pth",
+      "checkpoint_sha256": "707296bd657baf7fec869d82f789448305d9a9726cced48bb18d1ec35e9096ed",
+      "epoch": 40,
+      "config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed1/START25_APP6.json",
+      "fallback_activation_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/manifests/fallback_activations.json",
+      "fallback_activation_sha256": "b7d78de1bfd1b26f47c42405c71c95dbc6d07a8ed213364dd3e474661840f706",
+      "config_sha256": "4e1b1bff2f11cf9ee216a4178cb30868c81f11bdaf8cda65c160c387e6744a80",
+      "dataset_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_stage2_axial/formal_fallback/seed1/hdf5/START25_APP6_seed1_d30_2gap.hdf5",
+      "dataset_sha256": "e826c22a8b7e74228303e9e0228fe82b876226b1f43bf006bb2ee35cbf8cc97f",
+      "run_name": "stage2_seed1_source1_START25_APP6",
+      "wandb_project": "TRO_MVP",
+      "run_dir": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed1/START25_APP6/stage2_seed1_source1_START25_APP6/20260725143153",
+      "available_checkpoints": [
+        {
+          "epoch": 20,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed1/START25_APP6/stage2_seed1_source1_START25_APP6/20260725143153/models/model_epoch_20.pth",
+          "sha256": "129532b91251c9cb830d53c1e58b93b7427e5c6b988a2a617ce9099d3b579f4e",
+          "size_bytes": 290106724
+        },
+        {
+          "epoch": 40,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed1/START25_APP6/stage2_seed1_source1_START25_APP6/20260725143153/models/model_epoch_40.pth",
+          "sha256": "707296bd657baf7fec869d82f789448305d9a9726cced48bb18d1ec35e9096ed",
+          "size_bytes": 290106724
+        }
+      ],
+      "selection_rule": "highest numeric emitted model_epoch_*.pth",
+      "checkpoint_size_bytes": 290106724,
+      "saved_config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed1/START25_APP6/stage2_seed1_source1_START25_APP6/20260725143153/config.json",
+      "saved_config_sha256": "582fcf5bc2c341a9004e0c38d9f6b1fc732b08abb3adc5b2346672542240b3ec"
+    },
+    {
+      "canonical_seed": 1,
+      "condition": "START25_APP8P4",
+      "source_collection_seed": 1,
+      "source_training_seed": 1,
+      "reused_dataset": false,
+      "reused_policy": false,
+      "status": "checkpoint_frozen",
+      "source_artifact_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed1/START25_APP8P4.json",
+      "source_artifact_sha256": "0fdd03806da3785dfbce9bbc6e4976e011ac321f1f66954b290e91f9dbf49d2e",
+      "config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed1/START25_APP8P4.json",
+      "checkpoint_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed1/START25_APP8P4/stage2_seed1_source1_START25_APP8P4/20260725144532/models/model_epoch_40.pth",
+      "checkpoint_sha256": "d965ec846b8aef8b85b1ef5f7da9a161c40ff79b2dbbef7b73c2cde1ef9660db",
+      "epoch": 40,
+      "fallback_activation_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/manifests/fallback_activations.json",
+      "fallback_activation_sha256": "b7d78de1bfd1b26f47c42405c71c95dbc6d07a8ed213364dd3e474661840f706",
+      "config_sha256": "0fdd03806da3785dfbce9bbc6e4976e011ac321f1f66954b290e91f9dbf49d2e",
+      "dataset_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_stage2_axial/formal_fallback/seed1/hdf5/START25_APP8P4_seed1_d30_2gap.hdf5",
+      "dataset_sha256": "bcd7f61e9ba9b85cf0e1dcedd675973fedb5560109232749770ab20da3abb6cb",
+      "run_name": "stage2_seed1_source1_START25_APP8P4",
+      "wandb_project": "TRO_MVP",
+      "run_dir": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed1/START25_APP8P4/stage2_seed1_source1_START25_APP8P4/20260725144532",
+      "available_checkpoints": [
+        {
+          "epoch": 20,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed1/START25_APP8P4/stage2_seed1_source1_START25_APP8P4/20260725144532/models/model_epoch_20.pth",
+          "sha256": "02aa2ef5691379668f81a9d41c73d1f43836816e0a96ce577b5ffd01e98c899c",
+          "size_bytes": 290106724
+        },
+        {
+          "epoch": 40,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed1/START25_APP8P4/stage2_seed1_source1_START25_APP8P4/20260725144532/models/model_epoch_40.pth",
+          "sha256": "d965ec846b8aef8b85b1ef5f7da9a161c40ff79b2dbbef7b73c2cde1ef9660db",
+          "size_bytes": 290106724
+        }
+      ],
+      "selection_rule": "highest numeric emitted model_epoch_*.pth",
+      "checkpoint_size_bytes": 290106724,
+      "saved_config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed1/START25_APP8P4/stage2_seed1_source1_START25_APP8P4/20260725144532/config.json",
+      "saved_config_sha256": "f44a9a39bfd0ee3b874d9e58ac4431f3c2b03331cfd7521c781618bc4b68ab99"
+    },
+    {
+      "canonical_seed": 2,
+      "condition": "START15_APP6",
+      "source_collection_seed": 2,
+      "source_training_seed": 2,
+      "reused_dataset": false,
+      "reused_policy": false,
+      "status": "checkpoint_frozen",
+      "source_artifact_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed2/START15_APP6.json",
+      "source_artifact_sha256": "74e57f6fee7f7a8de6a15eccb228364ece005790d00f7c8b8e65ab9aacf3336d",
+      "config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed2/START15_APP6.json",
+      "checkpoint_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed2/START15_APP6/stage2_seed2_source2_START15_APP6/20260725144500/models/model_epoch_60.pth",
+      "checkpoint_sha256": "c1263e3043abba576f617bf621adaa0440b95c0695b8a90fe2a714ffe59e3394",
+      "epoch": 60,
+      "config_sha256": "74e57f6fee7f7a8de6a15eccb228364ece005790d00f7c8b8e65ab9aacf3336d",
+      "dataset_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_stage2_axial/formal/seed2/hdf5/START15_APP6_seed2_d30_2gap.hdf5",
+      "dataset_sha256": "6e2bc735af4cc6e7fc6c35157c36ce40edf76105dbf807a67ae9df61b4af0df5",
+      "run_name": "stage2_seed2_source2_START15_APP6",
+      "wandb_project": "TRO_MVP",
+      "run_dir": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed2/START15_APP6/stage2_seed2_source2_START15_APP6/20260725144500",
+      "available_checkpoints": [
+        {
+          "epoch": 20,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed2/START15_APP6/stage2_seed2_source2_START15_APP6/20260725144500/models/model_epoch_20.pth",
+          "sha256": "18e141bedc7914669d893af5e5c16d06bc6a702482c9ccdfbfa00658a634a3b4",
+          "size_bytes": 290106724
+        },
+        {
+          "epoch": 40,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed2/START15_APP6/stage2_seed2_source2_START15_APP6/20260725144500/models/model_epoch_40.pth",
+          "sha256": "564274f31bc54b0ca1fb77da99ce7daa385c070bf93f336b864297be7b17f506",
+          "size_bytes": 290106724
+        },
+        {
+          "epoch": 60,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed2/START15_APP6/stage2_seed2_source2_START15_APP6/20260725144500/models/model_epoch_60.pth",
+          "sha256": "c1263e3043abba576f617bf621adaa0440b95c0695b8a90fe2a714ffe59e3394",
+          "size_bytes": 290106724
+        }
+      ],
+      "selection_rule": "highest numeric emitted model_epoch_*.pth",
+      "checkpoint_size_bytes": 290106724,
+      "saved_config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed2/START15_APP6/stage2_seed2_source2_START15_APP6/20260725144500/config.json",
+      "saved_config_sha256": "b9b71d4635f7e6f30e420fbe61b2114233146871930daa7e3742582a479b37be"
+    },
+    {
+      "canonical_seed": 2,
+      "condition": "START35_APP6",
+      "source_collection_seed": 2,
+      "source_training_seed": 2,
+      "reused_dataset": false,
+      "reused_policy": false,
+      "status": "checkpoint_frozen",
+      "source_artifact_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed2/START35_APP6.json",
+      "source_artifact_sha256": "3e7d5d7497b406425c0c6a46489aff314cbdcc985484cb7d3c0e97a61a0cc6b6",
+      "config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed2/START35_APP6.json",
+      "checkpoint_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed2/START35_APP6/stage2_seed2_source2_START35_APP6/20260725144551/models/model_epoch_40.pth",
+      "checkpoint_sha256": "71fab0e618c255c9d29b246abdbb8f70ff101500abc444291ee295162074fbee",
+      "epoch": 40,
+      "config_sha256": "3e7d5d7497b406425c0c6a46489aff314cbdcc985484cb7d3c0e97a61a0cc6b6",
+      "dataset_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_stage2_axial/formal/seed2/hdf5/START35_APP6_seed2_d30_2gap.hdf5",
+      "dataset_sha256": "b20f799e98ddd980b5678675b7b347b3a74522f2d59163907f2728ee0d680f99",
+      "run_name": "stage2_seed2_source2_START35_APP6",
+      "wandb_project": "TRO_MVP",
+      "run_dir": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed2/START35_APP6/stage2_seed2_source2_START35_APP6/20260725144551",
+      "available_checkpoints": [
+        {
+          "epoch": 20,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed2/START35_APP6/stage2_seed2_source2_START35_APP6/20260725144551/models/model_epoch_20.pth",
+          "sha256": "eafa4252c574d5284d60a5d960e604249175874bcfd4305545631bd2f65000f4",
+          "size_bytes": 290106724
+        },
+        {
+          "epoch": 40,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed2/START35_APP6/stage2_seed2_source2_START35_APP6/20260725144551/models/model_epoch_40.pth",
+          "sha256": "71fab0e618c255c9d29b246abdbb8f70ff101500abc444291ee295162074fbee",
+          "size_bytes": 290106724
+        }
+      ],
+      "selection_rule": "highest numeric emitted model_epoch_*.pth",
+      "checkpoint_size_bytes": 290106724,
+      "saved_config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed2/START35_APP6/stage2_seed2_source2_START35_APP6/20260725144551/config.json",
+      "saved_config_sha256": "ea5cdf06062c00ac191b2e1232e694ef50f945457d1ef5792c0b65c7b599fc99"
+    },
+    {
+      "canonical_seed": 2,
+      "condition": "START25_APP3P6",
+      "source_collection_seed": 2,
+      "source_training_seed": 2,
+      "reused_dataset": false,
+      "reused_policy": false,
+      "status": "checkpoint_frozen",
+      "source_artifact_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed2/START25_APP3P6.json",
+      "source_artifact_sha256": "bcc2391dd6d8026d70bd947d28707c144e30b52c115f9010d18176f681b39aaf",
+      "config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed2/START25_APP3P6.json",
+      "checkpoint_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed2/START25_APP3P6/stage2_seed2_source2_START25_APP3P6/20260725144608/models/model_epoch_40.pth",
+      "checkpoint_sha256": "b2c9247a9f00817b90cfb5e2e04af7c01e09ab91352e0071671dda29dbb2ae50",
+      "epoch": 40,
+      "config_sha256": "bcc2391dd6d8026d70bd947d28707c144e30b52c115f9010d18176f681b39aaf",
+      "dataset_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_stage2_axial/formal/seed2/hdf5/START25_APP3P6_seed2_d30_2gap.hdf5",
+      "dataset_sha256": "f1b6d641bd3f86062ab9af7a2817f01addf75764b1d0fafdc62e896836703274",
+      "run_name": "stage2_seed2_source2_START25_APP3P6",
+      "wandb_project": "TRO_MVP",
+      "run_dir": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed2/START25_APP3P6/stage2_seed2_source2_START25_APP3P6/20260725144608",
+      "available_checkpoints": [
+        {
+          "epoch": 20,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed2/START25_APP3P6/stage2_seed2_source2_START25_APP3P6/20260725144608/models/model_epoch_20.pth",
+          "sha256": "040f57f324386687009578b8cc389b10394b7b7a9adcae0e266cefc988b34c89",
+          "size_bytes": 290106724
+        },
+        {
+          "epoch": 40,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed2/START25_APP3P6/stage2_seed2_source2_START25_APP3P6/20260725144608/models/model_epoch_40.pth",
+          "sha256": "b2c9247a9f00817b90cfb5e2e04af7c01e09ab91352e0071671dda29dbb2ae50",
+          "size_bytes": 290106724
+        }
+      ],
+      "selection_rule": "highest numeric emitted model_epoch_*.pth",
+      "checkpoint_size_bytes": 290106724,
+      "saved_config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed2/START25_APP3P6/stage2_seed2_source2_START25_APP3P6/20260725144608/config.json",
+      "saved_config_sha256": "133d8fee7108dcbb35a3166fdafea6009ac7dc6c548010258e2c435ee0162ac4"
+    },
+    {
+      "canonical_seed": 2,
+      "condition": "START25_APP6",
+      "source_collection_seed": 2,
+      "source_training_seed": 2,
+      "reused_dataset": false,
+      "reused_policy": false,
+      "status": "checkpoint_frozen",
+      "source_artifact_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed2/START25_APP6.json",
+      "source_artifact_sha256": "9346325563564383a74b0d88f533f3c4d46829f0b8ae02234ddb03d316019c62",
+      "config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed2/START25_APP6.json",
+      "checkpoint_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed2/START25_APP6/stage2_seed2_source2_START25_APP6/20260725145220/models/model_epoch_40.pth",
+      "checkpoint_sha256": "919b72988400322d72ea81b4c0e9ad34007fb613796f568a20cd6a081feeaf0b",
+      "epoch": 40,
+      "config_sha256": "9346325563564383a74b0d88f533f3c4d46829f0b8ae02234ddb03d316019c62",
+      "dataset_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_stage2_axial/formal/seed2/hdf5/START25_APP6_seed2_d30_2gap.hdf5",
+      "dataset_sha256": "8cc4da8c52a6201cf00422b98b5f9efa42b7e3a4e591215078b868a9259afc27",
+      "run_name": "stage2_seed2_source2_START25_APP6",
+      "wandb_project": "TRO_MVP",
+      "run_dir": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed2/START25_APP6/stage2_seed2_source2_START25_APP6/20260725145220",
+      "available_checkpoints": [
+        {
+          "epoch": 20,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed2/START25_APP6/stage2_seed2_source2_START25_APP6/20260725145220/models/model_epoch_20.pth",
+          "sha256": "9639afb7b8f1dae9a9d669bd3fbf386b8f4acd32701b8e8c4cd7e68030b30bbe",
+          "size_bytes": 290106724
+        },
+        {
+          "epoch": 40,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed2/START25_APP6/stage2_seed2_source2_START25_APP6/20260725145220/models/model_epoch_40.pth",
+          "sha256": "919b72988400322d72ea81b4c0e9ad34007fb613796f568a20cd6a081feeaf0b",
+          "size_bytes": 290106724
+        }
+      ],
+      "selection_rule": "highest numeric emitted model_epoch_*.pth",
+      "checkpoint_size_bytes": 290106724,
+      "saved_config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed2/START25_APP6/stage2_seed2_source2_START25_APP6/20260725145220/config.json",
+      "saved_config_sha256": "56385f374f521ff3768295c828c10a30a066d80de4e3c7e42823269d42c49c49"
+    },
+    {
+      "canonical_seed": 2,
+      "condition": "START25_APP8P4",
+      "source_collection_seed": 2,
+      "source_training_seed": 2,
+      "reused_dataset": false,
+      "reused_policy": false,
+      "status": "checkpoint_frozen",
+      "source_artifact_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed2/START25_APP8P4.json",
+      "source_artifact_sha256": "de32706ebcc4bd2b2bdc4f0441fe486c2af1dfa8ffba0abbb33a26bb1be09652",
+      "config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed2/START25_APP8P4.json",
+      "checkpoint_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed2/START25_APP8P4/stage2_seed2_source2_START25_APP8P4/20260725145854/models/model_epoch_40.pth",
+      "checkpoint_sha256": "ed3e9d692e7ff460459f46fa9b11ccb794866b59613871ebfeece66a476e9a3c",
+      "epoch": 40,
+      "config_sha256": "de32706ebcc4bd2b2bdc4f0441fe486c2af1dfa8ffba0abbb33a26bb1be09652",
+      "dataset_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_stage2_axial/formal/seed2/hdf5/START25_APP8P4_seed2_d30_2gap.hdf5",
+      "dataset_sha256": "3da80e145fca02e61b1750e67b3428dea28c2673a7d0cd5c04ecfb31d828cfbb",
+      "run_name": "stage2_seed2_source2_START25_APP8P4",
+      "wandb_project": "TRO_MVP",
+      "run_dir": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed2/START25_APP8P4/stage2_seed2_source2_START25_APP8P4/20260725145854",
+      "available_checkpoints": [
+        {
+          "epoch": 20,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed2/START25_APP8P4/stage2_seed2_source2_START25_APP8P4/20260725145854/models/model_epoch_20.pth",
+          "sha256": "d3e33ad6a7a15089b2d9f61e6f073a48ebad668ee9a66e946bd57ffc3d29ee74",
+          "size_bytes": 290106724
+        },
+        {
+          "epoch": 40,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed2/START25_APP8P4/stage2_seed2_source2_START25_APP8P4/20260725145854/models/model_epoch_40.pth",
+          "sha256": "ed3e9d692e7ff460459f46fa9b11ccb794866b59613871ebfeece66a476e9a3c",
+          "size_bytes": 290106724
+        }
+      ],
+      "selection_rule": "highest numeric emitted model_epoch_*.pth",
+      "checkpoint_size_bytes": 290106724,
+      "saved_config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed2/START25_APP8P4/stage2_seed2_source2_START25_APP8P4/20260725145854/config.json",
+      "saved_config_sha256": "5d784bcb980a50e71e359372f60833a3a52eb8adad70b19ce2c5e315a70b336f"
+    },
+    {
+      "canonical_seed": 3,
+      "condition": "START15_APP6",
+      "source_collection_seed": 3,
+      "source_training_seed": 3,
+      "reused_dataset": false,
+      "reused_policy": false,
+      "status": "checkpoint_frozen",
+      "source_artifact_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed3/START15_APP6.json",
+      "source_artifact_sha256": "4a03f12d6da0cb062ec4f5abca9854a97e18aeb803a1d50929004d4cc781047f",
+      "config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed3/START15_APP6.json",
+      "checkpoint_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed3/START15_APP6/stage2_seed3_source3_START15_APP6/20260725150023/models/model_epoch_80.pth",
+      "checkpoint_sha256": "45e969e5980aa1c5e7cff2d2433bcda95fec496c01ec3f98a941e1f431bb0eb4",
+      "epoch": 80,
+      "config_sha256": "4a03f12d6da0cb062ec4f5abca9854a97e18aeb803a1d50929004d4cc781047f",
+      "dataset_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_stage2_axial/formal/seed3/hdf5/START15_APP6_seed3_d30_2gap.hdf5",
+      "dataset_sha256": "2085ad2eb5a97e9163824a09f1e3bc4ee8e5d9b2c2c5cb8882b2439cdf3c45c0",
+      "run_name": "stage2_seed3_source3_START15_APP6",
+      "wandb_project": "TRO_MVP",
+      "run_dir": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed3/START15_APP6/stage2_seed3_source3_START15_APP6/20260725150023",
+      "available_checkpoints": [
+        {
+          "epoch": 20,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed3/START15_APP6/stage2_seed3_source3_START15_APP6/20260725150023/models/model_epoch_20.pth",
+          "sha256": "7378691a9a881b232b14cd92c0f409136ba3c08dcf9403b575887cfa7479fdff",
+          "size_bytes": 290106724
+        },
+        {
+          "epoch": 40,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed3/START15_APP6/stage2_seed3_source3_START15_APP6/20260725150023/models/model_epoch_40.pth",
+          "sha256": "bc475ec271121d42bb5b64f3b2d6a1e094f3209d7ff8495b1f7a81a2d4aec592",
+          "size_bytes": 290106724
+        },
+        {
+          "epoch": 60,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed3/START15_APP6/stage2_seed3_source3_START15_APP6/20260725150023/models/model_epoch_60.pth",
+          "sha256": "e5c397abddd5236eaa9084639619ac9efa1a61824d41d37dad63853cb60346f1",
+          "size_bytes": 290106724
+        },
+        {
+          "epoch": 80,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed3/START15_APP6/stage2_seed3_source3_START15_APP6/20260725150023/models/model_epoch_80.pth",
+          "sha256": "45e969e5980aa1c5e7cff2d2433bcda95fec496c01ec3f98a941e1f431bb0eb4",
+          "size_bytes": 290106724
+        }
+      ],
+      "selection_rule": "highest numeric emitted model_epoch_*.pth",
+      "checkpoint_size_bytes": 290106724,
+      "saved_config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed3/START15_APP6/stage2_seed3_source3_START15_APP6/20260725150023/config.json",
+      "saved_config_sha256": "91922f4f0c45637d5268182c8699622c953235fffb5a86cb5cb1399d975de48f"
+    },
+    {
+      "canonical_seed": 3,
+      "condition": "START35_APP6",
+      "source_collection_seed": 3,
+      "source_training_seed": 3,
+      "reused_dataset": false,
+      "reused_policy": false,
+      "status": "checkpoint_frozen",
+      "source_artifact_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed3/START35_APP6.json",
+      "source_artifact_sha256": "b3dafdb0d0d599eb385767a1ebb74ca04536f5f11156ab48246458f6e2c999f8",
+      "config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed3/START35_APP6.json",
+      "checkpoint_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed3/START35_APP6/stage2_seed3_source3_START35_APP6/20260725150035/models/model_epoch_40.pth",
+      "checkpoint_sha256": "95dd2710fae85b3cd8a856d82b21067a047ee6b6983bcb150777b3bdd342ac1f",
+      "epoch": 40,
+      "config_sha256": "b3dafdb0d0d599eb385767a1ebb74ca04536f5f11156ab48246458f6e2c999f8",
+      "dataset_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_stage2_axial/formal/seed3/hdf5/START35_APP6_seed3_d30_2gap.hdf5",
+      "dataset_sha256": "a5e82c1503d6edadb697b8cda8245ef25b4370e066be3a638a6e4031b0752593",
+      "run_name": "stage2_seed3_source3_START35_APP6",
+      "wandb_project": "TRO_MVP",
+      "run_dir": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed3/START35_APP6/stage2_seed3_source3_START35_APP6/20260725150035",
+      "available_checkpoints": [
+        {
+          "epoch": 20,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed3/START35_APP6/stage2_seed3_source3_START35_APP6/20260725150035/models/model_epoch_20.pth",
+          "sha256": "b56042cdca23c21fe731523610ccca1910e4532218ece586223f42892d151f9c",
+          "size_bytes": 290106724
+        },
+        {
+          "epoch": 40,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed3/START35_APP6/stage2_seed3_source3_START35_APP6/20260725150035/models/model_epoch_40.pth",
+          "sha256": "95dd2710fae85b3cd8a856d82b21067a047ee6b6983bcb150777b3bdd342ac1f",
+          "size_bytes": 290106724
+        }
+      ],
+      "selection_rule": "highest numeric emitted model_epoch_*.pth",
+      "checkpoint_size_bytes": 290106724,
+      "saved_config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed3/START35_APP6/stage2_seed3_source3_START35_APP6/20260725150035/config.json",
+      "saved_config_sha256": "cbe66ada86fc64323d477db98a70c87b138be67d1d36658436f5e19804ecd85f"
+    },
+    {
+      "canonical_seed": 3,
+      "condition": "START25_APP3P6",
+      "source_collection_seed": 3,
+      "source_training_seed": 3,
+      "reused_dataset": false,
+      "reused_policy": false,
+      "status": "checkpoint_frozen",
+      "source_artifact_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed3/START25_APP3P6.json",
+      "source_artifact_sha256": "d3143d15a9e96e7364b6cc929636096752d046e2274ced11629eea15cfeb2a06",
+      "config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed3/START25_APP3P6.json",
+      "checkpoint_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed3/START25_APP3P6/stage2_seed3_source3_START25_APP3P6/20260725150316/models/model_epoch_40.pth",
+      "checkpoint_sha256": "1f7147b87ffcd8416198f8a98a378d1e13bd4a86430e1c99038f6e2adc7a3be9",
+      "epoch": 40,
+      "config_sha256": "d3143d15a9e96e7364b6cc929636096752d046e2274ced11629eea15cfeb2a06",
+      "dataset_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_stage2_axial/formal/seed3/hdf5/START25_APP3P6_seed3_d30_2gap.hdf5",
+      "dataset_sha256": "c8d43c5f8dbc27dbd05cfa8e5161fae0559335dc6d0ec3e8c4076c7d26400f20",
+      "run_name": "stage2_seed3_source3_START25_APP3P6",
+      "wandb_project": "TRO_MVP",
+      "run_dir": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed3/START25_APP3P6/stage2_seed3_source3_START25_APP3P6/20260725150316",
+      "available_checkpoints": [
+        {
+          "epoch": 20,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed3/START25_APP3P6/stage2_seed3_source3_START25_APP3P6/20260725150316/models/model_epoch_20.pth",
+          "sha256": "ab5662ac1082fd922866b1661b84748c97846534425ad2d6fce1fc1b5d13dd47",
+          "size_bytes": 290106724
+        },
+        {
+          "epoch": 40,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed3/START25_APP3P6/stage2_seed3_source3_START25_APP3P6/20260725150316/models/model_epoch_40.pth",
+          "sha256": "1f7147b87ffcd8416198f8a98a378d1e13bd4a86430e1c99038f6e2adc7a3be9",
+          "size_bytes": 290106724
+        }
+      ],
+      "selection_rule": "highest numeric emitted model_epoch_*.pth",
+      "checkpoint_size_bytes": 290106724,
+      "saved_config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed3/START25_APP3P6/stage2_seed3_source3_START25_APP3P6/20260725150316/config.json",
+      "saved_config_sha256": "4d046967bdb616aa9eae8c768462e57d90e0ba45993510a42e00bf54a000e1f2"
+    },
+    {
+      "canonical_seed": 3,
+      "condition": "START25_APP6",
+      "source_collection_seed": 3,
+      "source_training_seed": 3,
+      "reused_dataset": false,
+      "reused_policy": false,
+      "status": "checkpoint_frozen",
+      "source_artifact_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed3/START25_APP6.json",
+      "source_artifact_sha256": "c7d16d3c55402a6155e12ca532310ef8876cdeb5a310a34eec78e49dab5d70da",
+      "config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed3/START25_APP6.json",
+      "checkpoint_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed3/START25_APP6/stage2_seed3_source3_START25_APP6/20260725150557/models/model_epoch_40.pth",
+      "checkpoint_sha256": "99029dfec00d4dde40c730456c454e3eb9d469527c544423a657c68ba82c83c0",
+      "epoch": 40,
+      "config_sha256": "c7d16d3c55402a6155e12ca532310ef8876cdeb5a310a34eec78e49dab5d70da",
+      "dataset_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_stage2_axial/formal/seed3/hdf5/START25_APP6_seed3_d30_2gap.hdf5",
+      "dataset_sha256": "c496454c8e5602ea75fc5f1c6d6eddc8ffd2fe58aa92c74a916b6fd6667bcf49",
+      "run_name": "stage2_seed3_source3_START25_APP6",
+      "wandb_project": "TRO_MVP",
+      "run_dir": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed3/START25_APP6/stage2_seed3_source3_START25_APP6/20260725150557",
+      "available_checkpoints": [
+        {
+          "epoch": 20,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed3/START25_APP6/stage2_seed3_source3_START25_APP6/20260725150557/models/model_epoch_20.pth",
+          "sha256": "9afa7356b338bd0d0d8adad6155ae4dcbdf7e9aa99fe2191cd77d3aeaae8a2c3",
+          "size_bytes": 290106724
+        },
+        {
+          "epoch": 40,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed3/START25_APP6/stage2_seed3_source3_START25_APP6/20260725150557/models/model_epoch_40.pth",
+          "sha256": "99029dfec00d4dde40c730456c454e3eb9d469527c544423a657c68ba82c83c0",
+          "size_bytes": 290106724
+        }
+      ],
+      "selection_rule": "highest numeric emitted model_epoch_*.pth",
+      "checkpoint_size_bytes": 290106724,
+      "saved_config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed3/START25_APP6/stage2_seed3_source3_START25_APP6/20260725150557/config.json",
+      "saved_config_sha256": "050620e66c0f19c46445fa232ebdcbd7b02fcb33b13ef85529481e1ff1f72c67"
+    },
+    {
+      "canonical_seed": 3,
+      "condition": "START25_APP8P4",
+      "source_collection_seed": 3,
+      "source_training_seed": 3,
+      "reused_dataset": false,
+      "reused_policy": false,
+      "status": "checkpoint_frozen",
+      "source_artifact_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed3/START25_APP8P4.json",
+      "source_artifact_sha256": "5273c287c07e5ce0d4bbb32c62796d8946061ce55c0b6287d65e498fd7abda84",
+      "config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed3/START25_APP8P4.json",
+      "checkpoint_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed3/START25_APP8P4/stage2_seed3_source3_START25_APP8P4/20260725150831/models/model_epoch_80.pth",
+      "checkpoint_sha256": "3fbf611605132799a87adf8d49429046ee97ef88293d302172cb094140ea1571",
+      "epoch": 80,
+      "config_sha256": "5273c287c07e5ce0d4bbb32c62796d8946061ce55c0b6287d65e498fd7abda84",
+      "dataset_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_stage2_axial/formal/seed3/hdf5/START25_APP8P4_seed3_d30_2gap.hdf5",
+      "dataset_sha256": "5318a4da9538a7f2214c990819f1dcd40a8cd46928d15f1faec167ce7d9d6f31",
+      "run_name": "stage2_seed3_source3_START25_APP8P4",
+      "wandb_project": "TRO_MVP",
+      "run_dir": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed3/START25_APP8P4/stage2_seed3_source3_START25_APP8P4/20260725150831",
+      "available_checkpoints": [
+        {
+          "epoch": 20,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed3/START25_APP8P4/stage2_seed3_source3_START25_APP8P4/20260725150831/models/model_epoch_20.pth",
+          "sha256": "d7e818aa3c07cde6ba8f3db567be10149169f4c524f904130d0ff3f1c4ec0650",
+          "size_bytes": 290106724
+        },
+        {
+          "epoch": 40,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed3/START25_APP8P4/stage2_seed3_source3_START25_APP8P4/20260725150831/models/model_epoch_40.pth",
+          "sha256": "72c5e8f98f4b7b16b53fe98cfa2f533246df5532eb34b44213601fd486c1c526",
+          "size_bytes": 290106724
+        },
+        {
+          "epoch": 60,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed3/START25_APP8P4/stage2_seed3_source3_START25_APP8P4/20260725150831/models/model_epoch_60.pth",
+          "sha256": "b4a1bf03bb9b80a9c5ea164da4105710fbe85cf06073382bb09648ceb683f286",
+          "size_bytes": 290106724
+        },
+        {
+          "epoch": 80,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed3/START25_APP8P4/stage2_seed3_source3_START25_APP8P4/20260725150831/models/model_epoch_80.pth",
+          "sha256": "3fbf611605132799a87adf8d49429046ee97ef88293d302172cb094140ea1571",
+          "size_bytes": 290106724
+        }
+      ],
+      "selection_rule": "highest numeric emitted model_epoch_*.pth",
+      "checkpoint_size_bytes": 290106724,
+      "saved_config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed3/START25_APP8P4/stage2_seed3_source3_START25_APP8P4/20260725150831/config.json",
+      "saved_config_sha256": "81bcdbf3d3804c6b4a5df724038f269df34579660e0fa204829990208a053078"
+    },
+    {
+      "canonical_seed": 4,
+      "condition": "START15_APP6",
+      "source_collection_seed": 1702,
+      "source_training_seed": 2702,
+      "reused_dataset": true,
+      "reused_policy": false,
+      "status": "checkpoint_frozen",
+      "source_artifact_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed4/START15_APP6.json",
+      "source_artifact_sha256": "de1ec7546f4d6b3ad071fdd5bc3671909cca0f62e0f7a37b71051bf32b64917c",
+      "config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed4/START15_APP6.json",
+      "checkpoint_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed4/START15_APP6/stage2_seed4_source2702_START15_APP6/20260725151058/models/model_epoch_40.pth",
+      "checkpoint_sha256": "588c763b5365ff810aa3732d31b5b2375dbe66d7f6b082af2801503be2888710",
+      "epoch": 40,
+      "config_sha256": "de1ec7546f4d6b3ad071fdd5bc3671909cca0f62e0f7a37b71051bf32b64917c",
+      "dataset_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_mvp0/block1/hdf5/START15_APP6_b1_d30_2gap.hdf5",
+      "dataset_sha256": "52d6b32fb4aa600c4d476e4ca08c16eb899eb0f35bb2a5a60e6abdc0f979a6a1",
+      "run_name": "stage2_seed4_source2702_START15_APP6",
+      "wandb_project": "TRO_MVP",
+      "run_dir": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed4/START15_APP6/stage2_seed4_source2702_START15_APP6/20260725151058",
+      "available_checkpoints": [
+        {
+          "epoch": 20,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed4/START15_APP6/stage2_seed4_source2702_START15_APP6/20260725151058/models/model_epoch_20.pth",
+          "sha256": "7b155d887de6402d3d0c544db2267eebadc417c94d75ffbd94d6539e834c085b",
+          "size_bytes": 290106724
+        },
+        {
+          "epoch": 40,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed4/START15_APP6/stage2_seed4_source2702_START15_APP6/20260725151058/models/model_epoch_40.pth",
+          "sha256": "588c763b5365ff810aa3732d31b5b2375dbe66d7f6b082af2801503be2888710",
+          "size_bytes": 290106724
+        }
+      ],
+      "selection_rule": "highest numeric emitted model_epoch_*.pth",
+      "checkpoint_size_bytes": 290106724,
+      "saved_config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed4/START15_APP6/stage2_seed4_source2702_START15_APP6/20260725151058/config.json",
+      "saved_config_sha256": "6e2a8d75d0ddf7ac2121cab991837e399f551fd434ccacbe772959806b302ceb"
+    },
+    {
+      "canonical_seed": 4,
+      "condition": "START35_APP6",
+      "source_collection_seed": 1702,
+      "source_training_seed": 2702,
+      "reused_dataset": true,
+      "reused_policy": false,
+      "status": "checkpoint_frozen",
+      "source_artifact_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed4/START35_APP6.json",
+      "source_artifact_sha256": "f4a70764963393723594e3fcc6dca27f4d70de08d4eac82a71ba0a6344beca9c",
+      "config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed4/START35_APP6.json",
+      "checkpoint_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed4/START35_APP6/stage2_seed4_source2702_START35_APP6/20260725151153/models/model_epoch_40.pth",
+      "checkpoint_sha256": "7c518b8135961fa894b221979c7ae68766edc38c69b07bcaf69377fd73af22e6",
+      "epoch": 40,
+      "config_sha256": "f4a70764963393723594e3fcc6dca27f4d70de08d4eac82a71ba0a6344beca9c",
+      "dataset_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_mvp0/block1/hdf5/START35_APP6_b1_d30_2gap.hdf5",
+      "dataset_sha256": "87797be3fd411a1f56dad6d6e7efadad89cb6fb80f94626436bc7cb48f93c1f6",
+      "run_name": "stage2_seed4_source2702_START35_APP6",
+      "wandb_project": "TRO_MVP",
+      "run_dir": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed4/START35_APP6/stage2_seed4_source2702_START35_APP6/20260725151153",
+      "available_checkpoints": [
+        {
+          "epoch": 20,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed4/START35_APP6/stage2_seed4_source2702_START35_APP6/20260725151153/models/model_epoch_20.pth",
+          "sha256": "1eba396ef46cf942e4e204d1e7481ba0f66198b890114a49a2adc9ccdcdff727",
+          "size_bytes": 290106724
+        },
+        {
+          "epoch": 40,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed4/START35_APP6/stage2_seed4_source2702_START35_APP6/20260725151153/models/model_epoch_40.pth",
+          "sha256": "7c518b8135961fa894b221979c7ae68766edc38c69b07bcaf69377fd73af22e6",
+          "size_bytes": 290106724
+        }
+      ],
+      "selection_rule": "highest numeric emitted model_epoch_*.pth",
+      "checkpoint_size_bytes": 290106724,
+      "saved_config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed4/START35_APP6/stage2_seed4_source2702_START35_APP6/20260725151153/config.json",
+      "saved_config_sha256": "fd048b12e2b6cb590bfb6c167fab4c40dfb2e69a064c09a79e3027f51b7e3e8c"
+    },
+    {
+      "canonical_seed": 4,
+      "condition": "START25_APP3P6",
+      "source_collection_seed": 1702,
+      "source_training_seed": 2702,
+      "reused_dataset": true,
+      "reused_policy": false,
+      "status": "checkpoint_frozen",
+      "source_artifact_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed4/START25_APP3P6.json",
+      "source_artifact_sha256": "4b06ae9a2e6e09e8c676d386ce3f0134f2571ab0171180d69c6f2a4de001237b",
+      "config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed4/START25_APP3P6.json",
+      "checkpoint_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed4/START25_APP3P6/stage2_seed4_source2702_START25_APP3P6/20260725151343/models/model_epoch_40.pth",
+      "checkpoint_sha256": "89835e1fbc14c8ddaf2f2d536f4ba4900dac609e24dc39a167edf7750f67f30c",
+      "epoch": 40,
+      "config_sha256": "4b06ae9a2e6e09e8c676d386ce3f0134f2571ab0171180d69c6f2a4de001237b",
+      "dataset_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_mvp0/block1/hdf5/START25_APP3P6_b1_d30_2gap.hdf5",
+      "dataset_sha256": "e53e9abcfcd26a16bbff4cbc28e655e0533ce0b2277fd53396744bc4a4dc99a1",
+      "run_name": "stage2_seed4_source2702_START25_APP3P6",
+      "wandb_project": "TRO_MVP",
+      "run_dir": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed4/START25_APP3P6/stage2_seed4_source2702_START25_APP3P6/20260725151343",
+      "available_checkpoints": [
+        {
+          "epoch": 20,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed4/START25_APP3P6/stage2_seed4_source2702_START25_APP3P6/20260725151343/models/model_epoch_20.pth",
+          "sha256": "1b6115199b1b54117d31dc693f35c796132c68c43841fa13776cdadbfb7731ff",
+          "size_bytes": 290106724
+        },
+        {
+          "epoch": 40,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed4/START25_APP3P6/stage2_seed4_source2702_START25_APP3P6/20260725151343/models/model_epoch_40.pth",
+          "sha256": "89835e1fbc14c8ddaf2f2d536f4ba4900dac609e24dc39a167edf7750f67f30c",
+          "size_bytes": 290106724
+        }
+      ],
+      "selection_rule": "highest numeric emitted model_epoch_*.pth",
+      "checkpoint_size_bytes": 290106724,
+      "saved_config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed4/START25_APP3P6/stage2_seed4_source2702_START25_APP3P6/20260725151343/config.json",
+      "saved_config_sha256": "df0172859d4e07b366d3acd494e0e9b4927c4a9dd4a51ad41d8184b29a835b74"
+    },
+    {
+      "canonical_seed": 4,
+      "condition": "START25_APP6",
+      "source_collection_seed": 1702,
+      "source_training_seed": 2702,
+      "reused_dataset": false,
+      "reused_policy": false,
+      "status": "checkpoint_frozen",
+      "source_artifact_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed4/START25_APP6.json",
+      "source_artifact_sha256": "d58843044726858d5d2afa803c5c66eabfb4947ed676f12669c30268cab1ecd3",
+      "config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed4/START25_APP6.json",
+      "checkpoint_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed4/START25_APP6/stage2_seed4_source2702_START25_APP6/20260725151746/models/model_epoch_40.pth",
+      "checkpoint_sha256": "8a53c86d3c9d400f0e41738265504df57efc2d8b648b3c006dba42571c65f935",
+      "epoch": 40,
+      "config_sha256": "d58843044726858d5d2afa803c5c66eabfb4947ed676f12669c30268cab1ecd3",
+      "dataset_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_stage2_axial/formal/seed4/hdf5/START25_APP6_seed4_d30_2gap.hdf5",
+      "dataset_sha256": "feb90ed11ed3d8a35cb2e8a6fd28d490f8a23720405a8d60205ebcd6c617b007",
+      "run_name": "stage2_seed4_source2702_START25_APP6",
+      "wandb_project": "TRO_MVP",
+      "run_dir": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed4/START25_APP6/stage2_seed4_source2702_START25_APP6/20260725151746",
+      "available_checkpoints": [
+        {
+          "epoch": 20,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed4/START25_APP6/stage2_seed4_source2702_START25_APP6/20260725151746/models/model_epoch_20.pth",
+          "sha256": "ee905a3a41df651ddb756d57b901533a4134b485fac1dd1920ccb77ef5bd86e6",
+          "size_bytes": 290106724
+        },
+        {
+          "epoch": 40,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed4/START25_APP6/stage2_seed4_source2702_START25_APP6/20260725151746/models/model_epoch_40.pth",
+          "sha256": "8a53c86d3c9d400f0e41738265504df57efc2d8b648b3c006dba42571c65f935",
+          "size_bytes": 290106724
+        }
+      ],
+      "selection_rule": "highest numeric emitted model_epoch_*.pth",
+      "checkpoint_size_bytes": 290106724,
+      "saved_config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed4/START25_APP6/stage2_seed4_source2702_START25_APP6/20260725151746/config.json",
+      "saved_config_sha256": "dc8b75c34285ea29f5d19ad2479fe331714da707eeff585f0a899c9ea0226c16"
+    },
+    {
+      "canonical_seed": 4,
+      "condition": "START25_APP8P4",
+      "source_collection_seed": 1702,
+      "source_training_seed": 2702,
+      "reused_dataset": true,
+      "reused_policy": false,
+      "status": "checkpoint_frozen",
+      "source_artifact_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed4/START25_APP8P4.json",
+      "source_artifact_sha256": "8fceb351c93381568d3e7a09cef2bcb3c740f49982e7b0340d98eb13ac2826ed",
+      "config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed4/START25_APP8P4.json",
+      "checkpoint_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed4/START25_APP8P4/stage2_seed4_source2702_START25_APP8P4/20260725152151/models/model_epoch_40.pth",
+      "checkpoint_sha256": "921243db3d00ec8ba00ddd3d2e7cca7185c224aba3c52f48c0c53cbdcd11c7b4",
+      "epoch": 40,
+      "config_sha256": "8fceb351c93381568d3e7a09cef2bcb3c740f49982e7b0340d98eb13ac2826ed",
+      "dataset_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_mvp0/block1/hdf5/START25_APP8P4_b1_d30_2gap.hdf5",
+      "dataset_sha256": "56bca2119738ad34913b1e9821aea34a6d24dce1f89cc88bb53bc5d3a38d9769",
+      "run_name": "stage2_seed4_source2702_START25_APP8P4",
+      "wandb_project": "TRO_MVP",
+      "run_dir": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed4/START25_APP8P4/stage2_seed4_source2702_START25_APP8P4/20260725152151",
+      "available_checkpoints": [
+        {
+          "epoch": 20,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed4/START25_APP8P4/stage2_seed4_source2702_START25_APP8P4/20260725152151/models/model_epoch_20.pth",
+          "sha256": "9dd6c914c6700a4314498c5eeaf9823381bf7cdb53080ceed3e72a0245ad6c3c",
+          "size_bytes": 290106724
+        },
+        {
+          "epoch": 40,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed4/START25_APP8P4/stage2_seed4_source2702_START25_APP8P4/20260725152151/models/model_epoch_40.pth",
+          "sha256": "921243db3d00ec8ba00ddd3d2e7cca7185c224aba3c52f48c0c53cbdcd11c7b4",
+          "size_bytes": 290106724
+        }
+      ],
+      "selection_rule": "highest numeric emitted model_epoch_*.pth",
+      "checkpoint_size_bytes": 290106724,
+      "saved_config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed4/START25_APP8P4/stage2_seed4_source2702_START25_APP8P4/20260725152151/config.json",
+      "saved_config_sha256": "95eb007c247afd73b88c6adb8b1bab051dc5c861388c3f485ed6477526c6daa1"
+    },
+    {
+      "canonical_seed": 5,
+      "condition": "START15_APP6",
+      "source_collection_seed": 1701,
+      "source_training_seed": 2701,
+      "reused_dataset": false,
+      "reused_policy": false,
+      "status": "checkpoint_frozen",
+      "source_artifact_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed5/START15_APP6.json",
+      "source_artifact_sha256": "73b469d311212614fca293e6860eb631fc3d27fee3d8e39f1eedea2a64d2314b",
+      "checkpoint_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed5/START15_APP6/stage2_seed5_source2701_START15_APP6/20260725152153/models/model_epoch_60.pth",
+      "checkpoint_sha256": "dbeb597b1ecfb155d65954d86440d323ed2ac9ae6c498fe3d13a4cbf44b578ff",
+      "epoch": 60,
+      "config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed5/START15_APP6.json",
+      "fallback_activation_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/manifests/fallback_activations.json",
+      "fallback_activation_sha256": "77c39f7add8f8c5d62efe3fd785fe7ff5723e96e61b058d5ca9c45c59799384e",
+      "config_sha256": "73b469d311212614fca293e6860eb631fc3d27fee3d8e39f1eedea2a64d2314b",
+      "dataset_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_stage2_axial/formal_fallback/seed5/hdf5/START15_APP6_seed5_d30_2gap.hdf5",
+      "dataset_sha256": "9183df376c8b3770e4fd6492ee6b64dbc00bb6b336e6c338dc992c07b7a19ab4",
+      "run_name": "stage2_seed5_source2701_START15_APP6",
+      "wandb_project": "TRO_MVP",
+      "run_dir": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed5/START15_APP6/stage2_seed5_source2701_START15_APP6/20260725152153",
+      "available_checkpoints": [
+        {
+          "epoch": 20,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed5/START15_APP6/stage2_seed5_source2701_START15_APP6/20260725152153/models/model_epoch_20.pth",
+          "sha256": "9771039b1005241c5dd0fb4d41e56e86c71f0a409ecc9362de014940c312c514",
+          "size_bytes": 290106724
+        },
+        {
+          "epoch": 40,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed5/START15_APP6/stage2_seed5_source2701_START15_APP6/20260725152153/models/model_epoch_40.pth",
+          "sha256": "4a3384d4f0ac010760795917990be9029239b19895ea0f3e5637203b4916aee6",
+          "size_bytes": 290106724
+        },
+        {
+          "epoch": 60,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed5/START15_APP6/stage2_seed5_source2701_START15_APP6/20260725152153/models/model_epoch_60.pth",
+          "sha256": "dbeb597b1ecfb155d65954d86440d323ed2ac9ae6c498fe3d13a4cbf44b578ff",
+          "size_bytes": 290106724
+        }
+      ],
+      "selection_rule": "highest numeric emitted model_epoch_*.pth",
+      "checkpoint_size_bytes": 290106724,
+      "saved_config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed5/START15_APP6/stage2_seed5_source2701_START15_APP6/20260725152153/config.json",
+      "saved_config_sha256": "fc357cda6751d461f63a8d58cebe4b353fde2071c7c8465839533cfc9826362f"
+    },
+    {
+      "canonical_seed": 5,
+      "condition": "START35_APP6",
+      "source_collection_seed": 1701,
+      "source_training_seed": 2701,
+      "reused_dataset": false,
+      "reused_policy": false,
+      "status": "checkpoint_frozen",
+      "source_artifact_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed5/START35_APP6.json",
+      "source_artifact_sha256": "d4cd71ea4fad439e3aac06fb0e00dd3bd13168bbd6b9f8dd98ca2884c23a54da",
+      "checkpoint_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed5/START35_APP6/stage2_seed5_source2701_START35_APP6/20260725152430/models/model_epoch_40.pth",
+      "checkpoint_sha256": "6bd77a90fc76bc213ed208044ea42b1f8a9fc9ce9ff5e7a6fa3ad79dc780a35e",
+      "epoch": 40,
+      "config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed5/START35_APP6.json",
+      "fallback_activation_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/manifests/fallback_activations.json",
+      "fallback_activation_sha256": "77c39f7add8f8c5d62efe3fd785fe7ff5723e96e61b058d5ca9c45c59799384e",
+      "config_sha256": "d4cd71ea4fad439e3aac06fb0e00dd3bd13168bbd6b9f8dd98ca2884c23a54da",
+      "dataset_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_stage2_axial/formal_fallback/seed5/hdf5/START35_APP6_seed5_d30_2gap.hdf5",
+      "dataset_sha256": "590965f24341ae752fc66836435c92ac66aee04197e96bb338f7ebb56296e083",
+      "run_name": "stage2_seed5_source2701_START35_APP6",
+      "wandb_project": "TRO_MVP",
+      "run_dir": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed5/START35_APP6/stage2_seed5_source2701_START35_APP6/20260725152430",
+      "available_checkpoints": [
+        {
+          "epoch": 20,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed5/START35_APP6/stage2_seed5_source2701_START35_APP6/20260725152430/models/model_epoch_20.pth",
+          "sha256": "e2b40b0e6258b5ef6a99518173efafa1ea6ac52b24b376c22df6476344e7cc4c",
+          "size_bytes": 290106724
+        },
+        {
+          "epoch": 40,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed5/START35_APP6/stage2_seed5_source2701_START35_APP6/20260725152430/models/model_epoch_40.pth",
+          "sha256": "6bd77a90fc76bc213ed208044ea42b1f8a9fc9ce9ff5e7a6fa3ad79dc780a35e",
+          "size_bytes": 290106724
+        }
+      ],
+      "selection_rule": "highest numeric emitted model_epoch_*.pth",
+      "checkpoint_size_bytes": 290106724,
+      "saved_config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed5/START35_APP6/stage2_seed5_source2701_START35_APP6/20260725152430/config.json",
+      "saved_config_sha256": "8b5cbebb54993c7a89a3c23eb6e0d56ab847afdc0f21e28fbbc93b9329bdbe84"
+    },
+    {
+      "canonical_seed": 5,
+      "condition": "START25_APP3P6",
+      "source_collection_seed": 1701,
+      "source_training_seed": 2701,
+      "reused_dataset": false,
+      "reused_policy": false,
+      "status": "checkpoint_frozen",
+      "source_artifact_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed5/START25_APP3P6.json",
+      "source_artifact_sha256": "a77254fce32bfbec268a30dd29b7186f5396737ddbabbd6fbc563ee90da92259",
+      "checkpoint_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed5/START25_APP3P6/stage2_seed5_source2701_START25_APP3P6/20260725152653/models/model_epoch_60.pth",
+      "checkpoint_sha256": "a5235991e7fc834759ffebbde94a87bfd9c129d803edd441d2aaa558b1a5e6ab",
+      "epoch": 60,
+      "config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed5/START25_APP3P6.json",
+      "fallback_activation_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/manifests/fallback_activations.json",
+      "fallback_activation_sha256": "77c39f7add8f8c5d62efe3fd785fe7ff5723e96e61b058d5ca9c45c59799384e",
+      "config_sha256": "a77254fce32bfbec268a30dd29b7186f5396737ddbabbd6fbc563ee90da92259",
+      "dataset_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_stage2_axial/formal_fallback/seed5/hdf5/START25_APP3P6_seed5_d30_2gap.hdf5",
+      "dataset_sha256": "7e85ece24d34090f8fe87a66fc28f53c7c7e1f5f81583361a4493e96a2093668",
+      "run_name": "stage2_seed5_source2701_START25_APP3P6",
+      "wandb_project": "TRO_MVP",
+      "run_dir": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed5/START25_APP3P6/stage2_seed5_source2701_START25_APP3P6/20260725152653",
+      "available_checkpoints": [
+        {
+          "epoch": 20,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed5/START25_APP3P6/stage2_seed5_source2701_START25_APP3P6/20260725152653/models/model_epoch_20.pth",
+          "sha256": "a2258d2c314a1a3a6fd5c58fa46f7b7025b64b55c7af4ab63844f48b0d2b2c38",
+          "size_bytes": 290106724
+        },
+        {
+          "epoch": 40,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed5/START25_APP3P6/stage2_seed5_source2701_START25_APP3P6/20260725152653/models/model_epoch_40.pth",
+          "sha256": "2f737a8f3f657228093834146db1aadbb24992d192a4bef3755ade2db798595a",
+          "size_bytes": 290106724
+        },
+        {
+          "epoch": 60,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed5/START25_APP3P6/stage2_seed5_source2701_START25_APP3P6/20260725152653/models/model_epoch_60.pth",
+          "sha256": "a5235991e7fc834759ffebbde94a87bfd9c129d803edd441d2aaa558b1a5e6ab",
+          "size_bytes": 290106724
+        }
+      ],
+      "selection_rule": "highest numeric emitted model_epoch_*.pth",
+      "checkpoint_size_bytes": 290106724,
+      "saved_config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed5/START25_APP3P6/stage2_seed5_source2701_START25_APP3P6/20260725152653/config.json",
+      "saved_config_sha256": "8260acdeb5c0b1b6a67ffcb6143e4ce02ad45724e33860d21251fe7538eea372"
+    },
+    {
+      "canonical_seed": 5,
+      "condition": "START25_APP6",
+      "source_collection_seed": 1701,
+      "source_training_seed": 2701,
+      "reused_dataset": false,
+      "reused_policy": false,
+      "status": "checkpoint_frozen",
+      "source_artifact_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed5/START25_APP6.json",
+      "source_artifact_sha256": "e122007e0953226f874920d23dc10589a2472f57f6e7472af35ed16cf52abedc",
+      "config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed5/START25_APP6.json",
+      "checkpoint_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed5/START25_APP6/stage2_seed5_source2701_START25_APP6/20260725153102/models/model_epoch_60.pth",
+      "checkpoint_sha256": "4637de2d9ce1c0879e4c76bc4ea450b32ca628b3b9635a89371d212abe6e8e7c",
+      "epoch": 60,
+      "fallback_activation_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/manifests/fallback_activations.json",
+      "fallback_activation_sha256": "77c39f7add8f8c5d62efe3fd785fe7ff5723e96e61b058d5ca9c45c59799384e",
+      "config_sha256": "e122007e0953226f874920d23dc10589a2472f57f6e7472af35ed16cf52abedc",
+      "dataset_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_stage2_axial/formal_fallback/seed5/hdf5/START25_APP6_seed5_d30_2gap.hdf5",
+      "dataset_sha256": "44996527e180508f41f1e692e942cbb840b7d5ec5a8bfa748cd3df7d887bb766",
+      "run_name": "stage2_seed5_source2701_START25_APP6",
+      "wandb_project": "TRO_MVP",
+      "run_dir": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed5/START25_APP6/stage2_seed5_source2701_START25_APP6/20260725153102",
+      "available_checkpoints": [
+        {
+          "epoch": 20,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed5/START25_APP6/stage2_seed5_source2701_START25_APP6/20260725153102/models/model_epoch_20.pth",
+          "sha256": "824d4f6413f3984291622c493b91097b0bdf77ce7672457c4dfb323526c40890",
+          "size_bytes": 290106724
+        },
+        {
+          "epoch": 40,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed5/START25_APP6/stage2_seed5_source2701_START25_APP6/20260725153102/models/model_epoch_40.pth",
+          "sha256": "a4ec4a6fa7fa6be8db4eabb3f660fc2033c1f42e8ba4f78fa024a1d999748879",
+          "size_bytes": 290106724
+        },
+        {
+          "epoch": 60,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed5/START25_APP6/stage2_seed5_source2701_START25_APP6/20260725153102/models/model_epoch_60.pth",
+          "sha256": "4637de2d9ce1c0879e4c76bc4ea450b32ca628b3b9635a89371d212abe6e8e7c",
+          "size_bytes": 290106724
+        }
+      ],
+      "selection_rule": "highest numeric emitted model_epoch_*.pth",
+      "checkpoint_size_bytes": 290106724,
+      "saved_config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed5/START25_APP6/stage2_seed5_source2701_START25_APP6/20260725153102/config.json",
+      "saved_config_sha256": "d3c35ed07b6dcbdaf0a4ccd2f7865efc38e6c3b6b0cd8106b9e4025519352d39"
+    },
+    {
+      "canonical_seed": 5,
+      "condition": "START25_APP8P4",
+      "source_collection_seed": 1701,
+      "source_training_seed": 2701,
+      "reused_dataset": false,
+      "reused_policy": false,
+      "status": "checkpoint_frozen",
+      "source_artifact_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed5/START25_APP8P4.json",
+      "source_artifact_sha256": "537087e3e921d5639de364e352518e300f6edcb07d62c2eeba9e761591d84b89",
+      "checkpoint_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed5/START25_APP8P4/stage2_seed5_source2701_START25_APP8P4/20260725153451/models/model_epoch_60.pth",
+      "checkpoint_sha256": "29941323093f796d182096fb2ada7b121c02033c9cb0aa44b020c83487daa306",
+      "epoch": 60,
+      "config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/configs/training/seed5/START25_APP8P4.json",
+      "fallback_activation_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/manifests/fallback_activations.json",
+      "fallback_activation_sha256": "77c39f7add8f8c5d62efe3fd785fe7ff5723e96e61b058d5ca9c45c59799384e",
+      "config_sha256": "537087e3e921d5639de364e352518e300f6edcb07d62c2eeba9e761591d84b89",
+      "dataset_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_stage2_axial/formal_fallback/seed5/hdf5/START25_APP8P4_seed5_d30_2gap.hdf5",
+      "dataset_sha256": "1e30a8da8b125a1a38ee4f502d3c587172e49bdb6565c36bc3628f09ed76ffca",
+      "run_name": "stage2_seed5_source2701_START25_APP8P4",
+      "wandb_project": "TRO_MVP",
+      "run_dir": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed5/START25_APP8P4/stage2_seed5_source2701_START25_APP8P4/20260725153451",
+      "available_checkpoints": [
+        {
+          "epoch": 20,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed5/START25_APP8P4/stage2_seed5_source2701_START25_APP8P4/20260725153451/models/model_epoch_20.pth",
+          "sha256": "f8a087be02ea77ba1042a6cb626f54abdbd38bbe9b2a119976e966f4aa8fa52e",
+          "size_bytes": 290106724
+        },
+        {
+          "epoch": 40,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed5/START25_APP8P4/stage2_seed5_source2701_START25_APP8P4/20260725153451/models/model_epoch_40.pth",
+          "sha256": "d75dd759fcdbcc99a1b63d8d4f3bd4abdfb82ff983b13cb28e8e2906d3419f79",
+          "size_bytes": 290106724
+        },
+        {
+          "epoch": 60,
+          "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed5/START25_APP8P4/stage2_seed5_source2701_START25_APP8P4/20260725153451/models/model_epoch_60.pth",
+          "sha256": "29941323093f796d182096fb2ada7b121c02033c9cb0aa44b020c83487daa306",
+          "size_bytes": 290106724
+        }
+      ],
+      "selection_rule": "highest numeric emitted model_epoch_*.pth",
+      "checkpoint_size_bytes": 290106724,
+      "saved_config_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/trained_models/tro_position_stage2_axial/seed5/START25_APP8P4/stage2_seed5_source2701_START25_APP8P4/20260725153451/config.json",
+      "saved_config_sha256": "aee1666cf9386d0b41815864d5eb4729cdedd96480cdc326eb3e24c0c868d38f"
+    }
+  ]
+}

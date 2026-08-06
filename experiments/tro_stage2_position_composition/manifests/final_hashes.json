@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "status": "protocol_blocker",
+  "generated_at": "2026-07-26",
+  "immutable_anchors_revalidated_unchanged": {
+    "experiments/tro_stage2_position_axial_replication/manifests/checkpoints.json": "240a936999281f429dd1b043b19df5bd9291ed478933305a7c051c5183227580",
+    "experiments/tro_stage2_position_axial_replication/analysis/comparison.json": "c70020fe70ab5aae9959ea990e66a2e2f3c4af4c05f24557a79d64c973ef9113",
+    "experiments/tro_stage2_position_axial_replication/analysis/summary.md": "825a13e358b01e8707c99e1f19673b01d46df62edbacecce12bff6bbc6684370",
+    "experiments/tro_stage2_position_axial_idood_rerollout/analysis/comparison.json": "ae30a6133436654d6adee85dae14b8db490718df65a5e526638a68f75e3a2353",
+    "experiments/tro_stage2_position_axial_idood_rerollout/analysis/summary.md": "5d495bc11fc7a0ee1f4f912b816d3d143578f2bd38ce3caa50718d144ee73528"
+  },
+  "composition_manifests": {
+    "protocol.json": "fdb5787df6a58c851096a5a377ea6c167f66c5424be4b2761f6815584d37bd55",
+    "anchor_reuse.json": "56fac8d552d470edc7d0665f0d5b63c4d6c552e91136e9ac38c2ab0e9a47ba5d",
+    "feasibility_audit.json": "c2cbae52a692bb183119290c2313b076c3e95cfddb625bae736f4bfab3ad109b",
+    "protocol_blocker.json": "40585f2279b7b8070dc0b9921e00f83a8531061615f44a7ca1bb8954576d8417",
+    "jobs.json": "73ecaf1f9d665d4ab515235d9994b8321d3876ae84e65442c060ab8aca2767a9",
+    "storage_inventory.json": "ea4cf473c2ba43befd24f512eb3e101220a368840f439b17a00a709cdf69e799"
+  },
+  "execution_docs": {
+    "experiments/tro_stage2_position_composition/PLAN.md": "0027a452c4f3cf901b875747669bb6b42c83441c65dd1618dae4d1bd9905489a",
+    "docs/tro_plan.md": "3dde16d9209490af8f5e62072f814256977089880ea6afeba008d0335e762cb0",
+    "handoffs/tro-stage2-position-composition.md": "10630fa8b4cfe7201a518b29b7da997321708bf18c5310e685ce7efbe1723c98"
+  },
+  "implementation": {
+    "scripts/tro_position_composition.py": "e5cd26a8f1f2097e244af6107f571a73b320f5d6a49a079601d395ce3e763e9a",
+    "scripts/analyze_tro_position_composition.py": "bb2ab137c194025e4769b5a7a175800109bb3deb335bf39368a07497883100fc",
+    "tests/test_tro_position_composition.py": "de38e2a2112182e94427a449d13f45dee6d70c5f235cb8c78453108c5e2c131c"
+  },
+  "scientific_failure_evidence": {
+    "seed4_candidate4_START35_APP8P4_tree_sha256": "d74f873b3abd58a9d3f3843124f138a16290ecfb90c5887bb01dd5bf5f895284",
+    "seed5_candidate1_START35_APP8P4_tree_sha256": "22a01a41200d61845dcc9da2b5625e9c02508c2ae01901a37e437d9591877147"
+  },
+  "downstream_artifact_counts": {
+    "new_hdf5": 0,
+    "new_checkpoints": 0,
+    "new_formal_rollout_summaries": 0
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "protocol_id": "tro_stage2_position_composition_missing_cells_v3_continue_candidate_stream_until_30_successes",
+  "status": "passed",
+  "command": "/scratch/users/k23114984/conda/arcap/bin/python -m pytest -q tests/test_tro_position_mvp0.py tests/test_tro_position_confirmation.py tests/test_tro_position_stage2.py tests/test_tro_position_stage2_idood.py tests/test_tro_position_composition.py",
+  "result": "49 passed in 72.21s",
+  "completed_date": "2026-07-26",
+  "all_required_v3_semantics_covered": true,
+  "coverage": {
+    "existing_candidate_source_generator_identity": "800/800 records",
+    "extension_beyond_candidate_159": true,
+    "original_frozen_order_then_extension_order": true,
+    "whole_candidate_atomic_rejection": true,
+    "whole_candidate_atomic_acceptance": true,
+    "failure_archival": true,
+    "crash_resume_idempotence": true,
+    "scientific_failure_advances_candidate": true,
+    "infrastructure_retry_does_not_advance_candidate": true,
+    "exact_30_unique_acceptance_termination": true,
+    "v2_progress_byte_preservation": true,
+    "v3_progress_migration_idempotence": true
+  },
+  "implementation_sha256_at_test": {
+    "scripts/tro_position_composition.py": "c2c8b7f4f6c5a3128c39b4538915d8a90f6d49153549c25f63ce6944b105506f",
+    "tests/test_tro_position_composition.py": "444ed0cbf67db5e5607b45bfedbd9e809644a9522c2eb35e7b1cb19a26c3a399",
+    "scripts/run_tro_position_composition_collect.sh": "dbbf496955b394a571230e4fdbcc95fde807b104599087d1ad7eca7c0ca8f041"
+  }
+}

@@ -26,9 +26,34 @@ SPATIAL_CONDITION_RADII = {
     "S30": (0.30, 0.072),
     "S35": (0.35, 0.084),
 }
+TRO_POSITION_MVP0_RADII = {
+    "START15_APP6": (0.15, 0.060),
+    "START35_APP6": (0.35, 0.060),
+    "START25_APP3P6": (0.25, 0.036),
+    "START25_APP8P4": (0.25, 0.084),
+}
+TRO_POSITION_STAGE2_RADII = {
+    "START15_APP6": (0.15, 0.060),
+    "START35_APP6": (0.35, 0.060),
+    "START25_APP3P6": (0.25, 0.036),
+    "START25_APP6": (0.25, 0.060),
+    "START25_APP8P4": (0.25, 0.084),
+}
+TRO_POSITION_COMPOSITION_RADII = {
+    "START15_APP3P6": (0.15, 0.036),
+    "START15_APP6": (0.15, 0.060),
+    "START15_APP8P4": (0.15, 0.084),
+    "START25_APP3P6": (0.25, 0.036),
+    "START25_APP6": (0.25, 0.060),
+    "START25_APP8P4": (0.25, 0.084),
+    "START35_APP3P6": (0.35, 0.036),
+    "START35_APP6": (0.35, 0.060),
+    "START35_APP8P4": (0.35, 0.084),
+}
 ABLATION_CONDITION_RADII = {
     **LEGACY_ABLATION_RADII,
     **SPATIAL_CONDITION_RADII,
+    **TRO_POSITION_MVP0_RADII,
 }
 
 
@@ -767,6 +792,8 @@ class PandaSim(DatasetCollectorMixin):
         corridor_start_y=None,
         entry_dz=None,
         success_lift_height=0.20,
+        paired_latent=None,
+        experiment_track_override=None,
     ):
         cube = self.cube_pos()
         print(f"Cube at: {cube}")
@@ -775,8 +802,22 @@ class PandaSim(DatasetCollectorMixin):
         if base_corridor_start.shape != (3,):
             raise ValueError(f"corridor_start_center must contain 3 values, got {corridor_start_center!r}")
         base_pre_grasp = np.array([cube[0], cube[1], 0.22])
-        delta_start = sample_xz_disk(float(corridor_start_radius))
-        delta_pre = sample_xy_disk(float(pre_grasp_radius))
+        if paired_latent is None:
+            delta_start = sample_xz_disk(float(corridor_start_radius))
+            delta_pre = sample_xy_disk(float(pre_grasp_radius))
+        else:
+            delta_start = disk_offset(
+                paired_latent["start_angle"],
+                paired_latent["start_radial_quantile"],
+                float(corridor_start_radius),
+                plane="xz",
+            )
+            delta_pre = disk_offset(
+                paired_latent["approach_angle"],
+                paired_latent["approach_radial_quantile"],
+                float(pre_grasp_radius),
+                plane="xy",
+            )
         corridor_start = base_corridor_start + delta_start
         pre_grasp = base_pre_grasp + delta_pre
         grasp = np.array([cube[0], cube[1], 0.04])
@@ -822,6 +863,8 @@ class PandaSim(DatasetCollectorMixin):
                 corridor_start_y,
                 entry_dz,
                 success_details=details,
+                paired_latent=paired_latent,
+                experiment_track_override=experiment_track_override,
             )
             return False, details
 
@@ -843,6 +886,8 @@ class PandaSim(DatasetCollectorMixin):
             entry_dx,
             corridor_start_y,
             entry_dz,
+            paired_latent=paired_latent,
+            experiment_track_override=experiment_track_override,
         )
 
         print("1) Save corridor start")
@@ -893,13 +938,41 @@ class PandaSim(DatasetCollectorMixin):
         corridor_start_y,
         entry_dz,
         success_details=None,
+        paired_latent=None,
+        experiment_track_override=None,
     ):
+        is_tro_position = str(condition_label) in TRO_POSITION_MVP0_RADII
+        experiment_track = (
+            str(experiment_track_override)
+            if experiment_track_override is not None
+            else (
+                "tro_position_mvp0"
+                if is_tro_position
+                else ("spatial" if str(condition_label).startswith("S") else "ablation_1")
+            )
+        )
         metadata = {
             "task": "cube_grasp_lift_ablation_1",
-            "experiment_track": "spatial" if str(condition_label).startswith("S") else "ablation_1",
+            "experiment_track": experiment_track,
             "condition": condition_label,
             "condition_label": condition_label,
-            "condition_radius_source": "spatial_S15_S35" if str(condition_label).startswith("S") else "legacy_P_2x2",
+            "condition_radius_source": (
+                "tro_position_composition_frozen"
+                if experiment_track == "tro_position_stage2_composition"
+                else (
+                    "tro_position_stage2_axial_frozen"
+                    if experiment_track == "tro_position_stage2_axial"
+                    else (
+                        "tro_position_mvp0_frozen"
+                        if is_tro_position
+                        else (
+                            "spatial_S15_S35"
+                            if str(condition_label).startswith("S")
+                            else "legacy_P_2x2"
+                        )
+                    )
+                )
+            ),
             "sample_hz": float(self.sample_hz),
             "sample_period": float(self.sample_period),
             "cube_position": cube.tolist(),
@@ -920,6 +993,8 @@ class PandaSim(DatasetCollectorMixin):
             "corridor_start_y": None if corridor_start_y is None else float(corridor_start_y),
             "entry_dz": None if entry_dz is None else float(entry_dz),
         }
+        if paired_latent is not None:
+            metadata["paired_latent"] = dict(paired_latent)
         if success_details is not None:
             metadata["success"] = success_details
         self.write_demo_metadata(metadata)
@@ -994,6 +1069,20 @@ def sample_xz_disk(radius):
     theta = np.random.uniform(0.0, 2.0 * math.pi)
     r = radius * math.sqrt(np.random.uniform(0.0, 1.0))
     return np.array([r * math.cos(theta), 0.0, r * math.sin(theta)], dtype=float)
+
+
+def disk_offset(angle, radial_quantile, radius, plane):
+    quantile = float(radial_quantile)
+    if not 0.0 <= quantile <= 1.0:
+        raise ValueError(f"radial_quantile must be in [0, 1], got {quantile}")
+    realised_radius = float(radius) * math.sqrt(quantile)
+    first = realised_radius * math.cos(float(angle))
+    second = realised_radius * math.sin(float(angle))
+    if plane == "xz":
+        return np.array([first, 0.0, second], dtype=float)
+    if plane == "xy":
+        return np.array([first, second, 0.0], dtype=float)
+    raise ValueError(f"Unknown disk plane {plane!r}; choose 'xz' or 'xy'")
 
 
 def ablation_radii(condition):

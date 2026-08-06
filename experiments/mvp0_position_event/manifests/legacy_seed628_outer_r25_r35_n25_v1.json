@@ -1,0 +1,1183 @@
+{
+  "schema_version": 1,
+  "manifest_type": "read_only_child_of_legacy_shared_start_manifest",
+  "bank_id": "legacy_seed628_outer_r25_r35_n25_v1",
+  "condition_order": [
+    "START15_APP6",
+    "START35_APP6",
+    "START25_APP3P6",
+    "START25_APP8P4"
+  ],
+  "protocol": {
+    "seed": 628,
+    "num_rollouts": 25,
+    "horizon": 200,
+    "sample_hz": 8.0,
+    "action_gap": 2,
+    "action_dt": 0.25,
+    "terminate_on_success": true,
+    "success_lift_height": 0.2,
+    "num_points": 10000,
+    "corridor_start_center": [
+      0.3,
+      0.0,
+      0.5
+    ],
+    "shared_start_radius_min": 0.25,
+    "shared_start_radius_max": 0.35,
+    "corridor_start_max_error": 0.025,
+    "evaluation_distribution": "legacy_seed628_outer_r25_r35_n25_v1",
+    "rng_protocol": "independent spatial/runtime/point-cloud streams; Python, NumPy, Torch and CUDA reset per rollout",
+    "bank_id": "legacy_seed628_outer_r25_r35_n25_v1"
+  },
+  "seed": 628,
+  "num_rollouts": 25,
+  "sample_hz": 8.0,
+  "corridor_start_center": [
+    0.3,
+    0.0,
+    0.5
+  ],
+  "start_sampling_mode": "xz_annulus",
+  "shared_start_radius_min": 0.25,
+  "shared_start_radius_max": 0.35,
+  "shared_start_radius": 0.35,
+  "corridor_start_max_error": 0.025,
+  "max_start_sample_attempts": 1000,
+  "evaluation_distribution": "legacy_seed628_outer_r25_r35_n25_v1",
+  "parent_manifest_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/ar_guidance_spatial_S15_S35/policy_rollouts_seed628_shared_r35_paired_n50_h200/shared_start_manifest_seed628_n50_r35.json",
+  "parent_manifest_sha256": "84316b36922ea71225615d285bffccdfef4b99289650e302c963deb761f516ce",
+  "deterministic_radius_predicate": "0.25 < radial_distance_from_center <= 0.35",
+  "legacy_rollout_indices": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    10,
+    11,
+    15,
+    19,
+    22,
+    23,
+    24,
+    25,
+    26,
+    28,
+    30,
+    31,
+    32,
+    36,
+    38,
+    39,
+    43,
+    44,
+    47,
+    49
+  ],
+  "state_ids": [
+    "legacy_seed628_state_004",
+    "legacy_seed628_state_005",
+    "legacy_seed628_state_006",
+    "legacy_seed628_state_007",
+    "legacy_seed628_state_008",
+    "legacy_seed628_state_010",
+    "legacy_seed628_state_011",
+    "legacy_seed628_state_015",
+    "legacy_seed628_state_019",
+    "legacy_seed628_state_022",
+    "legacy_seed628_state_023",
+    "legacy_seed628_state_024",
+    "legacy_seed628_state_025",
+    "legacy_seed628_state_026",
+    "legacy_seed628_state_028",
+    "legacy_seed628_state_030",
+    "legacy_seed628_state_031",
+    "legacy_seed628_state_032",
+    "legacy_seed628_state_036",
+    "legacy_seed628_state_038",
+    "legacy_seed628_state_039",
+    "legacy_seed628_state_043",
+    "legacy_seed628_state_044",
+    "legacy_seed628_state_047",
+    "legacy_seed628_state_049"
+  ],
+  "shared_corridor_starts": [
+    [
+      0.28901523617235647,
+      0.0,
+      0.7881405696892942
+    ],
+    [
+      0.5734946212797909,
+      0.0,
+      0.5653478452668406
+    ],
+    [
+      0.00342806010515756,
+      0.0,
+      0.41299220757445637
+    ],
+    [
+      0.22143444745505167,
+      0.0,
+      0.7635483765491458
+    ],
+    [
+      0.4658654764752888,
+      0.0,
+      0.19560665543388567
+    ],
+    [
+      0.2503760036639743,
+      0.0,
+      0.7470742355983762
+    ],
+    [
+      0.35669079028994993,
+      0.0,
+      0.22549983309002253
+    ],
+    [
+      0.2805677418498794,
+      0.0,
+      0.8077413870115191
+    ],
+    [
+      -0.009540139788949797,
+      0.0,
+      0.6517244911566057
+    ],
+    [
+      0.6314379301192139,
+      0.0,
+      0.45865817803818487
+    ],
+    [
+      -0.007520233112892127,
+      0.0,
+      0.5538614242159754
+    ],
+    [
+      0.5593081942141599,
+      0.0,
+      0.5539119221097912
+    ],
+    [
+      0.5873588503177569,
+      0.0,
+      0.32369892145966883
+    ],
+    [
+      0.0997215930486661,
+      0.0,
+      0.6966517626677784
+    ],
+    [
+      0.5073941900530259,
+      0.0,
+      0.24972490102213457
+    ],
+    [
+      0.5154652703389336,
+      0.0,
+      0.6480279205377515
+    ],
+    [
+      0.23969334947700233,
+      0.0,
+      0.7798757294145204
+    ],
+    [
+      0.005433341095296085,
+      0.0,
+      0.5497459292459486
+    ],
+    [
+      -0.005864190007976111,
+      0.0,
+      0.6481807516221108
+    ],
+    [
+      0.21459432399096998,
+      0.0,
+      0.7822881931071743
+    ],
+    [
+      0.4017757447301847,
+      0.0,
+      0.18379240447638573
+    ],
+    [
+      0.26091936846759456,
+      0.0,
+      0.17200605190973994
+    ],
+    [
+      0.43187400288232497,
+      0.0,
+      0.24750645657128573
+    ],
+    [
+      0.07062458522372786,
+      0.0,
+      0.7421332673742917
+    ],
+    [
+      0.3357544831032612,
+      0.0,
+      0.21831090366099248
+    ]
+  ],
+  "shared_start_records": [
+    {
+      "rollout_index": 4,
+      "attempts": 1,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_disk",
+      "evaluation_distribution": "paired_shared_absolute_corridor_starts_r35",
+      "shared_start_radius_min": 0.0,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        -0.031385039507552934,
+        0.0,
+        0.8232587705408407
+      ],
+      "corridor_start_delta": [
+        -0.010984763827643526,
+        0.0,
+        0.28814056968929425
+      ],
+      "radial_distance_from_center": 0.2883498793778491,
+      "start_angle_rad": 1.6089008078014788,
+      "corridor_start": [
+        0.28901523617235647,
+        0.0,
+        0.7881405696892942
+      ],
+      "realised_start": [
+        0.28749793068419843,
+        1.4638476137564332e-05,
+        0.7813016958227172
+      ],
+      "ik_error": 0.007005185650097217,
+      "rejected_count": 0,
+      "recent_rejections": [],
+      "rng_seed": 2597806561,
+      "point_cloud_rng_seed": 2061326965
+    },
+    {
+      "rollout_index": 5,
+      "attempts": 1,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_disk",
+      "evaluation_distribution": "paired_shared_absolute_corridor_starts_r35",
+      "shared_start_radius_min": 0.0,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        0.7814132036565455,
+        0.0,
+        0.18670812933383005
+      ],
+      "corridor_start_delta": [
+        0.2734946212797909,
+        0.0,
+        0.06534784526684051
+      ],
+      "radial_distance_from_center": 0.28119325872075096,
+      "start_angle_rad": 0.23453915165547734,
+      "corridor_start": [
+        0.5734946212797909,
+        0.0,
+        0.5653478452668406
+      ],
+      "realised_start": [
+        0.5708583323530778,
+        9.463526945685856e-06,
+        0.5629584159186769
+      ],
+      "ik_error": 0.0035580165082975783,
+      "rejected_count": 0,
+      "recent_rejections": [],
+      "rng_seed": 3224127051,
+      "point_cloud_rng_seed": 1516212814
+    },
+    {
+      "rollout_index": 6,
+      "attempts": 1,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_disk",
+      "evaluation_distribution": "paired_shared_absolute_corridor_starts_r35",
+      "shared_start_radius_min": 0.0,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        -0.8473483996995499,
+        0.0,
+        -0.24859369264441034
+      ],
+      "corridor_start_delta": [
+        -0.29657193989484243,
+        0.0,
+        -0.08700779242554361
+      ],
+      "radial_distance_from_center": 0.3090716283901784,
+      "start_angle_rad": -2.8562217650360315,
+      "corridor_start": [
+        0.00342806010515756,
+        0.0,
+        0.41299220757445637
+      ],
+      "realised_start": [
+        0.010829726939399176,
+        4.820749962001343e-05,
+        0.4211576678886273
+      ],
+      "ik_error": 0.011020968107676941,
+      "rejected_count": 0,
+      "recent_rejections": [],
+      "rng_seed": 1763673145,
+      "point_cloud_rng_seed": 3762619424
+    },
+    {
+      "rollout_index": 7,
+      "attempts": 1,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_disk",
+      "evaluation_distribution": "paired_shared_absolute_corridor_starts_r35",
+      "shared_start_radius_min": 0.0,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        -0.22447300727128092,
+        0.0,
+        0.7529953615689877
+      ],
+      "corridor_start_delta": [
+        -0.07856555254494832,
+        0.0,
+        0.2635483765491457
+      ],
+      "radial_distance_from_center": 0.2750096231559604,
+      "start_angle_rad": 1.860515299736069,
+      "corridor_start": [
+        0.22143444745505167,
+        0.0,
+        0.7635483765491458
+      ],
+      "realised_start": [
+        0.2214158409263452,
+        1.398646012127015e-05,
+        0.7601717548313853
+      ],
+      "ik_error": 0.0033767019484740777,
+      "rejected_count": 0,
+      "recent_rejections": [],
+      "rng_seed": 2007444248,
+      "point_cloud_rng_seed": 4266093710
+    },
+    {
+      "rollout_index": 8,
+      "attempts": 1,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_disk",
+      "evaluation_distribution": "paired_shared_absolute_corridor_starts_r35",
+      "shared_start_radius_min": 0.0,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        0.47390136135796807,
+        0.0,
+        -0.8696952701888981
+      ],
+      "corridor_start_delta": [
+        0.16586547647528882,
+        0.0,
+        -0.30439334456611433
+      ],
+      "radial_distance_from_center": 0.34665063753369874,
+      "start_angle_rad": -1.071873184655581,
+      "corridor_start": [
+        0.4658654764752888,
+        0.0,
+        0.19560665543388567
+      ],
+      "realised_start": [
+        0.465864978037988,
+        1.0963329835927325e-05,
+        0.19647442098107376
+      ],
+      "ik_error": 0.0008678349427900933,
+      "rejected_count": 0,
+      "recent_rejections": [],
+      "rng_seed": 522022723,
+      "point_cloud_rng_seed": 3163462514
+    },
+    {
+      "rollout_index": 10,
+      "attempts": 1,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_disk",
+      "evaluation_distribution": "paired_shared_absolute_corridor_starts_r35",
+      "shared_start_radius_min": 0.0,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        -0.14178284667435914,
+        0.0,
+        0.7059263874239319
+      ],
+      "corridor_start_delta": [
+        -0.0496239963360257,
+        0.0,
+        0.24707423559837613
+      ],
+      "radial_distance_from_center": 0.2520083707119265,
+      "start_angle_rad": 1.7690056997016523,
+      "corridor_start": [
+        0.2503760036639743,
+        0.0,
+        0.7470742355983762
+      ],
+      "realised_start": [
+        0.2502508682827546,
+        1.31884216132345e-05,
+        0.7440930030809516
+      ],
+      "ik_error": 0.002983886747356063,
+      "rejected_count": 0,
+      "recent_rejections": [],
+      "rng_seed": 994694200,
+      "point_cloud_rng_seed": 2835047922
+    },
+    {
+      "rollout_index": 11,
+      "attempts": 1,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_disk",
+      "evaluation_distribution": "paired_shared_absolute_corridor_starts_r35",
+      "shared_start_radius_min": 0.0,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        0.16197368654271418,
+        0.0,
+        -0.7842861911713642
+      ],
+      "corridor_start_delta": [
+        0.05669079028994996,
+        0.0,
+        -0.27450016690997747
+      ],
+      "radial_distance_from_center": 0.28029303833185826,
+      "start_angle_rad": -1.3671359195700827,
+      "corridor_start": [
+        0.35669079028994993,
+        0.0,
+        0.22549983309002253
+      ],
+      "realised_start": [
+        0.35715524193758,
+        1.0740381471018941e-05,
+        0.22625356875388852
+      ],
+      "ik_error": 0.0008854084592796501,
+      "rejected_count": 0,
+      "recent_rejections": [],
+      "rng_seed": 4078389525,
+      "point_cloud_rng_seed": 3833088366
+    },
+    {
+      "rollout_index": 15,
+      "attempts": 1,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_disk",
+      "evaluation_distribution": "paired_shared_absolute_corridor_starts_r35",
+      "shared_start_radius_min": 0.0,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        -0.05552073757177296,
+        0.0,
+        0.8792611057471976
+      ],
+      "corridor_start_delta": [
+        -0.019432258150120535,
+        0.0,
+        0.30774138701151915
+      ],
+      "radial_distance_from_center": 0.3083542993645241,
+      "start_angle_rad": 1.6338573690078135,
+      "corridor_start": [
+        0.2805677418498794,
+        0.0,
+        0.8077413870115191
+      ],
+      "realised_start": [
+        0.27808247455164,
+        1.6221173667839993e-05,
+        0.7969627601580445
+      ],
+      "ik_error": 0.011061447170990698,
+      "rejected_count": 0,
+      "recent_rejections": [],
+      "rng_seed": 575995589,
+      "point_cloud_rng_seed": 847175599
+    },
+    {
+      "rollout_index": 19,
+      "attempts": 1,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_disk",
+      "evaluation_distribution": "paired_shared_absolute_corridor_starts_r35",
+      "shared_start_radius_min": 0.0,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        -0.8844003993969994,
+        0.0,
+        0.4334985461617305
+      ],
+      "corridor_start_delta": [
+        -0.3095401397889498,
+        0.0,
+        0.15172449115660566
+      ],
+      "radial_distance_from_center": 0.3447251359522445,
+      "start_angle_rad": 2.685847215048297,
+      "corridor_start": [
+        -0.009540139788949797,
+        0.0,
+        0.6517244911566057
+      ],
+      "realised_start": [
+        -0.00807477471512272,
+        1.5104670163127005e-05,
+        0.6513750289695578
+      ],
+      "ik_error": 0.001506534689553903,
+      "rejected_count": 0,
+      "recent_rejections": [],
+      "rng_seed": 3429524436,
+      "point_cloud_rng_seed": 2608144774
+    },
+    {
+      "rollout_index": 22,
+      "attempts": 1,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_disk",
+      "evaluation_distribution": "paired_shared_absolute_corridor_starts_r35",
+      "shared_start_radius_min": 0.0,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        0.9469655146263255,
+        0.0,
+        -0.11811949131947182
+      ],
+      "corridor_start_delta": [
+        0.3314379301192139,
+        0.0,
+        -0.041341821961815135
+      ],
+      "radial_distance_from_center": 0.3340063588688565,
+      "start_angle_rad": -0.12409380077585144,
+      "corridor_start": [
+        0.6314379301192139,
+        0.0,
+        0.45865817803818487
+      ],
+      "realised_start": [
+        0.6289050162265465,
+        8.815487153069533e-06,
+        0.4573419409256224
+      ],
+      "ik_error": 0.0028545070742543397,
+      "rejected_count": 0,
+      "recent_rejections": [],
+      "rng_seed": 1197233352,
+      "point_cloud_rng_seed": 3180921363
+    },
+    {
+      "rollout_index": 23,
+      "attempts": 1,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_disk",
+      "evaluation_distribution": "paired_shared_absolute_corridor_starts_r35",
+      "shared_start_radius_min": 0.0,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        -0.8786292374654061,
+        0.0,
+        0.15388978347421525
+      ],
+      "corridor_start_delta": [
+        -0.3075202331128921,
+        0.0,
+        0.05386142421597534
+      ],
+      "radial_distance_from_center": 0.312201452258603,
+      "start_angle_rad": 2.968203797371865,
+      "corridor_start": [
+        -0.007520233112892127,
+        0.0,
+        0.5538614242159754
+      ],
+      "realised_start": [
+        -0.005838902221478203,
+        1.543700168069665e-05,
+        0.5545577555708722
+      ],
+      "ik_error": 0.001819887145747232,
+      "rejected_count": 0,
+      "recent_rejections": [],
+      "rng_seed": 207750263,
+      "point_cloud_rng_seed": 2753326974
+    },
+    {
+      "rollout_index": 24,
+      "attempts": 1,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_disk",
+      "evaluation_distribution": "paired_shared_absolute_corridor_starts_r35",
+      "shared_start_radius_min": 0.0,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        0.7408805548975997,
+        0.0,
+        0.1540340631708322
+      ],
+      "corridor_start_delta": [
+        0.2593081942141599,
+        0.0,
+        0.053911922109791274
+      ],
+      "radial_distance_from_center": 0.26485323281429035,
+      "start_angle_rad": 0.20498650913932923,
+      "corridor_start": [
+        0.5593081942141599,
+        0.0,
+        0.5539119221097912
+      ],
+      "realised_start": [
+        0.5572361067717473,
+        9.513700581813853e-06,
+        0.5520202269378964
+      ],
+      "ik_error": 0.0028057347527649305,
+      "rejected_count": 0,
+      "recent_rejections": [],
+      "rng_seed": 744252005,
+      "point_cloud_rng_seed": 1859999489
+    },
+    {
+      "rollout_index": 25,
+      "attempts": 1,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_disk",
+      "evaluation_distribution": "paired_shared_absolute_corridor_starts_r35",
+      "shared_start_radius_min": 0.0,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        0.8210252866221627,
+        0.0,
+        -0.5037173672580891
+      ],
+      "corridor_start_delta": [
+        0.28735885031775693,
+        0.0,
+        -0.1763010785403312
+      ],
+      "radial_distance_from_center": 0.3371308042146654,
+      "start_angle_rad": -0.5503031213409459,
+      "corridor_start": [
+        0.5873588503177569,
+        0.0,
+        0.32369892145966883
+      ],
+      "realised_start": [
+        0.5863276467694206,
+        9.31931811085735e-06,
+        0.32375692409128237
+      ],
+      "ik_error": 0.0010328755554593816,
+      "rejected_count": 0,
+      "recent_rejections": [],
+      "rng_seed": 835718900,
+      "point_cloud_rng_seed": 2566331625
+    },
+    {
+      "rollout_index": 26,
+      "attempts": 1,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_disk",
+      "evaluation_distribution": "paired_shared_absolute_corridor_starts_r35",
+      "shared_start_radius_min": 0.0,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        -0.5722240198609541,
+        0.0,
+        0.5618621790507953
+      ],
+      "corridor_start_delta": [
+        -0.2002784069513339,
+        0.0,
+        0.19665176266777834
+      ],
+      "radial_distance_from_center": 0.2806837295806587,
+      "start_angle_rad": 2.365330967207534,
+      "corridor_start": [
+        0.0997215930486661,
+        0.0,
+        0.6966517626677784
+      ],
+      "realised_start": [
+        0.10072269194376168,
+        1.4149282308911553e-05,
+        0.6954823831971909
+      ],
+      "ik_error": 0.0015394309163398422,
+      "rejected_count": 0,
+      "recent_rejections": [],
+      "rng_seed": 2992131859,
+      "point_cloud_rng_seed": 3091923348
+    },
+    {
+      "rollout_index": 28,
+      "attempts": 1,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_disk",
+      "evaluation_distribution": "paired_shared_absolute_corridor_starts_r35",
+      "shared_start_radius_min": 0.0,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        0.5925548287229312,
+        0.0,
+        -0.7150717113653299
+      ],
+      "corridor_start_delta": [
+        0.20739419005302592,
+        0.0,
+        -0.25027509897786543
+      ],
+      "radial_distance_from_center": 0.3250384211691458,
+      "start_angle_rad": -0.8788195243466765,
+      "corridor_start": [
+        0.5073941900530259,
+        0.0,
+        0.24972490102213457
+      ],
+      "realised_start": [
+        0.5071111131163999,
+        1.0197109087802401e-05,
+        0.2502891377752636
+      ],
+      "ik_error": 0.0006313474848804915,
+      "rejected_count": 0,
+      "recent_rejections": [],
+      "rng_seed": 941952551,
+      "point_cloud_rng_seed": 3719762999
+    },
+    {
+      "rollout_index": 30,
+      "attempts": 2,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_disk",
+      "evaluation_distribution": "paired_shared_absolute_corridor_starts_r35",
+      "shared_start_radius_min": 0.0,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        0.6156150581112391,
+        0.0,
+        0.4229369158221473
+      ],
+      "corridor_start_delta": [
+        0.21546527033893367,
+        0.0,
+        0.14802792053775155
+      ],
+      "radial_distance_from_center": 0.2614145137152118,
+      "start_angle_rad": 0.6019580855161428,
+      "corridor_start": [
+        0.5154652703389336,
+        0.0,
+        0.6480279205377515
+      ],
+      "realised_start": [
+        0.5125071936944972,
+        1.0330185932468348e-05,
+        0.6441717584937129
+      ],
+      "ik_error": 0.004860073030005409,
+      "rejected_count": 1,
+      "recent_rejections": [
+        {
+          "start_sampling_mode": "xz_disk",
+          "shared_start_radius_min": 0.0,
+          "shared_start_radius_max": 0.35,
+          "normalized_delta": [
+            -0.7080958564592886,
+            0.0,
+            -0.4685015771752944
+          ],
+          "corridor_start_delta": [
+            -0.247833549760751,
+            0.0,
+            -0.16397555201135303
+          ],
+          "radial_distance_from_center": 0.2971690597024572,
+          "start_angle_rad": -2.5570810409160036,
+          "corridor_start": [
+            0.052166450239248985,
+            0.0,
+            0.33602444798864695
+          ],
+          "ik_error": 0.02768892217848323
+        }
+      ],
+      "rng_seed": 1869871239,
+      "point_cloud_rng_seed": 1822133348
+    },
+    {
+      "rollout_index": 31,
+      "attempts": 1,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_disk",
+      "evaluation_distribution": "paired_shared_absolute_corridor_starts_r35",
+      "shared_start_radius_min": 0.0,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        -0.17230471577999334,
+        0.0,
+        0.799644941184344
+      ],
+      "corridor_start_delta": [
+        -0.06030665052299767,
+        0.0,
+        0.2798757294145204
+      ],
+      "radial_distance_from_center": 0.2862993468602623,
+      "start_angle_rad": 1.7830279161755453,
+      "corridor_start": [
+        0.23969334947700233,
+        0.0,
+        0.7798757294145204
+      ],
+      "realised_start": [
+        0.23927968313238263,
+        1.4467709779539177e-05,
+        0.7753257486552835
+      ],
+      "ik_error": 0.0045687694260844285,
+      "rejected_count": 0,
+      "recent_rejections": [],
+      "rng_seed": 935659970,
+      "point_cloud_rng_seed": 2376154538
+    },
+    {
+      "rollout_index": 32,
+      "attempts": 1,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_disk",
+      "evaluation_distribution": "paired_shared_absolute_corridor_starts_r35",
+      "shared_start_radius_min": 0.0,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        -0.8416190254420112,
+        0.0,
+        0.14213122641699583
+      ],
+      "corridor_start_delta": [
+        -0.2945666589047039,
+        0.0,
+        0.04974592924594854
+      ],
+      "radial_distance_from_center": 0.29873763407850557,
+      "start_angle_rad": 2.9742928497417007,
+      "corridor_start": [
+        0.005433341095296085,
+        0.0,
+        0.5497459292459486
+      ],
+      "realised_start": [
+        0.007112146356057367,
+        1.5371252724660595e-05,
+        0.5504383628669527
+      ],
+      "ik_error": 0.0018160637925103218,
+      "rejected_count": 0,
+      "recent_rejections": [],
+      "rng_seed": 3913497100,
+      "point_cloud_rng_seed": 2242588899
+    },
+    {
+      "rollout_index": 36,
+      "attempts": 1,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_disk",
+      "evaluation_distribution": "paired_shared_absolute_corridor_starts_r35",
+      "shared_start_radius_min": 0.0,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        -0.8738976857370746,
+        0.0,
+        0.4233735760631738
+      ],
+      "corridor_start_delta": [
+        -0.3058641900079761,
+        0.0,
+        0.1481807516221108
+      ],
+      "radial_distance_from_center": 0.3398682654802137,
+      "start_angle_rad": 2.6904494231845026,
+      "corridor_start": [
+        -0.005864190007976111,
+        0.0,
+        0.6481807516221108
+      ],
+      "realised_start": [
+        -0.00440413857621163,
+        1.5068655071652862e-05,
+        0.6478708293710532
+      ],
+      "ik_error": 0.0014926583833763654,
+      "rejected_count": 0,
+      "recent_rejections": [],
+      "rng_seed": 538160718,
+      "point_cloud_rng_seed": 1469963527
+    },
+    {
+      "rollout_index": 38,
+      "attempts": 1,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_disk",
+      "evaluation_distribution": "paired_shared_absolute_corridor_starts_r35",
+      "shared_start_radius_min": 0.0,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        -0.2440162171686572,
+        0.0,
+        0.8065376945919266
+      ],
+      "corridor_start_delta": [
+        -0.08540567600903001,
+        0.0,
+        0.2822881931071743
+      ],
+      "radial_distance_from_center": 0.29492499633342834,
+      "start_angle_rad": 1.8645889239813456,
+      "corridor_start": [
+        0.21459432399096998,
+        0.0,
+        0.7822881931071743
+      ],
+      "realised_start": [
+        0.2144348830613069,
+        1.4835685981474889e-05,
+        0.7779387002009134
+      ],
+      "ik_error": 0.0043524395514751065,
+      "rejected_count": 0,
+      "recent_rejections": [],
+      "rng_seed": 1401438830,
+      "point_cloud_rng_seed": 947972907
+    },
+    {
+      "rollout_index": 39,
+      "attempts": 1,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_disk",
+      "evaluation_distribution": "paired_shared_absolute_corridor_starts_r35",
+      "shared_start_radius_min": 0.0,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        0.290787842086242,
+        0.0,
+        -0.9034502729246122
+      ],
+      "corridor_start_delta": [
+        0.10177574473018468,
+        0.0,
+        -0.31620759552361427
+      ],
+      "radial_distance_from_center": 0.33218300029081765,
+      "start_angle_rad": -1.2594037193095657,
+      "corridor_start": [
+        0.4017757447301847,
+        0.0,
+        0.18379240447638573
+      ],
+      "realised_start": [
+        0.4020533935121746,
+        1.1196605841773804e-05,
+        0.18479235845238232
+      ],
+      "ik_error": 0.0010378449615594104,
+      "rejected_count": 0,
+      "recent_rejections": [],
+      "rng_seed": 2630030353,
+      "point_cloud_rng_seed": 3424259080
+    },
+    {
+      "rollout_index": 43,
+      "attempts": 1,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_disk",
+      "evaluation_distribution": "paired_shared_absolute_corridor_starts_r35",
+      "shared_start_radius_min": 0.0,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        -0.11165894723544405,
+        0.0,
+        -0.9371255659721717
+      ],
+      "corridor_start_delta": [
+        -0.039080631532405416,
+        0.0,
+        -0.32799394809026006
+      ],
+      "radial_distance_from_center": 0.330313980547006,
+      "start_angle_rad": -1.6893876937833536,
+      "corridor_start": [
+        0.26091936846759456,
+        0.0,
+        0.17200605190973994
+      ],
+      "realised_start": [
+        0.2618563682738081,
+        1.3729323987641106e-05,
+        0.1728919395403697
+      ],
+      "ik_error": 0.0012895557472572257,
+      "rejected_count": 0,
+      "recent_rejections": [],
+      "rng_seed": 4072542160,
+      "point_cloud_rng_seed": 1227427831
+    },
+    {
+      "rollout_index": 44,
+      "attempts": 1,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_disk",
+      "evaluation_distribution": "paired_shared_absolute_corridor_starts_r35",
+      "shared_start_radius_min": 0.0,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        0.3767828653780714,
+        0.0,
+        -0.7214101240820409
+      ],
+      "corridor_start_delta": [
+        0.13187400288232498,
+        0.0,
+        -0.2524935434287143
+      ],
+      "radial_distance_from_center": 0.2848574066254825,
+      "start_angle_rad": -1.089478787601607,
+      "corridor_start": [
+        0.43187400288232497,
+        0.0,
+        0.24750645657128573
+      ],
+      "realised_start": [
+        0.43198553516136007,
+        1.0353485781261697e-05,
+        0.24815100067849893
+      ],
+      "ik_error": 0.0006542046698685789,
+      "rejected_count": 0,
+      "recent_rejections": [],
+      "rng_seed": 852801900,
+      "point_cloud_rng_seed": 2299685727
+    },
+    {
+      "rollout_index": 47,
+      "attempts": 1,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_disk",
+      "evaluation_distribution": "paired_shared_absolute_corridor_starts_r35",
+      "shared_start_radius_min": 0.0,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        -0.6553583279322062,
+        0.0,
+        0.6918093353551191
+      ],
+      "corridor_start_delta": [
+        -0.22937541477627213,
+        0.0,
+        0.2421332673742917
+      ],
+      "radial_distance_from_center": 0.33352900934272134,
+      "start_angle_rad": 2.3291435766715747,
+      "corridor_start": [
+        0.07062458522372786,
+        0.0,
+        0.7421332673742917
+      ],
+      "realised_start": [
+        0.07166993807697297,
+        1.5531746495862227e-05,
+        0.7401126983834746
+      ],
+      "ik_error": 0.002275017114130957,
+      "rejected_count": 0,
+      "recent_rejections": [],
+      "rng_seed": 3088438180,
+      "point_cloud_rng_seed": 4272198667
+    },
+    {
+      "rollout_index": 49,
+      "attempts": 1,
+      "max_error": 0.025,
+      "start_sampling_mode": "xz_disk",
+      "evaluation_distribution": "paired_shared_absolute_corridor_starts_r35",
+      "shared_start_radius_min": 0.0,
+      "shared_start_radius_max": 0.35,
+      "shared_start_radius": 0.35,
+      "normalized_delta": [
+        0.10215566600931776,
+        0.0,
+        -0.8048259895400215
+      ],
+      "corridor_start_delta": [
+        0.035754483103261216,
+        0.0,
+        -0.2816890963390075
+      ],
+      "radial_distance_from_center": 0.2839491680887057,
+      "start_angle_rad": -1.4445425747937295,
+      "corridor_start": [
+        0.3357544831032612,
+        0.0,
+        0.21831090366099248
+      ],
+      "realised_start": [
+        0.3363197959272712,
+        1.100902824210143e-05,
+        0.21908331486853355
+      ],
+      "ik_error": 0.0009572454550573735,
+      "rejected_count": 0,
+      "recent_rejections": [],
+      "rng_seed": 2833777935,
+      "point_cloud_rng_seed": 3030710378
+    }
+  ]
+}

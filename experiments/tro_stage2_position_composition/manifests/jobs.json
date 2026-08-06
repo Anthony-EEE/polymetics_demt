@@ -1,0 +1,388 @@
+{
+  "schema_version": 1,
+  "protocol_id": "tro_stage2_position_composition_missing_cells_v1",
+  "active_protocol_id": "tro_stage2_position_composition_missing_cells_v3_continue_candidate_stream_until_30_successes",
+  "jobs": [
+    {
+      "phase": "smoke",
+      "job_id": "36053326",
+      "dependency": null,
+      "submission_command": "sbatch --parsable --array=0-4 scripts/run_tro_position_composition_smoke.sh",
+      "identical_frozen_input_retry_of": null,
+      "status": "COMPLETED",
+      "terminal_tasks": "5/5",
+      "exit_code": "0:0"
+    },
+    {
+      "phase": "formal_collection",
+      "job_id": "36053381",
+      "dependency": null,
+      "submission_command": "sbatch --parsable --array=0-4 scripts/run_tro_position_composition_collect.sh",
+      "identical_frozen_input_retry_of": null,
+      "status": "PROTOCOL_BLOCKER",
+      "terminal_array_states": {
+        "seed1": "CANCELLED after blocker in another task",
+        "seed2": "CANCELLED after blocker in another task",
+        "seed3": "CANCELLED after blocker in another task",
+        "seed4": "FAILED scientific protocol blocker",
+        "seed5": "FAILED scientific protocol blocker"
+      },
+      "scientific_failure_retries": 0,
+      "remaining_chain_submitted": false
+    },
+    {
+      "phase": "formal_collection_v2",
+      "job_id": "36054403",
+      "dependency": null,
+      "submission_command": "sbatch --parsable --array=0-4 scripts/run_tro_position_composition_collect.sh",
+      "identical_frozen_input_retry_of": null,
+      "status": "PROTOCOL_BLOCKER",
+      "terminal_array_states": {
+        "seed1": "CANCELLED after causal runtime-RNG audit",
+        "seed2": "CANCELLED after causal runtime-RNG audit",
+        "seed3": "CANCELLED after causal runtime-RNG audit",
+        "seed4": "CANCELLED after causal runtime-RNG audit",
+        "seed5": "CANCELLED after causal runtime-RNG audit"
+      },
+      "terminal_tasks": "5/5",
+      "exit_code": "0:15",
+      "elapsed": "00:13:09",
+      "node": "erc-hpc-comp230",
+      "scientific_attempts": {
+        "new_v2_attempts": 90,
+        "preserved_v1_attempts": 2,
+        "failed_then_later_accepted_bundles": 0
+      },
+      "failure_reason": "Derived attempt seeds are not consumed by any RNG draw in the paired-latent physics path; distinct seeds produced identical outcomes.",
+      "protocol_blocker_path": "experiments/tro_stage2_position_composition/manifests/protocol_blocker_v2_runtime_rng.json",
+      "remaining_chain_submitted": false
+    },
+    {
+      "phase": "formal_collection_v3",
+      "job_id": "36055938",
+      "dependency": null,
+      "submission_command": "sbatch --parsable --array=0-4 --export=ALL,PROJECT_DIR=/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt scripts/run_tro_position_composition_collect.sh",
+      "identical_frozen_input_retry_of": null,
+      "status": "COMPLETED",
+      "terminal_tasks": "5/5",
+      "exit_code": "0:0",
+      "terminal_array_states": {
+        "seed1": "COMPLETED 00:20:25",
+        "seed2": "COMPLETED 00:29:43",
+        "seed3": "COMPLETED 00:21:35",
+        "seed4": "COMPLETED 00:20:34",
+        "seed5": "COMPLETED 00:17:17"
+      },
+      "accepted_bundles_by_seed": [
+        30,
+        30,
+        30,
+        30,
+        30
+      ],
+      "rejected_candidates_by_seed_including_migrated_v2_frontier": [
+        4,
+        2,
+        6,
+        10,
+        3
+      ],
+      "new_v3_scientific_candidate_rejections": 20,
+      "preserved_v1_v2_scientific_attempts": 92,
+      "infrastructure_retries": 0,
+      "raw_datasets_validated": "20/20"
+    },
+    {
+      "phase": "hdf5_v3",
+      "job_id": "36056459",
+      "dependency": null,
+      "submission_command": "sbatch --parsable --array=0-4 --export=ALL,PROJECT_DIR=/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt scripts/run_tro_position_composition_hdf5.sh",
+      "identical_frozen_input_retry_of": null,
+      "status": "COMPLETED",
+      "terminal_tasks": "5/5",
+      "exit_code": "0:0",
+      "terminal_array_states": {
+        "seed1": "COMPLETED 00:13:36",
+        "seed2": "COMPLETED 00:00:27",
+        "seed3": "COMPLETED 00:00:30",
+        "seed4": "COMPLETED 00:00:32",
+        "seed5": "COMPLETED 00:14:20"
+      },
+      "hdf5_validated": "20/20",
+      "dataset_slots_hash_validated": "45/45"
+    },
+    {
+      "phase": "training_v3",
+      "job_ids": {
+        "seed1/START15_APP3P6": "36057059",
+        "seed1/START15_APP8P4": "36057060",
+        "seed1/START35_APP3P6": "36057061",
+        "seed1/START35_APP8P4": "36057062",
+        "seed2/START15_APP3P6": "36057063",
+        "seed2/START15_APP8P4": "36057064",
+        "seed2/START35_APP3P6": "36057065",
+        "seed2/START35_APP8P4": "36057066",
+        "seed3/START15_APP3P6": "36057067",
+        "seed3/START15_APP8P4": "36057068",
+        "seed3/START35_APP3P6": "36057069",
+        "seed3/START35_APP8P4": "36057070",
+        "seed4/START15_APP3P6": "36057071",
+        "seed4/START15_APP8P4": "36057072",
+        "seed4/START35_APP3P6": "36057073",
+        "seed4/START35_APP8P4": "36057074",
+        "seed5/START15_APP3P6": "36057075",
+        "seed5/START15_APP8P4": "36057076",
+        "seed5/START35_APP3P6": "36057077",
+        "seed5/START35_APP8P4": "36057078"
+      },
+      "dependency": null,
+      "submission_command": "PROJECT_DIR=/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt bash scripts/submit_tro_position_composition_training.sh",
+      "identical_frozen_input_retry_of": null,
+      "status": "FAILED_OR_CANCELLED_BEFORE_TRAINING",
+      "jobs_submitted": 20,
+      "from_scratch": true,
+      "frozen_epochs": 3000,
+      "terminal_summary": {
+        "FAILED_before_train_entrypoint": ["36057059", "36057060", "36057061"],
+        "CANCELLED_while_pending": [
+          "36057062", "36057063", "36057064", "36057065", "36057066",
+          "36057067", "36057068", "36057069", "36057070", "36057071",
+          "36057072", "36057073", "36057074", "36057075", "36057076",
+          "36057077", "36057078"
+        ]
+      },
+      "failure_reason": "Exported composition PROJECT_DIR overrode the training wrapper code root; robomimic/scripts/train.py was not found before training began.",
+      "checkpoints_created": 0
+    },
+    {
+      "phase": "training_v3_clean_retry",
+      "job_ids": {
+        "seed1/START15_APP3P6": "36057105",
+        "seed1/START15_APP8P4": "36057106",
+        "seed1/START35_APP3P6": "36057107",
+        "seed1/START35_APP8P4": "36057108",
+        "seed2/START15_APP3P6": "36057109",
+        "seed2/START15_APP8P4": "36057110",
+        "seed2/START35_APP3P6": "36057111",
+        "seed2/START35_APP8P4": "36057112",
+        "seed3/START15_APP3P6": "36057113",
+        "seed3/START15_APP8P4": "36057114",
+        "seed3/START35_APP3P6": "36057115",
+        "seed3/START35_APP8P4": "36057116",
+        "seed4/START15_APP3P6": "36057117",
+        "seed4/START15_APP8P4": "36057118",
+        "seed4/START35_APP3P6": "36057119",
+        "seed4/START35_APP8P4": "36057120",
+        "seed5/START15_APP3P6": "36057121",
+        "seed5/START15_APP8P4": "36057122",
+        "seed5/START35_APP3P6": "36057123",
+        "seed5/START35_APP8P4": "36057124"
+      },
+      "dependency": null,
+      "submission_command": "PARTITION=interruptible_gpu bash scripts/submit_tro_position_composition_training.sh",
+      "identical_frozen_input_retry_of": "36057059-36057078",
+      "status": "COMPLETED",
+      "jobs_submitted": 20,
+      "from_scratch": true,
+      "frozen_epochs": 3000,
+      "scientific_inputs_changed": false,
+      "terminal_jobs": "20/20",
+      "exit_code": "0:0",
+      "terminal_states": {
+        "36057105": "COMPLETED 00:22:52 erc-hpc-comp241",
+        "36057106": "COMPLETED 00:32:31 erc-hpc-vm064",
+        "36057107": "COMPLETED 00:12:28 erc-hpc-comp241",
+        "36057108": "COMPLETED 00:11:51 erc-hpc-comp241",
+        "36057109": "COMPLETED 00:30:50 erc-hpc-vm064",
+        "36057110": "COMPLETED 00:38:37 erc-hpc-comp057",
+        "36057111": "COMPLETED 00:12:11 erc-hpc-comp241",
+        "36057112": "COMPLETED 00:35:21 erc-hpc-comp057",
+        "36057113": "COMPLETED 00:26:21 erc-hpc-comp241",
+        "36057114": "COMPLETED 00:48:02 erc-hpc-vm064",
+        "36057115": "COMPLETED 00:36:33 erc-hpc-comp057",
+        "36057116": "COMPLETED 00:34:32 erc-hpc-comp057",
+        "36057117": "COMPLETED 00:34:54 erc-hpc-comp241",
+        "36057118": "COMPLETED 01:12:09 erc-hpc-comp204",
+        "36057119": "COMPLETED 00:34:48 erc-hpc-comp204",
+        "36057120": "COMPLETED 00:32:48 erc-hpc-vm062",
+        "36057121": "COMPLETED 00:58:48 erc-hpc-comp057",
+        "36057122": "COMPLETED 00:22:05 erc-hpc-comp241",
+        "36057123": "COMPLETED 00:38:19 erc-hpc-comp057",
+        "36057124": "COMPLETED 00:27:43 erc-hpc-vm064"
+      },
+      "early_stop_epochs_by_slot": {
+        "seed1/START15_APP3P6": 73,
+        "seed1/START15_APP8P4": 48,
+        "seed1/START35_APP3P6": 44,
+        "seed1/START35_APP8P4": 42,
+        "seed2/START15_APP3P6": 48,
+        "seed2/START15_APP8P4": 48,
+        "seed2/START35_APP3P6": 43,
+        "seed2/START35_APP8P4": 43,
+        "seed3/START15_APP3P6": 89,
+        "seed3/START15_APP8P4": 75,
+        "seed3/START35_APP3P6": 44,
+        "seed3/START35_APP8P4": 44,
+        "seed4/START15_APP3P6": 122,
+        "seed4/START15_APP8P4": 122,
+        "seed4/START35_APP3P6": 54,
+        "seed4/START35_APP8P4": 51,
+        "seed5/START15_APP3P6": 73,
+        "seed5/START15_APP8P4": 75,
+        "seed5/START35_APP3P6": 44,
+        "seed5/START35_APP8P4": 44
+      },
+      "checkpoint_freeze": {
+        "status": "45/45 valid before rollout",
+        "manifest": "experiments/tro_stage2_position_composition/manifests/checkpoints.json",
+        "manifest_sha256": "91e47d35b5f621f49dc4aba3b3a1d316131b6a080645e5089f62575bfa5fb326",
+        "new_selected_checkpoints": 20,
+        "reused_immutable_checkpoints": 25,
+        "selection_rule": "highest numeric emitted model_epoch_*.pth"
+      }
+    },
+    {
+      "phase": "primary_common_absolute_rollout_v3",
+      "job_id": "36059233",
+      "dependency": null,
+      "submission_command": "sbatch --parsable --array=0-199 --export=ALL,PROJECT_DIR=/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt scripts/run_tro_position_composition_rollout.sh",
+      "identical_frozen_input_retry_of": null,
+      "status": "FAILED_OR_CANCELLED_BEFORE_ROLLOUT",
+      "array_tasks": 200,
+      "expected_rows": 5000,
+      "checkpoint_manifest_sha256": "91e47d35b5f621f49dc4aba3b3a1d316131b6a080645e5089f62575bfa5fb326",
+      "terminal_summary": {
+        "failed_before_first_rollout": 6,
+        "remaining_array_cancelled": 194,
+        "rollout_rows_created": 0
+      },
+      "failure_reason": "Composition loader rejected the immutable Stage 2 manifest's original five-condition metadata order before policy loading or rollout execution."
+    },
+    {
+      "phase": "primary_common_absolute_rollout_v3_clean_retry",
+      "job_id": "36059244",
+      "dependency": null,
+      "submission_command": "sbatch --parsable --array=0-199 --export=ALL,PROJECT_DIR=/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt scripts/run_tro_position_composition_rollout.sh",
+      "identical_frozen_input_retry_of": "36059233",
+      "status": "COMPLETED",
+      "array_tasks": 200,
+      "expected_rows": 5000,
+      "checkpoint_manifest_sha256": "91e47d35b5f621f49dc4aba3b3a1d316131b6a080645e5089f62575bfa5fb326",
+      "scientific_inputs_changed": false,
+      "preflight": "19/19 composition tests and direct common/RMAX40 immutable-manifest loads passed",
+      "terminal_tasks": "200/200",
+      "terminal_state": "all COMPLETED",
+      "exit_code": "0:0",
+      "new_rows": "5000/5000",
+      "strict_surface_validation": {
+        "status": "valid",
+        "full_tasks": 450,
+        "full_rows": 11250,
+        "policies": 45,
+        "new_tasks": 200,
+        "new_rows": 5000,
+        "reused_anchor_tasks": 250,
+        "reused_anchor_rows": 6250,
+        "nine_condition_absolute_pairing": true,
+        "checkpoint_hashes": "45/45 revalidated"
+      }
+    },
+    {
+      "phase": "secondary_rmax40_rollout_v3",
+      "job_id": "36061752",
+      "dependency": null,
+      "submission_command": "sbatch --parsable --array=0-199 --export=ALL,PROJECT_DIR=/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt scripts/run_tro_position_composition_rmax40_rollout.sh",
+      "identical_frozen_input_retry_of": null,
+      "status": "PARTIAL_INFRASTRUCTURE_FAILURE_TERMINAL",
+      "array_tasks": 200,
+      "expected_rows": 5000,
+      "checkpoint_manifest_sha256": "91e47d35b5f621f49dc4aba3b3a1d316131b6a080645e5089f62575bfa5fb326",
+      "terminal_summary": {
+        "completed": 188,
+        "preempted": 12,
+        "other_states": 0,
+        "completed_summaries": 188,
+        "completed_rows": 4700,
+        "partial_rows_archived": 40,
+        "preempted_task_ids": [9, 10, 11, 12, 18, 19, 22, 23, 24, 25, 26, 27],
+        "preempted_node": "erc-hpc-comp054"
+      },
+      "pending_task_node_exclusion_update": "scontrol update JobId=36061752 ExcNodeList=erc-hpc-comp035,erc-hpc-comp040,erc-hpc-comp054,erc-hpc-comp223",
+      "partial_archive_root": "dataset/tro_position_stage2_composition/rollouts/rmax40/infrastructure_failures"
+    },
+    {
+      "phase": "secondary_rmax40_rollout_v3_clean_retry",
+      "job_id": "36062210",
+      "dependency": null,
+      "submission_command": "sbatch --parsable --array=9-12,18-19,22-27 --exclude=erc-hpc-comp035,erc-hpc-comp040,erc-hpc-comp054,erc-hpc-comp223 --export=ALL,PROJECT_DIR=/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt scripts/run_tro_position_composition_rmax40_rollout.sh",
+      "identical_frozen_input_retry_of": "36061752_[9-12,18-19,22-27]",
+      "status": "COMPLETED",
+      "array_tasks": 12,
+      "expected_rows": 300,
+      "scientific_inputs_changed": false,
+      "checkpoint_manifest_sha256": "91e47d35b5f621f49dc4aba3b3a1d316131b6a080645e5089f62575bfa5fb326",
+      "terminal_tasks": "12/12",
+      "terminal_state": "all COMPLETED",
+      "exit_code": "0:0",
+      "new_rows": "300/300",
+      "formal_surface_after_retry": {
+        "summaries": 200,
+        "rows": 5000
+      },
+      "stderr_audit": "Only expected PyBullet build text and torch.load FutureWarning; no error, exception, ECC, kill or preemption signature."
+    }
+  ],
+  "infrastructure_retries": [
+    {
+      "phase": "training",
+      "original_job_ids": "36057059-36057078",
+      "retry_job_ids": "36057105-36057124",
+      "reason": "PROJECT_DIR export selected the wrong code root before the training entrypoint.",
+      "partial_checkpoints_created": 0,
+      "identical_configs": true,
+      "retry_partition": "interruptible_gpu",
+      "terminal_original_jobs": "3 FAILED before train.py; 17 CANCELLED while pending"
+    },
+    {
+      "phase": "primary_common_absolute_rollout",
+      "original_job_ids": "36059233_[0-199]",
+      "retry_job_ids": "36059244_[0-199]",
+      "reason": "Legacy immutable start-manifest condition_order compatibility check failed before any rollout row.",
+      "partial_rollout_rows_created": 0,
+      "identical_checkpoints_and_start_manifests": true,
+      "terminal_original_jobs": "6 FAILED before policy loading; 194 CANCELLED before execution"
+    },
+    {
+      "phase": "secondary_rmax40_rollout",
+      "original_job_ids": "36061752_[9-12,18-19,22-27]",
+      "retry_job_ids": "36062210_[9-12,18-19,22-27]",
+      "reason": "Twelve tasks were PREEMPTED on erc-hpc-comp054.",
+      "partial_rollout_rows_created": 40,
+      "partial_rollout_rows_archived": 40,
+      "identical_checkpoints_start_manifests_states_and_seeds": true,
+      "retry_excluded_nodes": [
+        "erc-hpc-comp035",
+        "erc-hpc-comp040",
+        "erc-hpc-comp054",
+        "erc-hpc-comp223"
+      ],
+      "terminal_original_jobs": "188 COMPLETED; 12 PREEMPTED; no other states"
+    }
+  ],
+  "local_validation_recoveries": [
+    {
+      "phase": "hdf5_manifest_consolidation",
+      "slurm_artifacts_changed": false,
+      "reason": "Per-seed HDF5 tasks concurrently updated datasets.json; all HDF5 structures passed, but the first unified audit detected lost manifest fields.",
+      "action": "Sequentially reran validate_hdf5_seed for seeds 1-5, then revalidated all 45 dataset hashes.",
+      "result": "45/45 dataset slots valid; no HDF5 was rebuilt or overwritten."
+    },
+    {
+      "phase": "analysis_json_serialization",
+      "slurm_artifacts_changed": false,
+      "reason": "The first local analysis pass computed same_nonzero_sign_as_mean as numpy.int64, which the standard JSON encoder cannot serialize.",
+      "action": "Converted the count explicitly to built-in int, added a JSON-serialization regression test, confirmed no comparison.json or summary.md had been written, and reran the same frozen analysis.",
+      "result": "20/20 composition tests passed; frozen analysis completed without changing any scientific input, contrast, threshold or classification rule."
+    }
+  ]
+}

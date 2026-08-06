@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "generated_date": "2026-07-26",
+  "status": "protocol_blocker_inventory",
+  "protocol_id": "tro_stage2_position_composition_missing_cells_v2_retry_until_success",
+  "composition_experiment_bytes": 991708,
+  "composition_dataset_namespace_bytes": 1802778645,
+  "composition_model_namespace_bytes": 0,
+  "cephfs": {
+    "total_bytes": 21856319120080896,
+    "used_bytes": 10144127144427520,
+    "available_bytes": 11712191975653376,
+    "used_percent": 47
+  },
+  "formal_v2": {
+    "accepted_raw_bytes": 203253636,
+    "scientific_attempt_archive_bytes": 1242861217,
+    "v1_migration_infrastructure_archive_bytes": 16222934,
+    "protocol_stop_inflight_archive_bytes": 36357592,
+    "accepted_bundle_counts_by_seed": {
+      "1": 6,
+      "2": 21,
+      "3": 5,
+      "4": 2,
+      "5": 1
+    },
+    "new_v2_scientific_attempts": 90,
+    "preserved_v1_scientific_attempts": 2,
+    "hdf5_files": 0,
+    "new_checkpoints": 0,
+    "new_formal_rollout_summaries": 0
+  },
+  "per_seed_bytes": [
+    {
+      "canonical_seed": 1,
+      "raw": 59616095,
+      "scientific_attempts_v2": 290031245,
+      "v1_migration_infrastructure_attempts": 8993422,
+      "protocol_stop_inflight_attempt": 6249783
+    },
+    {
+      "canonical_seed": 2,
+      "raw": 60022024,
+      "scientific_attempts_v2": 43914550,
+      "v1_migration_infrastructure_attempts": 416355,
+      "protocol_stop_inflight_attempt": 278144
+    },
+    {
+      "canonical_seed": 3,
+      "raw": 47924532,
+      "scientific_attempts_v2": 399253145,
+      "v1_migration_infrastructure_attempts": 6813157,
+      "protocol_stop_inflight_attempt": 12693656
+    },
+    {
+      "canonical_seed": 4,
+      "raw": 23658196,
+      "scientific_attempts_v2": 256050985,
+      "v1_migration_infrastructure_attempts": 0,
+      "protocol_stop_inflight_attempt": 11634411
+    },
+    {
+      "canonical_seed": 5,
+      "raw": 12032789,
+      "scientific_attempts_v2": 253611292,
+      "v1_migration_infrastructure_attempts": 0,
+      "protocol_stop_inflight_attempt": 5501598
+    }
+  ],
+  "preservation": {
+    "old_storage_inventory_path": "experiments/tro_stage2_position_composition/manifests/storage_inventory.json",
+    "old_storage_inventory_sha256": "ea4cf473c2ba43befd24f512eb3e101220a368840f439b17a00a709cdf69e799",
+    "old_inventory_overwritten": false,
+    "large_anchor_artifacts_copied": false,
+    "old_anchor_artifacts_modified": false
+  },
+  "cleanup_candidates_for_separate_user_approval_only": [
+    {
+      "paths": "dataset/tro_position_stage2_composition/formal/seed*/scientific_attempts_v2",
+      "estimated_bytes": 1242861217,
+      "safe_to_delete_now": false,
+      "reason": "Required protocol-blocker evidence until a new scientific decision and final audit."
+    },
+    {
+      "paths": "dataset/tro_position_stage2_composition/formal/seed*/protocol_blocker_attempts_v2",
+      "estimated_bytes": 36357592,
+      "safe_to_delete_now": false,
+      "reason": "Required incomplete-attempt evidence for job 36054403."
+    },
+    {
+      "paths": "dataset/tro_position_stage2_composition/formal/seed*/infrastructure_attempts_v2",
+      "estimated_bytes": 16222934,
+      "safe_to_delete_now": false,
+      "reason": "Required v1-to-v2 migration and clean-retry audit evidence."
+    }
+  ],
+  "automatic_cleanup_performed": false
+}

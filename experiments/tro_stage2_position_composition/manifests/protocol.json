@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "protocol_id": "tro_stage2_position_composition_missing_cells_v1",
+  "authority": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_composition/PLAN.md",
+  "git_commit_at_freeze": "2f61da7d0cf4f80609c6a7ee0409c765d1759bb4",
+  "condition_order": [
+    "START15_APP3P6",
+    "START15_APP6",
+    "START15_APP8P4",
+    "START25_APP3P6",
+    "START25_APP6",
+    "START25_APP8P4",
+    "START35_APP3P6",
+    "START35_APP6",
+    "START35_APP8P4"
+  ],
+  "new_conditions": [
+    "START15_APP3P6",
+    "START15_APP8P4",
+    "START35_APP3P6",
+    "START35_APP8P4"
+  ],
+  "canonical_seed_mapping": {
+    "1": {
+      "canonical_seed": 1,
+      "source_collection_seed": 1,
+      "source_training_seed": 1
+    },
+    "2": {
+      "canonical_seed": 2,
+      "source_collection_seed": 2,
+      "source_training_seed": 2
+    },
+    "3": {
+      "canonical_seed": 3,
+      "source_collection_seed": 3,
+      "source_training_seed": 3
+    },
+    "4": {
+      "canonical_seed": 4,
+      "source_collection_seed": 1702,
+      "source_training_seed": 2702
+    },
+    "5": {
+      "canonical_seed": 5,
+      "source_collection_seed": 1701,
+      "source_training_seed": 2701
+    }
+  },
+  "expected_counts": {
+    "policy_slots": 45,
+    "immutable_anchor_slots": 25,
+    "new_dataset_policy_slots": 20,
+    "new_datasets": 20,
+    "new_demonstrations": 600,
+    "new_hdf5": 20,
+    "new_policies": 20,
+    "common_absolute_tasks": 200,
+    "common_absolute_rows": 5000,
+    "rmax40_tasks": 200,
+    "rmax40_rows": 5000
+  },
+  "task": {
+    "trajectory": [
+      "Start",
+      "Approach",
+      "Descent",
+      "Grasp",
+      "Lift"
+    ],
+    "base_corridor_start": [
+      0.3,
+      0.0,
+      0.5
+    ],
+    "start_plane": "xz",
+    "approach_plane": "xy",
+    "sample_hz": 8,
+    "action_gap": 2,
+    "successful_demonstrations_per_dataset": 30,
+    "success": "final cube z >= 0.20 m"
+  },
+  "training": {
+    "from_scratch": true,
+    "max_epochs": 3000,
+    "validation_early_stopping_patience": 41,
+    "checkpoint_interval_epochs": 20,
+    "checkpoint_selection": "highest numeric emitted model_epoch_*.pth",
+    "rollout_based_checkpoint_selection": false,
+    "wandb_project": "TRO_MVP"
+  },
+  "formal_rollout": {
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "horizon": 200,
+    "sample_hz": 8,
+    "action_gap": 2,
+    "action_dt": 0.25,
+    "num_points": 10000,
+    "terminate_on_success": true,
+    "videos": false
+  },
+  "analysis": {
+    "independent_unit": "canonical dataset-policy seed",
+    "delta_interaction": 0.05,
+    "same_nonzero_sign_required": 4,
+    "frozen_contrasts": [
+      "I_tight_15",
+      "I_tight_35",
+      "I_wide_15",
+      "I_wide_35"
+    ]
+  },
+  "frozen_source_hashes": {
+    "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/manifests/checkpoints.json": "240a936999281f429dd1b043b19df5bd9291ed478933305a7c051c5183227580",
+    "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/analysis/comparison.json": "c70020fe70ab5aae9959ea990e66a2e2f3c4af4c05f24557a79d64c973ef9113",
+    "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_replication/analysis/summary.md": "825a13e358b01e8707c99e1f19673b01d46df62edbacecce12bff6bbc6684370",
+    "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_idood_rerollout/analysis/comparison.json": "ae30a6133436654d6adee85dae14b8db490718df65a5e526638a68f75e3a2353",
+    "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/experiments/tro_stage2_position_axial_idood_rerollout/analysis/summary.md": "5d495bc11fc7a0ee1f4f912b816d3d143578f2bd38ce3caa50718d144ee73528"
+  }
+}

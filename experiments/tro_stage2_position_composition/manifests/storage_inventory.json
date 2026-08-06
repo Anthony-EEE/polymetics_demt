@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "status": "protocol_blocker_inventory",
+  "dataset_namespace": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/dataset/tro_position_stage2_composition",
+  "bytes": {
+    "smoke": 59675769,
+    "partial_formal_and_failure_evidence": 242642172,
+    "logs": 56090,
+    "total_approximate": 302374031
+  },
+  "large_anchor_artifacts_copied": false,
+  "new_hdf5_created": 0,
+  "new_models_created": 0,
+  "new_rollout_rows_created": 0,
+  "automatic_cleanup_performed": false,
+  "safe_cleanup_candidates_requiring_user_approval": [
+    "dataset/tro_position_stage2_composition/smoke",
+    "successful partial formal rows under dataset/tro_position_stage2_composition/formal/seed1 through seed5"
+  ],
+  "must_preserve_for_protocol_review": [
+    "dataset/tro_position_stage2_composition/formal/seed4/scientific_failures/demo_002_candidate_0004",
+    "dataset/tro_position_stage2_composition/formal/seed5/scientific_failures/demo_001_candidate_0001",
+    "all collection_progress.json files and Slurm logs"
+  ]
+}

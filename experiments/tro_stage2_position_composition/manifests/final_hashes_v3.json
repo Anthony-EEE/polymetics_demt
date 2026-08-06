@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "generated_at": "2026-07-27",
+  "protocol_id": "tro_stage2_position_composition_missing_cells_v3_continue_candidate_stream_until_30_successes",
+  "immutable_anchors_revalidated_unchanged": {
+    "checkpoint_files": "25/25",
+    "hdf5_files": "25/25",
+    "mismatches": 0,
+    "experiments/tro_stage2_position_axial_replication/manifests/checkpoints.json": "240a936999281f429dd1b043b19df5bd9291ed478933305a7c051c5183227580",
+    "experiments/tro_stage2_position_axial_replication/analysis/comparison.json": "c70020fe70ab5aae9959ea990e66a2e2f3c4af4c05f24557a79d64c973ef9113",
+    "experiments/tro_stage2_position_axial_replication/analysis/summary.md": "825a13e358b01e8707c99e1f19673b01d46df62edbacecce12bff6bbc6684370",
+    "experiments/tro_stage2_position_axial_idood_rerollout/analysis/comparison.json": "ae30a6133436654d6adee85dae14b8db490718df65a5e526638a68f75e3a2353",
+    "experiments/tro_stage2_position_axial_idood_rerollout/analysis/summary.md": "5d495bc11fc7a0ee1f4f912b816d3d143578f2bd38ce3caa50718d144ee73528",
+    "anchor_reuse_manifest_sha256": "56fac8d552d470edc7d0665f0d5b63c4d6c552e91136e9ac38c2ab0e9a47ba5d"
+  },
+  "protocol_and_inputs": {
+    "protocol.json": "fdb5787df6a58c851096a5a377ea6c167f66c5424be4b2761f6815584d37bd55",
+    "protocol_amendment_v2.json": "cf668229f413f737479b89452d649e1f9a20266891e075b98758ad3cdfd235db",
+    "protocol_v2.json": "85fb309d660f0821fa80102bccb1d1e987d19ad6c217b54deb897366cda59efe",
+    "protocol_amendment_v3.json": "63df3ec42ed6824df950bb3950c7cd457cbabb771e3210c1464393a1b7ed6f02",
+    "protocol_v3.json": "be77da99fb84195506f7fdf3bdd51feddcfa938047bad116fa40951a11d9c487",
+    "candidate_stream_v3.json": "7852a6cd23efb6e8a1bf4a8eb8e9359b6711787013f07428ec3e75ab4b67a7af",
+    "feasibility_audit.json": "c2cbae52a692bb183119290c2313b076c3e95cfddb625bae736f4bfab3ad109b",
+    "common_absolute_rollout_reuse.json": "802c67850f7a4927c67e67e23af25cfccad0cf7f99445bee005dc87b068ed7ae",
+    "rmax40_rollout_reuse.json": "25d8f11f9a83ccab19a5023396984ca279471cac2de20237a8d225c64c9f4474"
+  },
+  "datasets_and_policies": {
+    "datasets.json": "d5310aeef9b5459e91c360c5ba51d94f14d4b992f6eb42d394e6b7a9235491ad",
+    "policies.json": "b9d97921caaecc5e4006592f4daa8c4e709d1fe4ab20aadfdc4d562100011c02",
+    "checkpoints.json": "91e47d35b5f621f49dc4aba3b3a1d316131b6a080645e5089f62575bfa5fb326",
+    "dataset_policy_registry.json": "17991e4bdacf78061d8de0bb618a9418e78bf298522f70308f822d191b88e4b2",
+    "rollout_manifest_registry.json": "a37db4a00486682d02f250c23515e7833d14556af79d5bea38c602da06bdd423"
+  },
+  "execution_and_merge": {
+    "jobs.json": "173d40cb99437e2a950642d838622bd2d9076d6c855b7cfcda4c08d355b00f60",
+    "rmax40_infrastructure_retries.json": "1b492a70c18bf401313f8f6fc15514fe6fca11308005ff903e5662987ca30bc7",
+    "merge_validation.json": "ffb35e09a4631f8fe243772daae3d9992806ae54e9284801e57b49e28e38e3ba",
+    "merge_validation_common_absolute.json": "9560a1e7d46e8d6c5b0b83f4b1203917e4d4f5cf5ea592b370361b3ac4042167",
+    "merge_validation_rmax40.json": "30d41de7c5981720dcc0796f53b114ca3465dc6d726a210a26a73980caa004a6",
+    "full_surface_index.json": "506f511f8ee287692718aea9f79908a37e71485f442b0106b18ba67da0264e3a",
+    "storage_inventory_v3.json": "904e2ae7c95a5266bfb4b695c1291efe171a796879598d8fc4729e1d66c121e9"
+  },
+  "analysis": {
+    "comparison.json": "8c44a3dd42752353f4dc48c5b240d9198ca2fcc5030e1aa552761b5c1e96f0c5",
+    "summary.md": "44f47f4990b749e25da35995da63c3dadf0a810bbba5960426e11b4c5d970071",
+    "common_absolute_response_surface.png": "16c3783bfb2fa89652340492b64593c9b6641ee7c389d4ba9242d95289c40c3f",
+    "interaction_contrasts_by_seed.png": "888d6373682b9f3320170bf05614af914793172f93dc599fe592af8fa2277ad1",
+    "interaction_classification": "interaction"
+  },
+  "implementation": {
+    "scripts/tro_position_composition.py": "dbf37c4facaa2ae4079900a65f36e86af470320910e8000f3bea8e1e170fe68b",
+    "scripts/analyze_tro_position_composition.py": "ddfac6d32a4abc13ba3b97531acf5d3c749784fa644c22a318fc0e176e37e634",
+    "examples/eval_abla1_trained_policies.py": "34e49afdbc542fae4bf918da117980cf5ac9330c6094405ba6772df4f869e75d",
+    "tests/test_tro_position_composition.py": "743f75884b70a01a238c0215fee988eb7d0c5ace12e9b58f28b23d6524c33ba5",
+    "scripts/run_tro_position_composition_rmax40_rollout.sh": "f138f073075fa4cf6b0084571ed1dc94d807b19563c4ed3fcc2025872473f79a"
+  },
+  "execution_docs": {
+    "experiments/tro_stage2_position_composition/PLAN.md": "2c53443fe9f792832bb360924b8998b97e23e8b24695a43b59a1a7dbac778af1",
+    "experiments/tro_stage2_position_composition/commands.md": "352cc3375147d168b69e8ed3c91783c827f7cc4fca4c61d1e6e4c474624c313d",
+    "docs/tro_plan.md": "dd025e62b2fe981182c24728b92bfeb0be99f846cf153abbeef52d17bf5a9588",
+    "handoffs/tro-stage2-position-composition.md": "7123e44a69ab734049f209fa28f8a780d21a6b7a0859055df6a67d559cf76e9b"
+  },
+  "preserved_historical_snapshots": {
+    "final_hashes.json": "325a2895eb7400edb8f00cfa64a8f75a0911182062554450ea9de73adfc7cfbe",
+    "final_hashes_v2_blocker.json": "f169be9e39d8d6f2a765fd4cc7018e3ae464d7c8649b13839638f0e78f0f83ce"
+  },
+  "protected_untracked_files": {
+    "[": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "count=0": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "done": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "fi": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "coverage": {
+    "new_datasets": "20/20 with exactly 30 accepted demonstrations each",
+    "new_hdf5": "20/20",
+    "new_policies": "20/20",
+    "frozen_policy_slots": "45/45",
+    "primary_new_tasks_rows": "200/200 tasks; 5000/5000 rows",
+    "secondary_new_tasks_rows": "200/200 tasks; 5000/5000 rows",
+    "common_absolute_full_surface": "45 policies; 450 tasks; 11250 rows",
+    "rmax40_full_surface": "45 policies; 450 tasks; 11250 rows",
+    "relevant_tests": "52/52"
+  },
+  "scope_audit": {
+    "old_anchors_modified": false,
+    "large_anchor_artifacts_copied": false,
+    "out_of_scope_experiments_started": false,
+    "commit_created": false,
+    "push_performed": false,
+    "pull_request_created": false
+  }
+}

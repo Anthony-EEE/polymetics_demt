@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "status": "protocol_blocker",
+  "generated_date": "2026-07-26",
+  "protocol_id": "tro_stage2_position_composition_missing_cells_v2_retry_until_success",
+  "immutable_anchors_revalidated_unchanged": {
+    "experiments/tro_stage2_position_axial_replication/manifests/checkpoints.json": "240a936999281f429dd1b043b19df5bd9291ed478933305a7c051c5183227580",
+    "experiments/tro_stage2_position_axial_replication/analysis/comparison.json": "c70020fe70ab5aae9959ea990e66a2e2f3c4af4c05f24557a79d64c973ef9113",
+    "experiments/tro_stage2_position_axial_replication/analysis/summary.md": "825a13e358b01e8707c99e1f19673b01d46df62edbacecce12bff6bbc6684370",
+    "experiments/tro_stage2_position_axial_idood_rerollout/analysis/comparison.json": "ae30a6133436654d6adee85dae14b8db490718df65a5e526638a68f75e3a2353",
+    "experiments/tro_stage2_position_axial_idood_rerollout/analysis/summary.md": "5d495bc11fc7a0ee1f4f912b816d3d143578f2bd38ce3caa50718d144ee73528"
+  },
+  "composition_authority_and_evidence": {
+    "protocol_amendment_v2.json": "cf668229f413f737479b89452d649e1f9a20266891e075b98758ad3cdfd235db",
+    "protocol_v2.json": "85fb309d660f0821fa80102bccb1d1e987d19ad6c217b54deb897366cda59efe",
+    "protocol_blocker.json": "40585f2279b7b8070dc0b9921e00f83a8531061615f44a7ca1bb8954576d8417",
+    "protocol_blocker_v2_runtime_rng.json": "33622d86428532a1650d9db5e72c5c32d9e80befff17cea5931cd31511a8faa4",
+    "runtime_rng_capability_audit.json": "70f06a92c114ce26fd88322d942d859abd28e7cd3eca265906d205c4711eb60d",
+    "final_hashes.json_preserved_v1_snapshot": "325a2895eb7400edb8f00cfa64a8f75a0911182062554450ea9de73adfc7cfbe",
+    "jobs.json": "f7e3c893b3fb13f83a6f73e773e00d32d63cd14568f5546ea50624d64ec3bd0d",
+    "storage_inventory.json_preserved_v1_snapshot": "ea4cf473c2ba43befd24f512eb3e101220a368840f439b17a00a709cdf69e799",
+    "storage_inventory_v2_blocker.json": "59528fdce3e2cd2eb22ec85b7f2716b71e7030b9e3f42138071c662ade4083e8"
+  },
+  "implementation": {
+    "scripts/tro_position_composition.py": "e398b202c6ed04fbe0ab69d939ccd4dcb05abbf876df8bfe51ae7c648d6f0630",
+    "tests/test_tro_position_composition.py": "14659204dbe21291f46902327afcda60e12a3e302472d7371e253434c83c672c",
+    "examples/main_abla_1.py": "557b9538c659da8f5c751ba6d7ebe08653aec3cd615ba55cf9fb735312798635",
+    "tests": "43 passed; composition-specific 11 passed"
+  },
+  "v1_progress_preserved": {
+    "seed1": "370fa5b37d508f58c92b15c2f1a96e6f49a4d288123d18ada260f4dc84d4eca6",
+    "seed2": "ace26a9dd266b50a942cb9859c8409fd34673cea9d1b19951463ce7997f011c5",
+    "seed3": "30263b8eae4e9a3507889fd1df43a40205039e6d497b3fd9cdce172975e1068e",
+    "seed4": "a85e4fdb0f0825907d32563e8c8ca1f6fb769f32de524b6c203752989ac50951",
+    "seed5": "5726c09d4c78b48c6fc29a8046cd48f0b80fe90ccc178d74e102ef3324e4f712"
+  },
+  "v2_progress": {
+    "seed1": "cd0508c3ff6e93dc6b3d311f3bdfc181565d1175dca03fb926665f4d5beea9c2",
+    "seed2": "0bdbaee13fa7f5eb229b26ed3db34d1c10ac2d4c86a8b6a19a2d96445357912c",
+    "seed3": "eec82dd80697557f2f32be02e38166c254d99911d1d10661cd8c6a4e41dff1c3",
+    "seed4": "9aa9e8195787874d60a30bffd708caeebc83c38c6d262ec0456719e91c636197",
+    "seed5": "6db9f3fb4d317fcd01806f124fb2bc9753b8471a80e5b5356f05931014d65f7e"
+  },
+  "protocol_stop_inflight_tree_hashes": {
+    "seed1_demo6_attempt25": "e8821c669cad61545c88db5ef880cc83a575c11ac6a13f165660f2c90527588c",
+    "seed2_demo21_attempt3": "356c1719d796b9c57fa3fdb355d11dfb6c1ea1be2772f188974728891d3c6a65",
+    "seed3_demo5_attempt18": "91a4efc951d1ea1ee987d7d89200e31d1b3d092f56a354e67ca2031c1d58b046",
+    "seed4_demo2_attempt23": "6e121a90fb1a02bde607b9b12678ede10cad0489a0e9254c2799c5fabb4a7c49",
+    "seed5_demo1_attempt23": "62dbc165f0a0bbf12dbe76fa5cbe230167ee9121b4ce98e31ff4193a47e9275b"
+  },
+  "small_manifests": {
+    "anchor_reuse.json": "56fac8d552d470edc7d0665f0d5b63c4d6c552e91136e9ac38c2ab0e9a47ba5d",
+    "feasibility_audit.json": "c2cbae52a692bb183119290c2313b076c3e95cfddb625bae736f4bfab3ad109b",
+    "datasets.json": "37617e5146e743729b3e5a3f186e8b861e916d85fb1d8eab1039c65b368e0a25",
+    "policies.json": "ee1919a2532c10b02e6f005f32373564f0df2c4a9732b288ac6f231fad6d8a07"
+  },
+  "shared_registries_unchanged_no_incomplete_artifacts_registered": {
+    "experiments/shared_artifacts/dataset_policy_registry.json": "acf9195c513c11139d615f4ae582f2ff6f22db9742bf8d386693a7aa6fa733fc",
+    "experiments/shared_artifacts/rollout_manifest_registry.json": "a37db4a00486682d02f250c23515e7833d14556af79d5bea38c602da06bdd423"
+  },
+  "execution_docs": {
+    "experiments/tro_stage2_position_composition/PLAN.md": "f7593b1326dbbbf69de714ff9a98be992522dcd6c920d8c6ca718aba21fb5334",
+    "experiments/tro_stage2_position_composition/commands.md": "dfeea8e998dc0e3737bddbc969c09b3b1c5f760704eb618ff1e2a86b47a61ee4",
+    "docs/tro_plan.md": "65c78700a2289b623a1f979ca0f8ee7b7ce051ab0cc4a4c26f515ece637e4f02",
+    "handoffs/tro-stage2-position-composition.md": "850c500acafca90593e73267951f3a944e0b71d06f8151864a5a53f07f3209fb"
+  },
+  "coverage_at_blocker": {
+    "new_datasets_complete": 0,
+    "accepted_bundles_by_seed": [6, 21, 5, 2, 1],
+    "new_hdf5": 0,
+    "new_policies": 0,
+    "immutable_anchor_checkpoint_slots": 25,
+    "composition_checkpoint_manifest_slots": 0,
+    "new_common_absolute_tasks": 0,
+    "new_common_absolute_rows": 0,
+    "new_rmax40_tasks": 0,
+    "new_rmax40_rows": 0,
+    "strict_merge_complete": false,
+    "interaction_classification_available": false
+  },
+  "scheduler": {
+    "job_36054403_terminal_tasks": "5/5 CANCELLED after causal protocol audit",
+    "all_composition_jobs_terminal": true,
+    "downstream_jobs_submitted": false
+  },
+  "protected_untracked_files_preserved": {
+    "[": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "count=0": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "done": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "fi": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "scope_audit": {
+    "out_of_scope_experiments_launched": false,
+    "old_anchors_modified": false,
+    "commit_push_or_pr": false,
+    "automatic_cleanup": false
+  }
+}

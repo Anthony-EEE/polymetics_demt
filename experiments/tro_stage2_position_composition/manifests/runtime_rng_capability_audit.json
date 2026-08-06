@@ -1,0 +1,188 @@
+{
+  "schema_version": 1,
+  "status": "no_protocol_compatible_seed_coupled_physics_rng",
+  "generated_date": "2026-07-26",
+  "protocol_id": "tro_stage2_position_composition_missing_cells_v2_retry_until_success",
+  "purpose": "Determine whether Gate 3 can resume without a new protocol amendment by finding an existing seed-coupled simulator physics RNG that preserves the frozen normalized latents and no-perturbation boundary.",
+  "current_implementation": {
+    "collector_path": "scripts/tro_position_composition.py",
+    "collector_sha256": "e398b202c6ed04fbe0ab69d939ccd4dcb05abbf876df8bfe51ae7c648d6f0630",
+    "attempt_seed_lines": "163-192",
+    "seed_application_lines": "965-985",
+    "seed_calls": [
+      "random.seed(attempt_runtime_seed)",
+      "numpy.random.seed(attempt_runtime_seed)"
+    ],
+    "attempt_seed_derivation_correct": true,
+    "same_attempt_seed_across_four_corners": true
+  },
+  "collection_physics_path": {
+    "simulator_path": "examples/main_abla_1.py",
+    "simulator_sha256": "557b9538c659da8f5c751ba6d7ebe08653aec3cd615ba55cf9fb735312798635",
+    "collection_io_path": "examples/collection_io.py",
+    "collection_io_sha256": "67c10ebc075731f27977b893dadf37586c6f756e03d1845385ba8de66aab61c7",
+    "fixed_cube": true,
+    "paired_latent_offsets_are_deterministic": true,
+    "ik_and_joint_controller_are_deterministic": true,
+    "point_cloud_capture_changes_no_control_action": true,
+    "rng_draws_affecting_physics_after_attempt_seed": 0,
+    "other_rng_calls": [
+      {
+        "location": "examples/main_abla_1.py:651-653",
+        "purpose": "sample_reachable_random_start",
+        "used_by_paired_latent_composition_path": false
+      },
+      {
+        "location": "examples/main_abla_1.py:1060-1070",
+        "purpose": "unpaired Start/Approach disk sampling",
+        "used_by_paired_latent_composition_path": false,
+        "reason": "paired_latent bypasses random disk sampling and reconstructs frozen normalized offsets"
+      },
+      {
+        "location": "examples/main_abla_1.py:1108-1152",
+        "purpose": "legacy unpaired sampling helpers",
+        "used_by_paired_latent_composition_path": false
+      }
+    ]
+  },
+  "pybullet_capability_probe": {
+    "api_version": 202010061,
+    "build_banner": "pybullet build time: Nov 28 2023 23:51:11",
+    "reported_physics_parameters": {
+      "fixedTimeStep": 0.004166666666666667,
+      "numSubSteps": 0,
+      "numSolverIterations": 50,
+      "useRealTimeSimulation": 0,
+      "gravityAccelerationX": 0.0,
+      "gravityAccelerationY": 0.0,
+      "gravityAccelerationZ": 0.0,
+      "numNonContactInnerIterations": 1
+    },
+    "randomSeed": {
+      "accepted": false,
+      "error": "TypeError: 'randomSeed' is an invalid keyword argument for setPhysicsEngineParameter"
+    },
+    "solverRandomSeed": {
+      "accepted": false,
+      "error": "TypeError: 'solverRandomSeed' is an invalid keyword argument for setPhysicsEngineParameter"
+    },
+    "deterministicOverlappingPairs": {
+      "accepted": true,
+      "is_seed_parameter": false,
+      "protocol_compatible_to_vary_by_attempt": false
+    },
+    "contactBreakingThreshold": {
+      "accepted": true,
+      "is_seed_parameter": false,
+      "protocol_compatible_to_vary_by_attempt": false
+    }
+  },
+  "cross_attempt_nonmetadata_content_audit": [
+    {
+      "canonical_seed": 4,
+      "demo_index": 2,
+      "candidate_index": 4,
+      "condition": "START35_APP8P4",
+      "compared_attempt_indices": [1, 2],
+      "files_per_attempt": 918,
+      "all_nonmetadata_files_identical": true,
+      "content_inventory_sha256": "d3ecfcd7c99cad0caa9a865c9545f071b8f62c16838b67091b5f98f3d1760cf9"
+    },
+    {
+      "canonical_seed": 5,
+      "demo_index": 1,
+      "candidate_index": 1,
+      "condition": "START35_APP8P4",
+      "compared_attempt_indices": [1, 2],
+      "files_per_attempt": 927,
+      "all_nonmetadata_files_identical": true,
+      "content_inventory_sha256": "da157c59e1654bd92bee2febe3de1efe21a1bb91b08c24ebf9ff0c539a4195ef"
+    },
+    {
+      "canonical_seed": 1,
+      "demo_index": 6,
+      "candidate_index": 12,
+      "condition": "START15_APP8P4",
+      "compared_attempt_indices": [1, 2],
+      "files_per_attempt": 873,
+      "all_nonmetadata_files_identical": true,
+      "content_inventory_sha256": "1f5309256075dd71941a5020fe05973eda7676f1d5163e0a585e74f230a4adb7"
+    },
+    {
+      "canonical_seed": 1,
+      "demo_index": 6,
+      "candidate_index": 12,
+      "condition": "START35_APP8P4",
+      "compared_attempt_indices": [1, 2],
+      "files_per_attempt": 891,
+      "all_nonmetadata_files_identical": true,
+      "content_inventory_sha256": "a3851212b86e44e574c7acef0f31261f2b2faf73529c91a882580e985bbbf0b9"
+    }
+  ],
+  "audited_content_classes": [
+    "point_cloud.ply",
+    "arm_joints.txt",
+    "hand_joints.txt",
+    "ee_pose.txt",
+    "cube_pose.txt",
+    "time.txt",
+    "commanded_speed.txt",
+    "commanded_dt.txt",
+    "phase.txt"
+  ],
+  "excluded_from_content_comparison": [
+    "metadata.json containing attempt seed and provenance",
+    "attempt_result.json containing attempt ledger fields"
+  ],
+  "protocol_alternatives_audited": [
+    {
+      "mechanism": "Use existing Python or NumPy RNG without changing simulator inputs",
+      "operative": false,
+      "authorised": true,
+      "conclusion": "Already implemented; no physics RNG draw consumes it."
+    },
+    {
+      "mechanism": "Use a native PyBullet random or solver seed",
+      "operative": false,
+      "authorised": true,
+      "conclusion": "This PyBullet build exposes neither randomSeed nor solverRandomSeed."
+    },
+    {
+      "mechanism": "Return to unpaired random Start or Approach sampling",
+      "operative": true,
+      "authorised": false,
+      "conclusion": "Would replace the frozen normalized latent geometry and violate exact pairing."
+    },
+    {
+      "mechanism": "Seed cube pose, contact, friction, joint state, waypoint, timing or controller perturbations",
+      "operative": true,
+      "authorised": false,
+      "conclusion": "Would add an unregistered physical perturbation after outcomes and violate PLAN.md."
+    },
+    {
+      "mechanism": "Seed or vary solver/contact parameters",
+      "operative": "unknown",
+      "authorised": false,
+      "conclusion": "Would change the frozen physics protocol and requires a pre-registered distribution."
+    },
+    {
+      "mechanism": "Treat infrastructure retry or a different node as scientific RNG",
+      "operative": "not reproducibly seed-coupled",
+      "authorised": false,
+      "conclusion": "Would break deterministic attempt provenance and the scientific/infrastructure retry distinction."
+    },
+    {
+      "mechanism": "Use point-cloud RNG to change scripted collection control",
+      "operative": false,
+      "authorised": false,
+      "conclusion": "Collection is scripted and does not use point clouds for control; changing that would replace the learner/task protocol."
+    }
+  ],
+  "conclusion": {
+    "existing_protocol_compatible_recovery_found": false,
+    "safe_to_resume_current_retry_loop": false,
+    "safe_to_advance_attempt_index": false,
+    "safe_to_start_hdf5": false,
+    "required_external_change": "Explicit protocol authority must define and freeze a seed-coupled simulator physics randomness mechanism and its distribution, applied identically across all four corners while preserving the 30 normalized latent IDs."
+  }
+}

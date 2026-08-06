@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "generated_at": "2026-07-27",
+  "measurement": "apparent bytes from du -sb; checkpoint subsets from file stat",
+  "dataset_namespace": {
+    "path": "dataset/tro_position_stage2_composition",
+    "bytes": 32703499054,
+    "files": 993935,
+    "directories": 112224,
+    "components": {
+      "formal_collection_and_hdf5": 32547218141,
+      "smoke": 59675769,
+      "rollouts": 80898700,
+      "logs": 15706440
+    },
+    "rollout_components": {
+      "common_absolute_formal": 30080892,
+      "rmax40_formal": 50671825,
+      "rmax40_infrastructure_failures": 145978
+    }
+  },
+  "model_namespace": {
+    "path": "/scratch/prj/eng_demt_robot_learning/trained_models/tro_position_stage2_composition",
+    "bytes": 15683479273,
+    "files": 254,
+    "emitted_checkpoint_files": 54,
+    "emitted_checkpoint_bytes": 15665763744,
+    "selected_checkpoint_files": 20,
+    "selected_checkpoint_bytes": 5802134804,
+    "unselected_checkpoint_files": 34,
+    "unselected_checkpoint_bytes": 9863628940,
+    "non_checkpoint_file_bytes": 17851481
+  },
+  "artifact_counts": {
+    "new_raw_datasets": 20,
+    "accepted_demonstrations": 600,
+    "atomic_accepted_candidate_bundles": 150,
+    "old_anchor_paired_accepted_bundles": 133,
+    "replacement_stream_accepted_bundles_paired_only_across_new_corners": 17,
+    "new_hdf5": 20,
+    "new_hdf5_bytes": 29127838376,
+    "hdf5_episodes": 1200,
+    "hdf5_train_episodes": 1080,
+    "hdf5_valid_episodes": 120,
+    "new_trained_policies": 20,
+    "new_formal_rollout_summaries": 400,
+    "new_formal_rollout_rows": 10000
+  },
+  "large_anchor_artifacts_copied": false,
+  "automatic_cleanup_performed": false,
+  "safe_cleanup_candidates_requiring_user_approval": [
+    {
+      "path": "dataset/tro_position_stage2_composition/smoke",
+      "bytes": 59675769,
+      "reason": "Gate 2 smoke output; formal artifacts and audit manifests do not depend on it."
+    },
+    {
+      "path_pattern": "/scratch/prj/eng_demt_robot_learning/trained_models/tro_position_stage2_composition/**/models/model_epoch_*.pth excluding the 20 paths frozen in manifests/checkpoints.json",
+      "files": 34,
+      "bytes": 9863628940,
+      "reason": "Unselected emitted checkpoints; retain until the user separately approves cleanup."
+    }
+  ],
+  "must_preserve": [
+    "all 20 selected new checkpoints and 25 referenced immutable anchor checkpoints",
+    "all 20 new HDF5 files and accepted raw bundle provenance",
+    "all v1/v2 progress, blockers, final_hashes.json and final_hashes_v2_blocker.json",
+    "all v1/v2 scientific attempts, interrupted bundles and v3 rejected candidate evidence",
+    "dataset/tro_position_stage2_composition/rollouts/rmax40/infrastructure_failures",
+    "all Slurm logs and manifests/jobs.json",
+    "protected untracked files [, count=0, done and fi"
+  ]
+}

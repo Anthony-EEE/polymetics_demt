@@ -1,0 +1,506 @@
+{
+  "schema_version": 2,
+  "stage": "T-RO Stage 1 Position MVP",
+  "stage1_status": "complete_after_corrected_five_seed_rollout_evaluation",
+  "earlier_single_seed_evaluation": {
+    "status": "superseded_for_policy_comparison",
+    "artifacts_preserved": true
+  },
+  "corrected_evaluation": {
+    "seeds": [
+      628,
+      629,
+      630,
+      631,
+      632
+    ],
+    "rollouts_per_seed_per_policy": 50,
+    "inner_rollouts_per_seed_per_policy": 25,
+    "outer_rollouts_per_seed_per_policy": 25,
+    "rollouts_per_policy": 250,
+    "num_policies": 8,
+    "validated_rollout_rows": 2000,
+    "shared_state_and_rng_pairing_across_all_policies": true,
+    "retraining_performed": false,
+    "checkpoint_selection": "highest numeric model_epoch_*.pth already present in each existing training run"
+  },
+  "checkpoint_audit": {
+    "available_epochs_per_policy": [
+      20,
+      40
+    ],
+    "selected_epoch_per_policy": 40,
+    "selection_reason": "epoch 40 is the highest numeric model_epoch_*.pth already present in every existing run",
+    "retraining_performed": false
+  },
+  "ranking": [
+    "block0/START25_APP3P6",
+    "block0/START15_APP6",
+    "block0/START25_APP8P4",
+    "block1/START25_APP8P4",
+    "block1/START25_APP3P6",
+    "block0/START35_APP6",
+    "block1/START15_APP6",
+    "block1/START35_APP6"
+  ],
+  "inner_ranking": [
+    "block0/START15_APP6",
+    "block0/START25_APP3P6",
+    "block1/START25_APP8P4",
+    "block1/START25_APP3P6",
+    "block0/START25_APP8P4",
+    "block1/START15_APP6",
+    "block0/START35_APP6",
+    "block1/START35_APP6"
+  ],
+  "outer_ranking": [
+    "block0/START25_APP3P6",
+    "block0/START25_APP8P4",
+    "block1/START25_APP8P4",
+    "block0/START35_APP6",
+    "block0/START15_APP6",
+    "block1/START25_APP3P6",
+    "block1/START15_APP6",
+    "block1/START35_APP6"
+  ],
+  "policy_rollout_seed_mean_and_sample_std": {
+    "block0/START25_APP3P6": {
+      "combined": {
+        "seed_rates": [
+          0.58,
+          0.5,
+          0.62,
+          0.48,
+          0.56
+        ],
+        "mean_rate": 0.548,
+        "sample_std_rate_ddof1": 0.057619441163551735,
+        "num_seeds": 5
+      },
+      "inner": {
+        "seed_rates": [
+          0.56,
+          0.56,
+          0.68,
+          0.52,
+          0.6
+        ],
+        "mean_rate": 0.5840000000000001,
+        "sample_std_rate_ddof1": 0.06066300355241241,
+        "num_seeds": 5
+      },
+      "outer": {
+        "seed_rates": [
+          0.6,
+          0.44,
+          0.56,
+          0.44,
+          0.52
+        ],
+        "mean_rate": 0.512,
+        "sample_std_rate_ddof1": 0.07155417527999328,
+        "num_seeds": 5
+      }
+    },
+    "block0/START15_APP6": {
+      "combined": {
+        "seed_rates": [
+          0.42,
+          0.46,
+          0.54,
+          0.44,
+          0.42
+        ],
+        "mean_rate": 0.456,
+        "sample_std_rate_ddof1": 0.04979959839195495,
+        "num_seeds": 5
+      },
+      "inner": {
+        "seed_rates": [
+          0.64,
+          0.6,
+          0.76,
+          0.56,
+          0.64
+        ],
+        "mean_rate": 0.64,
+        "sample_std_rate_ddof1": 0.07483314773547882,
+        "num_seeds": 5
+      },
+      "outer": {
+        "seed_rates": [
+          0.2,
+          0.32,
+          0.32,
+          0.32,
+          0.2
+        ],
+        "mean_rate": 0.272,
+        "sample_std_rate_ddof1": 0.06572670690061992,
+        "num_seeds": 5
+      }
+    },
+    "block0/START25_APP8P4": {
+      "combined": {
+        "seed_rates": [
+          0.52,
+          0.4,
+          0.4,
+          0.3,
+          0.38
+        ],
+        "mean_rate": 0.4,
+        "sample_std_rate_ddof1": 0.07874007874011812,
+        "num_seeds": 5
+      },
+      "inner": {
+        "seed_rates": [
+          0.52,
+          0.44,
+          0.32,
+          0.32,
+          0.24
+        ],
+        "mean_rate": 0.368,
+        "sample_std_rate_ddof1": 0.11099549540409287,
+        "num_seeds": 5
+      },
+      "outer": {
+        "seed_rates": [
+          0.52,
+          0.36,
+          0.48,
+          0.28,
+          0.52
+        ],
+        "mean_rate": 0.432,
+        "sample_std_rate_ddof1": 0.1073312629199899,
+        "num_seeds": 5
+      }
+    },
+    "block1/START25_APP8P4": {
+      "combined": {
+        "seed_rates": [
+          0.28,
+          0.44,
+          0.38,
+          0.42,
+          0.34
+        ],
+        "mean_rate": 0.372,
+        "sample_std_rate_ddof1": 0.06418722614352483,
+        "num_seeds": 5
+      },
+      "inner": {
+        "seed_rates": [
+          0.32,
+          0.56,
+          0.4,
+          0.44,
+          0.48
+        ],
+        "mean_rate": 0.44,
+        "sample_std_rate_ddof1": 0.0894427190999916,
+        "num_seeds": 5
+      },
+      "outer": {
+        "seed_rates": [
+          0.24,
+          0.32,
+          0.36,
+          0.4,
+          0.2
+        ],
+        "mean_rate": 0.304,
+        "sample_std_rate_ddof1": 0.08294576541331088,
+        "num_seeds": 5
+      }
+    },
+    "block1/START25_APP3P6": {
+      "combined": {
+        "seed_rates": [
+          0.22,
+          0.4,
+          0.28,
+          0.34,
+          0.38
+        ],
+        "mean_rate": 0.324,
+        "sample_std_rate_ddof1": 0.07402702209328699,
+        "num_seeds": 5
+      },
+      "inner": {
+        "seed_rates": [
+          0.28,
+          0.44,
+          0.32,
+          0.44,
+          0.4
+        ],
+        "mean_rate": 0.376,
+        "sample_std_rate_ddof1": 0.07266360849833979,
+        "num_seeds": 5
+      },
+      "outer": {
+        "seed_rates": [
+          0.16,
+          0.36,
+          0.24,
+          0.24,
+          0.36
+        ],
+        "mean_rate": 0.272,
+        "sample_std_rate_ddof1": 0.08671793355471519,
+        "num_seeds": 5
+      }
+    },
+    "block0/START35_APP6": {
+      "combined": {
+        "seed_rates": [
+          0.24,
+          0.4,
+          0.22,
+          0.22,
+          0.34
+        ],
+        "mean_rate": 0.28400000000000003,
+        "sample_std_rate_ddof1": 0.08173126696681021,
+        "num_seeds": 5
+      },
+      "inner": {
+        "seed_rates": [
+          0.28,
+          0.4,
+          0.2,
+          0.2,
+          0.32
+        ],
+        "mean_rate": 0.28,
+        "sample_std_rate_ddof1": 0.08485281374238571,
+        "num_seeds": 5
+      },
+      "outer": {
+        "seed_rates": [
+          0.2,
+          0.4,
+          0.24,
+          0.24,
+          0.36
+        ],
+        "mean_rate": 0.288,
+        "sample_std_rate_ddof1": 0.0867179335547152,
+        "num_seeds": 5
+      }
+    },
+    "block1/START15_APP6": {
+      "combined": {
+        "seed_rates": [
+          0.2,
+          0.2,
+          0.3,
+          0.28,
+          0.28
+        ],
+        "mean_rate": 0.252,
+        "sample_std_rate_ddof1": 0.048166378315169185,
+        "num_seeds": 5
+      },
+      "inner": {
+        "seed_rates": [
+          0.32,
+          0.32,
+          0.36,
+          0.28,
+          0.36
+        ],
+        "mean_rate": 0.328,
+        "sample_std_rate_ddof1": 0.033466401061363005,
+        "num_seeds": 5
+      },
+      "outer": {
+        "seed_rates": [
+          0.08,
+          0.08,
+          0.24,
+          0.28,
+          0.2
+        ],
+        "mean_rate": 0.17600000000000002,
+        "sample_std_rate_ddof1": 0.09208691546577072,
+        "num_seeds": 5
+      }
+    },
+    "block1/START35_APP6": {
+      "combined": {
+        "seed_rates": [
+          0.1,
+          0.1,
+          0.04,
+          0.18,
+          0.14
+        ],
+        "mean_rate": 0.112,
+        "sample_std_rate_ddof1": 0.052153619241621194,
+        "num_seeds": 5
+      },
+      "inner": {
+        "seed_rates": [
+          0.08,
+          0.08,
+          0.0,
+          0.2,
+          0.12
+        ],
+        "mean_rate": 0.096,
+        "sample_std_rate_ddof1": 0.0726636084983398,
+        "num_seeds": 5
+      },
+      "outer": {
+        "seed_rates": [
+          0.12,
+          0.12,
+          0.08,
+          0.16,
+          0.16
+        ],
+        "mean_rate": 0.128,
+        "sample_std_rate_ddof1": 0.033466401061363026,
+        "num_seeds": 5
+      }
+    }
+  },
+  "condition_average_ranking": [
+    "START25_APP3P6",
+    "START25_APP8P4",
+    "START15_APP6",
+    "START35_APP6"
+  ],
+  "condition_block_mean_and_sample_std": {
+    "START15_APP6": {
+      "combined": {
+        "block_rates": [
+          0.456,
+          0.252
+        ],
+        "mean_rate": 0.354,
+        "sample_std_rate_ddof1": 0.1442497833620557
+      },
+      "inner": {
+        "block_rates": [
+          0.64,
+          0.328
+        ],
+        "mean_rate": 0.484,
+        "sample_std_rate_ddof1": 0.22061731573020282
+      },
+      "outer": {
+        "block_rates": [
+          0.272,
+          0.176
+        ],
+        "mean_rate": 0.224,
+        "sample_std_rate_ddof1": 0.06788225099390859
+      }
+    },
+    "START35_APP6": {
+      "combined": {
+        "block_rates": [
+          0.284,
+          0.112
+        ],
+        "mean_rate": 0.19799999999999998,
+        "sample_std_rate_ddof1": 0.12162236636408615
+      },
+      "inner": {
+        "block_rates": [
+          0.28,
+          0.096
+        ],
+        "mean_rate": 0.188,
+        "sample_std_rate_ddof1": 0.13010764773832476
+      },
+      "outer": {
+        "block_rates": [
+          0.288,
+          0.128
+        ],
+        "mean_rate": 0.208,
+        "sample_std_rate_ddof1": 0.11313708498984758
+      }
+    },
+    "START25_APP3P6": {
+      "combined": {
+        "block_rates": [
+          0.548,
+          0.324
+        ],
+        "mean_rate": 0.43600000000000005,
+        "sample_std_rate_ddof1": 0.15839191898578667
+      },
+      "inner": {
+        "block_rates": [
+          0.584,
+          0.376
+        ],
+        "mean_rate": 0.48,
+        "sample_std_rate_ddof1": 0.14707821048680186
+      },
+      "outer": {
+        "block_rates": [
+          0.512,
+          0.272
+        ],
+        "mean_rate": 0.392,
+        "sample_std_rate_ddof1": 0.16970562748477142
+      }
+    },
+    "START25_APP8P4": {
+      "combined": {
+        "block_rates": [
+          0.4,
+          0.372
+        ],
+        "mean_rate": 0.386,
+        "sample_std_rate_ddof1": 0.019798989873223347
+      },
+      "inner": {
+        "block_rates": [
+          0.368,
+          0.44
+        ],
+        "mean_rate": 0.404,
+        "sample_std_rate_ddof1": 0.05091168824543143
+      },
+      "outer": {
+        "block_rates": [
+          0.432,
+          0.304
+        ],
+        "mean_rate": 0.368,
+        "sample_std_rate_ddof1": 0.09050966799187808
+      }
+    }
+  },
+  "replication_decision": {
+    "rule_applied_descriptively": "positive in both learner blocks and mean rate difference >= 0.15",
+    "start_primary": {
+      "block_rate_differences": [
+        0.016,
+        -0.048
+      ],
+      "mean_rate_difference": -0.016,
+      "replicated": false
+    },
+    "approach_primary": {
+      "block_rate_differences": [
+        0.216,
+        -0.064
+      ],
+      "mean_rate_difference": 0.076,
+      "replicated": false
+    },
+    "classification": "null/unstable"
+  },
+  "classification": "null/unstable",
+  "stage2_launched": false
+}
