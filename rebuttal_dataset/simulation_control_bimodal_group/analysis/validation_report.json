@@ -1,0 +1,160 @@
+{
+  "counts": {
+    "complete_videos": 200,
+    "hdf5_memberships": 600,
+    "loadable_checkpoints": 10,
+    "matched_bimodal_policy_comparisons": 10,
+    "matched_bimodal_rollout_keys": 200,
+    "paired_specs": 10,
+    "pairings": 10,
+    "participant_statistics": 10,
+    "repeats_per_policy_case": 2,
+    "underlying_unique_control_trajectories": 300,
+    "unique_participant_case_repeat_keys": 200,
+    "unique_policy_sampling_seeds": 200,
+    "valid_policy_rollouts": 200
+  },
+  "cross_checks": {
+    "all_200_matched_keys_reuse_the_corresponding_policy_sampling_seed": true,
+    "all_rollouts_reference_correct_control_bimodal_checkpoint_hash": true,
+    "all_rollouts_reference_exact_target_spec_hash": true,
+    "all_routes_independently_recomputed": true,
+    "all_successes_rechecked_against_frozen_criterion": true,
+    "existing_bimodal_hashes_reverified": true,
+    "indeterminate_outcomes_retained": true,
+    "matched_bimodal_policy_comparison_recomputed": true,
+    "no_outcome_replacement": true,
+    "original_repeat_gate_failure_disclosed": true,
+    "paired_repeat_physical_starts_within_amended_tolerance": true,
+    "paired_repeat_setup_contracts_exact": true,
+    "post_rollout_user_authorized_protocol_amendment_disclosed": true,
+    "sample_standard_deviation_ddof": 1
+  },
+  "errors": [],
+  "generated_at_utc": "2026-08-08T19:40:02.536593+00:00",
+  "group": "simulation_control_bimodal_group",
+  "original_preregistered_repeat_gate_passed": false,
+  "paired_repeat_physical_equivalence": {
+    "acceptance_basis": {
+      "amended_orientation_tolerance_degrees": 3.0,
+      "amended_translation_tolerance_metres": 0.002,
+      "authorized_local_date": "2026-08-08",
+      "original_gate_result_retained": true,
+      "original_orientation_tolerance_degrees": 0.01,
+      "original_translation_tolerance_metres": 1e-05,
+      "rationale": "Millimetre-scale contact-pose variation is expected in real rollouts and does not invalidate otherwise matched scripted setup commands.",
+      "rollouts_rerun_or_replaced": false,
+      "status": "post_rollout_user_authorized_protocol_amendment",
+      "thresholds_amended_after_rollout": true
+    },
+    "amended_gate_passed": true,
+    "amended_gate_violating_pair_count": 0,
+    "amended_gate_violations": [],
+    "maximum_policy_start_box_orientation_delta_degrees": 2.522303089930131,
+    "maximum_policy_start_box_position_delta_metres": 0.001715228238639103,
+    "maximum_policy_start_ee_orientation_delta_degrees": 0.0002963320294223453,
+    "maximum_policy_start_ee_position_delta_metres": 3.965510017052717e-07,
+    "maximum_setup_box_position_delta_metres": 0.001715228238639103,
+    "maximum_setup_ee_position_delta_metres": 3.965510017052717e-07,
+    "maximum_setup_transport_height_error_delta_metres": 1.9763275724282714e-07,
+    "orientation_tolerance_degrees": 3.0,
+    "original_gate_passed": false,
+    "original_gate_violating_pair_count": 2,
+    "original_gate_violations": [
+      {
+        "eval_case_id": 0,
+        "exceeded_metrics": {
+          "maximum_policy_start_box_orientation_delta_degrees": 2.144117293494169,
+          "maximum_policy_start_box_position_delta_metres": 0.001663591785756616,
+          "maximum_setup_box_position_delta_metres": 0.001663591785756616
+        },
+        "participant_id": "CB01"
+      },
+      {
+        "eval_case_id": 5,
+        "exceeded_metrics": {
+          "maximum_policy_start_box_orientation_delta_degrees": 2.522303089930131,
+          "maximum_policy_start_box_position_delta_metres": 0.001715228238639103,
+          "maximum_setup_box_position_delta_metres": 0.001715228238639103
+        },
+        "participant_id": "CB09"
+      }
+    ],
+    "original_orientation_tolerance_degrees": 0.01,
+    "original_translation_tolerance_metres": 1e-05,
+    "paired_repeat_count": 100,
+    "translation_tolerance_metres": 0.002
+  },
+  "passed": true,
+  "passed_under_user_authorized_amended_repeat_tolerance": true,
+  "planned_output_sha256": {
+    "bimodal_comparison.csv": "aff5613a17933a5cefee2a9495952c5b743d9fd4c6cdb5bd88bbc605e751d300",
+    "bimodal_comparison.json": "eb4f353df53bbf6116fce6f3ad7103f5df096006f8e0a4a88c32b74e6d48f463",
+    "experiment_manifest.json": "d2c867801e87f570b864759cf43dbccc8ec4620a390f2f89e7fd497f96c53678",
+    "factual_summary.txt": "98d7d32bfe85fa33cfd8eac29d294101e90fde65461e39eefe4e60b82feceb42",
+    "final_results.json": "9692971a7182e9b9e3918f8923f517b7ad72cd6aefc488807f3e3976129cfca5",
+    "participant_success_rates.csv": "f3c602ba5234efec480d56655f7bf73e494ee5727be23dafd4756f439054b9ca",
+    "rollout_results.csv": "5e296308a23248dbb9a28c179f1b93217b36c9ffaba5eb44f39764cb0da018d1",
+    "route_choice_summary.csv": "0659b7d3d8e38db395467eab3074a0baa69f618ad8ad17362dfe845c00516835",
+    "route_success_summary.png": "d8fd7fcdf154f761d55fa5625825055dd6ed21b056e64ff95ee0b067331973b2",
+    "video_index.json": "3c98d375b32af379a75c5d8000a9137dd31f84ef75b10ef11d7775ad0d9e6752"
+  },
+  "schema_version": 1,
+  "upstream_artifacts": {
+    "bimodal_final_results": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/analysis/final_results.json",
+      "sha256": "d64c223e1a2dde25f9469b9d159316063e6df31a32c5de5bd34f18ba591f3795",
+      "size_bytes": 7179
+    },
+    "bimodal_final_validation": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/analysis/validation_report.json",
+      "sha256": "4c30d414c65c9eb263328ed3e99b65af67be243ec2bc0ae33b2cb936bf68bdf2",
+      "size_bytes": 5659
+    },
+    "bimodal_rollout_results_csv": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/analysis/rollout_results.csv",
+      "sha256": "7ede0da24034dad41e3d9c108411740d8463bc1cd927a3672acc65ae25dcb7ed",
+      "size_bytes": 100625
+    },
+    "hdf5_build_manifest": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_bimodal_group/hdf5/build_manifest.json",
+      "sha256": "396e07171e90cca57e36cc12320f8fa557c7cc0e7168a7c2ddf4ee0aebb3e90c",
+      "size_bytes": 819582
+    },
+    "hdf5_validation": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_bimodal_group/hdf5/validation_report.json",
+      "sha256": "007cc071f2be34d05ddde49073756c8f6329e947b83e6a09c2c2c475bd3093d9",
+      "size_bytes": 853631
+    },
+    "mixed_validation": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_bimodal_group/mixed_raw_validation_report.json",
+      "sha256": "20f77210e092e50b7e115597dd2510afcd8d151ce4ec76127a2df95565d64559",
+      "size_bytes": 10788
+    },
+    "model_validation": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_bimodal_group/models/model_validation_report.json",
+      "sha256": "d48f4726471747c49fae1929bea9cf1bb57a8c877d2871d42e128296577edc5a",
+      "size_bytes": 31648
+    },
+    "pairing_manifest": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_bimodal_group/pairing_manifest.json",
+      "sha256": "86cbe45062b32225e4e3233339c4dfd417954f2c7111cb35fd5a7d84c38895e5",
+      "size_bytes": 300958
+    },
+    "selected_checkpoints": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_bimodal_group/models/selected_checkpoints_manifest.json",
+      "sha256": "cd3f89fb979790f1bb53b05981857a93da078dcbb7452f87ab76523c20de03f5",
+      "size_bytes": 26695
+    },
+    "target_paired_specs": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_target_group/analysis/paired_rollout_specs.json",
+      "sha256": "10dbbe16da06b4013899e350fece05687abc8c45471b584ac5a2473a0e486dad",
+      "size_bytes": 34219
+    },
+    "training_manifest": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_bimodal_group/models/training_experiment_manifest.json",
+      "sha256": "c09e3c5707886f43ffc166c016dc58b94f33409e982338c7d6e667661368f88d",
+      "size_bytes": 22597
+    }
+  }
+}

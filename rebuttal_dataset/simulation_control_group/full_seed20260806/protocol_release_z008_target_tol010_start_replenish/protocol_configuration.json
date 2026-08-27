@@ -1,0 +1,239 @@
+{
+  "collection_start_gate": "wait for explicit user instruction: \u5f00\u59cb\u6536\u96c6\u6570\u636e",
+  "collection_started": false,
+  "control_teaching_data_manipulation": {
+    "across_demo_contraction": false,
+    "attempt0_spread": {
+      "C01": {
+        "count": 30,
+        "unique_count": 30,
+        "x_max": 0.2988306229746951,
+        "x_min": 0.10228217313184007,
+        "x_span": 0.19654844984285502,
+        "x_std": 0.06238923333447279,
+        "z_max": 0.2852737682290291,
+        "z_min": 0.19000709380781644,
+        "z_span": 0.09526667442121267,
+        "z_std": 0.02821764185166405
+      },
+      "C02": {
+        "count": 30,
+        "unique_count": 30,
+        "x_max": 0.2862348859643207,
+        "x_min": 0.1072032147185418,
+        "x_span": 0.17903167124577887,
+        "x_std": 0.04999613068913222,
+        "z_max": 0.287438902740598,
+        "z_min": 0.1920280641210201,
+        "z_span": 0.09541083861957791,
+        "z_std": 0.031692877883047886
+      },
+      "C03": {
+        "count": 30,
+        "unique_count": 30,
+        "x_max": 0.2886117586653131,
+        "x_min": 0.10675010898274061,
+        "x_span": 0.18186164968257246,
+        "x_std": 0.06159306646258246,
+        "z_max": 0.2890482488216668,
+        "z_min": 0.1933809929032381,
+        "z_span": 0.0956672559184287,
+        "z_std": 0.03126631440765978
+      },
+      "C04": {
+        "count": 30,
+        "unique_count": 30,
+        "x_max": 0.2978897753890346,
+        "x_min": 0.12065903773628715,
+        "x_span": 0.17723073765274744,
+        "x_std": 0.051504322359511655,
+        "z_max": 0.2855064447782756,
+        "z_min": 0.19498495242325925,
+        "z_span": 0.09052149235501633,
+        "z_std": 0.028520213494324993
+      },
+      "C05": {
+        "count": 30,
+        "unique_count": 30,
+        "x_max": 0.2998292864661035,
+        "x_min": 0.10383416555820218,
+        "x_span": 0.19599512090790133,
+        "x_std": 0.05680093191206931,
+        "z_max": 0.28401877838572204,
+        "z_min": 0.19170100301496476,
+        "z_span": 0.09231777537075728,
+        "z_std": 0.027889662841873285
+      },
+      "C06": {
+        "count": 30,
+        "unique_count": 30,
+        "x_max": 0.8935182349330859,
+        "x_min": 0.7023625502266074,
+        "x_span": 0.19115568470647848,
+        "x_std": 0.05723299729161902,
+        "z_max": 0.28945168656164366,
+        "z_min": 0.19529125315127116,
+        "z_span": 0.0941604334103725,
+        "z_std": 0.026659506310256126
+      },
+      "C07": {
+        "count": 30,
+        "unique_count": 30,
+        "x_max": 0.892422233886309,
+        "x_min": 0.7021939383912773,
+        "x_span": 0.19022829549503173,
+        "x_std": 0.06047154983821532,
+        "z_max": 0.2891184511279841,
+        "z_min": 0.19154791118398543,
+        "z_span": 0.0975705399439987,
+        "z_std": 0.026973219744588734
+      },
+      "C08": {
+        "count": 30,
+        "unique_count": 30,
+        "x_max": 0.8997751693257733,
+        "x_min": 0.705588031476338,
+        "x_span": 0.1941871378494353,
+        "x_std": 0.05944386889783802,
+        "z_max": 0.2890113936073504,
+        "z_min": 0.19006820683908407,
+        "z_span": 0.09894318676826633,
+        "z_std": 0.032307065087530985
+      },
+      "C09": {
+        "count": 30,
+        "unique_count": 30,
+        "x_max": 0.8984346466098361,
+        "x_min": 0.7011980372634039,
+        "x_span": 0.19723660934643217,
+        "x_std": 0.05950527542190914,
+        "z_max": 0.27950806229881914,
+        "z_min": 0.1916574873924502,
+        "z_span": 0.08785057490636894,
+        "z_std": 0.027736887918311234
+      },
+      "C10": {
+        "count": 30,
+        "unique_count": 30,
+        "x_max": 0.8997608022633512,
+        "x_min": 0.7009343061841443,
+        "x_span": 0.19882649607920688,
+        "x_std": 0.0563776565308136,
+        "z_max": 0.287500431857869,
+        "z_min": 0.19346655445107958,
+        "z_span": 0.09403387740678942,
+        "z_std": 0.0273604543536081
+      }
+    },
+    "personal_waypoint_centers": false,
+    "route_x_bounds": {
+      "L": [
+        0.1,
+        0.3
+      ],
+      "R": [
+        0.7,
+        0.9
+      ]
+    },
+    "sampling": "independent_uniform_full_route_xz_rectangle",
+    "waypoint_y": 0.25,
+    "waypoint_z_bounds": [
+      0.19,
+      0.29
+    ]
+  },
+  "group": "simulation_control_group",
+  "historical_failed_data_policy": {
+    "held_tasks_are_not_released_by_preparation": true,
+    "historical_array_job_id": "36353493",
+    "historical_root": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/full_seed20260806",
+    "preserve_without_overwrite": true
+  },
+  "paired_rollout_contract": {
+    "eval_case_count": 10,
+    "file_sha256": "10dbbe16da06b4013899e350fece05687abc8c45471b584ac5a2473a0e486dad",
+    "manifest": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_target_group/analysis/paired_rollout_specs.json",
+    "reuse_without_regeneration": true
+  },
+  "prepared_at_utc": "2026-08-07T11:43:13.854354+00:00",
+  "revision_name": "protocol_release_z008_target_tol010_start_replenish",
+  "revision_root": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/full_seed20260806/protocol_release_z008_target_tol010_start_replenish",
+  "schema_version": 1,
+  "seed": 20260806,
+  "software_and_dependency_hashes": {
+    "aligned_control_collector": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/examples/rebuttal_control_pipeline/collect_control_aligned.py",
+      "sha256": "b6b424c9d35ae41287c6f77654666f10deaa3039c5417093573cdadc60691647"
+    },
+    "control_array_wrapper": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/examples/rebuttal_control_pipeline/collect_control_aligned_array.sbatch",
+      "sha256": "5410167eb5463221cb43272045de3667e018dde400182325b3bddaab158bc648"
+    },
+    "control_preflight": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/examples/rebuttal_control_pipeline/preflight_control_aligned_candidates.py",
+      "sha256": "3fa42bd769fdb2dfcdbce9a5e9f0983e54732124a71dea0b0234e7ce605b0404"
+    },
+    "control_protocol": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/examples/rebuttal_control_pipeline/control_protocol.py",
+      "sha256": "ff70588ad343c8a2b36bc2105b206cc7261924f223ea1e7d4be2cba4e4f3be3b"
+    },
+    "control_raw_validator": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/examples/rebuttal_control_pipeline/validate_control_aligned_raw.py",
+      "sha256": "564e54693e757c9e08e89a7ab5b963aa41ac2e469850e41467225637fed22ce4"
+    },
+    "historical_control_collector": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/examples/main_obstacle_transport_control_participants.py",
+      "sha256": "8ab0ad2ea6f58799488878bf844f89d276f77c34304e74828f7f54c904d8882a"
+    },
+    "shared_task": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/examples/main_obstacle_transport.py",
+      "sha256": "991a5cca592a9c9a691abd5209ebf34599325c244b43d972238a9e74ea6660ff"
+    },
+    "target_collector": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/examples/main_obstacle_transport_target_participants.py",
+      "sha256": "811e96cc77c63dd474b879fe11fbcb6d488cd9011237bd6c4c45cabb2fd5ff7d"
+    },
+    "target_paired_rollout_manifest": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_target_group/analysis/paired_rollout_specs.json",
+      "sha256": "10dbbe16da06b4013899e350fece05687abc8c45471b584ac5a2473a0e486dad"
+    },
+    "target_participant_manifest": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_target_group/full_seed20260806/protocol_release_z008_target_tol010_start_replenish/participant_manifest.json",
+      "sha256": "5b0d7ffb6ea6501d06eb1fd2d999682d19f6d6a308fe26f8a5ea773f167b444b"
+    },
+    "target_protocol": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/examples/rebuttal_target_pipeline/target_protocol.py",
+      "sha256": "de0a0573e074cf854384ff00dc0e2430b32d9b4b08b2190d5b8635a65c7b97f0"
+    },
+    "target_raw_validator": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/examples/rebuttal_target_pipeline/validate_raw_collection.py",
+      "sha256": "185a63b837d34397559ae64a9496023c75a6208dd4834a6fb95a1828af293f50"
+    }
+  },
+  "status": "CONFIGURATION_PREPARED_AWAITING_EXPLICIT_START",
+  "target_alignment": {
+    "broad_cube_start_bounds": {
+      "x": [
+        0.2,
+        0.8
+      ],
+      "y": [
+        -0.01,
+        0.01
+      ],
+      "z": 0.025
+    },
+    "contacts_are_diagnostic_only": true,
+    "cylinder_tilt_tolerance_degrees": 10.0,
+    "deterministic_start_replenishment": "Target-identical attempt-seeded 30-point Latin-hypercube x plus uniform y; same (demo,attempt) candidate across participants",
+    "dual_offset_or_cartesian_diagnostic_revision_applied": false,
+    "first_saved_phase": "policy_inference_start",
+    "initial_ee_rule": "[box_x, box_y, box_z + 0.10]",
+    "release_ee_z_m": 0.08,
+    "scripted_setup": "grasp/lift must validate before policy frame saving",
+    "scripted_setup_saved": false,
+    "success_criterion": "target_xy_error<=0.10 and box_settled and cylinder_tilt<=10deg",
+    "target_xy_tolerance_m": 0.1
+  }
+}

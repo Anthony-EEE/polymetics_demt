@@ -1,0 +1,22 @@
+{
+  "collection_started": false,
+  "errors": [],
+  "formal_participant_directories": [],
+  "generated_at_utc": "2026-08-07T11:44:32.473824+00:00",
+  "group": "simulation_control_group",
+  "hashes": {
+    "configuration_validator": "99d8808b94b23dbb975ada571a422bb7a25456b2cf2b6ab358e7bf4e7e9dde3d",
+    "paired_rollout_manifest": "10dbbe16da06b4013899e350fece05687abc8c45471b584ac5a2473a0e486dad",
+    "participant_manifest": "acedda6d340e2f46974d237c395b02386917105d928e915eca21c278f896853b",
+    "protocol_configuration": "05088144ddd098356314fe4d8baa96f0fee6e3fb9785d545f72a421cd6304282"
+  },
+  "passed": true,
+  "preflight": {
+    "accepted": 300,
+    "max_first_feasible_attempt": 3,
+    "rejected": 61,
+    "sha256": "195dbf0caa635350b160c2300d3fae69812ea8df5d218db10ff04099952154de"
+  },
+  "root": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/full_seed20260806/protocol_release_z008_target_tol010_start_replenish",
+  "schema_version": 1
+}

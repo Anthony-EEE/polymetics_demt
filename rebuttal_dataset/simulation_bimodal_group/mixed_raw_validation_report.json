@@ -1,0 +1,153 @@
+{
+  "counts": {
+    "partial_roots": 0,
+    "participants": 10,
+    "raw_symlinks": 600,
+    "result_symlinks": 600,
+    "trajectory_memberships": 600,
+    "zero_byte_files": 0
+  },
+  "errors": [],
+  "frozen_inputs": {
+    "target_hdf5_validation": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_target_group/hdf5/validation_report.json",
+      "sha256": "44ad0c763badba8e41d56d1093989629fb88186ada225bbb267d35a87df20099",
+      "size_bytes": 273043
+    },
+    "target_paired_rollout_specs": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_target_group/analysis/paired_rollout_specs.json",
+      "sha256": "10dbbe16da06b4013899e350fece05687abc8c45471b584ac5a2473a0e486dad",
+      "size_bytes": 34219
+    },
+    "target_selected_checkpoints": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_target_group/models/selected_checkpoints_manifest.json",
+      "sha256": "a06b1784234ef4f6e07f23b16fc82781e95c29a83553474b8bccf15ba870ea93",
+      "size_bytes": 20613
+    },
+    "target_training_manifest": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_target_group/models/training_experiment_manifest.json",
+      "sha256": "610caef20d78f441df533aa2b1951029006cdf7b1d5aabf37c8bb1fdde8a5623",
+      "size_bytes": 15895
+    }
+  },
+  "generated_at_utc": "2026-08-07T17:00:36.498395+00:00",
+  "group": "simulation_bimodal_group",
+  "pairing_manifest": {
+    "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/pairing_manifest.json",
+    "sha256": "a6a5198ca147744e5e82d030ed145e50a8e70296e6e40f341f6a97024766fadb"
+  },
+  "participant_reports": {
+    "B01": {
+      "errors": [],
+      "manifest": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/mixed_raw/B01/mixture_manifest.json",
+      "manifest_sha256": "cfa66046ef02905bccc0f2ed94b010669aed5be1808b227bd1416e09caa74faf",
+      "route_counts": {
+        "L": 30,
+        "R": 30
+      },
+      "shuffle_seed": 20261808,
+      "unique_source_demos": 60
+    },
+    "B02": {
+      "errors": [],
+      "manifest": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/mixed_raw/B02/mixture_manifest.json",
+      "manifest_sha256": "64ebcb26508c83d18544eb9beb17ffa637bd970528a91c9dae4310b3242e0fa3",
+      "route_counts": {
+        "L": 30,
+        "R": 30
+      },
+      "shuffle_seed": 20261809,
+      "unique_source_demos": 60
+    },
+    "B03": {
+      "errors": [],
+      "manifest": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/mixed_raw/B03/mixture_manifest.json",
+      "manifest_sha256": "1015862799b8b49fdc755ea9888cbd8c34a1e8ddd3565520508b3c41b714877a",
+      "route_counts": {
+        "L": 30,
+        "R": 30
+      },
+      "shuffle_seed": 20261810,
+      "unique_source_demos": 60
+    },
+    "B04": {
+      "errors": [],
+      "manifest": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/mixed_raw/B04/mixture_manifest.json",
+      "manifest_sha256": "3624aa8cba5487527c87ed8b10f628b15f80a98e84d726be0ee5d42b8218f26e",
+      "route_counts": {
+        "L": 30,
+        "R": 30
+      },
+      "shuffle_seed": 20261811,
+      "unique_source_demos": 60
+    },
+    "B05": {
+      "errors": [],
+      "manifest": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/mixed_raw/B05/mixture_manifest.json",
+      "manifest_sha256": "b966f10a3ab465efc38b85deaf85472d64f13c250e4de41ce50dab6af55943e0",
+      "route_counts": {
+        "L": 30,
+        "R": 30
+      },
+      "shuffle_seed": 20261812,
+      "unique_source_demos": 60
+    },
+    "B06": {
+      "errors": [],
+      "manifest": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/mixed_raw/B06/mixture_manifest.json",
+      "manifest_sha256": "9e72071ebd920c9c96581bdde28aea7995afd45b79f96b03c73645dc5bfe122d",
+      "route_counts": {
+        "L": 30,
+        "R": 30
+      },
+      "shuffle_seed": 20261813,
+      "unique_source_demos": 60
+    },
+    "B07": {
+      "errors": [],
+      "manifest": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/mixed_raw/B07/mixture_manifest.json",
+      "manifest_sha256": "dff558c153da6e20ce4137a0bc9be067acbdd2a9ee1f5aefd9a28abcecfe0271",
+      "route_counts": {
+        "L": 30,
+        "R": 30
+      },
+      "shuffle_seed": 20261814,
+      "unique_source_demos": 60
+    },
+    "B08": {
+      "errors": [],
+      "manifest": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/mixed_raw/B08/mixture_manifest.json",
+      "manifest_sha256": "15646cce3988c858b29fb54bde350cd7b41b6440379d3ffb86e521e1f09064ef",
+      "route_counts": {
+        "L": 30,
+        "R": 30
+      },
+      "shuffle_seed": 20261815,
+      "unique_source_demos": 60
+    },
+    "B09": {
+      "errors": [],
+      "manifest": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/mixed_raw/B09/mixture_manifest.json",
+      "manifest_sha256": "5916da37546e58c930756fcca21e6482f6e0e9885071180d1dd4934e244487f3",
+      "route_counts": {
+        "L": 30,
+        "R": 30
+      },
+      "shuffle_seed": 20261816,
+      "unique_source_demos": 60
+    },
+    "B10": {
+      "errors": [],
+      "manifest": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/mixed_raw/B10/mixture_manifest.json",
+      "manifest_sha256": "073b6c3ae4447592f21d776b34eaaac024c785f4a5fdf1ad51564e636ea52ecb",
+      "route_counts": {
+        "L": 30,
+        "R": 30
+      },
+      "shuffle_seed": 20261817,
+      "unique_source_demos": 60
+    }
+  },
+  "passed": true,
+  "schema_version": 1
+}

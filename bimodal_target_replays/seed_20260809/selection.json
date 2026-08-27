@@ -1,0 +1,29 @@
+{
+  "fallback_algorithm": "if a clean rerun does not reproduce both success and route, try the remaining formal successes in a deterministic shuffled order",
+  "selected": {
+    "L": {
+      "eval_case_id": "4",
+      "participant_id": "B05",
+      "policy_sampling_seed": "20310848",
+      "realised_route": "L",
+      "repeat_index": "1",
+      "target_xy_error": "0.012631",
+      "video_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/policy_rollouts/B05/videos/case_04_repeat_1_execution_0.mp4"
+    },
+    "R": {
+      "eval_case_id": "8",
+      "participant_id": "B03",
+      "policy_sampling_seed": "20290887",
+      "realised_route": "R",
+      "repeat_index": "0",
+      "target_xy_error": "0.05763",
+      "video_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/policy_rollouts/B03/videos/case_08_repeat_0_execution_0.mp4"
+    }
+  },
+  "selection_algorithm": "random.Random(seed), one choice from formal successful rows in stable analysis CSV order for L then R",
+  "selection_seed": 20260809,
+  "successful_counts": {
+    "L": 20,
+    "R": 53
+  }
+}

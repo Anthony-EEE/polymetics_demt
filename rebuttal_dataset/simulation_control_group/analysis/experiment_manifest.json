@@ -1,0 +1,225 @@
+{
+  "analysis_root": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/analysis",
+  "collection_seed": 20260806,
+  "control_teaching_data_manipulation": "independent full-support L/R waypoint x-z sampling without centre or contraction",
+  "evaluation_seed": 20260807,
+  "group": "simulation_control_group",
+  "hdf5_root": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/hdf5",
+  "helpers": {
+    "analyze_control_results.py": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/examples/rebuttal_control_pipeline/analyze_control_results.py",
+      "sha256": "f3cb2c2f3cee39b74c298d6f78f0c98a2ae0ba08826340ce96e49a005aca152b",
+      "size_bytes": 27092
+    },
+    "collect_control_aligned.py": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/examples/rebuttal_control_pipeline/collect_control_aligned.py",
+      "sha256": "b6b424c9d35ae41287c6f77654666f10deaa3039c5417093573cdadc60691647",
+      "size_bytes": 18607
+    },
+    "control_protocol.py": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/examples/rebuttal_control_pipeline/control_protocol.py",
+      "sha256": "ff70588ad343c8a2b36bc2105b206cc7261924f223ea1e7d4be2cba4e4f3be3b",
+      "size_bytes": 4630
+    },
+    "convert_control_hdf5.py": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/examples/rebuttal_control_pipeline/convert_control_hdf5.py",
+      "sha256": "d5ec3e4ca9113ced627bb0bac109a5d61f08bed072f270eaff837f3d73bd7e6d",
+      "size_bytes": 1099
+    },
+    "evaluate_control_policy.py": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/examples/rebuttal_control_pipeline/evaluate_control_policy.py",
+      "sha256": "8161a059e02767ae4f1208f9bc74ca2ddd0ba981dfe684be6e2729f63ab3a324",
+      "size_bytes": 4271
+    },
+    "prepare_control_training.py": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/examples/rebuttal_control_pipeline/prepare_control_training.py",
+      "sha256": "f24d87c5ccbe38364c2ab7d3a940bf370890fe79827af1d34fe19a0a13fe7ac1",
+      "size_bytes": 4278
+    },
+    "train_control_one.py": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/examples/rebuttal_control_pipeline/train_control_one.py",
+      "sha256": "2adfdf322192db8f38e5ba63cc5d8e3394d425e946115a135a124b1adf992e95",
+      "size_bytes": 1600
+    },
+    "validate_control_aligned_raw.py": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/examples/rebuttal_control_pipeline/validate_control_aligned_raw.py",
+      "sha256": "a6e27d42f2f341c4a8e6f70f05af0eaa70a245510894e7fb3a6a2cda73a55fa8",
+      "size_bytes": 26633
+    },
+    "validate_control_hdf5.py": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/examples/rebuttal_control_pipeline/validate_control_hdf5.py",
+      "sha256": "115fe1b4a2087dd8076bcb86e2fb97192dc14a9e419c756e37d2ea1d551badc3",
+      "size_bytes": 1029
+    },
+    "validate_control_models.py": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/examples/rebuttal_control_pipeline/validate_control_models.py",
+      "sha256": "7c058e0217c8233df12809d43664c74180f8beb784004d72579741fdc37fa217",
+      "size_bytes": 1041
+    }
+  },
+  "models_root": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/models",
+  "paired_rollout_manifest": {
+    "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_target_group/analysis/paired_rollout_specs.json",
+    "sha256": "10dbbe16da06b4013899e350fece05687abc8c45471b584ac5a2473a0e486dad",
+    "size_bytes": 34219
+  },
+  "participant_order": [
+    "C01",
+    "C02",
+    "C03",
+    "C04",
+    "C05",
+    "C06",
+    "C07",
+    "C08",
+    "C09",
+    "C10"
+  ],
+  "policy_rollout_root": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts",
+  "raw_root": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/full_seed20260806/protocol_release_z008_target_tol010_start_replenish",
+  "routes": {
+    "C01": "L",
+    "C02": "L",
+    "C03": "L",
+    "C04": "L",
+    "C05": "L",
+    "C06": "R",
+    "C07": "R",
+    "C08": "R",
+    "C09": "R",
+    "C10": "R"
+  },
+  "schema_version": 1,
+  "stage_artifacts": {
+    "checkpoints": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/models/selected_checkpoints_manifest.json",
+      "sha256": "666e3cb0ff6a0ed7430183d4344e99b629ca545d8140d0359752750c3d51a9e6",
+      "size_bytes": 15568
+    },
+    "hdf5_validation": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/hdf5/validation_report.json",
+      "sha256": "c617bed5ded688a1ecf7a949a401f3bfff16ed450e247aece23e4962c3eb5de5",
+      "size_bytes": 273391
+    },
+    "model_validation": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/models/model_validation_report.json",
+      "sha256": "c00c49cf164f9ba21a06efa284fa2f34070ae94a747f32bbf98644bd010641bf",
+      "size_bytes": 15202
+    },
+    "paired_rollout_specs": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_target_group/analysis/paired_rollout_specs.json",
+      "sha256": "10dbbe16da06b4013899e350fece05687abc8c45471b584ac5a2473a0e486dad",
+      "size_bytes": 34219
+    },
+    "paired_rollout_specs_sidecar": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_target_group/analysis/paired_rollout_specs.sha256.json",
+      "sha256": "7e04ed7cdca7c4d791aba721dab71a1416e93394a03da43c4b97976104e3ad9f",
+      "size_bytes": 423
+    },
+    "raw_configuration": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/full_seed20260806/protocol_release_z008_target_tol010_start_replenish/protocol_configuration.json",
+      "sha256": "05088144ddd098356314fe4d8baa96f0fee6e3fb9785d545f72a421cd6304282",
+      "size_bytes": 10237
+    },
+    "raw_to_hdf5_manifest": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/hdf5/raw_to_hdf5_manifest.json",
+      "sha256": "95c5125ec88311abd7f69de8fa70e0f0773a2a1487329e2b7f249bc25f1cae43",
+      "size_bytes": 249705
+    },
+    "raw_validation": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/full_seed20260806/protocol_release_z008_target_tol010_start_replenish/validation_report.json",
+      "sha256": "bd36e47329a55957e688c40ac4c8d65385e0af62a62fcb025d0c228a24be33fc",
+      "size_bytes": 7699
+    },
+    "target_final_results": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_target_group/analysis/final_results.json",
+      "sha256": "23b6ca460dc15e31538e6fbdc61d6fa0482983a9e1de4cba1ac48c6681222d0d",
+      "size_bytes": 3531
+    },
+    "target_hdf5_manifest": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_target_group/hdf5/raw_to_hdf5_manifest.json",
+      "sha256": "07979bbfd447a482554c2870549de46510ac0147432718a73e730b60bfe258f4",
+      "size_bytes": 249380
+    },
+    "target_raw_validation": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_target_group/full_seed20260806/protocol_release_z008_target_tol010_start_replenish/validation_report.json",
+      "sha256": "21d90c09c7c4c6e40ad3702b804455e3f3b8a27315f565198f58c5da3435b49f",
+      "size_bytes": 5807
+    },
+    "target_training_manifest": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_target_group/models/training_experiment_manifest.json",
+      "sha256": "610caef20d78f441df533aa2b1951029006cdf7b1d5aabf37c8bb1fdde8a5623",
+      "size_bytes": 15895
+    },
+    "target_validation": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_target_group/analysis/validation_report.json",
+      "sha256": "dd30c106243ecc8d9b7efaa6f0719b865e981e4cb6e0fe4e8ab71ef8362a26e5",
+      "size_bytes": 4473
+    },
+    "training_manifest": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/models/training_experiment_manifest.json",
+      "sha256": "422f1e9a31067a28ab8f4b1633fd7b487c47d3c51ed411e1d248d5e1f0a8f4a8",
+      "size_bytes": 15937
+    }
+  },
+  "statistics_contract": {
+    "edsr_denominator_per_participant": 10,
+    "sample_standard_deviation_ddof": 1,
+    "unit": "participant-level policy"
+  },
+  "success_protocol": {
+    "contacts_are_diagnostic_only": true,
+    "criterion": "target_xy_error<=0.10 and box_settled and cylinder_tilt<=10deg",
+    "release_ee_z_m": 0.08,
+    "scope": "simulation_control_group",
+    "target_xy_tolerance_m": 0.1
+  },
+  "target_control_comparison_contract": {
+    "control_L": {
+      "ddof": 1,
+      "mean": 0.44,
+      "n_participants": 5,
+      "sample_standard_deviation": 0.089443
+    },
+    "control_R": {
+      "ddof": 1,
+      "mean": 0.44,
+      "n_participants": 5,
+      "sample_standard_deviation": 0.151658
+    },
+    "control_minus_target_L_mean": 0.12,
+    "control_minus_target_R_mean": -0.02,
+    "control_minus_target_mean": 0.05,
+    "control_overall": {
+      "ddof": 1,
+      "mean": 0.44,
+      "n_participants": 10,
+      "sample_standard_deviation": 0.117379
+    },
+    "descriptive_only_no_independence_claim_for_100_rollouts": true,
+    "same_checkpoint_selection_rule": true,
+    "same_demo_budget": true,
+    "same_hdf5_schema_and_split": true,
+    "same_paired_rollout_manifest": true,
+    "same_physical_and_success_protocol": true,
+    "same_uniform_training_protocol": true,
+    "target_L": {
+      "ddof": 1,
+      "mean": 0.32,
+      "n_participants": 5,
+      "sample_standard_deviation": 0.178885
+    },
+    "target_R": {
+      "ddof": 1,
+      "mean": 0.46,
+      "n_participants": 5,
+      "sample_standard_deviation": 0.151658
+    },
+    "target_overall": {
+      "ddof": 1,
+      "mean": 0.39,
+      "n_participants": 10,
+      "sample_standard_deviation": 0.172884
+    }
+  }
+}

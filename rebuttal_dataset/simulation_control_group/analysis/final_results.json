@@ -1,0 +1,240 @@
+{
+  "diagnostics": {
+    "accepted_training_waypoint_spread": {
+      "C01": {
+        "unique_waypoints": 30,
+        "x_span": 0.18674981167102322,
+        "z_span": 0.08690622465417971
+      },
+      "C02": {
+        "unique_waypoints": 30,
+        "x_span": 0.16894108311353964,
+        "z_span": 0.09568150401210407
+      },
+      "C03": {
+        "unique_waypoints": 30,
+        "x_span": 0.18186164968257246,
+        "z_span": 0.0930781785997161
+      },
+      "C04": {
+        "unique_waypoints": 30,
+        "x_span": 0.17723073765274744,
+        "z_span": 0.09052149235501633
+      },
+      "C05": {
+        "unique_waypoints": 30,
+        "x_span": 0.19599512090790133,
+        "z_span": 0.09367062693979375
+      },
+      "C06": {
+        "unique_waypoints": 30,
+        "x_span": 0.15585193918857265,
+        "z_span": 0.09884030670506594
+      },
+      "C07": {
+        "unique_waypoints": 30,
+        "x_span": 0.1382501995283164,
+        "z_span": 0.07492837402161684
+      },
+      "C08": {
+        "unique_waypoints": 30,
+        "x_span": 0.16205782525782964,
+        "z_span": 0.09822436958552308
+      },
+      "C09": {
+        "unique_waypoints": 30,
+        "x_span": 0.1536436268487258,
+        "z_span": 0.08785057490636894
+      },
+      "C10": {
+        "unique_waypoints": 30,
+        "x_span": 0.14914326608069117,
+        "z_span": 0.09492409192325946
+      }
+    },
+    "contact_steps": {
+      "box_obstacle_total": 356,
+      "contacts_are_diagnostic_only": true,
+      "robot_obstacle_total": 55668
+    },
+    "final_cylinder_tilt_degrees": {
+      "max": 90.000036,
+      "mean": 23.400099,
+      "median": 0.000236,
+      "min": 0.0
+    },
+    "target_xy_error_m": {
+      "max": 7.336658,
+      "mean": 0.628021,
+      "median": 0.053568,
+      "min": 0.002033
+    }
+  },
+  "failure_taxonomy": {
+    "multi_label": {
+      "cylinder_toppled": 26,
+      "policy_timeout": 56,
+      "target_miss": 47
+    },
+    "primary_exclusive": {
+      "cylinder_topple": 26,
+      "target_miss": 30
+    }
+  },
+  "generated_at_utc": "2026-08-08T00:33:14.468356+00:00",
+  "group": "simulation_control_group",
+  "inferential_unit": "participant-level policy",
+  "participant_edsr_statistics": {
+    "L": {
+      "ddof": 1,
+      "mean": 0.44,
+      "n_participants": 5,
+      "sample_standard_deviation": 0.089443
+    },
+    "R": {
+      "ddof": 1,
+      "mean": 0.44,
+      "n_participants": 5,
+      "sample_standard_deviation": 0.151658
+    },
+    "overall": {
+      "ddof": 1,
+      "mean": 0.44,
+      "n_participants": 10,
+      "sample_standard_deviation": 0.117379
+    }
+  },
+  "participant_results": [
+    {
+      "edsr": 0.5,
+      "participant_id": "C01",
+      "rollout_count": 10,
+      "route": "L",
+      "success_count": 5
+    },
+    {
+      "edsr": 0.5,
+      "participant_id": "C02",
+      "rollout_count": 10,
+      "route": "L",
+      "success_count": 5
+    },
+    {
+      "edsr": 0.5,
+      "participant_id": "C03",
+      "rollout_count": 10,
+      "route": "L",
+      "success_count": 5
+    },
+    {
+      "edsr": 0.4,
+      "participant_id": "C04",
+      "rollout_count": 10,
+      "route": "L",
+      "success_count": 4
+    },
+    {
+      "edsr": 0.3,
+      "participant_id": "C05",
+      "rollout_count": 10,
+      "route": "L",
+      "success_count": 3
+    },
+    {
+      "edsr": 0.2,
+      "participant_id": "C06",
+      "rollout_count": 10,
+      "route": "R",
+      "success_count": 2
+    },
+    {
+      "edsr": 0.4,
+      "participant_id": "C07",
+      "rollout_count": 10,
+      "route": "R",
+      "success_count": 4
+    },
+    {
+      "edsr": 0.5,
+      "participant_id": "C08",
+      "rollout_count": 10,
+      "route": "R",
+      "success_count": 5
+    },
+    {
+      "edsr": 0.5,
+      "participant_id": "C09",
+      "rollout_count": 10,
+      "route": "R",
+      "success_count": 5
+    },
+    {
+      "edsr": 0.6,
+      "participant_id": "C10",
+      "rollout_count": 10,
+      "route": "R",
+      "success_count": 6
+    }
+  ],
+  "raw_rollout_counts": {
+    "failures": 56,
+    "successes": 44,
+    "total": 100
+  },
+  "schema_version": 1,
+  "success_protocol": {
+    "contacts_are_diagnostic_only": true,
+    "criterion": "target_xy_error<=0.10 and box_settled and cylinder_tilt<=10deg",
+    "release_ee_z_m": 0.08,
+    "scope": "simulation_control_group",
+    "target_xy_tolerance_m": 0.1
+  },
+  "target_control_comparison": {
+    "control_L": {
+      "ddof": 1,
+      "mean": 0.44,
+      "n_participants": 5,
+      "sample_standard_deviation": 0.089443
+    },
+    "control_R": {
+      "ddof": 1,
+      "mean": 0.44,
+      "n_participants": 5,
+      "sample_standard_deviation": 0.151658
+    },
+    "control_minus_target_L_mean": 0.12,
+    "control_minus_target_R_mean": -0.02,
+    "control_minus_target_mean": 0.05,
+    "control_overall": {
+      "ddof": 1,
+      "mean": 0.44,
+      "n_participants": 10,
+      "sample_standard_deviation": 0.117379
+    },
+    "descriptive_only_no_independence_claim_for_100_rollouts": true,
+    "same_checkpoint_selection_rule": true,
+    "same_demo_budget": true,
+    "same_hdf5_schema_and_split": true,
+    "same_paired_rollout_manifest": true,
+    "same_physical_and_success_protocol": true,
+    "same_uniform_training_protocol": true,
+    "target_L": {
+      "ddof": 1,
+      "mean": 0.32,
+      "n_participants": 5,
+      "sample_standard_deviation": 0.178885
+    },
+    "target_R": {
+      "ddof": 1,
+      "mean": 0.46,
+      "n_participants": 5,
+      "sample_standard_deviation": 0.151658
+    },
+    "target_overall": {
+      "ddof": 1,
+      "mean": 0.39,
+      "n_participants": 10,
+      "sample_standard_deviation": 0.172884
+    }
+  }
+}

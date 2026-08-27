@@ -8,6 +8,18 @@ outputs
 /dataset/
 /logs/
 
+# Generated rebuttal experiment payloads (raw frames, videos, HDF5, checkpoints).
+# Small authoritative analyses and manifests are force-added explicitly.
+/rebuttal_dataset/
+
+# Local Codex/session artifacts and accidental shell sentinel files.
+/.codex/
+/\[
+/count=0
+/done
+/fi
+/bimodal_target_replays/.*.inprogress.*/
+
 # Pickle
 *.pkl
 

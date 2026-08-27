@@ -1,0 +1,155 @@
+{
+  "diagnostics": {
+    "contact_steps": {
+      "box_obstacle_total": 415,
+      "contacts_are_diagnostic_only": true,
+      "robot_obstacle_total": 934
+    },
+    "final_cylinder_tilt_degrees": {
+      "max": 90.000075,
+      "mean": 28.800113,
+      "median": 0.000313,
+      "min": 0.0
+    },
+    "realised_route_counts": {
+      "L": 46,
+      "R": 34,
+      "indeterminate": 20
+    },
+    "target_xy_error_m": {
+      "max": 7.404121,
+      "mean": 0.81065,
+      "median": 0.093172,
+      "min": 0.001676
+    }
+  },
+  "failure_taxonomy": {
+    "invalid_infrastructure_history_count": 0,
+    "multi_label": {
+      "box_not_settled": 0,
+      "cylinder_toppled": 32,
+      "grasp_setup_infrastructure_issue": 0,
+      "nonfinite_or_malformed_policy_action": 0,
+      "policy_timeout": 61,
+      "target_miss": 50
+    },
+    "primary_exclusive": {
+      "box_not_settled": 0,
+      "cylinder_topple": 32,
+      "grasp_setup_infrastructure_issue": 0,
+      "nonfinite_policy_action": 0,
+      "other_policy_failure": 0,
+      "policy_timeout": 0,
+      "target_miss": 29
+    }
+  },
+  "generated_at_utc": "2026-08-07T05:25:24.464984+00:00",
+  "group": "simulation_target_group",
+  "inferential_unit": "participant-level policy",
+  "participant_edsr_statistics": {
+    "L": {
+      "ddof": 1,
+      "mean": 0.32,
+      "n_participants": 5,
+      "sample_standard_deviation": 0.178885
+    },
+    "R": {
+      "ddof": 1,
+      "mean": 0.46,
+      "n_participants": 5,
+      "sample_standard_deviation": 0.151658
+    },
+    "overall": {
+      "ddof": 1,
+      "mean": 0.39,
+      "n_participants": 10,
+      "sample_standard_deviation": 0.172884
+    }
+  },
+  "participant_results": [
+    {
+      "edsr": 0.5,
+      "participant_id": "T01",
+      "rollout_count": 10,
+      "route": "L",
+      "success_count": 5
+    },
+    {
+      "edsr": 0.5,
+      "participant_id": "T02",
+      "rollout_count": 10,
+      "route": "L",
+      "success_count": 5
+    },
+    {
+      "edsr": 0.3,
+      "participant_id": "T03",
+      "rollout_count": 10,
+      "route": "L",
+      "success_count": 3
+    },
+    {
+      "edsr": 0.1,
+      "participant_id": "T04",
+      "rollout_count": 10,
+      "route": "L",
+      "success_count": 1
+    },
+    {
+      "edsr": 0.2,
+      "participant_id": "T05",
+      "rollout_count": 10,
+      "route": "L",
+      "success_count": 2
+    },
+    {
+      "edsr": 0.5,
+      "participant_id": "T06",
+      "rollout_count": 10,
+      "route": "R",
+      "success_count": 5
+    },
+    {
+      "edsr": 0.3,
+      "participant_id": "T07",
+      "rollout_count": 10,
+      "route": "R",
+      "success_count": 3
+    },
+    {
+      "edsr": 0.7,
+      "participant_id": "T08",
+      "rollout_count": 10,
+      "route": "R",
+      "success_count": 7
+    },
+    {
+      "edsr": 0.4,
+      "participant_id": "T09",
+      "rollout_count": 10,
+      "route": "R",
+      "success_count": 4
+    },
+    {
+      "edsr": 0.4,
+      "participant_id": "T10",
+      "rollout_count": 10,
+      "route": "R",
+      "success_count": 4
+    }
+  ],
+  "raw_rollout_counts": {
+    "failures": 61,
+    "successes": 39,
+    "total": 100
+  },
+  "rollouts_are_raw_paired_outcomes_not_independent_participant_samples": true,
+  "schema_version": 1,
+  "success_protocol": {
+    "control_protocol_was_not_modified": true,
+    "criterion": "target_xy_error<=0.10 and box_settled and cylinder_tilt<=10deg",
+    "scope": "simulation_target_group",
+    "shared_control_visible_target_xy_tolerance_m_unchanged": 0.03,
+    "target_xy_tolerance_m": 0.1
+  }
+}

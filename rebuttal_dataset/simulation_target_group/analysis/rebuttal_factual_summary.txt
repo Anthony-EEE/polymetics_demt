@@ -1,0 +1,7 @@
+Target participant-level EDSR (n=10 policies): 0.390000 ± 0.172884 sample SD (ddof=1).
+L participants (T01–T05, n=5): 0.320000 ± 0.178885.
+R participants (T06–T10, n=5): 0.460000 ± 0.151658.
+Raw paired rollout outcomes: 39/100 successful; these 100 outcomes are not treated as independent participant-level significance samples.
+Target outcomes use the user-authorised 0.10 m target-XY radius; the already-running Control protocol was not modified and retained its shared 0.03 m radius.
+Primary failure counts: {"box_not_settled": 0, "cylinder_topple": 32, "grasp_setup_infrastructure_issue": 0, "nonfinite_policy_action": 0, "other_policy_failure": 0, "policy_timeout": 0, "target_miss": 29}.
+No Target-versus-Control claim is made here because this file reports Target results only.

@@ -1,0 +1,17 @@
+Control-Bimodal route and success summary
+CB01: L=6, R=11, indeterminate=3, success_L=0.333333, success_R=0.727273, overall=0.5
+CB02: L=7, R=9, indeterminate=4, success_L=1.0, success_R=0.0, overall=0.35
+CB03: L=5, R=13, indeterminate=2, success_L=0.2, success_R=0.538462, overall=0.4
+CB04: L=3, R=14, indeterminate=3, success_L=0.0, success_R=0.357143, overall=0.25
+CB05: L=5, R=11, indeterminate=4, success_L=0.2, success_R=0.636364, overall=0.4
+CB06: L=1, R=15, indeterminate=4, success_L=0.0, success_R=0.533333, overall=0.4
+CB07: L=6, R=11, indeterminate=3, success_L=0.166667, success_R=0.090909, overall=0.1
+CB08: L=7, R=9, indeterminate=4, success_L=0.714286, success_R=0.222222, overall=0.35
+CB09: L=6, R=10, indeterminate=4, success_L=0.5, success_R=0.3, overall=0.3
+CB10: L=4, R=12, indeterminate=4, success_L=0.5, success_R=0.5, overall=0.4
+Pooled: {"n_L": 50, "n_R": 115, "n_indeterminate": 35, "overall_success_rate": 0.345, "p_L_all_200": 0.25, "p_L_minus_0p5": -0.25, "p_R_all_200": 0.575, "p_indeterminate_all_200": 0.175, "success_L": 22, "success_R": 47, "success_indeterminate": 0, "success_rate_L": 0.44, "success_rate_R": 0.408696, "success_rate_indeterminate": 0.0, "success_total": 69}
+Participant-policy overall success mean ± sample SD: 0.345 ± 0.109163 (ddof=1)
+Matched CBxx-Bxx overall-success difference mean ± sample SD: -0.02 ± 0.178263 (ddof=1)
+The 600 memberships reuse 300 underlying Control trajectories with unequal multiplicity.
+The 200 matched rollout keys are descriptive common-random-number pairs, not 200 independent participant observations.
+Repeat gate: the original 10 micrometre / 0.01 degree gate failed for 2 of 100 pairs; a user-authorized post-rollout 2 mm / 3 degree engineering envelope passed all 100 pairs. No rollout was rerun or replaced.

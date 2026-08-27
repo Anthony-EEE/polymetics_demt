@@ -1,0 +1,75 @@
+{
+  "activated_output_csv": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/bimodal_target_replays/seed_20260809/R/intervention.csv",
+  "backup_csv": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/bimodal_target_replays/seed_20260809/R/intervention_y_positive_original.csv",
+  "generated_at_utc": "2026-08-09T16:01:13.567029+00:00",
+  "gripper": "command and width interpolated from source; actual PyBullet width recorded",
+  "interpolation": {
+    "max_planned_joint_step_rad": 0.01,
+    "maximum_subdivisions_used": 64,
+    "minimum_subdivisions_per_source_transition": 4,
+    "transitions_with_extra_adaptive_subdivision": 24
+  },
+  "mirrored_targets": {
+    "ee_y_end_m": -0.4861912454804944,
+    "ee_y_max_m": 0.0065685541034962635,
+    "ee_y_min_m": -0.5317780286891495,
+    "ee_y_start_m": 0.006009991833143007
+  },
+  "output": {
+    "duration_seconds": 61.46666666666667,
+    "joint_max_rad": [
+      0.30553240485914107,
+      0.6468987859056713,
+      0.09757811907215859,
+      -1.3065092964839435,
+      0.3030332598581304,
+      2.9413434654851813,
+      1.3294786231360414
+    ],
+    "joint_min_rad": [
+      -0.5902735206429688,
+      -0.16255718359863428,
+      -0.11783831778526035,
+      -2.5213255830353174,
+      -0.2530696083349412,
+      2.121084765856296,
+      -0.1453309018221223
+    ],
+    "max_adjacent_joint_step_rad": 0.009922553752038987,
+    "max_implied_joint_velocity_rad_s": 0.2976766125611696,
+    "row_count": 1845
+  },
+  "output_csv_sha256": "5a01e343c71029cc369d17c6769a047faf8bcecc219d05c3cc55e312535999f5",
+  "pybullet_replay": {
+    "arm_max_velocity_argument_rad_s": 0.5,
+    "max_ee_tracking_error_m": 0.0012601519586249632,
+    "mean_ee_tracking_error_m": 1.3657926208242303e-05,
+    "output_hz": 30.0
+  },
+  "schema_version": 1,
+  "source": {
+    "duration_seconds": 11.675,
+    "ee_y_end_m": 0.4861912454804944,
+    "ee_y_max_m": 0.5317780286891495,
+    "ee_y_min_m": -0.0065685541034962635,
+    "ee_y_start_m": -0.006009991833143007,
+    "row_count": 352
+  },
+  "source_csv": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/bimodal_target_replays/seed_20260809/R/intervention_y_positive_original.csv",
+  "source_csv_sha256": "dc54453821e41473a9892f2657b3bb08968a95dae72c69b4eb696ce39e90c1bb",
+  "transform": {
+    "base_position_is_mirrored_with_the_workspace": true,
+    "mirrored_robot_base_position": [
+      0.0,
+      -0.15,
+      0.0
+    ],
+    "orientation": "unchanged world quaternion; shortest-path SLERP between samples",
+    "position": "world Cartesian y := -y; x and z unchanged",
+    "source_robot_base_position": [
+      0.0,
+      0.15,
+      0.0
+    ]
+  }
+}

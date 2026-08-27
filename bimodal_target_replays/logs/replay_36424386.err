@@ -1,0 +1,14 @@
+pybullet build time: Nov 28 2023 23:51:11
+/users/k23114984/code/arcap_policy/STEP2_train_policy/robomimic/utils/file_utils.py:247: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  ckpt_dict = torch.load(ckpt_path)
+/users/k23114984/code/arcap_policy/STEP2_train_policy/robomimic/utils/file_utils.py:247: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  ckpt_dict = torch.load(ckpt_path)
+Replay export failed; partial diagnostics retained at /cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/bimodal_target_replays/.seed_20260809.inprogress.1031901
+Traceback (most recent call last):
+  File "examples/rebuttal_bimodal_pipeline/export_success_replays.py", line 597, in <module>
+    main()
+  File "examples/rebuttal_bimodal_pipeline/export_success_replays.py", line 558, in main
+    reproductions[route] = reproduce_one(
+  File "examples/rebuttal_bimodal_pipeline/export_success_replays.py", line 416, in reproduce_one
+    raise RuntimeError(
+RuntimeError: Reproduction diverged for B03/case8/repeat0: expected successful R, got success=False, route=R

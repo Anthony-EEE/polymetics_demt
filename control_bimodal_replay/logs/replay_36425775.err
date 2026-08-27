@@ -1,0 +1,14 @@
+pybullet build time: Nov 28 2023 23:51:11
+/users/k23114984/code/arcap_policy/STEP2_train_policy/robomimic/utils/file_utils.py:247: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  ckpt_dict = torch.load(ckpt_path)
+Export failed; diagnostics retained at /cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/control_bimodal_replay/.min_error_R.inprogress.311392
+Traceback (most recent call last):
+  File "examples/rebuttal_control_bimodal_pipeline/export_min_error_r_replay.py", line 282, in <module>
+    main()
+  File "examples/rebuttal_control_bimodal_pipeline/export_min_error_r_replay.py", line 215, in main
+    reproduction = replay.reproduce_one(
+  File "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/examples/rebuttal_bimodal_pipeline/export_success_replays.py", line 374, in reproduce_one
+    PRE_REPRODUCTION_HOOK(
+  File "examples/rebuttal_control_bimodal_pipeline/export_min_error_r_replay.py", line 101, in warm_up_formal_prefix
+    raise RuntimeError(
+RuntimeError: Formal-prefix history diverged at case0/repeat1: expected success=False, route=indeterminate; got success=False, route=R

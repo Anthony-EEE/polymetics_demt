@@ -1,0 +1,1185 @@
+{
+  "candidate_generation": {
+    "candidate_count_examined": 11,
+    "candidate_seed_rule": "SeedSequence([evaluation_seed, candidate_index, 0x53504543])",
+    "deterministic_replenishment_rule": "scan candidate_index from zero; accept iff common scripted grasp/lift preflight passes; continue until ten distinct accepted cube starts",
+    "policy_blind": true,
+    "rejected_candidate_count": 1
+  },
+  "canonical_content_sha256": "da7ba38018a22fc4f4329a1a5a555e67b58e6f4cd011115cbd64b93eaa0585e8",
+  "checkpoint_gate": {
+    "model_validation_report": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_target_group/models/model_validation_report.json",
+    "model_validation_report_sha256": "6fa37fd86466df179a18423f81d298a4741b15043bbb028cffe9db74ef88b890",
+    "selected_checkpoints_manifest": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_target_group/models/selected_checkpoints_manifest.json",
+    "selected_checkpoints_manifest_sha256": "a06b1784234ef4f6e07f23b16fc82781e95c29a83553474b8bccf15ba870ea93"
+  },
+  "eval_case_count": 10,
+  "eval_cases": [
+    {
+      "candidate_index": 0,
+      "candidate_seed": 1910176314,
+      "eval_case_id": 0,
+      "evaluation_seed": 20260807,
+      "point_cloud_seed": 1107884018,
+      "runtime_seed": 1878538088,
+      "setup_preflight": {
+        "details": {
+          "box_position_after_lift": [
+            0.34368427913499006,
+            -0.0077062086181522394,
+            0.22989812388761893
+          ],
+          "ee_position_after_lift": [
+            0.3452209224390854,
+            -0.0011989429866180673,
+            0.25304683524449023
+          ],
+          "grasped": true,
+          "reason": null,
+          "required_waypoints": {
+            "grasp": [
+              0.3450080702744313,
+              -0.0012556835332561793,
+              0.04
+            ],
+            "pre_grasp": [
+              0.3450080702744313,
+              -0.0012556835332561793,
+              0.16
+            ],
+            "scripted_ee_initial": [
+              0.3450080702744313,
+              -0.0012556835332561793,
+              0.125
+            ],
+            "transport_start": [
+              0.3450080702744313,
+              -0.0012556835332561793,
+              0.25336196983336373
+            ]
+          },
+          "stage": "scripted_setup",
+          "transport_height_error": 0.0003151345888735002,
+          "transport_height_reached": true,
+          "transport_height_tolerance": 0.015,
+          "transport_start": [
+            0.3450080702744313,
+            -0.0012556835332561793,
+            0.25336196983336373
+          ]
+        },
+        "success": true
+      },
+      "spec": {
+        "attempt_index": 0,
+        "box_initial_position": [
+          0.3450080702744313,
+          -0.0012556835332561793,
+          0.025
+        ],
+        "box_initial_quaternion_xyzw": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "candidate_index": 0,
+        "candidate_seed": 1910176314,
+        "condition": "L",
+        "group": "simulation_target_group",
+        "middle_waypoint": [
+          0.19843355696505527,
+          0.25,
+          0.25336196983336373
+        ],
+        "release_pose": [
+          0.5,
+          0.5,
+          0.08
+        ],
+        "route_waypoint_used_during_rollout": false,
+        "scripted_ee_initial_position": [
+          0.3450080702744313,
+          -0.0012556835332561793,
+          0.125
+        ],
+        "scripted_transport_used_during_rollout": false,
+        "transport_z": 0.25336196983336373,
+        "waypoint_sampling": {
+          "radial_latent": 0.2676980939589626,
+          "theta_rad": 1.629345056778909,
+          "x_delta": -0.001566443034944745,
+          "z_delta": 0.013361969833363725
+        },
+        "waypoint_x_center": 0.2
+      }
+    },
+    {
+      "candidate_index": 1,
+      "candidate_seed": 863878783,
+      "eval_case_id": 1,
+      "evaluation_seed": 20260807,
+      "point_cloud_seed": 2709106138,
+      "runtime_seed": 3452423369,
+      "setup_preflight": {
+        "details": {
+          "box_position_after_lift": [
+            0.7108303818977507,
+            -0.0006688813514337873,
+            0.21474525520913393
+          ],
+          "ee_position_after_lift": [
+            0.7107401615747679,
+            0.003454713168839932,
+            0.21976337548042693
+          ],
+          "grasped": true,
+          "reason": null,
+          "required_waypoints": {
+            "grasp": [
+              0.7107887472186456,
+              0.0034382582091141162,
+              0.04
+            ],
+            "pre_grasp": [
+              0.7107887472186456,
+              0.0034382582091141162,
+              0.16
+            ],
+            "scripted_ee_initial": [
+              0.7107887472186456,
+              0.0034382582091141162,
+              0.125
+            ],
+            "transport_start": [
+              0.7107887472186456,
+              0.0034382582091141162,
+              0.22004497003871779
+            ]
+          },
+          "stage": "scripted_setup",
+          "transport_height_error": 0.0002815945582908541,
+          "transport_height_reached": true,
+          "transport_height_tolerance": 0.015,
+          "transport_start": [
+            0.7107887472186456,
+            0.0034382582091141162,
+            0.22004497003871779
+          ]
+        },
+        "success": true
+      },
+      "spec": {
+        "attempt_index": 1,
+        "box_initial_position": [
+          0.7107887472186456,
+          0.0034382582091141162,
+          0.025
+        ],
+        "box_initial_quaternion_xyzw": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "candidate_index": 1,
+        "candidate_seed": 863878783,
+        "condition": "L",
+        "group": "simulation_target_group",
+        "middle_waypoint": [
+          0.22888848257465555,
+          0.25,
+          0.22004497003871779
+        ],
+        "release_pose": [
+          0.5,
+          0.5,
+          0.08
+        ],
+        "route_waypoint_used_during_rollout": false,
+        "scripted_ee_initial_position": [
+          0.7107887472186456,
+          0.0034382582091141162,
+          0.125
+        ],
+        "scripted_transport_used_during_rollout": false,
+        "transport_z": 0.22004497003871779,
+        "waypoint_sampling": {
+          "radial_latent": 0.49268218036467054,
+          "theta_rad": 5.338936159405595,
+          "x_delta": 0.028888482574655545,
+          "z_delta": -0.019955029961282195
+        },
+        "waypoint_x_center": 0.2
+      }
+    },
+    {
+      "candidate_index": 2,
+      "candidate_seed": 668408665,
+      "eval_case_id": 2,
+      "evaluation_seed": 20260807,
+      "point_cloud_seed": 565696216,
+      "runtime_seed": 4177963337,
+      "setup_preflight": {
+        "details": {
+          "box_position_after_lift": [
+            0.36593092380604764,
+            0.004212468415453075,
+            0.2519400437912486
+          ],
+          "ee_position_after_lift": [
+            0.38719715174464636,
+            0.0016839976708250173,
+            0.2669986710139093
+          ],
+          "grasped": true,
+          "reason": null,
+          "required_waypoints": {
+            "grasp": [
+              0.38698859030554855,
+              0.0016484584055770496,
+              0.04
+            ],
+            "pre_grasp": [
+              0.38698859030554855,
+              0.0016484584055770496,
+              0.16
+            ],
+            "scripted_ee_initial": [
+              0.38698859030554855,
+              0.0016484584055770496,
+              0.125
+            ],
+            "transport_start": [
+              0.38698859030554855,
+              0.0016484584055770496,
+              0.26728656004969953
+            ]
+          },
+          "stage": "scripted_setup",
+          "transport_height_error": 0.0002878890357902453,
+          "transport_height_reached": true,
+          "transport_height_tolerance": 0.015,
+          "transport_start": [
+            0.38698859030554855,
+            0.0016484584055770496,
+            0.26728656004969953
+          ]
+        },
+        "success": true
+      },
+      "spec": {
+        "attempt_index": 2,
+        "box_initial_position": [
+          0.38698859030554855,
+          0.0016484584055770496,
+          0.025
+        ],
+        "box_initial_quaternion_xyzw": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "candidate_index": 2,
+        "candidate_seed": 668408665,
+        "condition": "L",
+        "group": "simulation_target_group",
+        "middle_waypoint": [
+          0.15792333016657312,
+          0.25,
+          0.26728656004969953
+        ],
+        "release_pose": [
+          0.5,
+          0.5,
+          0.08
+        ],
+        "route_waypoint_used_during_rollout": false,
+        "scripted_ee_initial_position": [
+          0.38698859030554855,
+          0.0016484584055770496,
+          0.125
+        ],
+        "scripted_transport_used_during_rollout": false,
+        "transport_z": 0.26728656004969953,
+        "waypoint_sampling": {
+          "radial_latent": 0.6891060572694631,
+          "theta_rad": 2.227611654846781,
+          "x_delta": -0.04207666983342688,
+          "z_delta": 0.02728656004969951
+        },
+        "waypoint_x_center": 0.2
+      }
+    },
+    {
+      "candidate_index": 3,
+      "candidate_seed": 4203767542,
+      "eval_case_id": 3,
+      "evaluation_seed": 20260807,
+      "point_cloud_seed": 3914908075,
+      "runtime_seed": 2698287717,
+      "setup_preflight": {
+        "details": {
+          "box_position_after_lift": [
+            0.6775662136732219,
+            -0.008330177107171396,
+            0.19523659310544222
+          ],
+          "ee_position_after_lift": [
+            0.6774796524724309,
+            -0.004206146981523773,
+            0.20025566172698694
+          ],
+          "grasped": true,
+          "reason": null,
+          "required_waypoints": {
+            "grasp": [
+              0.6775288595650777,
+              -0.0042255256565880694,
+              0.04
+            ],
+            "pre_grasp": [
+              0.6775288595650777,
+              -0.0042255256565880694,
+              0.16
+            ],
+            "scripted_ee_initial": [
+              0.6775288595650777,
+              -0.0042255256565880694,
+              0.125
+            ],
+            "transport_start": [
+              0.6775288595650777,
+              -0.0042255256565880694,
+              0.2005338247140125
+            ]
+          },
+          "stage": "scripted_setup",
+          "transport_height_error": 0.0002781629870255431,
+          "transport_height_reached": true,
+          "transport_height_tolerance": 0.015,
+          "transport_start": [
+            0.6775288595650777,
+            -0.0042255256565880694,
+            0.2005338247140125
+          ]
+        },
+        "success": true
+      },
+      "spec": {
+        "attempt_index": 3,
+        "box_initial_position": [
+          0.6775288595650777,
+          -0.0042255256565880694,
+          0.025
+        ],
+        "box_initial_quaternion_xyzw": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "candidate_index": 3,
+        "candidate_seed": 4203767542,
+        "condition": "L",
+        "group": "simulation_target_group",
+        "middle_waypoint": [
+          0.17911768737985242,
+          0.25,
+          0.2005338247140125
+        ],
+        "release_pose": [
+          0.5,
+          0.5,
+          0.08
+        ],
+        "route_waypoint_used_during_rollout": false,
+        "scripted_ee_initial_position": [
+          0.6775288595650777,
+          -0.0042255256565880694,
+          0.125
+        ],
+        "scripted_transport_used_during_rollout": false,
+        "transport_z": 0.2005338247140125,
+        "waypoint_sampling": {
+          "radial_latent": 0.816479451497877,
+          "theta_rad": 4.453754778939342,
+          "x_delta": -0.020882312620147576,
+          "z_delta": -0.03946617528598752
+        },
+        "waypoint_x_center": 0.2
+      }
+    },
+    {
+      "candidate_index": 4,
+      "candidate_seed": 2586403285,
+      "eval_case_id": 4,
+      "evaluation_seed": 20260807,
+      "point_cloud_seed": 1628201767,
+      "runtime_seed": 922288124,
+      "setup_preflight": {
+        "details": {
+          "box_position_after_lift": [
+            0.44396926146203985,
+            -0.026656278508066133,
+            0.2664890786202443
+          ],
+          "ee_position_after_lift": [
+            0.44406387546089543,
+            -0.006591694092126181,
+            0.2717842788240897
+          ],
+          "grasped": true,
+          "reason": null,
+          "required_waypoints": {
+            "grasp": [
+              0.443886563486824,
+              -0.006589107342687635,
+              0.04
+            ],
+            "pre_grasp": [
+              0.443886563486824,
+              -0.006589107342687635,
+              0.16
+            ],
+            "scripted_ee_initial": [
+              0.443886563486824,
+              -0.006589107342687635,
+              0.125
+            ],
+            "transport_start": [
+              0.443886563486824,
+              -0.006589107342687635,
+              0.27207460618571
+            ]
+          },
+          "stage": "scripted_setup",
+          "transport_height_error": 0.0002903273616203239,
+          "transport_height_reached": true,
+          "transport_height_tolerance": 0.015,
+          "transport_start": [
+            0.443886563486824,
+            -0.006589107342687635,
+            0.27207460618571
+          ]
+        },
+        "success": true
+      },
+      "spec": {
+        "attempt_index": 4,
+        "box_initial_position": [
+          0.443886563486824,
+          -0.006589107342687635,
+          0.025
+        ],
+        "box_initial_quaternion_xyzw": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "candidate_index": 4,
+        "candidate_seed": 2586403285,
+        "condition": "L",
+        "group": "simulation_target_group",
+        "middle_waypoint": [
+          0.25425010788230434,
+          0.25,
+          0.27207460618571
+        ],
+        "release_pose": [
+          0.5,
+          0.5,
+          0.08
+        ],
+        "route_waypoint_used_during_rollout": false,
+        "scripted_ee_initial_position": [
+          0.443886563486824,
+          -0.006589107342687635,
+          0.125
+        ],
+        "scripted_transport_used_during_rollout": false,
+        "transport_z": 0.27207460618571,
+        "waypoint_sampling": {
+          "radial_latent": 0.840130683472232,
+          "theta_rad": 0.8688119444389265,
+          "x_delta": 0.05425010788230434,
+          "z_delta": 0.03207460618570998
+        },
+        "waypoint_x_center": 0.2
+      }
+    },
+    {
+      "candidate_index": 5,
+      "candidate_seed": 2793621319,
+      "eval_case_id": 5,
+      "evaluation_seed": 20260807,
+      "point_cloud_seed": 1983234876,
+      "runtime_seed": 1185315727,
+      "setup_preflight": {
+        "details": {
+          "box_position_after_lift": [
+            0.24356393791918182,
+            -0.01598499751801334,
+            0.19263513888454717
+          ],
+          "ee_position_after_lift": [
+            0.2495464268297321,
+            0.003994663750668697,
+            0.211885924907668
+          ],
+          "grasped": true,
+          "reason": null,
+          "required_waypoints": {
+            "grasp": [
+              0.24931706407548887,
+              0.004032658306693113,
+              0.04
+            ],
+            "pre_grasp": [
+              0.24931706407548887,
+              0.004032658306693113,
+              0.16
+            ],
+            "scripted_ee_initial": [
+              0.24931706407548887,
+              0.004032658306693113,
+              0.125
+            ],
+            "transport_start": [
+              0.24931706407548887,
+              0.004032658306693113,
+              0.21220373794969977
+            ]
+          },
+          "stage": "scripted_setup",
+          "transport_height_error": 0.0003178130420317671,
+          "transport_height_reached": true,
+          "transport_height_tolerance": 0.015,
+          "transport_start": [
+            0.24931706407548887,
+            0.004032658306693113,
+            0.21220373794969977
+          ]
+        },
+        "success": true
+      },
+      "spec": {
+        "attempt_index": 5,
+        "box_initial_position": [
+          0.24931706407548887,
+          0.004032658306693113,
+          0.025
+        ],
+        "box_initial_quaternion_xyzw": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "candidate_index": 5,
+        "candidate_seed": 2793621319,
+        "condition": "L",
+        "group": "simulation_target_group",
+        "middle_waypoint": [
+          0.13377993843862318,
+          0.25,
+          0.21220373794969977
+        ],
+        "release_pose": [
+          0.5,
+          0.5,
+          0.08
+        ],
+        "route_waypoint_used_during_rollout": false,
+        "scripted_ee_initial_position": [
+          0.24931706407548887,
+          0.004032658306693113,
+          0.125
+        ],
+        "scripted_transport_used_during_rollout": false,
+        "transport_z": 0.21220373794969977,
+        "waypoint_sampling": {
+          "radial_latent": 0.8646169839338331,
+          "theta_rad": 3.8399661849608573,
+          "x_delta": -0.06622006156137684,
+          "z_delta": -0.027796262050300235
+        },
+        "waypoint_x_center": 0.2
+      }
+    },
+    {
+      "candidate_index": 6,
+      "candidate_seed": 1704851640,
+      "eval_case_id": 6,
+      "evaluation_seed": 20260807,
+      "point_cloud_seed": 955944105,
+      "runtime_seed": 2652769912,
+      "setup_preflight": {
+        "details": {
+          "box_position_after_lift": [
+            0.503412635949592,
+            -0.0191970092620881,
+            0.21359961644267844
+          ],
+          "ee_position_after_lift": [
+            0.503448299088146,
+            0.0008677751876540683,
+            0.21868394755564996
+          ],
+          "grasped": true,
+          "reason": null,
+          "required_waypoints": {
+            "grasp": [
+              0.5033189196217946,
+              0.0008984693891715568,
+              0.04
+            ],
+            "pre_grasp": [
+              0.5033189196217946,
+              0.0008984693891715568,
+              0.16
+            ],
+            "scripted_ee_initial": [
+              0.5033189196217946,
+              0.0008984693891715568,
+              0.125
+            ],
+            "transport_start": [
+              0.5033189196217946,
+              0.0008984693891715568,
+              0.21897540518518657
+            ]
+          },
+          "stage": "scripted_setup",
+          "transport_height_error": 0.00029145762953661225,
+          "transport_height_reached": true,
+          "transport_height_tolerance": 0.015,
+          "transport_start": [
+            0.5033189196217946,
+            0.0008984693891715568,
+            0.21897540518518657
+          ]
+        },
+        "success": true
+      },
+      "spec": {
+        "attempt_index": 6,
+        "box_initial_position": [
+          0.5033189196217946,
+          0.0008984693891715568,
+          0.025
+        ],
+        "box_initial_quaternion_xyzw": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "candidate_index": 6,
+        "candidate_seed": 1704851640,
+        "condition": "L",
+        "group": "simulation_target_group",
+        "middle_waypoint": [
+          0.23932867240026562,
+          0.25,
+          0.21897540518518657
+        ],
+        "release_pose": [
+          0.5,
+          0.5,
+          0.08
+        ],
+        "route_waypoint_used_during_rollout": false,
+        "scripted_ee_initial_position": [
+          0.5033189196217946,
+          0.0008984693891715568,
+          0.125
+        ],
+        "scripted_transport_used_during_rollout": false,
+        "transport_z": 0.21897540518518657,
+        "waypoint_sampling": {
+          "radial_latent": 0.5757498433587049,
+          "theta_rad": 5.4643689100282336,
+          "x_delta": 0.03932867240026561,
+          "z_delta": -0.02102459481481343
+        },
+        "waypoint_x_center": 0.2
+      }
+    },
+    {
+      "candidate_index": 7,
+      "candidate_seed": 1573682152,
+      "eval_case_id": 7,
+      "evaluation_seed": 20260807,
+      "point_cloud_seed": 2737413964,
+      "runtime_seed": 879307868,
+      "setup_preflight": {
+        "details": {
+          "box_position_after_lift": [
+            0.7086610725607021,
+            -0.0005155936298289235,
+            0.23125899049207305
+          ],
+          "ee_position_after_lift": [
+            0.7085696136180079,
+            0.0036079547265340443,
+            0.23627736102568395
+          ],
+          "grasped": true,
+          "reason": null,
+          "required_waypoints": {
+            "grasp": [
+              0.7086140971276256,
+              0.003591673960758617,
+              0.04
+            ],
+            "pre_grasp": [
+              0.7086140971276256,
+              0.003591673960758617,
+              0.16
+            ],
+            "scripted_ee_initial": [
+              0.7086140971276256,
+              0.003591673960758617,
+              0.125
+            ],
+            "transport_start": [
+              0.7086140971276256,
+              0.003591673960758617,
+              0.2365618192751508
+            ]
+          },
+          "stage": "scripted_setup",
+          "transport_height_error": 0.0002844582494668513,
+          "transport_height_reached": true,
+          "transport_height_tolerance": 0.015,
+          "transport_start": [
+            0.7086140971276256,
+            0.003591673960758617,
+            0.2365618192751508
+          ]
+        },
+        "success": true
+      },
+      "spec": {
+        "attempt_index": 7,
+        "box_initial_position": [
+          0.7086140971276256,
+          0.003591673960758617,
+          0.025
+        ],
+        "box_initial_quaternion_xyzw": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "candidate_index": 7,
+        "candidate_seed": 1573682152,
+        "condition": "L",
+        "group": "simulation_target_group",
+        "middle_waypoint": [
+          0.29280514145269587,
+          0.25,
+          0.2365618192751508
+        ],
+        "release_pose": [
+          0.5,
+          0.5,
+          0.08
+        ],
+        "route_waypoint_used_during_rollout": false,
+        "scripted_ee_initial_position": [
+          0.7086140971276256,
+          0.003591673960758617,
+          0.125
+        ],
+        "scripted_transport_used_during_rollout": false,
+        "transport_z": 0.2365618192751508,
+        "waypoint_sampling": {
+          "radial_latent": 0.9305954344849207,
+          "theta_rad": 6.209225838321304,
+          "x_delta": 0.09280514145269585,
+          "z_delta": -0.0034381807248491936
+        },
+        "waypoint_x_center": 0.2
+      }
+    },
+    {
+      "candidate_index": 8,
+      "candidate_seed": 518236180,
+      "eval_case_id": 8,
+      "evaluation_seed": 20260807,
+      "point_cloud_seed": 1548521726,
+      "runtime_seed": 1509524136,
+      "setup_preflight": {
+        "details": {
+          "box_position_after_lift": [
+            0.47017309168608784,
+            -0.02663204034912191,
+            0.22005582538712887
+          ],
+          "ee_position_after_lift": [
+            0.4702079869995445,
+            -0.0065664459955423376,
+            0.22515057397017232
+          ],
+          "grasped": true,
+          "reason": null,
+          "required_waypoints": {
+            "grasp": [
+              0.4700606928125783,
+              -0.006549946929864796,
+              0.04
+            ],
+            "pre_grasp": [
+              0.4700606928125783,
+              -0.006549946929864796,
+              0.16
+            ],
+            "scripted_ee_initial": [
+              0.4700606928125783,
+              -0.006549946929864796,
+              0.125
+            ],
+            "transport_start": [
+              0.4700606928125783,
+              -0.006549946929864796,
+              0.2254348629171193
+            ]
+          },
+          "stage": "scripted_setup",
+          "transport_height_error": 0.0002842889469469867,
+          "transport_height_reached": true,
+          "transport_height_tolerance": 0.015,
+          "transport_start": [
+            0.4700606928125783,
+            -0.006549946929864796,
+            0.2254348629171193
+          ]
+        },
+        "success": true
+      },
+      "spec": {
+        "attempt_index": 8,
+        "box_initial_position": [
+          0.4700606928125783,
+          -0.006549946929864796,
+          0.025
+        ],
+        "box_initial_quaternion_xyzw": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "candidate_index": 8,
+        "candidate_seed": 518236180,
+        "condition": "L",
+        "group": "simulation_target_group",
+        "middle_waypoint": [
+          0.21106876236240807,
+          0.25,
+          0.2254348629171193
+        ],
+        "release_pose": [
+          0.5,
+          0.5,
+          0.08
+        ],
+        "route_waypoint_used_during_rollout": false,
+        "scripted_ee_initial_position": [
+          0.4700606928125783,
+          -0.006549946929864796,
+          0.125
+        ],
+        "scripted_transport_used_during_rollout": false,
+        "transport_z": 0.2254348629171193,
+        "waypoint_sampling": {
+          "radial_latent": 0.3116232297515518,
+          "theta_rad": 5.075513737763248,
+          "x_delta": 0.011068762362408066,
+          "z_delta": -0.014565137082880677
+        },
+        "waypoint_x_center": 0.2
+      }
+    },
+    {
+      "candidate_index": 10,
+      "candidate_seed": 1070628260,
+      "eval_case_id": 9,
+      "evaluation_seed": 20260807,
+      "point_cloud_seed": 4000695573,
+      "runtime_seed": 4013452031,
+      "setup_preflight": {
+        "details": {
+          "box_position_after_lift": [
+            0.786708882010089,
+            -0.01871946261213791,
+            0.2495716666198997
+          ],
+          "ee_position_after_lift": [
+            0.7868210047156757,
+            0.0013778418374161287,
+            0.25452885563949007
+          ],
+          "grasped": true,
+          "reason": null,
+          "required_waypoints": {
+            "grasp": [
+              0.7883838499894298,
+              0.001061106512559749,
+              0.04
+            ],
+            "pre_grasp": [
+              0.7883838499894298,
+              0.001061106512559749,
+              0.16
+            ],
+            "scripted_ee_initial": [
+              0.7883838499894298,
+              0.001061106512559749,
+              0.125
+            ],
+            "transport_start": [
+              0.7883838499894298,
+              0.001061106512559749,
+              0.2551811954073943
+            ]
+          },
+          "stage": "scripted_setup",
+          "transport_height_error": 0.000652339767904242,
+          "transport_height_reached": true,
+          "transport_height_tolerance": 0.015,
+          "transport_start": [
+            0.7883838499894298,
+            0.001061106512559749,
+            0.2551811954073943
+          ]
+        },
+        "success": true
+      },
+      "spec": {
+        "attempt_index": 10,
+        "box_initial_position": [
+          0.7883838499894298,
+          0.001061106512559749,
+          0.025
+        ],
+        "box_initial_quaternion_xyzw": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "candidate_index": 10,
+        "candidate_seed": 1070628260,
+        "condition": "L",
+        "group": "simulation_target_group",
+        "middle_waypoint": [
+          0.1607672027437378,
+          0.25,
+          0.2551811954073943
+        ],
+        "release_pose": [
+          0.5,
+          0.5,
+          0.08
+        ],
+        "route_waypoint_used_during_rollout": false,
+        "scripted_ee_initial_position": [
+          0.7883838499894298,
+          0.001061106512559749,
+          0.125
+        ],
+        "scripted_transport_used_during_rollout": false,
+        "transport_z": 0.2551811954073943,
+        "waypoint_sampling": {
+          "radial_latent": 0.4960934545567937,
+          "theta_rad": 2.4829681262026857,
+          "x_delta": -0.039232797256262206,
+          "z_delta": 0.015181195407394312
+        },
+        "waypoint_x_center": 0.2
+      }
+    }
+  ],
+  "evaluation_seed": 20260807,
+  "frozen_at_utc": "2026-08-07T04:22:04.171202+00:00",
+  "frozen_task": {
+    "box_initial_quaternion_xyzw": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "box_initial_z": 0.025,
+    "box_start_x_bounds": [
+      0.2,
+      0.8
+    ],
+    "box_start_y_bounds": [
+      -0.01,
+      0.01
+    ],
+    "contacts_are_diagnostic_only": true,
+    "cylinder_upright_tolerance_degrees": 10.0,
+    "fixed_gripper_pitch_degrees": -10.0,
+    "obstacle_height": 0.3,
+    "obstacle_initial_quaternion_xyzw": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "obstacle_radius": 0.04,
+    "obstacle_xy": [
+      0.5,
+      0.25
+    ],
+    "panda_base_position": [
+      0.0,
+      0.15,
+      0.0
+    ],
+    "release_ee_z_m": 0.08,
+    "shared_target_xy_tolerance_m_unchanged": 0.03,
+    "success_criterion": "target_xy_error<=0.10 and box_settled and cylinder_tilt<=10deg",
+    "success_protocol_scope": "simulation_target_group",
+    "target_xy": [
+      0.5,
+      0.5
+    ],
+    "target_xy_tolerance_m": 0.1,
+    "transport_start_height_tolerance_m": 0.015
+  },
+  "group": "simulation_target_group",
+  "paired_contract": {
+    "control_protocol_was_not_modified": true,
+    "policy_inference_boundary": "after validated scripted fixed-orientation grasp and lift",
+    "policy_responsibility": "obstacle avoidance, transport, release",
+    "same_start_geometry_can_be_reused_by_control": true,
+    "same_ten_specs_for_every_target_policy": true,
+    "target_success_threshold_is_target_only": true
+  },
+  "rejected_candidates": [
+    {
+      "candidate_index": 9,
+      "candidate_seed": 1440405902,
+      "setup_preflight": {
+        "details": {
+          "box_position_after_lift": [
+            0.38027515955018076,
+            0.008924835983965615,
+            0.034989860432324535
+          ],
+          "ee_position_after_lift": [
+            0.3739209416837716,
+            -0.009647096004493174,
+            0.21022146662682514
+          ],
+          "grasped": false,
+          "reason": "box_not_lifted",
+          "required_waypoints": {
+            "grasp": [
+              0.3737379787783822,
+              -0.009700121088255957,
+              0.04
+            ],
+            "pre_grasp": [
+              0.3737379787783822,
+              -0.009700121088255957,
+              0.16
+            ],
+            "scripted_ee_initial": [
+              0.3737379787783822,
+              -0.009700121088255957,
+              0.125
+            ],
+            "transport_start": [
+              0.3737379787783822,
+              -0.009700121088255957,
+              0.21053320488629024
+            ]
+          },
+          "stage": "scripted_setup",
+          "transport_height_error": 0.00031173825946509415,
+          "transport_height_reached": true,
+          "transport_height_tolerance": 0.015,
+          "transport_start": [
+            0.3737379787783822,
+            -0.009700121088255957,
+            0.21053320488629024
+          ]
+        },
+        "success": false
+      },
+      "spec": {
+        "attempt_index": 9,
+        "box_initial_position": [
+          0.3737379787783822,
+          -0.009700121088255957,
+          0.025
+        ],
+        "box_initial_quaternion_xyzw": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "candidate_index": 9,
+        "candidate_seed": 1440405902,
+        "condition": "L",
+        "group": "simulation_target_group",
+        "middle_waypoint": [
+          0.27737823876047824,
+          0.25,
+          0.21053320488629024
+        ],
+        "release_pose": [
+          0.5,
+          0.5,
+          0.08
+        ],
+        "route_waypoint_used_during_rollout": false,
+        "scripted_ee_initial_position": [
+          0.3737379787783822,
+          -0.009700121088255957,
+          0.125
+        ],
+        "scripted_transport_used_during_rollout": false,
+        "transport_z": 0.21053320488629024,
+        "waypoint_sampling": {
+          "radial_latent": 0.972654095286036,
+          "theta_rad": 5.632282435489686,
+          "x_delta": 0.07737823876047824,
+          "z_delta": -0.029466795113709754
+        },
+        "waypoint_x_center": 0.2
+      }
+    }
+  ],
+  "rng_streams": {
+    "point_cloud_seed_rule": "SeedSequence([evaluation_seed, eval_case_id, 0x504344])",
+    "runtime_seed_rule": "SeedSequence([evaluation_seed, eval_case_id, 0x52554E])"
+  },
+  "schema_version": 1,
+  "simulator_execution": {
+    "all_stochastic_streams_are_explicit_per_case": true,
+    "gui": false,
+    "playback_speed": 1000.0,
+    "renderer": "PyBullet TinyRenderer through frozen shared task implementation",
+    "sample_hz": 8.0
+  },
+  "software": {
+    "generator_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/examples/rebuttal_target_pipeline/freeze_target_rollout_specs.py",
+    "generator_sha256": "2e35dd9cbe262091e7798cba884afdb56e9ef0bc32042dfecf559dd9b3370310",
+    "shared_task_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/examples/main_obstacle_transport.py",
+    "shared_task_sha256": "991a5cca592a9c9a691abd5209ebf34599325c244b43d972238a9e74ea6660ff",
+    "target_protocol_path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/examples/rebuttal_target_pipeline/target_protocol.py",
+    "target_protocol_sha256": "de0a0573e074cf854384ff00dc0e2430b32d9b4b08b2190d5b8635a65c7b97f0"
+  },
+  "status": "FROZEN_BEFORE_FORMAL_POLICY_ROLLOUT"
+}

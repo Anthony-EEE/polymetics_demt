@@ -1,0 +1,51 @@
+{
+  "actions": {
+    "alignment": "raw joint state t+2",
+    "dtype": "float64",
+    "shape": [
+      "T",
+      8
+    ]
+  },
+  "dones": {
+    "dtype": "int64",
+    "shape": [
+      "T"
+    ],
+    "terminal_last": true
+  },
+  "obs/pointcloud": {
+    "dtype": "float64",
+    "shape": [
+      "T",
+      10000,
+      6
+    ]
+  },
+  "obs/robot0_arm_joints": {
+    "dtype": "float64",
+    "shape": [
+      "T",
+      7
+    ]
+  },
+  "obs/robot0_hand_joints": {
+    "dtype": "float64",
+    "shape": [
+      "T",
+      1
+    ]
+  },
+  "rewards": {
+    "dtype": "float64",
+    "shape": [
+      "T"
+    ]
+  },
+  "states": {
+    "dtype": "float64",
+    "shape": [
+      "T"
+    ]
+  }
+}

@@ -1,0 +1,225 @@
+{
+  "algo": {
+    "ddim": {
+      "beta_schedule": "squaredcos_cap_v2",
+      "clip_sample": true,
+      "enabled": true,
+      "num_inference_timesteps": 10,
+      "num_train_timesteps": 100,
+      "prediction_type": "epsilon",
+      "set_alpha_to_one": true,
+      "steps_offset": 0
+    },
+    "ddpm": {
+      "beta_schedule": "squaredcos_cap_v2",
+      "clip_sample": true,
+      "enabled": false,
+      "num_inference_timesteps": 100,
+      "num_train_timesteps": 100,
+      "prediction_type": "epsilon"
+    },
+    "ema": {
+      "enabled": false,
+      "power": 0.75
+    },
+    "horizon": {
+      "action_horizon": 10,
+      "observation_horizon": 7,
+      "prediction_horizon": 20
+    },
+    "optim_params": {
+      "policy": {
+        "learning_rate": {
+          "decay_factor": 0.1,
+          "epoch_schedule": [],
+          "initial": 0.0001
+        },
+        "regularization": {
+          "L2": 0
+        }
+      }
+    },
+    "unet": {
+      "diffusion_step_embed_dim": 256,
+      "down_dims": [
+        256,
+        512,
+        1024
+      ],
+      "enabled": true,
+      "kernel_size": 5,
+      "n_groups": 8
+    }
+  },
+  "algo_name": "diffusion_policy",
+  "experiment": {
+    "additional_envs": null,
+    "env": null,
+    "env_meta_update_dict": {
+      "env_kwargs": {
+        "controller_configs": {
+          "control_delta": true
+        }
+      }
+    },
+    "epoch_every_n_steps": 250,
+    "keep_all_videos": false,
+    "logging": {
+      "log_tb": false,
+      "log_wandb": false,
+      "terminal_output_to_txt": true,
+      "wandb_proj_name": "rebuttal"
+    },
+    "name": "simulation_target_group_T08_seed1_epoch40",
+    "render": false,
+    "render_video": false,
+    "rollout": {
+      "enabled": false,
+      "horizon": 400,
+      "n": 10,
+      "rate": 20,
+      "terminate_on_success": true,
+      "warmstart": 0
+    },
+    "save": {
+      "enabled": true,
+      "epochs": [],
+      "every_n_epochs": 20,
+      "every_n_seconds": null,
+      "on_best_rollout_return": false,
+      "on_best_rollout_success_rate": false,
+      "on_best_validation": false
+    },
+    "validate": true,
+    "validation_epoch_every_n_steps": 50,
+    "video_skip": 5
+  },
+  "meta": {
+    "hp_base_config_file": null,
+    "hp_keys": [],
+    "hp_values": []
+  },
+  "observation": {
+    "encoder": {
+      "depth": {
+        "core_class": "VisualCore",
+        "core_kwargs": {},
+        "obs_randomizer_class": null,
+        "obs_randomizer_kwargs": {}
+      },
+      "low_dim": {
+        "core_class": null,
+        "core_kwargs": {},
+        "obs_randomizer_class": null,
+        "obs_randomizer_kwargs": {}
+      },
+      "rgb": {
+        "core_class": "VisualCore",
+        "core_kwargs": {
+          "backbone_class": "ResNet18Conv",
+          "backbone_kwargs": {
+            "input_coord_conv": false,
+            "pretrained": false
+          },
+          "feature_dimension": 64,
+          "pool_class": "SpatialSoftmax",
+          "pool_kwargs": {
+            "learnable_temperature": false,
+            "noise_std": 0.0,
+            "num_kp": 32,
+            "temperature": 1.0
+          }
+        },
+        "obs_randomizer_class": null,
+        "obs_randomizer_kwargs": {}
+      },
+      "scan": {
+        "core_class": "ScanCore",
+        "core_kwargs": {},
+        "obs_randomizer_class": null,
+        "obs_randomizer_kwargs": {}
+      }
+    },
+    "modalities": {
+      "goal": {
+        "depth": [],
+        "low_dim": [],
+        "rgb": [],
+        "scan": []
+      },
+      "obs": {
+        "depth": [],
+        "low_dim": [
+          "robot0_arm_joints",
+          "robot0_hand_joints",
+          "pointcloud"
+        ],
+        "rgb": [],
+        "scan": []
+      }
+    }
+  },
+  "train": {
+    "action_config": {
+      "action_dict/abs_pos": {
+        "normalization": "min_max"
+      },
+      "action_dict/abs_rot_6d": {
+        "format": "rot_6d",
+        "normalization": null
+      },
+      "action_dict/abs_rot_axis_angle": {
+        "format": "rot_axis_angle",
+        "normalization": "min_max"
+      },
+      "action_dict/gripper": {
+        "normalization": null
+      },
+      "action_dict/rel_pos": {
+        "normalization": null
+      },
+      "action_dict/rel_rot_6d": {
+        "format": "rot_6d",
+        "normalization": null
+      },
+      "action_dict/rel_rot_axis_angle": {
+        "format": "rot_axis_angle",
+        "normalization": null
+      },
+      "actions": {
+        "normalization": "min_max"
+      }
+    },
+    "action_keys": [
+      "actions"
+    ],
+    "batch_size": 16,
+    "cuda": true,
+    "data": [
+      {
+        "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_target_group/hdf5/simulation_target_group_T08_d30_seed20260806_gap2.hdf5"
+      }
+    ],
+    "data_format": "robomimic",
+    "dataset_keys": [
+      "actions",
+      "rewards",
+      "dones"
+    ],
+    "frame_stack": 1,
+    "goal_mode": null,
+    "hdf5_cache_mode": null,
+    "hdf5_filter_key": "train",
+    "hdf5_load_next_obs": false,
+    "hdf5_normalize_obs": false,
+    "hdf5_use_swmr": true,
+    "hdf5_validation_filter_key": "valid",
+    "num_data_workers": 2,
+    "num_epochs": 40,
+    "output_dir": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_target_group/models/runs",
+    "pad_frame_stack": true,
+    "pad_seq_length": true,
+    "seed": 1,
+    "seq_length": 20
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "counts": {
+    "attempt_records": 333,
+    "empty_directories": 0,
+    "failed_attempt_records": 33,
+    "partial_artifacts": 0,
+    "participants": 10,
+    "raw_frames": 27060,
+    "scripted_frames_in_success_raw": 0,
+    "successful_attempt_records": 300,
+    "successful_demos": 300,
+    "unique_successful_demos": 300,
+    "zero_size_formal_files": 0
+  },
+  "errors": [],
+  "generated_at_utc": "2026-08-06T23:30:31.342352+00:00",
+  "group": "simulation_target_group",
+  "hashes": {
+    "authoritative_participant_manifest_sha256": "5b0d7ffb6ea6501d06eb1fd2d999682d19f6d6a308fe26f8a5ea773f167b444b",
+    "formal_participant_manifest_sha256": "5b0d7ffb6ea6501d06eb1fd2d999682d19f6d6a308fe26f8a5ea773f167b444b"
+  },
+  "metric_extrema": {
+    "final_cylinder_tilt_degrees_max": 3.9672814050376504,
+    "maximum_cylinder_tilt_degrees_max": 8.958122142294398,
+    "middle_waypoint_error_max": 0.036243479837926286,
+    "target_xy_error_max": 0.05406823276076199
+  },
+  "participant_reports": {
+    "T01": {
+      "failed_attempts": 3,
+      "final_cylinder_tilt_degrees_max": 0.0003848464617755874,
+      "middle_waypoint_error_max": 0.02752036042882766,
+      "raw_frames": 3022,
+      "route": "L",
+      "successful_demos": 30,
+      "target_xy_error_max": 0.04738937996396901
+    },
+    "T02": {
+      "failed_attempts": 3,
+      "final_cylinder_tilt_degrees_max": 0.00040775625120542674,
+      "middle_waypoint_error_max": 0.002066800989937745,
+      "raw_frames": 2915,
+      "route": "L",
+      "successful_demos": 30,
+      "target_xy_error_max": 0.031983352918851585
+    },
+    "T03": {
+      "failed_attempts": 2,
+      "final_cylinder_tilt_degrees_max": 0.32661743762505024,
+      "middle_waypoint_error_max": 0.02340440411746043,
+      "raw_frames": 2743,
+      "route": "L",
+      "successful_demos": 30,
+      "target_xy_error_max": 0.03763651469078995
+    },
+    "T04": {
+      "failed_attempts": 3,
+      "final_cylinder_tilt_degrees_max": 3.9672814050376504,
+      "middle_waypoint_error_max": 0.03418353392550039,
+      "raw_frames": 2652,
+      "route": "L",
+      "successful_demos": 30,
+      "target_xy_error_max": 0.05406823276076199
+    },
+    "T05": {
+      "failed_attempts": 2,
+      "final_cylinder_tilt_degrees_max": 2.3544210498618376,
+      "middle_waypoint_error_max": 0.0006975007659918442,
+      "raw_frames": 2551,
+      "route": "L",
+      "successful_demos": 30,
+      "target_xy_error_max": 0.033888045164987224
+    },
+    "T06": {
+      "failed_attempts": 2,
+      "final_cylinder_tilt_degrees_max": 1.4892407705608697,
+      "middle_waypoint_error_max": 0.0011944802190610709,
+      "raw_frames": 2473,
+      "route": "R",
+      "successful_demos": 30,
+      "target_xy_error_max": 0.03767633809227934
+    },
+    "T07": {
+      "failed_attempts": 2,
+      "final_cylinder_tilt_degrees_max": 1.6076885066335496,
+      "middle_waypoint_error_max": 0.029138804026567048,
+      "raw_frames": 2518,
+      "route": "R",
+      "successful_demos": 30,
+      "target_xy_error_max": 0.03407565590757708
+    },
+    "T08": {
+      "failed_attempts": 2,
+      "final_cylinder_tilt_degrees_max": 1.3008619094125702,
+      "middle_waypoint_error_max": 0.02660636858257015,
+      "raw_frames": 2686,
+      "route": "R",
+      "successful_demos": 30,
+      "target_xy_error_max": 0.03648540002365541
+    },
+    "T09": {
+      "failed_attempts": 3,
+      "final_cylinder_tilt_degrees_max": 0.0004084394586936583,
+      "middle_waypoint_error_max": 0.03552270953951529,
+      "raw_frames": 2727,
+      "route": "R",
+      "successful_demos": 30,
+      "target_xy_error_max": 0.03375401453896788
+    },
+    "T10": {
+      "failed_attempts": 11,
+      "final_cylinder_tilt_degrees_max": 0.00041380815373889726,
+      "middle_waypoint_error_max": 0.036243479837926286,
+      "raw_frames": 2773,
+      "route": "R",
+      "successful_demos": 30,
+      "target_xy_error_max": 0.023475666754716837
+    }
+  },
+  "passed": true,
+  "phase_counts": {
+    "policy_inference_start": 300,
+    "policy_release": 2400,
+    "policy_target_approach": 10536,
+    "policy_transport_waypoint": 10224,
+    "settle": 3600
+  },
+  "root": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_target_group/full_seed20260806/protocol_release_z008_target_tol010_start_replenish",
+  "seed": 20260806,
+  "software": {
+    "raw_validator": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/examples/rebuttal_target_pipeline/validate_raw_collection.py",
+      "sha256": "185a63b837d34397559ae64a9496023c75a6208dd4834a6fb95a1828af293f50"
+    },
+    "shared_task": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/examples/main_obstacle_transport.py",
+      "sha256": "991a5cca592a9c9a691abd5209ebf34599325c244b43d972238a9e74ea6660ff"
+    },
+    "target_collector": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/examples/main_obstacle_transport_target_participants.py",
+      "sha256": "811e96cc77c63dd474b879fe11fbcb6d488cd9011237bd6c4c45cabb2fd5ff7d"
+    },
+    "target_success_protocol": {
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/examples/rebuttal_target_pipeline/target_protocol.py",
+      "sha256": "de0a0573e074cf854384ff00dc0e2430b32d9b4b08b2190d5b8635a65c7b97f0"
+    }
+  },
+  "thresholds": {
+    "final_cylinder_tilt_max_degrees": 10.0,
+    "fixed_release_ee_z_m": 0.08,
+    "middle_waypoint_realised_error_max_m": 0.04,
+    "target_xy_error_max_m": 0.1,
+    "transport_height_error_max_m": 0.015
+  },
+  "warnings": []
+}

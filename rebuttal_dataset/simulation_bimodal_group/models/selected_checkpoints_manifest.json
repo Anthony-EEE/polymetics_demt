@@ -1,0 +1,239 @@
+{
+  "checkpoints": {
+    "B01": {
+      "checkpoint": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/models/runs/simulation_bimodal_group_B01_seed1_epoch40/20260807183530/models/model_epoch_40.pth",
+      "config": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/models/configs/B01.json",
+      "config_sha256": "a0f2aac96ab9a0e0e703110107fc57692540521520ef18296f5ac09bbefd6368",
+      "inference_smoke": {
+        "action_shape": [
+          8
+        ],
+        "device": "cpu",
+        "observation_horizon": 7
+      },
+      "participant_id": "B01",
+      "preserved_infrastructure_failures": [],
+      "selected_epoch": 40,
+      "selected_training_status": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/models/status/B01.json",
+      "selected_training_status_sha256": "c7a1693a2bca6c3fd437acf343c0a2fb8df57e1b006a5d80b847495287381105",
+      "sha256": "f76811147aa8f1495824dee3ec508abc7de242e286a156609453497d094eb2c2",
+      "source_hdf5": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/hdf5/simulation_bimodal_group_B01_d60_seed20260807_gap2.hdf5",
+      "source_hdf5_sha256": "23f7446bedb7dde1267b78889ca3e93ff2e50441d98e9701297bf1fb163eff1b",
+      "uniform_training_protocol_sha256": "6c309f4330939e5dede194de669bae3ea167e2978262de906ff970f5a18fd77d"
+    },
+    "B02": {
+      "checkpoint": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/models/runs/simulation_bimodal_group_B02_seed1_epoch40/20260807184706/models/model_epoch_40.pth",
+      "config": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/models/configs/B02.json",
+      "config_sha256": "1c189a1f737fa403fec33f7fd18055b0fe1d1d3dafe225d10988ed8c187cd9ba",
+      "inference_smoke": {
+        "action_shape": [
+          8
+        ],
+        "device": "cpu",
+        "observation_horizon": 7
+      },
+      "participant_id": "B02",
+      "preserved_infrastructure_failures": [],
+      "selected_epoch": 40,
+      "selected_training_status": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/models/status/B02.json",
+      "selected_training_status_sha256": "e87eba3a5ddc8f1e4ec12ddcae5ffbaf29ed77b86fbff3c9d945518655eff8c8",
+      "sha256": "818d57a53613fc0050c4f33ef03bec7c34539a45e1b883e36106dd865b523c43",
+      "source_hdf5": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/hdf5/simulation_bimodal_group_B02_d60_seed20260807_gap2.hdf5",
+      "source_hdf5_sha256": "19ffb35874064c340ee2217665a93518e8a0ce446dc9c1662eb6d281a4b3709b",
+      "uniform_training_protocol_sha256": "6c309f4330939e5dede194de669bae3ea167e2978262de906ff970f5a18fd77d"
+    },
+    "B03": {
+      "checkpoint": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/models/runs/simulation_bimodal_group_B03_seed1_epoch40/20260807185925/models/model_epoch_40.pth",
+      "config": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/models/configs/B03.json",
+      "config_sha256": "d848928d84ee2b806c4cb1f37544e75f96d54c2c39d91230dc7306dbb6bdca31",
+      "inference_smoke": {
+        "action_shape": [
+          8
+        ],
+        "device": "cpu",
+        "observation_horizon": 7
+      },
+      "participant_id": "B03",
+      "preserved_infrastructure_failures": [],
+      "selected_epoch": 40,
+      "selected_training_status": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/models/status/B03.json",
+      "selected_training_status_sha256": "d387e093e4397b81df42414c78f17ac0a53c5c3b5342342eaf508728b1392bb6",
+      "sha256": "9232cf43864efe937e809de370f25a911208b475e169206c2671b613e1b14837",
+      "source_hdf5": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/hdf5/simulation_bimodal_group_B03_d60_seed20260807_gap2.hdf5",
+      "source_hdf5_sha256": "b9d8db05e1b857854d2ec44115356f57c21fc3626e93a6e8cd67bcad7261c9a4",
+      "uniform_training_protocol_sha256": "6c309f4330939e5dede194de669bae3ea167e2978262de906ff970f5a18fd77d"
+    },
+    "B04": {
+      "checkpoint": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/models/runs/simulation_bimodal_group_B04_seed1_epoch40/20260807191046/models/model_epoch_40.pth",
+      "config": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/models/configs/B04.json",
+      "config_sha256": "c641b09d1367679730e8641623462bfa4adb1d0522e0a9c7d772f3591f010c35",
+      "inference_smoke": {
+        "action_shape": [
+          8
+        ],
+        "device": "cpu",
+        "observation_horizon": 7
+      },
+      "participant_id": "B04",
+      "preserved_infrastructure_failures": [],
+      "selected_epoch": 40,
+      "selected_training_status": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/models/status/B04.json",
+      "selected_training_status_sha256": "f21c8ffe21f62486e215456f6e8bfa413fb013bedda1edecbfce1a0a707f8883",
+      "sha256": "5b5997761178026bb15ab7f58320802fcf4153c8b996e3f0916e1e729f98c86d",
+      "source_hdf5": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/hdf5/simulation_bimodal_group_B04_d60_seed20260807_gap2.hdf5",
+      "source_hdf5_sha256": "d62fddfc8b117687fd43d9d8a5d441373f339c59bbb0bb609ff3bbb4c4b58086",
+      "uniform_training_protocol_sha256": "6c309f4330939e5dede194de669bae3ea167e2978262de906ff970f5a18fd77d"
+    },
+    "B05": {
+      "checkpoint": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/models/runs/simulation_bimodal_group_B05_seed1_epoch40/20260807192147/models/model_epoch_40.pth",
+      "config": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/models/configs/B05.json",
+      "config_sha256": "a2a2710df86f4066da81c895ac9f94214b9be41f5a021206722a25a10e69079a",
+      "inference_smoke": {
+        "action_shape": [
+          8
+        ],
+        "device": "cpu",
+        "observation_horizon": 7
+      },
+      "participant_id": "B05",
+      "preserved_infrastructure_failures": [],
+      "selected_epoch": 40,
+      "selected_training_status": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/models/status/B05.json",
+      "selected_training_status_sha256": "6a5ef1a85e501bb5e2021a6db17f952d056216a2e4ead13f7136d2608082bdf7",
+      "sha256": "80ea87e7f41b4c8cfb5b72d95d92c10bf7d041fff688954bc0e63c3f8db724fa",
+      "source_hdf5": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/hdf5/simulation_bimodal_group_B05_d60_seed20260807_gap2.hdf5",
+      "source_hdf5_sha256": "9ec824480899135c3abe3873dc7398190a26efd3d42390244088deeeea673fe9",
+      "uniform_training_protocol_sha256": "6c309f4330939e5dede194de669bae3ea167e2978262de906ff970f5a18fd77d"
+    },
+    "B06": {
+      "checkpoint": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/models/runs/simulation_bimodal_group_B06_seed1_epoch40/20260807193118/models/model_epoch_40.pth",
+      "config": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/models/configs/B06.json",
+      "config_sha256": "6a3812ef09d9a2f7575288769fc3936b9246f0e5e5772fc36cda1002f7ebeb38",
+      "inference_smoke": {
+        "action_shape": [
+          8
+        ],
+        "device": "cpu",
+        "observation_horizon": 7
+      },
+      "participant_id": "B06",
+      "preserved_infrastructure_failures": [],
+      "selected_epoch": 40,
+      "selected_training_status": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/models/status/B06.json",
+      "selected_training_status_sha256": "dca75debbf0d2cc164fe3af185410d2e977274c27d5609a08e9fc701ca0a8061",
+      "sha256": "d1991df60b679490caa60d510fee41f26372c7de4e7b160e57179a3eccf8d900",
+      "source_hdf5": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/hdf5/simulation_bimodal_group_B06_d60_seed20260807_gap2.hdf5",
+      "source_hdf5_sha256": "12435633b25696f1895d58fb6b54863156e82bcc9ac3af80960f44b80c243a7e",
+      "uniform_training_protocol_sha256": "6c309f4330939e5dede194de669bae3ea167e2978262de906ff970f5a18fd77d"
+    },
+    "B07": {
+      "checkpoint": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/models/runs/simulation_bimodal_group_B07_seed1_epoch40/20260807193321/models/model_epoch_40.pth",
+      "config": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/models/configs/B07.json",
+      "config_sha256": "e4d0ca43abb94296ddeb02dbdb4e4cad56e56d57ba240020b8eb6f0c86ec0121",
+      "inference_smoke": {
+        "action_shape": [
+          8
+        ],
+        "device": "cpu",
+        "observation_horizon": 7
+      },
+      "participant_id": "B07",
+      "preserved_infrastructure_failures": [],
+      "selected_epoch": 40,
+      "selected_training_status": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/models/status/B07.json",
+      "selected_training_status_sha256": "dc774934daecf243d0bc40af696dbed6cb29c5fad1cf35e34a3854807da712f6",
+      "sha256": "30a0e9f76fb971a81bf52ab5cbed24f5753c1b41b77993d8cc5f5056b94e383d",
+      "source_hdf5": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/hdf5/simulation_bimodal_group_B07_d60_seed20260807_gap2.hdf5",
+      "source_hdf5_sha256": "6c525b3e309490228f89005b09687ee0fd386f4696fd7e21b8fb37689e43c26d",
+      "uniform_training_protocol_sha256": "6c309f4330939e5dede194de669bae3ea167e2978262de906ff970f5a18fd77d"
+    },
+    "B08": {
+      "checkpoint": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/models/runs/simulation_bimodal_group_B08_seed1_epoch40/20260807194537/models/model_epoch_40.pth",
+      "config": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/models/configs/B08.json",
+      "config_sha256": "14d000c073843010ebf89cf3928ee1f63f05176693e02413196921b7769a1ebf",
+      "inference_smoke": {
+        "action_shape": [
+          8
+        ],
+        "device": "cpu",
+        "observation_horizon": 7
+      },
+      "participant_id": "B08",
+      "preserved_infrastructure_failures": [],
+      "selected_epoch": 40,
+      "selected_training_status": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/models/status/B08.json",
+      "selected_training_status_sha256": "89f677be53e71ed2658d75d9739d62758a9e7230730a429153aeebf4ed08e16f",
+      "sha256": "775f1a38f30adb90e7268914a0a309670f3f0748b632a5ff46a96ca00a31486a",
+      "source_hdf5": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/hdf5/simulation_bimodal_group_B08_d60_seed20260807_gap2.hdf5",
+      "source_hdf5_sha256": "9ea277f877475645ce2defe998c09f5a8d24f203be711ace044992db9abab8d8",
+      "uniform_training_protocol_sha256": "6c309f4330939e5dede194de669bae3ea167e2978262de906ff970f5a18fd77d"
+    },
+    "B09": {
+      "checkpoint": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/models/runs/simulation_bimodal_group_B09_seed1_epoch40/20260807195927/models/model_epoch_40.pth",
+      "config": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/models/configs/B09.json",
+      "config_sha256": "4fbd302352b2a98cda7436d139492631d3c0be25210d18097f16b61bf42e7ca6",
+      "inference_smoke": {
+        "action_shape": [
+          8
+        ],
+        "device": "cpu",
+        "observation_horizon": 7
+      },
+      "participant_id": "B09",
+      "preserved_infrastructure_failures": [],
+      "selected_epoch": 40,
+      "selected_training_status": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/models/status/B09.json",
+      "selected_training_status_sha256": "9b7174d81f41c7c40530d63a3f1940baf984d7bf5fb22519a6e14ed77ebc16c3",
+      "sha256": "a3f38bd36a1c8e5bcd1c79e3e07be99bc33d00e04b0aa900025673999f8fb51f",
+      "source_hdf5": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/hdf5/simulation_bimodal_group_B09_d60_seed20260807_gap2.hdf5",
+      "source_hdf5_sha256": "a5ef5ae0437755dbd1873482fe99151a9ce6e97bdbb7f9e2920384f0d3f35e7b",
+      "uniform_training_protocol_sha256": "6c309f4330939e5dede194de669bae3ea167e2978262de906ff970f5a18fd77d"
+    },
+    "B10": {
+      "checkpoint": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/models/runs/simulation_bimodal_group_B10_seed1_epoch40/20260807200206/models/model_epoch_40.pth",
+      "config": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/models/configs/B10.json",
+      "config_sha256": "87a77cd61a1ebaae66144c8810da65e3c675198052da84bbdd2c9ebbf079f4cb",
+      "inference_smoke": {
+        "action_shape": [
+          8
+        ],
+        "device": "cpu",
+        "observation_horizon": 7
+      },
+      "participant_id": "B10",
+      "preserved_infrastructure_failures": [],
+      "selected_epoch": 40,
+      "selected_training_status": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/models/status/B10.json",
+      "selected_training_status_sha256": "fcaecd12f2c2424f8d9ee68733580fe5b5e85402553138c1eddd7bc660ad19c8",
+      "sha256": "991ed7e0de4cf16ea05e76e6ef14c2fb9dc0436f8d7c196aeaa3bf3dfe34c154",
+      "source_hdf5": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/hdf5/simulation_bimodal_group_B10_d60_seed20260807_gap2.hdf5",
+      "source_hdf5_sha256": "1ad1f28f2b3de4a0c1647e32ca5336cd5eeeaf30f6b914d7c604387013188eec",
+      "uniform_training_protocol_sha256": "6c309f4330939e5dede194de669bae3ea167e2978262de906ff970f5a18fd77d"
+    }
+  },
+  "group": "simulation_bimodal_group",
+  "model_validation_report": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_bimodal_group/models/model_validation_report.json",
+  "model_validation_report_sha256": "5490809c6e11d0918ecf0c00e7979260065c0a691417636ce79fe34c70e06ca1",
+  "participant_order": [
+    "B01",
+    "B02",
+    "B03",
+    "B04",
+    "B05",
+    "B06",
+    "B07",
+    "B08",
+    "B09",
+    "B10"
+  ],
+  "schema_version": 1,
+  "selection_rule": {
+    "participant_specific_tuning": false,
+    "rule": "select exact model_epoch_40.pth",
+    "selected_epoch": 40,
+    "uses_policy_rollout_performance": false,
+    "uses_training_loss": false,
+    "uses_validation_loss": false
+  },
+  "uniform_training_protocol_sha256": "6c309f4330939e5dede194de669bae3ea167e2978262de906ff970f5a18fd77d"
+}

@@ -1,0 +1,335 @@
+{
+  "comparison": "CBxx minus Bxx",
+  "matched_overall_success_rate_difference_statistics": {
+    "ddof": 1,
+    "mean": -0.02,
+    "n_participant_policies": 10,
+    "sample_standard_deviation": 0.178263
+  },
+  "matched_policy_rows": [
+    {
+      "bimodal_overall_success_rate": 0.3,
+      "bimodal_participant": "B01",
+      "bimodal_primary_failures": {
+        "cylinder_topple": 10,
+        "target_miss": 4
+      },
+      "control_bimodal_overall_success_rate": 0.5,
+      "control_bimodal_participant": "CB01",
+      "control_bimodal_primary_failures": {
+        "cylinder_topple": 6,
+        "target_miss": 4
+      },
+      "overall_success_rate_difference": 0.2,
+      "p_L_all_20_difference": 0.1,
+      "p_R_all_20_difference": 0.05,
+      "p_indeterminate_all_20_difference": -0.15,
+      "primary_failure_count_differences": {
+        "cylinder_topple": -4,
+        "target_miss": 0
+      },
+      "success_rate_L_difference": 0.083333,
+      "success_rate_R_difference": 0.227273
+    },
+    {
+      "bimodal_overall_success_rate": 0.55,
+      "bimodal_participant": "B02",
+      "bimodal_primary_failures": {
+        "cylinder_topple": 4,
+        "target_miss": 5
+      },
+      "control_bimodal_overall_success_rate": 0.35,
+      "control_bimodal_participant": "CB02",
+      "control_bimodal_primary_failures": {
+        "cylinder_topple": 9,
+        "target_miss": 4
+      },
+      "overall_success_rate_difference": -0.2,
+      "p_L_all_20_difference": 0.25,
+      "p_R_all_20_difference": -0.3,
+      "p_indeterminate_all_20_difference": 0.05,
+      "primary_failure_count_differences": {
+        "cylinder_topple": 5,
+        "target_miss": -1
+      },
+      "success_rate_L_difference": 1.0,
+      "success_rate_R_difference": -0.733333
+    },
+    {
+      "bimodal_overall_success_rate": 0.55,
+      "bimodal_participant": "B03",
+      "bimodal_primary_failures": {
+        "cylinder_topple": 8,
+        "target_miss": 1
+      },
+      "control_bimodal_overall_success_rate": 0.4,
+      "control_bimodal_participant": "CB03",
+      "control_bimodal_primary_failures": {
+        "cylinder_topple": 8,
+        "target_miss": 4
+      },
+      "overall_success_rate_difference": -0.15,
+      "p_L_all_20_difference": 0.2,
+      "p_R_all_20_difference": -0.1,
+      "p_indeterminate_all_20_difference": -0.1,
+      "primary_failure_count_differences": {
+        "cylinder_topple": 0,
+        "target_miss": 3
+      },
+      "success_rate_L_difference": 0.2,
+      "success_rate_R_difference": -0.194871
+    },
+    {
+      "bimodal_overall_success_rate": 0.25,
+      "bimodal_participant": "B04",
+      "bimodal_primary_failures": {
+        "cylinder_topple": 8,
+        "target_miss": 7
+      },
+      "control_bimodal_overall_success_rate": 0.25,
+      "control_bimodal_participant": "CB04",
+      "control_bimodal_primary_failures": {
+        "cylinder_topple": 13,
+        "target_miss": 2
+      },
+      "overall_success_rate_difference": 0.0,
+      "p_L_all_20_difference": 0.1,
+      "p_R_all_20_difference": -0.05,
+      "p_indeterminate_all_20_difference": -0.05,
+      "primary_failure_count_differences": {
+        "cylinder_topple": 5,
+        "target_miss": -5
+      },
+      "success_rate_L_difference": 0.0,
+      "success_rate_R_difference": 0.02381
+    },
+    {
+      "bimodal_overall_success_rate": 0.3,
+      "bimodal_participant": "B05",
+      "bimodal_primary_failures": {
+        "cylinder_topple": 11,
+        "target_miss": 3
+      },
+      "control_bimodal_overall_success_rate": 0.4,
+      "control_bimodal_participant": "CB05",
+      "control_bimodal_primary_failures": {
+        "cylinder_topple": 10,
+        "target_miss": 2
+      },
+      "overall_success_rate_difference": 0.1,
+      "p_L_all_20_difference": -0.1,
+      "p_R_all_20_difference": 0.1,
+      "p_indeterminate_all_20_difference": 0.0,
+      "primary_failure_count_differences": {
+        "cylinder_topple": -1,
+        "target_miss": -1
+      },
+      "success_rate_L_difference": -0.085714,
+      "success_rate_R_difference": 0.19192
+    },
+    {
+      "bimodal_overall_success_rate": 0.2,
+      "bimodal_participant": "B06",
+      "bimodal_primary_failures": {
+        "cylinder_topple": 13,
+        "target_miss": 3
+      },
+      "control_bimodal_overall_success_rate": 0.4,
+      "control_bimodal_participant": "CB06",
+      "control_bimodal_primary_failures": {
+        "cylinder_topple": 8,
+        "target_miss": 4
+      },
+      "overall_success_rate_difference": 0.2,
+      "p_L_all_20_difference": -0.15,
+      "p_R_all_20_difference": 0.2,
+      "p_indeterminate_all_20_difference": -0.05,
+      "primary_failure_count_differences": {
+        "cylinder_topple": -5,
+        "target_miss": 1
+      },
+      "success_rate_L_difference": -0.5,
+      "success_rate_R_difference": 0.351515
+    },
+    {
+      "bimodal_overall_success_rate": 0.35,
+      "bimodal_participant": "B07",
+      "bimodal_primary_failures": {
+        "cylinder_topple": 8,
+        "target_miss": 5
+      },
+      "control_bimodal_overall_success_rate": 0.1,
+      "control_bimodal_participant": "CB07",
+      "control_bimodal_primary_failures": {
+        "cylinder_topple": 15,
+        "target_miss": 3
+      },
+      "overall_success_rate_difference": -0.25,
+      "p_L_all_20_difference": -0.1,
+      "p_R_all_20_difference": 0.2,
+      "p_indeterminate_all_20_difference": -0.1,
+      "primary_failure_count_differences": {
+        "cylinder_topple": 7,
+        "target_miss": -2
+      },
+      "success_rate_L_difference": -0.583333,
+      "success_rate_R_difference": -0.051948
+    },
+    {
+      "bimodal_overall_success_rate": 0.3,
+      "bimodal_participant": "B08",
+      "bimodal_primary_failures": {
+        "cylinder_topple": 10,
+        "target_miss": 4
+      },
+      "control_bimodal_overall_success_rate": 0.35,
+      "control_bimodal_participant": "CB08",
+      "control_bimodal_primary_failures": {
+        "cylinder_topple": 9,
+        "target_miss": 4
+      },
+      "overall_success_rate_difference": 0.05,
+      "p_L_all_20_difference": 0.1,
+      "p_R_all_20_difference": -0.2,
+      "p_indeterminate_all_20_difference": 0.1,
+      "primary_failure_count_differences": {
+        "cylinder_topple": -1,
+        "target_miss": 0
+      },
+      "success_rate_L_difference": 0.314286,
+      "success_rate_R_difference": -0.08547
+    },
+    {
+      "bimodal_overall_success_rate": 0.55,
+      "bimodal_participant": "B09",
+      "bimodal_primary_failures": {
+        "cylinder_topple": 5,
+        "target_miss": 4
+      },
+      "control_bimodal_overall_success_rate": 0.3,
+      "control_bimodal_participant": "CB09",
+      "control_bimodal_primary_failures": {
+        "cylinder_topple": 12,
+        "target_miss": 2
+      },
+      "overall_success_rate_difference": -0.25,
+      "p_L_all_20_difference": 0.05,
+      "p_R_all_20_difference": -0.05,
+      "p_indeterminate_all_20_difference": 0.0,
+      "primary_failure_count_differences": {
+        "cylinder_topple": 7,
+        "target_miss": -2
+      },
+      "success_rate_L_difference": -0.3,
+      "success_rate_R_difference": -0.336364
+    },
+    {
+      "bimodal_overall_success_rate": 0.3,
+      "bimodal_participant": "B10",
+      "bimodal_primary_failures": {
+        "cylinder_topple": 11,
+        "target_miss": 3
+      },
+      "control_bimodal_overall_success_rate": 0.4,
+      "control_bimodal_participant": "CB10",
+      "control_bimodal_primary_failures": {
+        "cylinder_topple": 10,
+        "target_miss": 2
+      },
+      "overall_success_rate_difference": 0.1,
+      "p_L_all_20_difference": -0.15,
+      "p_R_all_20_difference": 0.15,
+      "p_indeterminate_all_20_difference": 0.0,
+      "primary_failure_count_differences": {
+        "cylinder_topple": -1,
+        "target_miss": -1
+      },
+      "success_rate_L_difference": 0.071429,
+      "success_rate_R_difference": 0.166667
+    }
+  ],
+  "matched_rollout_key_description": {
+    "common_policy_sampling_seed": 200,
+    "matched_keys": 200,
+    "matched_rollouts_are_not_200_independent_participant_observations": true,
+    "same_realised_route": 144,
+    "same_success_outcome": 128
+  },
+  "participant_policy_is_inferential_unit": true,
+  "pooled_200_rollout_descriptive_differences": {
+    "overall_success_rate_difference": -0.02,
+    "p_L_all_200_difference": 0.03,
+    "p_R_all_200_difference": 0.0,
+    "p_indeterminate_all_200_difference": -0.03,
+    "primary_failure_count_differences": {
+      "cylinder_topple": 12,
+      "target_miss": -8
+    }
+  },
+  "schema_version": 1,
+  "validation_basis": {
+    "repeat_equivalence": {
+      "acceptance_basis": {
+        "amended_orientation_tolerance_degrees": 3.0,
+        "amended_translation_tolerance_metres": 0.002,
+        "authorized_local_date": "2026-08-08",
+        "original_gate_result_retained": true,
+        "original_orientation_tolerance_degrees": 0.01,
+        "original_translation_tolerance_metres": 1e-05,
+        "rationale": "Millimetre-scale contact-pose variation is expected in real rollouts and does not invalidate otherwise matched scripted setup commands.",
+        "rollouts_rerun_or_replaced": false,
+        "status": "post_rollout_user_authorized_protocol_amendment",
+        "thresholds_amended_after_rollout": true
+      },
+      "amended_gate_passed": true,
+      "amended_gate_violating_pair_count": 0,
+      "amended_gate_violations": [],
+      "maximum_policy_start_box_orientation_delta_degrees": 2.522303089930131,
+      "maximum_policy_start_box_position_delta_metres": 0.001715228238639103,
+      "maximum_policy_start_ee_orientation_delta_degrees": 0.0002963320294223453,
+      "maximum_policy_start_ee_position_delta_metres": 3.965510017052717e-07,
+      "maximum_setup_box_position_delta_metres": 0.001715228238639103,
+      "maximum_setup_ee_position_delta_metres": 3.965510017052717e-07,
+      "maximum_setup_transport_height_error_delta_metres": 1.9763275724282714e-07,
+      "orientation_tolerance_degrees": 3.0,
+      "original_gate_passed": false,
+      "original_gate_violating_pair_count": 2,
+      "original_gate_violations": [
+        {
+          "eval_case_id": 0,
+          "exceeded_metrics": {
+            "maximum_policy_start_box_orientation_delta_degrees": 2.144117293494169,
+            "maximum_policy_start_box_position_delta_metres": 0.001663591785756616,
+            "maximum_setup_box_position_delta_metres": 0.001663591785756616
+          },
+          "participant_id": "CB01"
+        },
+        {
+          "eval_case_id": 5,
+          "exceeded_metrics": {
+            "maximum_policy_start_box_orientation_delta_degrees": 2.522303089930131,
+            "maximum_policy_start_box_position_delta_metres": 0.001715228238639103,
+            "maximum_setup_box_position_delta_metres": 0.001715228238639103
+          },
+          "participant_id": "CB09"
+        }
+      ],
+      "original_orientation_tolerance_degrees": 0.01,
+      "original_translation_tolerance_metres": 1e-05,
+      "paired_repeat_count": 100,
+      "translation_tolerance_metres": 0.002
+    },
+    "repeat_protocol_amendment": {
+      "amended_orientation_tolerance_degrees": 3.0,
+      "amended_translation_tolerance_metres": 0.002,
+      "authorized_local_date": "2026-08-08",
+      "original_gate_result_retained": true,
+      "original_orientation_tolerance_degrees": 0.01,
+      "original_translation_tolerance_metres": 1e-05,
+      "rationale": "Millimetre-scale contact-pose variation is expected in real rollouts and does not invalidate otherwise matched scripted setup commands.",
+      "rollouts_rerun_or_replaced": false,
+      "status": "post_rollout_user_authorized_protocol_amendment",
+      "thresholds_amended_after_rollout": true
+    }
+  }
+}

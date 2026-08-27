@@ -1,0 +1,906 @@
+{
+  "group": "simulation_control_group",
+  "representative_rule": "first success per participant plus every failed rollout",
+  "videos": [
+    {
+      "eval_case_id": 0,
+      "participant_id": "C01",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C01/videos/case_00_execution_0.mp4",
+      "primary_failure": "target_miss",
+      "representative": true,
+      "sha256": "78087190ddb098151e92a2e0cde48b8592a01cb6a20d1da309b3c3110d5fc7a7",
+      "success": false
+    },
+    {
+      "eval_case_id": 1,
+      "participant_id": "C01",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C01/videos/case_01_execution_0.mp4",
+      "primary_failure": "cylinder_topple",
+      "representative": true,
+      "sha256": "a201b20e3fa5adbf1999b838a2326294f8de4d41ab703238c3ec101d03dfa353",
+      "success": false
+    },
+    {
+      "eval_case_id": 2,
+      "participant_id": "C01",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C01/videos/case_02_execution_0.mp4",
+      "primary_failure": "target_miss",
+      "representative": true,
+      "sha256": "ef2072bed202ce7b14368413cad903ba2d9998c00f3b388d754228c22a527593",
+      "success": false
+    },
+    {
+      "eval_case_id": 3,
+      "participant_id": "C01",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C01/videos/case_03_execution_0.mp4",
+      "primary_failure": "success",
+      "representative": true,
+      "sha256": "a372ccc5857fd50799e61548319418b1d500cd2f1aae01643612933252fec8dc",
+      "success": true
+    },
+    {
+      "eval_case_id": 4,
+      "participant_id": "C01",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C01/videos/case_04_execution_0.mp4",
+      "primary_failure": "success",
+      "representative": false,
+      "sha256": "38a8765d5ed435249cde56a9c600d1bdbf813a973f303bb12cf929c46f8b37ea",
+      "success": true
+    },
+    {
+      "eval_case_id": 5,
+      "participant_id": "C01",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C01/videos/case_05_execution_0.mp4",
+      "primary_failure": "success",
+      "representative": false,
+      "sha256": "d41317bb2b179a27668997d632b291490547eba1eed396c009b452dd6051f28e",
+      "success": true
+    },
+    {
+      "eval_case_id": 6,
+      "participant_id": "C01",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C01/videos/case_06_execution_0.mp4",
+      "primary_failure": "target_miss",
+      "representative": true,
+      "sha256": "ffaf83210fc4afd40aaf6e86439bfbecae624a53ed12a9bdd3f06dc5a21be9b7",
+      "success": false
+    },
+    {
+      "eval_case_id": 7,
+      "participant_id": "C01",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C01/videos/case_07_execution_0.mp4",
+      "primary_failure": "success",
+      "representative": false,
+      "sha256": "fb67d021d8b7c887db04862ad151854d3e34ad9393b899763472f43bc9caa30e",
+      "success": true
+    },
+    {
+      "eval_case_id": 8,
+      "participant_id": "C01",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C01/videos/case_08_execution_0.mp4",
+      "primary_failure": "success",
+      "representative": false,
+      "sha256": "0b3d3f04db384452fbf8ab1d2a3dd404d6164ad7006512070848caf8d806b466",
+      "success": true
+    },
+    {
+      "eval_case_id": 9,
+      "participant_id": "C01",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C01/videos/case_09_execution_0.mp4",
+      "primary_failure": "cylinder_topple",
+      "representative": true,
+      "sha256": "fb8ba19d5d7045bf3a868455ebf514f8e63b370c82981b8771a9ac922f3ec4b2",
+      "success": false
+    },
+    {
+      "eval_case_id": 0,
+      "participant_id": "C02",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C02/videos/case_00_execution_0.mp4",
+      "primary_failure": "target_miss",
+      "representative": true,
+      "sha256": "2018e5c35837d6905b785a610b85d4bfb8fda07a910660ff78170a8cedc12dab",
+      "success": false
+    },
+    {
+      "eval_case_id": 1,
+      "participant_id": "C02",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C02/videos/case_01_execution_0.mp4",
+      "primary_failure": "cylinder_topple",
+      "representative": true,
+      "sha256": "da050c419cc082f38608175664d0cc11b731d10247a40300418ed800946c323e",
+      "success": false
+    },
+    {
+      "eval_case_id": 2,
+      "participant_id": "C02",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C02/videos/case_02_execution_0.mp4",
+      "primary_failure": "target_miss",
+      "representative": true,
+      "sha256": "e93f7e021e760b57422376a133a207a13e12342ef873a12dd8706a6b37d60f31",
+      "success": false
+    },
+    {
+      "eval_case_id": 3,
+      "participant_id": "C02",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C02/videos/case_03_execution_0.mp4",
+      "primary_failure": "success",
+      "representative": true,
+      "sha256": "68a6ab8cd74ee682d58c85c142c54aea0589344a2a75e261afce65c8ccd717d2",
+      "success": true
+    },
+    {
+      "eval_case_id": 4,
+      "participant_id": "C02",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C02/videos/case_04_execution_0.mp4",
+      "primary_failure": "success",
+      "representative": false,
+      "sha256": "2f8f358cc92de45f14ba28091b8e912d320552a358ede8ddad6c0d770d56cf9e",
+      "success": true
+    },
+    {
+      "eval_case_id": 5,
+      "participant_id": "C02",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C02/videos/case_05_execution_0.mp4",
+      "primary_failure": "success",
+      "representative": false,
+      "sha256": "43b6ad5de2d07368578b4bdd48fa5e1a04633f0ff30f7d88b5fd44c4810e5179",
+      "success": true
+    },
+    {
+      "eval_case_id": 6,
+      "participant_id": "C02",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C02/videos/case_06_execution_0.mp4",
+      "primary_failure": "success",
+      "representative": false,
+      "sha256": "af5bb852c75e70b3940b61b934c3e544d6a0570ce74485527aafd055d8dcd3df",
+      "success": true
+    },
+    {
+      "eval_case_id": 7,
+      "participant_id": "C02",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C02/videos/case_07_execution_0.mp4",
+      "primary_failure": "target_miss",
+      "representative": true,
+      "sha256": "fcb4b2700fa06eb8e3c92191aa40f80a043361958b606b9aba0b800fc7f6beea",
+      "success": false
+    },
+    {
+      "eval_case_id": 8,
+      "participant_id": "C02",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C02/videos/case_08_execution_0.mp4",
+      "primary_failure": "success",
+      "representative": false,
+      "sha256": "86a4677442568e45e13f9e6ae6b589dbab9c2c9ab2489552339b08c6dd54d8ff",
+      "success": true
+    },
+    {
+      "eval_case_id": 9,
+      "participant_id": "C02",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C02/videos/case_09_execution_0.mp4",
+      "primary_failure": "cylinder_topple",
+      "representative": true,
+      "sha256": "5567bdc2d47a343f6e8658299560648cd5c6043913e7de8952d574aa874bc0ec",
+      "success": false
+    },
+    {
+      "eval_case_id": 0,
+      "participant_id": "C03",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C03/videos/case_00_execution_0.mp4",
+      "primary_failure": "target_miss",
+      "representative": true,
+      "sha256": "92775630b58a2aad8d884cb079d40f90fd7ecb48a2e872fe59526d1fdf73eadd",
+      "success": false
+    },
+    {
+      "eval_case_id": 1,
+      "participant_id": "C03",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C03/videos/case_01_execution_0.mp4",
+      "primary_failure": "cylinder_topple",
+      "representative": true,
+      "sha256": "8b0954652c0e623901d5d2c99c95d3087dc1e16ad30d867c6aea1b8319a6ced1",
+      "success": false
+    },
+    {
+      "eval_case_id": 2,
+      "participant_id": "C03",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C03/videos/case_02_execution_0.mp4",
+      "primary_failure": "target_miss",
+      "representative": true,
+      "sha256": "7ff901d7bd52d3783997e86ef4000f2611c6d887c582a6cad2051f5a56a46501",
+      "success": false
+    },
+    {
+      "eval_case_id": 3,
+      "participant_id": "C03",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C03/videos/case_03_execution_0.mp4",
+      "primary_failure": "success",
+      "representative": true,
+      "sha256": "71e6ffb7f669a71af37931cf63ab90dc051273571aa29e56ff77c005a7625a3c",
+      "success": true
+    },
+    {
+      "eval_case_id": 4,
+      "participant_id": "C03",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C03/videos/case_04_execution_0.mp4",
+      "primary_failure": "success",
+      "representative": false,
+      "sha256": "b08c36a64894881dbdcf9aa99440ac7dc0b85071181d25d5e1787f94c4fe0143",
+      "success": true
+    },
+    {
+      "eval_case_id": 5,
+      "participant_id": "C03",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C03/videos/case_05_execution_0.mp4",
+      "primary_failure": "success",
+      "representative": false,
+      "sha256": "b1bb1f0589bb78ec5597783fdc3209e9229181da619ba2136cfd4b189f83bf60",
+      "success": true
+    },
+    {
+      "eval_case_id": 6,
+      "participant_id": "C03",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C03/videos/case_06_execution_0.mp4",
+      "primary_failure": "target_miss",
+      "representative": true,
+      "sha256": "14297e26d0c87dcb6a25feb57f4ae276485e4f561960f2dc3bd4d3a569478cca",
+      "success": false
+    },
+    {
+      "eval_case_id": 7,
+      "participant_id": "C03",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C03/videos/case_07_execution_0.mp4",
+      "primary_failure": "success",
+      "representative": false,
+      "sha256": "f98a5f01d620f4c4cd13872d1812e90519056f27123a50d8750b5b20cbd1f0ef",
+      "success": true
+    },
+    {
+      "eval_case_id": 8,
+      "participant_id": "C03",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C03/videos/case_08_execution_0.mp4",
+      "primary_failure": "success",
+      "representative": false,
+      "sha256": "77f43921614fdf174ce4eb3d569791dd80315347db5bc78a42f1faa8928a02e0",
+      "success": true
+    },
+    {
+      "eval_case_id": 9,
+      "participant_id": "C03",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C03/videos/case_09_execution_0.mp4",
+      "primary_failure": "cylinder_topple",
+      "representative": true,
+      "sha256": "5cbcb1f49808b1ff5fd202c10198ea0e34d8dd25f38913133f7ae7deea671ed3",
+      "success": false
+    },
+    {
+      "eval_case_id": 0,
+      "participant_id": "C04",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C04/videos/case_00_execution_0.mp4",
+      "primary_failure": "target_miss",
+      "representative": true,
+      "sha256": "140af6a9f307b777ae51b8e4d778628b756e65001326743448fb48d5a8a0e308",
+      "success": false
+    },
+    {
+      "eval_case_id": 1,
+      "participant_id": "C04",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C04/videos/case_01_execution_0.mp4",
+      "primary_failure": "cylinder_topple",
+      "representative": true,
+      "sha256": "1d68f1b443cbabc8649397ed09b89ebd8b56be05e64d5f0f8130980ea711c08f",
+      "success": false
+    },
+    {
+      "eval_case_id": 2,
+      "participant_id": "C04",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C04/videos/case_02_execution_0.mp4",
+      "primary_failure": "target_miss",
+      "representative": true,
+      "sha256": "cc6776a231a92dfa8858d8db6aec997affd4065907164f2bfa50e9a61038ad16",
+      "success": false
+    },
+    {
+      "eval_case_id": 3,
+      "participant_id": "C04",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C04/videos/case_03_execution_0.mp4",
+      "primary_failure": "success",
+      "representative": true,
+      "sha256": "df89ab14722fffde9dbf646670f62b40ec5f72828698ba64dc9d98db8254ef70",
+      "success": true
+    },
+    {
+      "eval_case_id": 4,
+      "participant_id": "C04",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C04/videos/case_04_execution_0.mp4",
+      "primary_failure": "success",
+      "representative": false,
+      "sha256": "d07958f0f77185b14c60a3cd9b40b663e910fe1a64a8ab6144c0f4d100ce6427",
+      "success": true
+    },
+    {
+      "eval_case_id": 5,
+      "participant_id": "C04",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C04/videos/case_05_execution_0.mp4",
+      "primary_failure": "success",
+      "representative": false,
+      "sha256": "bd3e3c013847aaf97881f1791e14a9543e2ef4680a5b289f0261a024f1fe42d5",
+      "success": true
+    },
+    {
+      "eval_case_id": 6,
+      "participant_id": "C04",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C04/videos/case_06_execution_0.mp4",
+      "primary_failure": "success",
+      "representative": false,
+      "sha256": "e7f84b2fcfe18e9b101d65e92c757146bc66da0327d8908d6dfe64a9731540f0",
+      "success": true
+    },
+    {
+      "eval_case_id": 7,
+      "participant_id": "C04",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C04/videos/case_07_execution_0.mp4",
+      "primary_failure": "cylinder_topple",
+      "representative": true,
+      "sha256": "7343ecf203b3b735fb024b093f4252c6e39a050ae0b606573acb23b5f1a9aa42",
+      "success": false
+    },
+    {
+      "eval_case_id": 8,
+      "participant_id": "C04",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C04/videos/case_08_execution_0.mp4",
+      "primary_failure": "target_miss",
+      "representative": true,
+      "sha256": "b97c68146f3e48c4f090359c27213b3aa24308b36822869ea864183ebc710f52",
+      "success": false
+    },
+    {
+      "eval_case_id": 9,
+      "participant_id": "C04",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C04/videos/case_09_execution_0.mp4",
+      "primary_failure": "cylinder_topple",
+      "representative": true,
+      "sha256": "a29999f231f9b619799e0320705437c8488d7529a1f1cf93ee826b6a42a2a71d",
+      "success": false
+    },
+    {
+      "eval_case_id": 0,
+      "participant_id": "C05",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C05/videos/case_00_execution_0.mp4",
+      "primary_failure": "target_miss",
+      "representative": true,
+      "sha256": "13cd7fc87265ae40a4119c31d43d6b3f300dcc9f8fba56a33d83c1561c8aa53c",
+      "success": false
+    },
+    {
+      "eval_case_id": 1,
+      "participant_id": "C05",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C05/videos/case_01_execution_0.mp4",
+      "primary_failure": "cylinder_topple",
+      "representative": true,
+      "sha256": "4fd67b7a83add5985e2ceb0b5271415dd469e5957975f5130e58402df70d8195",
+      "success": false
+    },
+    {
+      "eval_case_id": 2,
+      "participant_id": "C05",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C05/videos/case_02_execution_0.mp4",
+      "primary_failure": "cylinder_topple",
+      "representative": true,
+      "sha256": "57eca9f6105df97a55d0e32870d8ff0a5d7d2bb03749fc5d7ae580acb341086e",
+      "success": false
+    },
+    {
+      "eval_case_id": 3,
+      "participant_id": "C05",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C05/videos/case_03_execution_0.mp4",
+      "primary_failure": "cylinder_topple",
+      "representative": true,
+      "sha256": "640d26b61920a8aa3ba2e323c54a7a8c90cd03caf7a55c92eaf229fe3e0933ce",
+      "success": false
+    },
+    {
+      "eval_case_id": 4,
+      "participant_id": "C05",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C05/videos/case_04_execution_0.mp4",
+      "primary_failure": "success",
+      "representative": true,
+      "sha256": "48d64a0767ef6dc4a16e2865b0f1c0f286acb54e7986bab74539d2ea8a1554e7",
+      "success": true
+    },
+    {
+      "eval_case_id": 5,
+      "participant_id": "C05",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C05/videos/case_05_execution_0.mp4",
+      "primary_failure": "success",
+      "representative": false,
+      "sha256": "a6515f6cc3f7eaf62b550c050a9026aacd1bced13addb291fcfa2b6a02782472",
+      "success": true
+    },
+    {
+      "eval_case_id": 6,
+      "participant_id": "C05",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C05/videos/case_06_execution_0.mp4",
+      "primary_failure": "target_miss",
+      "representative": true,
+      "sha256": "e1224968a9bc3b978a90fdee4c90939adcc31985b4a0651b75d0e842c3ebd4ea",
+      "success": false
+    },
+    {
+      "eval_case_id": 7,
+      "participant_id": "C05",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C05/videos/case_07_execution_0.mp4",
+      "primary_failure": "cylinder_topple",
+      "representative": true,
+      "sha256": "e3d9865f4f8274737a908e44580e769553f206c29710db3fe629893b94bd2b95",
+      "success": false
+    },
+    {
+      "eval_case_id": 8,
+      "participant_id": "C05",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C05/videos/case_08_execution_0.mp4",
+      "primary_failure": "success",
+      "representative": false,
+      "sha256": "a4e89d97db25dc8f5e9b68e7f736d22649e2a08d2a1a1d913490560f0520c4c1",
+      "success": true
+    },
+    {
+      "eval_case_id": 9,
+      "participant_id": "C05",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C05/videos/case_09_execution_0.mp4",
+      "primary_failure": "cylinder_topple",
+      "representative": true,
+      "sha256": "163a19a2c14a47e34f00596a7a35d62a636a8eee5b78dc5388a1a8c9f0ab0e12",
+      "success": false
+    },
+    {
+      "eval_case_id": 0,
+      "participant_id": "C06",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C06/videos/case_00_execution_0.mp4",
+      "primary_failure": "cylinder_topple",
+      "representative": true,
+      "sha256": "0b07256328567830eea9166280420364bc8b74ed03ea64af16eb0b1353284ccf",
+      "success": false
+    },
+    {
+      "eval_case_id": 1,
+      "participant_id": "C06",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C06/videos/case_01_execution_0.mp4",
+      "primary_failure": "cylinder_topple",
+      "representative": true,
+      "sha256": "413c61d0f0bd5803be49612aa42c92e44210aec6abbfa1abd8ad0c6c7f4584eb",
+      "success": false
+    },
+    {
+      "eval_case_id": 2,
+      "participant_id": "C06",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C06/videos/case_02_execution_0.mp4",
+      "primary_failure": "cylinder_topple",
+      "representative": true,
+      "sha256": "88eb2b14cb9587e31a7caf519b29626d35112995ec21b9dcada2a12eb6305870",
+      "success": false
+    },
+    {
+      "eval_case_id": 3,
+      "participant_id": "C06",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C06/videos/case_03_execution_0.mp4",
+      "primary_failure": "success",
+      "representative": true,
+      "sha256": "888639132019441321b98e3b495fa577591e25d7d53bf2567d6f684340fea95b",
+      "success": true
+    },
+    {
+      "eval_case_id": 4,
+      "participant_id": "C06",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C06/videos/case_04_execution_0.mp4",
+      "primary_failure": "cylinder_topple",
+      "representative": true,
+      "sha256": "8f060e6114dfe7ebd736a0dc4d82c8406118563dfe0fcb5f80f060cab6f63986",
+      "success": false
+    },
+    {
+      "eval_case_id": 5,
+      "participant_id": "C06",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C06/videos/case_05_execution_0.mp4",
+      "primary_failure": "cylinder_topple",
+      "representative": true,
+      "sha256": "d98d92facdd112b37a0a63978975b34b35c871a8447b04077c58435ce14b8d46",
+      "success": false
+    },
+    {
+      "eval_case_id": 6,
+      "participant_id": "C06",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C06/videos/case_06_execution_0.mp4",
+      "primary_failure": "target_miss",
+      "representative": true,
+      "sha256": "b658b75dbf82d97282750e1a6729e6a574c2cfc5417ab050fd2c469d1ebffc02",
+      "success": false
+    },
+    {
+      "eval_case_id": 7,
+      "participant_id": "C06",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C06/videos/case_07_execution_0.mp4",
+      "primary_failure": "cylinder_topple",
+      "representative": true,
+      "sha256": "eab937a1d0ea41b21c02547a27f085d28aaf7612b4adac82a61dc990eeb0b0b7",
+      "success": false
+    },
+    {
+      "eval_case_id": 8,
+      "participant_id": "C06",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C06/videos/case_08_execution_0.mp4",
+      "primary_failure": "cylinder_topple",
+      "representative": true,
+      "sha256": "4988cf1bc97d05c5fe20ba2c4d8a83892ae000c5730068150405625c303b1d12",
+      "success": false
+    },
+    {
+      "eval_case_id": 9,
+      "participant_id": "C06",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C06/videos/case_09_execution_0.mp4",
+      "primary_failure": "success",
+      "representative": false,
+      "sha256": "1993f1972d07bf2e39f3daf89f89830d9e01ff2bcec533e667882cc940bac18f",
+      "success": true
+    },
+    {
+      "eval_case_id": 0,
+      "participant_id": "C07",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C07/videos/case_00_execution_0.mp4",
+      "primary_failure": "target_miss",
+      "representative": true,
+      "sha256": "fb7a4a8b88e158730ff3c3c2b38282cecb197096abc78b5cef47f2b262c2dd8b",
+      "success": false
+    },
+    {
+      "eval_case_id": 1,
+      "participant_id": "C07",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C07/videos/case_01_execution_0.mp4",
+      "primary_failure": "target_miss",
+      "representative": true,
+      "sha256": "add8c5f57bd4e15cbe4ef6c7d9a811f7c5739fe5d9d46925611d996e8f0348c7",
+      "success": false
+    },
+    {
+      "eval_case_id": 2,
+      "participant_id": "C07",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C07/videos/case_02_execution_0.mp4",
+      "primary_failure": "target_miss",
+      "representative": true,
+      "sha256": "09dab5c400bdcd917f835624239f96ac16de776a352f9274e6ce2f92b3a7e7d7",
+      "success": false
+    },
+    {
+      "eval_case_id": 3,
+      "participant_id": "C07",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C07/videos/case_03_execution_0.mp4",
+      "primary_failure": "success",
+      "representative": true,
+      "sha256": "7756c73376b3cfdc4477e6dfa170e62bfe411ef5452bf80b263cc7d1621541a8",
+      "success": true
+    },
+    {
+      "eval_case_id": 4,
+      "participant_id": "C07",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C07/videos/case_04_execution_0.mp4",
+      "primary_failure": "success",
+      "representative": false,
+      "sha256": "07468b8eca1b1a0a26c6abd6231fb3fafa89b892aef11b6804f25acfc8e6a47f",
+      "success": true
+    },
+    {
+      "eval_case_id": 5,
+      "participant_id": "C07",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C07/videos/case_05_execution_0.mp4",
+      "primary_failure": "target_miss",
+      "representative": true,
+      "sha256": "246bdf6ed2b4c761a6befb6c1253747e58e2b445cbd27f8e6203542badcb7e72",
+      "success": false
+    },
+    {
+      "eval_case_id": 6,
+      "participant_id": "C07",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C07/videos/case_06_execution_0.mp4",
+      "primary_failure": "success",
+      "representative": false,
+      "sha256": "21facba276b4f13aa87f5dd91bed1aacb89d6ebec360b552332b2cdf36fe19ec",
+      "success": true
+    },
+    {
+      "eval_case_id": 7,
+      "participant_id": "C07",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C07/videos/case_07_execution_0.mp4",
+      "primary_failure": "target_miss",
+      "representative": true,
+      "sha256": "f37139cfe90c6b068d8106e9e176dfdf20316e2c6e8ab24259fe2ff7a341651f",
+      "success": false
+    },
+    {
+      "eval_case_id": 8,
+      "participant_id": "C07",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C07/videos/case_08_execution_0.mp4",
+      "primary_failure": "success",
+      "representative": false,
+      "sha256": "e41fa84aee8e99c368ccc88e86919c8b6955445db77c642e7443a37af01a9f1a",
+      "success": true
+    },
+    {
+      "eval_case_id": 9,
+      "participant_id": "C07",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C07/videos/case_09_execution_0.mp4",
+      "primary_failure": "cylinder_topple",
+      "representative": true,
+      "sha256": "c14575e0e397b1f771582bbd49780cd84587aa2d698aafc04428d284b7ccaeba",
+      "success": false
+    },
+    {
+      "eval_case_id": 0,
+      "participant_id": "C08",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C08/videos/case_00_execution_0.mp4",
+      "primary_failure": "cylinder_topple",
+      "representative": true,
+      "sha256": "0b69fd8d1a0e9119451fb7c2dfb498f38800fbdf0a96f977446309e3d3d4ef2c",
+      "success": false
+    },
+    {
+      "eval_case_id": 1,
+      "participant_id": "C08",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C08/videos/case_01_execution_0.mp4",
+      "primary_failure": "success",
+      "representative": true,
+      "sha256": "70839f25e4bcb4162013a58452378e13357a8abccc1639b62642a6d92c89f5e7",
+      "success": true
+    },
+    {
+      "eval_case_id": 2,
+      "participant_id": "C08",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C08/videos/case_02_execution_0.mp4",
+      "primary_failure": "target_miss",
+      "representative": true,
+      "sha256": "6fa55d3968d17175d76c9f38a3d2b1833735c82364d3126f67983362c60ae16e",
+      "success": false
+    },
+    {
+      "eval_case_id": 3,
+      "participant_id": "C08",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C08/videos/case_03_execution_0.mp4",
+      "primary_failure": "success",
+      "representative": false,
+      "sha256": "ba8f41c485dd9f2742e005dfea9e34ddfd1703064072e39d93037f0f17fa7e4c",
+      "success": true
+    },
+    {
+      "eval_case_id": 4,
+      "participant_id": "C08",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C08/videos/case_04_execution_0.mp4",
+      "primary_failure": "success",
+      "representative": false,
+      "sha256": "2b56f77a53ada0813ab7ff670a23d4440e5a65a4c51edc84349fbe34470af4f0",
+      "success": true
+    },
+    {
+      "eval_case_id": 5,
+      "participant_id": "C08",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C08/videos/case_05_execution_0.mp4",
+      "primary_failure": "target_miss",
+      "representative": true,
+      "sha256": "84ed998386045bc2c29c10e6b0470495d1b6608b321929640c8858655f358f67",
+      "success": false
+    },
+    {
+      "eval_case_id": 6,
+      "participant_id": "C08",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C08/videos/case_06_execution_0.mp4",
+      "primary_failure": "target_miss",
+      "representative": true,
+      "sha256": "bebd8ee29bfe495595a2bde3196e7f1bb57b88a5d939e358e450eb442406891c",
+      "success": false
+    },
+    {
+      "eval_case_id": 7,
+      "participant_id": "C08",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C08/videos/case_07_execution_0.mp4",
+      "primary_failure": "success",
+      "representative": false,
+      "sha256": "15479c180f0625ab2ff57e2f8cf8db386b57ec7d94eccf2747493815c35d8ac6",
+      "success": true
+    },
+    {
+      "eval_case_id": 8,
+      "participant_id": "C08",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C08/videos/case_08_execution_0.mp4",
+      "primary_failure": "target_miss",
+      "representative": true,
+      "sha256": "94cc598eef89e15501e087f35ab81949220b541960dff6d57c1274efbda36e64",
+      "success": false
+    },
+    {
+      "eval_case_id": 9,
+      "participant_id": "C08",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C08/videos/case_09_execution_0.mp4",
+      "primary_failure": "success",
+      "representative": false,
+      "sha256": "cd422f66d5ab7f70768b778b1bc977f1e9105452b852c5f70f6ae48b9c2c7b8d",
+      "success": true
+    },
+    {
+      "eval_case_id": 0,
+      "participant_id": "C09",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C09/videos/case_00_execution_0.mp4",
+      "primary_failure": "target_miss",
+      "representative": true,
+      "sha256": "06f401598bf675d700a3ebb0a417dc7966d10b0727975d44d7beb10a9aa8e208",
+      "success": false
+    },
+    {
+      "eval_case_id": 1,
+      "participant_id": "C09",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C09/videos/case_01_execution_0.mp4",
+      "primary_failure": "success",
+      "representative": true,
+      "sha256": "469a45fbe6d743c551c8e0a632238c2d70531c01285eb3699610a5623f97f7b7",
+      "success": true
+    },
+    {
+      "eval_case_id": 2,
+      "participant_id": "C09",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C09/videos/case_02_execution_0.mp4",
+      "primary_failure": "target_miss",
+      "representative": true,
+      "sha256": "4276aa5ddb19a5b889bbde89e2bb7c25adfae093e08f1d668f0296d66003e7e9",
+      "success": false
+    },
+    {
+      "eval_case_id": 3,
+      "participant_id": "C09",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C09/videos/case_03_execution_0.mp4",
+      "primary_failure": "success",
+      "representative": false,
+      "sha256": "45080c838c06d700e36b89c7687fcb50d62e368eb5b9d6c9a0f845a094fc66fe",
+      "success": true
+    },
+    {
+      "eval_case_id": 4,
+      "participant_id": "C09",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C09/videos/case_04_execution_0.mp4",
+      "primary_failure": "success",
+      "representative": false,
+      "sha256": "263ef04076b27fe3fb20e1081c0b5156104762795047658915fa94a4ad37fff4",
+      "success": true
+    },
+    {
+      "eval_case_id": 5,
+      "participant_id": "C09",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C09/videos/case_05_execution_0.mp4",
+      "primary_failure": "cylinder_topple",
+      "representative": true,
+      "sha256": "d311856279166139893eea5e1e8b94081e8e012d6507ba67d1fb6b93e960b86c",
+      "success": false
+    },
+    {
+      "eval_case_id": 6,
+      "participant_id": "C09",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C09/videos/case_06_execution_0.mp4",
+      "primary_failure": "target_miss",
+      "representative": true,
+      "sha256": "24adedf2f10676415a7d10dad548af2409f82ad9283e407079f27defa1b05889",
+      "success": false
+    },
+    {
+      "eval_case_id": 7,
+      "participant_id": "C09",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C09/videos/case_07_execution_0.mp4",
+      "primary_failure": "success",
+      "representative": false,
+      "sha256": "e933cf7768351f4c3e9924c24a921f4bbbf3655ed24c699a95c2b49029a5d472",
+      "success": true
+    },
+    {
+      "eval_case_id": 8,
+      "participant_id": "C09",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C09/videos/case_08_execution_0.mp4",
+      "primary_failure": "target_miss",
+      "representative": true,
+      "sha256": "eff321b4db61e0f11700a79c3406b6979cf0e826e6e79ef6f5b12bb42f35fbe5",
+      "success": false
+    },
+    {
+      "eval_case_id": 9,
+      "participant_id": "C09",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C09/videos/case_09_execution_0.mp4",
+      "primary_failure": "success",
+      "representative": false,
+      "sha256": "c8c2405a24dbed5f112bc398f3282902d35977b60719aab449443aa4a0e881c7",
+      "success": true
+    },
+    {
+      "eval_case_id": 0,
+      "participant_id": "C10",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C10/videos/case_00_execution_0.mp4",
+      "primary_failure": "cylinder_topple",
+      "representative": true,
+      "sha256": "24ee43530ee67d513b1e562484159152b6822b64b65f14516806a3f15e95dd8c",
+      "success": false
+    },
+    {
+      "eval_case_id": 1,
+      "participant_id": "C10",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C10/videos/case_01_execution_0.mp4",
+      "primary_failure": "success",
+      "representative": true,
+      "sha256": "615c6395165f63a3f6b30d86ed084ff8f9a7beb0a7a2416861716d0163c939f7",
+      "success": true
+    },
+    {
+      "eval_case_id": 2,
+      "participant_id": "C10",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C10/videos/case_02_execution_0.mp4",
+      "primary_failure": "target_miss",
+      "representative": true,
+      "sha256": "3618f83a804d5908e681df47f745714061b377f4e889df652854eb579983eb0c",
+      "success": false
+    },
+    {
+      "eval_case_id": 3,
+      "participant_id": "C10",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C10/videos/case_03_execution_0.mp4",
+      "primary_failure": "success",
+      "representative": false,
+      "sha256": "56cbbf56fa10c5bc8580dbfaa712da2da8920c6969cdceaea6fa01146f15b33e",
+      "success": true
+    },
+    {
+      "eval_case_id": 4,
+      "participant_id": "C10",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C10/videos/case_04_execution_0.mp4",
+      "primary_failure": "success",
+      "representative": false,
+      "sha256": "bfd9d2d6a750df13e4347adcfc40117f8162f88b98bedab7b7d41d9e9412e135",
+      "success": true
+    },
+    {
+      "eval_case_id": 5,
+      "participant_id": "C10",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C10/videos/case_05_execution_0.mp4",
+      "primary_failure": "target_miss",
+      "representative": true,
+      "sha256": "b27c3b3d97db30b0028476d056ecc0ea059f85ccdd82ecde8eaedb2573e5836f",
+      "success": false
+    },
+    {
+      "eval_case_id": 6,
+      "participant_id": "C10",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C10/videos/case_06_execution_0.mp4",
+      "primary_failure": "cylinder_topple",
+      "representative": true,
+      "sha256": "3e63eef47ca99711f5e65a12ed08dc1ed3df5df3cd71b8ca723ce1ac7295778a",
+      "success": false
+    },
+    {
+      "eval_case_id": 7,
+      "participant_id": "C10",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C10/videos/case_07_execution_0.mp4",
+      "primary_failure": "success",
+      "representative": false,
+      "sha256": "846cb23a3d4e4911fd9322f30bcdae8f4d42461ba0f5633bdb4f49c1c7bb1639",
+      "success": true
+    },
+    {
+      "eval_case_id": 8,
+      "participant_id": "C10",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C10/videos/case_08_execution_0.mp4",
+      "primary_failure": "success",
+      "representative": false,
+      "sha256": "8a16f631110744c1ee4471148437c619e7e3cb0262057d719bce79eba1163b6a",
+      "success": true
+    },
+    {
+      "eval_case_id": 9,
+      "participant_id": "C10",
+      "path": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_group/policy_rollouts/C10/videos/case_09_execution_0.mp4",
+      "primary_failure": "success",
+      "representative": false,
+      "sha256": "f5c2c34c51730e3bd423b6daad9292908bf9e9a8250df9d0baad2b52b96bd23e",
+      "success": true
+    }
+  ]
+}

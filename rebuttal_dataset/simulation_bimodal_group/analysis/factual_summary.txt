@@ -1,0 +1,14 @@
+Bimodal route and success summary
+B01: L=4, R=10, indeterminate=6, success_L=0.25, success_R=0.5, overall=0.3
+B02: L=2, R=15, indeterminate=3, success_L=0.0, success_R=0.733333, overall=0.55
+B03: L=1, R=15, indeterminate=4, success_L=0.0, success_R=0.733333, overall=0.55
+B04: L=1, R=15, indeterminate=4, success_L=0.0, success_R=0.333333, overall=0.25
+B05: L=7, R=9, indeterminate=4, success_L=0.285714, success_R=0.444444, overall=0.3
+B06: L=4, R=11, indeterminate=5, success_L=0.5, success_R=0.181818, overall=0.2
+B07: L=8, R=7, indeterminate=5, success_L=0.75, success_R=0.142857, overall=0.35
+B08: L=5, R=13, indeterminate=2, success_L=0.4, success_R=0.307692, overall=0.3
+B09: L=5, R=11, indeterminate=4, success_L=0.8, success_R=0.636364, overall=0.55
+B10: L=7, R=9, indeterminate=4, success_L=0.428571, success_R=0.333333, overall=0.3
+Pooled: {"n_L": 44, "n_R": 115, "n_indeterminate": 41, "overall_success_rate": 0.365, "p_L_all_200": 0.22, "p_L_minus_0p5": -0.28, "p_R_all_200": 0.575, "p_indeterminate_all_200": 0.205, "success_L": 20, "success_R": 53, "success_indeterminate": 0, "success_rate_L": 0.454545, "success_rate_R": 0.46087, "success_rate_indeterminate": 0.0, "success_total": 73}
+Participant-policy overall success mean ± sample SD: 0.365 ± 0.133437 (ddof=1)
+The 600 memberships reuse 300 underlying Target trajectories with unequal multiplicity.

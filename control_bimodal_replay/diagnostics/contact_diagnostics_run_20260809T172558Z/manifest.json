@@ -1,0 +1,83 @@
+{
+  "generated_at_utc": "2026-08-09T17:25:58.944104+00:00",
+  "gripper": "formal gripper_state interpolated as command; actual two-finger PyBullet joint-width sum recorded",
+  "group": "simulation_control_bimodal_group",
+  "interpolation": {
+    "arm_max_velocity_rad_s": 0.3,
+    "max_planned_joint_step_rad": 0.015,
+    "maximum_subdivisions_used": 480,
+    "minimum_subdivisions_per_formal_transition": 30,
+    "output_hz": 30.0
+  },
+  "output": {
+    "duration_seconds": 41.12083333333333,
+    "gripper_cmd_max": 1.0,
+    "gripper_cmd_min": -1.0,
+    "gripper_width_max_m": 0.07999997493919778,
+    "gripper_width_min_m": 0.00818969300334962,
+    "intervention_csv": "R/intervention.csv",
+    "intervention_csv_sha256": "4f1451dbcf5784640d73c1affe72c4286f4b9627d3a4dddb570830f71fa36c84",
+    "max_adjacent_joint_step_rad": 0.011131027636751445,
+    "max_implied_joint_velocity_rad_s": 0.33393082910256233,
+    "row_count": 1235
+  },
+  "pybullet_replay": {
+    "box_obstacle_contact_steps": 0,
+    "final_cylinder_tilt_degrees": 8.099607985145754e-06,
+    "first_robot_obstacle_contact": {
+      "planned_waypoint_index": 914,
+      "robot_link_indices": [
+        4
+      ],
+      "target_ee_position": [
+        0.5804789955532668,
+        -0.4731736681489111,
+        0.08416492500592226
+      ]
+    },
+    "max_ee_tracking_error_m": 0.003437006408999241,
+    "mean_ee_tracking_error_m": 0.0008284995571011877,
+    "mirrored_final_box_position": [
+      0.5018807863031945,
+      -0.5023515553179628,
+      0.03498999999925586
+    ],
+    "mirrored_target_xy_error_m": 0.003011174111824733,
+    "robot_obstacle_contact_steps": 119
+  },
+  "schema_version": 1,
+  "selection": {
+    "eval_case_id": 7,
+    "formal_target_xy_error_m": 0.004982182621892239,
+    "participant_id": "CB10",
+    "repeat_index": 1,
+    "rule": "minimum target_xy_error among formal successful realised R rows",
+    "successful_r_candidate_count": 47
+  },
+  "source": {
+    "checkpoint_sha256": "0bccd8d12dc339b551fca5ef7ad687570602c450d7c70ad6449ed5cefabc85ea",
+    "formal_policy_trace_samples": 19,
+    "formal_result": "/cephfs/volumes/hpc_data_prj/eng_demt_robot_learning/45908032-a3fa-4719-9989-cd8d04c08f7a/polymetics_demt/rebuttal_dataset/simulation_control_bimodal_group/policy_rollouts/CB10/rollouts/rollout_case_07_repeat_1.json",
+    "formal_result_sha256": "a7973c558357a6771513268e6be2e13c047116f957247e968aca0ddcb22faa05",
+    "formal_route": "R",
+    "paired_manifest_sha256": "10dbbe16da06b4013899e350fece05687abc8c45471b584ac5a2473a0e486dad"
+  },
+  "transform": {
+    "collision_clearance_adjustment": "after crossing the cylinder, x is kept in a smooth >=0.70 m clearance corridor and blended back to the formal target pose",
+    "obstacle_xy": [
+      0.5,
+      -0.25
+    ],
+    "orientation": "formal policy-start quaternion reflected as R'=S R S with S=diag(1,-1,1), then held constant because the formal trace stores EE position but not per-step EE quaternion",
+    "position": "formal world Cartesian EE position y := -y; x/z unchanged",
+    "robot_base_position": [
+      0.0,
+      -0.15,
+      0.0
+    ],
+    "target_xy": [
+      0.5,
+      -0.5
+    ]
+  }
+}
